@@ -1,24 +1,482 @@
-*[출력 용량 제한으로 인해 여기서 일시 중단합니다]*
+<!-- PAGE: 브랜드 여정 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>브랜드 여정 | [브랜드명] - 한 장의 타월에서 시작한 성장 기록</title>
+  <meta name="description" content="페이스타월만 바라보며 걸어온 여정. 주요 마일스톤과 앞으로의 비전을 소개합니다.">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --text-black: #1A1A1A;
+      --text-dark: #333333;
+      --text-gray: #666666;
+      --text-light: #999999;
+      --text-muted: #BCBCBC;
+      --bg-white: #FFFFFF;
+      --bg-light: #F5F5F5;
+      --bg-dark: #2D2D2D;
+      --bg-black: #1A1A1A;
+      --border-light: #E0E0E0;
+      --border-default: #D0D0D0;
+      --placeholder-bg: #E0E0E0;
+      --placeholder-icon: #BCBCBC;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+    }
 
-**현재까지 완성된 페이지:**
-1. ✅ 메인 (Home)
-2. ✅ 브랜드 철학
-3. ✅ 브랜드 스토리
-4. ✅ 브랜드 여정
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Pretendard', sans-serif;
+      color: var(--text-gray);
+      line-height: 1.6;
+      background: var(--bg-white);
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; font-family: inherit; background: none; }
 
-**다음 페이지 계속 생성 필요:**
-5. 소재 이야기
-6. 지속가능성
-7. 제품
-8. 타월 가이드
-9. 대량구매
-10. 파트너십
-11. 포토/영상 리뷰 갤러리
-12. 베스트 리뷰 모아보기
-13. 미디어·인플루언서 리뷰
-14. FAQ
-15. 1:1 문의
-16. 주문 조회
-17. 매장 안내
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-계속 생성을 원하시면 "계속"이라고 입력해 주세요.
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary {
+      background: var(--text-black);
+      color: #FFFFFF;
+      border: 1px solid var(--text-black);
+    }
+
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    .img-placeholder {
+      background: var(--placeholder-bg);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .img-placeholder svg {
+      color: var(--placeholder-icon);
+      width: 48px;
+      height: 48px;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-actions svg {
+      width: 22px;
+      height: 22px;
+      color: var(--text-dark);
+      cursor: pointer;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .timeline {
+      max-width: 960px;
+      margin: 48px auto 0;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border-light);
+      transform: translateX(-50%);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .timeline-item:nth-child(even) .timeline-content {
+      order: 2;
+    }
+    .timeline-item:nth-child(even) .timeline-img {
+      order: 1;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--text-black);
+      z-index: 1;
+    }
+    .timeline-date {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+    .timeline-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .timeline-desc {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+    .timeline-img {
+      aspect-ratio: 4/3;
+    }
+
+    .vision-section {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .vision-text {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--text-dark);
+      margin-top: 24px;
+    }
+
+    .cta-section {
+      background: var(--bg-light);
+      text-align: center;
+    }
+
+    .footer-light {
+      padding: 60px 0 32px;
+      background: var(--bg-white);
+      border-top: 1px solid var(--border-light);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .footer-brand-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 12px;
+    }
+    .footer-brand-desc {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    .footer-col-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 16px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 14px;
+      color: var(--text-light);
+      padding: 4px 0;
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .footer-sns {
+      display: flex;
+      gap: 12px;
+    }
+    .footer-sns svg {
+      width: 20px;
+      height: 20px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .section-title { font-size: 28px; }
+      .timeline::before { left: 20px; }
+      .timeline-item { grid-template-columns: 1fr; padding-left: 40px; }
+      .timeline-item:nth-child(even) .timeline-content { order: 1; }
+      .timeline-item:nth-child(even) .timeline-img { order: 2; }
+      .timeline-dot { left: 20px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo">[브랜드명]</a>
+        <nav class="nav-links">
+          <a href="/brand/philosophy">브랜드</a>
+          <a href="/product">제품</a>
+          <a href="/towel-guide">타월 가이드</a>
+          <a href="/bulk-order">대량구매</a>
+          <a href="/partnership">파트너십</a>
+          <a href="/reviews">고객 후기</a>
+          <a href="/support">고객센터</a>
+        </nav>
+        <div class="nav-actions">
+          <i data-lucide="search"></i>
+          <i data-lucide="user"></i>
+          <i data-lucide="shopping-cart"></i>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 섹션1: 타임라인 -->
+    <section style="background:var(--bg-white);">
+      <div class="container">
+        <div class="text-center">
+          <p class="section-label">브랜드 여정</p>
+          <h1 class="section-title">한 장의 타월에서 시작해<br>여기까지 왔습니다</h1>
+          <p class="section-desc mx-auto">페이스타월만 바라보며 걸어온 여정</p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <p class="timeline-date">20XX.XX</p>
+              <h3 class="timeline-title">브랜드 설립, 첫 번째 프로토타입 제작</h3>
+              <p class="timeline-desc">[플레이스홀더 — 창업 배경, 첫 제품 개발 과정]</p>
+            </div>
+            <div class="timeline-img img-placeholder">
+              <i data-lucide="image"></i>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <p class="timeline-date">20XX.XX</p>
+              <h3 class="timeline-title">자사몰 오픈, 첫 출시 [N]일 만에 초도 물량 완판</h3>
+              <p class="timeline-desc">[플레이스홀더 — 론칭 성과, 고객 반응]</p>
+            </div>
+            <div class="timeline-img img-placeholder">
+              <i data-lucide="image"></i>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <p class="timeline-date">20XX.XX</p>
+              <h3 class="timeline-title">누적 판매 [N]개 돌파</h3>
+              <p class="timeline-desc">[플레이스홀더 — 매출 성장, 주요 달성 지표]</p>
+            </div>
+            <div class="timeline-img img-placeholder">
+              <i data-lucide="image"></i>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <p class="timeline-date">20XX.XX</p>
+              <h3 class="timeline-title">[호텔/기업명] 납품 계약 체결</h3>
+              <p class="timeline-desc">[플레이스홀더 — B2B 진출, 파트너십 성과]</p>
+            </div>
+            <div class="timeline-img img-placeholder">
+              <i data-lucide="image"></i>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <p class="timeline-date">20XX.XX</p>
+              <h3 class="timeline-title">친환경 패키징 전환 완료</h3>
+              <p class="timeline-desc">[플레이스홀더 — 지속가능성 실천 내용]</p>
+            </div>
+            <div class="timeline-img img-placeholder">
+              <i data-lucide="image"></i>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <p class="timeline-date">20XX.XX</p>
+              <h3 class="timeline-title">오프라인 팝업스토어 오픈 / 매장 런칭</h3>
+              <p class="timeline-desc">[플레이스홀더 — 오프라인 진출, 매장 위치]</p>
+            </div>
+            <div class="timeline-img img-placeholder">
+              <i data-lucide="image"></i>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <p class="timeline-date">현재 & 앞으로</p>
+              <h3 class="timeline-title">페이스타월 하나에 집중하며 계속 성장 중</h3>
+              <p class="timeline-desc">[플레이스홀더 — 현재 상태, 앞으로의 계획]</p>
+            </div>
+            <div class="timeline-img img-placeholder">
+              <i data-lucide="image"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션2: 다음 목적지 -->
+    <section style="background:var(--bg-light);">
+      <div class="container">
+        <div class="vision-section">
+          <h2 class="section-title">다음 목적지</h2>
+          <p class="section-desc mx-auto">아직 도착하지 않은 곳을 향해 계속 걸어갑니다</p>
+          <div class="vision-text">
+            <p>페이스타월이 스킨케어의 첫 번째 단계로 인식되는 날까지.</p>
+            <p>더 좋은 소재를 찾고, 더 나은 방식으로 만들며, 불필요한 것은 줄여갑니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션3: Contact Us -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="section-title">함께 걸어갈 파트너를 찾고 있습니다</h2>
+        <p class="section-desc mx-auto">유통·입점·대량구매 제안을 기다립니다</p>
+        <div style="margin-top:32px;">
+          <a href="/support/inquiry" class="btn btn-primary">문의하기</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer-light">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand-name">[브랜드명]</p>
+          <p class="footer-brand-desc">매일 얼굴에 닿는 것,<br>아무거나면 안 되니까</p>
+        </div>
+        <div>
+          <p class="footer-col-title">쇼핑 안내</p>
+          <a href="#">배송 안내</a>
+          <a href="#">교환·반품</a>
+          <a href="/support/order-check">주문 조회</a>
+        </div>
+        <div>
+          <p class="footer-col-title">고객 지원</p>
+          <a href="/support/faq">FAQ</a>
+          <a href="/support/inquiry">1:1 문의</a>
+          <a href="/support/store">매장 안내</a>
+        </div>
+        <div>
+          <p class="footer-col-title">비즈니스</p>
+          <a href="/bulk-order">대량구매</a>
+          <a href="/partnership">파트너십</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 [브랜드명]. All rights reserved.</span>
+        <div style="display:flex; gap:16px;">
+          <a href="#">개인정보처리방침</a>
+          <a href="#">이용약관</a>
+          <div class="footer-sns">
+            <i data-lucide="instagram"></i>
+            <i data-lucide="youtube"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
