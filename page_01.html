@@ -1,3 +1,885 @@
-# 페이스타월 브랜드 와이어프레임 전체 페이지 생성
+# 페이스타월 브랜드 와이어프레임 HTML 제작 시작
 
-총 17개 페이지를 순차적으로 생성합니다.
+지금부터 사이트맵의 모든 페이지를 순서대로 제작하겠습니다.
+
+---
+
+<!-- PAGE: 메인 (Home) -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>프리미엄 페이스타월 | [고객사명] - 얼굴에 닿는 첫 터치가 다릅니다</title>
+  <meta name="description" content="산지 직송 프리미엄 원면으로 만든 페이스타월 전문 브랜드. GSM [플레이스홀더]g, 민감성 피부 테스트 완료. 베스트셀러부터 대량구매까지.">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --text-black: #1A1A1A;
+      --text-dark: #333333;
+      --text-gray: #666666;
+      --text-light: #999999;
+      --text-muted: #BCBCBC;
+      --bg-white: #FFFFFF;
+      --bg-light: #F5F5F5;
+      --bg-dark: #2D2D2D;
+      --bg-black: #1A1A1A;
+      --border-light: #E0E0E0;
+      --border-default: #D0D0D0;
+      --placeholder-bg: #E0E0E0;
+      --placeholder-icon: #BCBCBC;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Pretendard', sans-serif;
+      color: var(--text-gray);
+      line-height: 1.6;
+      background: var(--bg-white);
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; font-family: inherit; background: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    
+    /* 헤더 */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-dark);
+      position: relative;
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-icon {
+      width: 24px;
+      height: 24px;
+      color: var(--text-dark);
+      cursor: pointer;
+    }
+    
+    /* 히어로 슬라이더 */
+    .hero-slider {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .slider-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.6s ease;
+    }
+    .slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .img-placeholder-fullscreen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .img-placeholder-fullscreen svg {
+      width: 64px;
+      height: 64px;
+      color: var(--placeholder-icon);
+    }
+    .slide-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #FFFFFF;
+      max-width: 800px;
+      padding: 0 24px;
+    }
+    .slide-sub {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 16px;
+      opacity: 0.8;
+    }
+    .slide-title {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 24px;
+    }
+    .slider-dots {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 3;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .dot.active {
+      background: #FFFFFF;
+      width: 32px;
+      border-radius: 5px;
+    }
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      background: rgba(255,255,255,0.1);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .slider-nav:hover { background: rgba(255,255,255,0.2); }
+    .slider-prev { left: 24px; }
+    .slider-next { right: 24px; }
+    .slider-nav svg { width: 24px; height: 24px; color: #FFFFFF; }
+    
+    /* 공통 섹션 */
+    section { padding: 80px 0; }
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 640px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+    
+    /* 버튼 */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary {
+      background: var(--text-black);
+      color: #FFFFFF;
+      border: 1px solid var(--text-black);
+    }
+    .btn-secondary {
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--border-default);
+    }
+    
+    /* 카드 그리드 */
+    .cards-3col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .feature-card {
+      padding: 32px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+    .icon-box {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .icon-box svg {
+      width: 28px;
+      height: 28px;
+      color: var(--text-dark);
+    }
+    .feature-card-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .feature-card-desc {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+    
+    /* 제품 카드 */
+    .product-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .product-card {
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .img-placeholder {
+      background: var(--placeholder-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .img-placeholder svg {
+      width: 48px;
+      height: 48px;
+      color: var(--placeholder-icon);
+    }
+    .product-card-body {
+      padding: 20px;
+    }
+    .product-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .product-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-light);
+      margin-bottom: 16px;
+    }
+    .stars { display: flex; gap: 2px; color: var(--text-muted); }
+    .stars svg { width: 14px; height: 14px; }
+    
+    /* 캐러셀 */
+    .carousel-track {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 16px;
+    }
+    .carousel-card {
+      min-width: 320px;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .review-card-body {
+      padding: 20px;
+    }
+    .review-text {
+      font-size: 15px;
+      color: var(--text-dark);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .review-author {
+      font-size: 14px;
+      color: var(--text-light);
+    }
+    
+    /* 프로모션 배너 */
+    .promo-banner {
+      background: var(--bg-dark);
+      border-radius: var(--radius-md);
+      padding: 60px 40px;
+      text-align: center;
+      color: #FFFFFF;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+    .promo-banner:hover { opacity: 0.9; }
+    .promo-banner h3 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .promo-banner p {
+      font-size: 16px;
+      opacity: 0.8;
+    }
+    
+    /* B2B 섹션 */
+    .cards-2col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .b2b-card {
+      padding: 40px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+    .b2b-card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 12px;
+    }
+    .b2b-card-desc {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    
+    /* 푸터 */
+    .footer-light {
+      padding: 60px 0 32px;
+      background: var(--bg-white);
+      border-top: 1px solid var(--border-light);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .footer-brand-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 12px;
+    }
+    .footer-brand-desc {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    .footer-col-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 16px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 14px;
+      color: var(--text-light);
+      padding: 4px 0;
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 24px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .footer-sns {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .sns-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sns-icon svg {
+      width: 18px;
+      height: 18px;
+      color: var(--text-dark);
+    }
+    
+    /* TOP 버튼 */
+    .btn-top {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--text-black);
+      color: #FFFFFF;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 99;
+      transition: opacity 0.3s;
+    }
+    .btn-top:hover { opacity: 0.85; }
+    .btn-top svg { width: 20px; height: 20px; }
+    
+    /* 반응형 */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .section-title { font-size: 28px; }
+      .slide-title { font-size: 32px; }
+      .cards-3col, .product-cards { grid-template-columns: 1fr; }
+      .cards-2col { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .slider-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 헤더 -->
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo">[고객사명]</a>
+        <nav class="nav-links">
+          <a href="/brand/philosophy">브랜드</a>
+          <a href="/product">제품</a>
+          <a href="/towel-guide">타월 가이드</a>
+          <a href="/bulk-order">대량구매</a>
+          <a href="/partnership">파트너십</a>
+          <a href="/reviews">고객 후기</a>
+          <a href="/support">고객센터</a>
+        </nav>
+        <div class="nav-actions">
+          <i data-lucide="search" class="nav-icon"></i>
+          <i data-lucide="user" class="nav-icon"></i>
+          <i data-lucide="shopping-bag" class="nav-icon"></i>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 섹션 1: 히어로 슬라이더 (3장) -->
+    <section class="hero-slider">
+      <div class="slider-track">
+        <!-- 슬라이드 1 -->
+        <div class="slide active">
+          <div class="img-placeholder-fullscreen">
+            <i data-lucide="image"></i>
+          </div>
+          <div class="slide-content">
+            <p class="slide-sub">산지 직송 프리미엄 원면, 페이스타월 하나에 집중한 브랜드</p>
+            <h1 class="slide-title">얼굴에 닿는<br>첫 번째 터치가 다릅니다</h1>
+          </div>
+        </div>
+        <!-- 슬라이드 2 -->
+        <div class="slide">
+          <div class="img-placeholder-fullscreen">
+            <i data-lucide="image"></i>
+          </div>
+          <div class="slide-content">
+            <p class="slide-sub">숫자로 증명하는 촉감의 차이</p>
+            <h1 class="slide-title">GSM [플레이스홀더]g<br>흡수율 [플레이스홀더]%</h1>
+          </div>
+        </div>
+        <!-- 슬라이드 3 -->
+        <div class="slide">
+          <div class="img-placeholder-fullscreen">
+            <i data-lucide="image"></i>
+          </div>
+          <div class="slide-content">
+            <p class="slide-sub">지금 베스트셀러 만나보기</p>
+            <h1 class="slide-title">매일 쓰는 타월,<br>가장 좋은 걸로</h1>
+          </div>
+        </div>
+      </div>
+      <div class="slider-dots">
+        <button class="dot active"></button>
+        <button class="dot"></button>
+        <button class="dot"></button>
+      </div>
+      <button class="slider-nav slider-prev"><i data-lucide="chevron-left"></i></button>
+      <button class="slider-nav slider-next"><i data-lucide="chevron-right"></i></button>
+    </section>
+
+    <!-- 섹션 2: 왜 페이스타월 하나에 집중하는가 -->
+    <section style="background: var(--bg-light);">
+      <div class="container">
+        <h2 class="section-title">타월 100종을 만들지 않습니다</h2>
+        <p class="section-desc">매일 얼굴에 닿는 단 하나의 타월. 원면 선별부터 제직, 마감까지 — 페이스타월만 연구합니다.</p>
+        <div class="cards-3col">
+          <div class="feature-card">
+            <div class="icon-box"><i data-lucide="droplet"></i></div>
+            <h3 class="feature-card-title">산지에서 직접 선별한<br>장섬유 원면</h3>
+            <p class="feature-card-desc">[플레이스홀더 — 원산지 국가명]</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon-box"><i data-lucide="grid-3x3"></i></div>
+            <h3 class="feature-card-title">자체 제직 공법으로<br>올빠짐·보풀 최소화</h3>
+            <p class="feature-card-desc">페이스타월 전용 밀도 설계</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon-box"><i data-lucide="shield-check"></i></div>
+            <h3 class="feature-card-title">피부과 테스트 완료<br>민감성 피부에도 안심</h3>
+            <p class="feature-card-desc">저자극 인증 획득</p>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 32px;">
+          <a href="/brand/material" class="btn btn-secondary">소재 이야기 자세히 보기</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 3: 지금 가장 많이 찾는 타월 -->
+    <section>
+      <div class="container">
+        <h2 class="section-title">처음이라면, 여기서 시작하세요</h2>
+        <p class="section-desc">가장 많은 분들이 선택한 페이스타월 베스트 3</p>
+        <div class="product-cards">
+          <div class="product-card">
+            <div class="img-placeholder" style="aspect-ratio: 1/1;">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="product-card-body">
+              <h3 class="product-name">[제품명 플레이스홀더 1]</h3>
+              <div style="display:flex; gap:4px; margin-bottom:8px;">
+                <span style="width:12px; height:12px; border-radius:50%; background:#E0E0E0;"></span>
+                <span style="width:12px; height:12px; border-radius:50%; background:#E0E0E0;"></span>
+                <span style="width:12px; height:12px; border-radius:50%; background:#E0E0E0;"></span>
+              </div>
+              <p class="product-price">[가격] 원</p>
+              <div class="product-rating">
+                <div class="stars">
+                  <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+                </div>
+                <span>4.8 (120)</span>
+              </div>
+              <a href="#" class="btn btn-primary" style="width:100%; justify-content:center;">자세히 보기</a>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="img-placeholder" style="aspect-ratio: 1/1;">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="product-card-body">
+              <h3 class="product-name">[제품명 플레이스홀더 2]</h3>
+              <div style="display:flex; gap:4px; margin-bottom:8px;">
+                <span style="width:12px; height:12px; border-radius:50%; background:#E0E0E0;"></span>
+                <span style="width:12px; height:12px; border-radius:50%; background:#E0E0E0;"></span>
+                <span style="width:12px; height:12px; border-radius:50%; background:#E0E0E0;"></span>
+              </div>
+              <p class="product-price">[가격] 원</p>
+              <div class="product-rating">
+                <div class="stars">
+                  <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+                </div>
+                <span>4.9 (98)</span>
+              </div>
+              <a href="#" class="btn btn-primary" style="width:100%; justify-content:center;">자세히 보기</a>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="img-placeholder" style="aspect-ratio: 1/1;">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="product-card-body">
+              <h3 class="product-name">[제품명 플레이스홀더 3]</h3>
+              <div style="display:flex; gap:4px; margin-bottom:8px;">
+                <span style="width:12px; height:12px; border-radius:50%; background:#E0E0E0;"></span>
+                <span style="width:12px; height:12px; border-radius:50%; background:#E0E0E0;"></span>
+                <span style="width:12px; height:12px; border-radius:50%; background:#E0E0E0;"></span>
+              </div>
+              <p class="product-price">[가격] 원</p>
+              <div class="product-rating">
+                <div class="stars">
+                  <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+                </div>
+                <span>4.7 (156)</span>
+              </div>
+              <a href="#" class="btn btn-primary" style="width:100%; justify-content:center;">자세히 보기</a>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 32px;">
+          <a href="/product" class="btn btn-secondary">전체 제품 보기</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 4: 써보신 분들의 솔직한 후기 -->
+    <section style="background: var(--bg-light);">
+      <div class="container">
+        <h2 class="section-title">빨아도 빨아도 처음 그대로, 진짜예요?</h2>
+        <p class="section-desc">실제 고객님들의 포토 리뷰를 모았습니다</p>
+        <div class="carousel-track">
+          <div class="carousel-card">
+            <div class="img-placeholder" style="aspect-ratio: 4/3;">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="review-card-body">
+              <div class="stars" style="margin-bottom:8px;">
+                <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+              </div>
+              <p class="review-text">"촉감이 정말 다르네요. 세안 후 얼굴이 부드럽게 느껴져요."</p>
+              <p class="review-author">[제품명] 구매</p>
+            </div>
+          </div>
+          <div class="carousel-card">
+            <div class="img-placeholder" style="aspect-ratio: 4/3;">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="review-card-body">
+              <div class="stars" style="margin-bottom:8px;">
+                <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+              </div>
+              <p class="review-text">"여러 번 빨았는데도 보풀이 안 생겨요. 만족합니다."</p>
+              <p class="review-author">[제품명] 구매</p>
+            </div>
+          </div>
+          <div class="carousel-card">
+            <div class="img-placeholder" style="aspect-ratio: 4/3;">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="review-card-body">
+              <div class="stars" style="margin-bottom:8px;">
+                <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+              </div>
+              <p class="review-text">"민감성 피부인데 자극 없이 좋아요."</p>
+              <p class="review-author">[제품명] 구매</p>
+            </div>
+          </div>
+          <div class="carousel-card">
+            <div class="img-placeholder" style="aspect-ratio: 4/3;">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="review-card-body">
+              <div class="stars" style="margin-bottom:8px;">
+                <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+              </div>
+              <p class="review-text">"흡수력이 뛰어나서 빠르게 물기를 제거해줘요."</p>
+              <p class="review-author">[제품명] 구매</p>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 32px;">
+          <a href="/reviews/photo" class="btn btn-secondary">후기 더보기</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 5: 지금 진행 중인 혜택 -->
+    <section>
+      <div class="container">
+        <div class="promo-banner">
+          <h3>첫 구매 고객 무료배송 + 10% 할인 쿠폰</h3>
+          <p>지금 바로 만나보세요</p>
+          <div style="margin-top: 24px;">
+            <a href="#" class="btn btn-primary" style="background:#FFFFFF; color:var(--text-black); border-color:#FFFFFF;">혜택 확인하기</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 6: 기업·단체 대량구매도 가능합니다 -->
+    <section style="background: var(--bg-light);">
+      <div class="container">
+        <h2 class="section-title">100개부터 10,000개까지,<br>로고 각인도 됩니다</h2>
+        <p class="section-desc">기업 선물, 호텔 어메니티, 답례품 — 수량별 맞춤 견적을 안내해 드려요.</p>
+        <div class="cards-2col">
+          <div class="b2b-card">
+            <div class="icon-box" style="margin:0 auto 20px;">
+              <i data-lucide="package"></i>
+            </div>
+            <h3 class="b2b-card-title">대량구매 안내</h3>
+            <p class="b2b-card-desc">수량별 단가, 커스텀 서비스,<br>납품 프로세스</p>
+            <a href="/bulk-order" class="btn btn-secondary">자세히 보기</a>
+          </div>
+          <div class="b2b-card">
+            <div class="icon-box" style="margin:0 auto 20px;">
+              <i data-lucide="handshake"></i>
+            </div>
+            <h3 class="b2b-card-title">유통·입점 제휴</h3>
+            <p class="b2b-card-desc">셀렉트숍, 호텔, 뷰티숍<br>입점 협업</p>
+            <a href="/partnership" class="btn btn-secondary">자세히 보기</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 최하단 섹션: Contact Us -->
+    <section>
+      <div class="container" style="text-align: center;">
+        <h2 class="section-title">궁금한 점이 있으신가요?</h2>
+        <p class="section-desc">제품, 주문, 대량구매 — 무엇이든 편하게 물어보세요.</p>
+        <a href="/support/inquiry" class="btn btn-primary">문의하기</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="footer-light">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand-name">[고객사명]</p>
+          <p class="footer-brand-desc">프리미엄 페이스타월 전문 브랜드</p>
+          <div class="footer-sns">
+            <a href="#" class="sns-icon"><i data-lucide="instagram"></i></a>
+            <a href="#" class="sns-icon"><i data-lucide="youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-col-title">브랜드</p>
+          <a href="/brand/philosophy">브랜드 철학</a>
+          <a href="/brand/story">브랜드 스토리</a>
+          <a href="/brand/journey">브랜드 여정</a>
+          <a href="/brand/material">소재 이야기</a>
+          <a href="/brand/sustainability">지속가능성</a>
+        </div>
+        <div>
+          <p class="footer-col-title">쇼핑</p>
+          <a href="/product">제품</a>
+          <a href="/towel-guide">타월 가이드</a>
+        </div>
+        <div>
+          <p class="footer-col-title">고객지원</p>
+          <a href="/support/faq">FAQ</a>
+          <a href="/support/inquiry">1:1 문의</a>
+          <a href="/support/order-check">주문 조회</a>
+          <a href="/support/store">매장 안내</a>
+        </div>
+      </div>
+      <div style="padding:24px 0; border-top:1px solid var(--border-light); font-size:13px; color:var(--text-light);">
+        <p style="margin-bottom:8px;">상호: [플레이스홀더] | 대표: [플레이스홀더] | 사업자등록번호: [플레이스홀더]</p>
+        <p style="margin-bottom:8px;">통신판매업 신고번호: [플레이스홀더] | 주소: [플레이스홀더]</p>
+        <p>대표 전화: [플레이스홀더] | 이메일: [플레이스홀더]</p>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 [고객사명]. All rights reserved.</span>
+        <span><a href="#">개인정보처리방침</a> | <a href="#">이용약관</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TOP 버튼 -->
+  <button class="btn-top">
+    <i data-lucide="arrow-up"></i>
+  </button>
+
+  <script>
+    lucide.createIcons();
+
+    // 히어로 슬라이더
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const sliderTrack = document.querySelector('.slider-track');
+    
+    function showSlide(index) {
+      currentSlide = index;
+      if (currentSlide >= slides.length) currentSlide = 0;
+      if (currentSlide < 0) currentSlide = slides.length - 1;
+      
+      sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+      
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+      });
+    }
+    
+    document.querySelector('.slider-prev').addEventListener('click', () => {
+      showSlide(currentSlide - 1);
+    });
+    
+    document.querySelector('.slider-next').addEventListener('click', () => {
+      showSlide(currentSlide + 1);
+    });
+    
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => showSlide(index));
+    });
+    
+    // 자동 전환 (5초)
+    setInterval(() => {
+      showSlide(currentSlide + 1);
+    }, 5000);
+
+    // TOP 버튼
+    const btnTop = document.querySelector('.btn-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 200) {
+        btnTop.style.display = 'flex';
+      } else {
+        btnTop.style.display = 'none';
+      }
+    });
+    btnTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>
