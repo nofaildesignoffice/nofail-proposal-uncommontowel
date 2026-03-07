@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>브랜드 철학 | [브랜드명] - 페이스타월 하나에 집중하는 이유</title>
+  <meta name="description" content="왜 페이스타월 하나만 만들까요? 매일 얼굴에 닿는 타월이니까, 소재부터 제직까지 모든 공정을 직접 설계합니다.">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --text-black: #1A1A1A;
+      --text-dark: #333333;
+      --text-gray: #666666;
+      --text-light: #999999;
+      --text-muted: #BCBCBC;
+      --bg-white: #FFFFFF;
+      --bg-light: #F5F5F5;
+      --bg-dark: #2D2D2D;
+      --border-light: #E0E0E0;
+      --border-default: #D0D0D0;
+      --placeholder-bg: #E0E0E0;
+      --placeholder-icon: #BCBCBC;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Pretendard', sans-serif;
+      color: var(--text-gray);
+      line-height: 1.6;
+      background: var(--bg-white);
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; font-family: inherit; background: none; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary {
+      background: var(--text-black);
+      color: #FFFFFF;
+      border: 1px solid var(--text-black);
+    }
+    .btn-secondary {
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--border-default);
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-icon {
+      width: 24px;
+      height: 24px;
+      color: var(--text-dark);
+      cursor: pointer;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 640px;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    .img-placeholder {
+      background: var(--placeholder-bg);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .img-placeholder svg {
+      color: var(--placeholder-icon);
+      width: 48px;
+      height: 48px;
+    }
+
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .icon-box svg {
+      width: 24px;
+      height: 24px;
+      color: var(--text-dark);
+    }
+
+    /* 히어로 */
+    .hero-philosophy {
+      padding: 120px 0 80px;
+      text-align: center;
+    }
+    .hero-philosophy .section-title {
+      font-size: 42px;
+      max-width: 700px;
+      margin: 0 auto 16px;
+    }
+    .hero-image {
+      max-width: 960px;
+      margin: 48px auto 0;
+    }
+    .body-text {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.8;
+      max-width: 720px;
+      margin: 24px auto 0;
+    }
+    .body-text + .body-text {
+      margin-top: 16px;
+    }
+
+    /* 3가지 약속 */
+    .promise-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .promise-card {
+      padding: 32px 24px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+    .promise-card .icon-box {
+      margin: 0 auto 20px;
+    }
+    .promise-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 12px;
+    }
+    .promise-card-desc {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+
+    /* 숫자 */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-top: 48px;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      font-size: 15px;
+      color: var(--text-gray);
+    }
+
+    /* 우리가 만들지 않는 것 */
+    .not-list {
+      max-width: 640px;
+      margin: 48px auto 0;
+    }
+    .not-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .not-item:last-child {
+      border-bottom: none;
+    }
+    .not-icon {
+      width: 32px;
+      height: 32px;
+      color: var(--text-light);
+      flex-shrink: 0;
+    }
+    .not-text {
+      font-size: 15px;
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    .footer {
+      padding: 60px 0 32px;
+      background: var(--bg-white);
+      border-top: 1px solid var(--border-light);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .footer-brand-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 12px;
+    }
+    .footer-brand-desc {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    .footer-col-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 16px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 14px;
+      color: var(--text-light);
+      padding: 4px 0;
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 24px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .section-title { font-size: 28px; }
+      .hero-philosophy .section-title { font-size: 32px; }
+      .promise-cards,
+      .stats-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo">[브랜드명]</a>
+        <nav class="nav-links">
+          <a href="/">메인</a>
+          <a href="/brand/philosophy">브랜드</a>
+          <a href="/product">제품</a>
+          <a href="/towel-guide">타월 가이드</a>
+          <a href="/bulk-order">대량구매</a>
+          <a href="/partnership">파트너십</a>
+          <a href="/reviews/gallery">고객 후기</a>
+          <a href="/support/faq">고객센터</a>
+        </nav>
+        <div class="nav-actions">
+          <i data-lucide="search" class="nav-icon"></i>
+          <i data-lucide="user" class="nav-icon"></i>
+          <i data-lucide="shopping-cart" class="nav-icon"></i>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 섹션 1: 히어로 -->
+    <section class="hero-philosophy">
+      <div class="container">
+        <h1 class="section-title">매일 쓰는 것일수록,<br>가장 좋은 것이어야 하니까</h1>
+        <p class="section-desc mx-auto">우리는 페이스타월 하나만 만듭니다. 하나를 제대로 만들기 위해서요.</p>
+        <div class="hero-image img-placeholder" style="aspect-ratio:16/9;">
+          <i data-lucide="image"></i>
+        </div>
+        <div style="text-align:left; max-width:720px; margin:48px auto 0;">
+          <p class="body-text">칫솔을 고르듯, 화장품을 고르듯 — 매일 아침저녁 얼굴에 닿는 타월도 그 정도의 기준으로 골라야 한다고 생각했어요. 그런데 시중의 타월은 수건 '세트'의 하나로 취급되거나, 소재가 어디서 왔는지 알 수 없는 경우가 대부분이었어요.</p>
+          <p class="body-text">그래서 우리는 결정했어요. 배스타월도, 핸드타월도 아닌, 오직 '얼굴에 닿는 그 한 장'에만 집중하겠다고.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 2: 3가지 약속 -->
+    <section class="section" style="background:var(--bg-light);">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">1장에 담은 3가지 약속</h2>
+        </div>
+        <div class="promise-cards">
+          <div class="promise-card">
+            <div class="icon-box"><i data-lucide="eye"></i></div>
+            <h3 class="promise-card-title">소재의 투명함</h3>
+            <p class="promise-card-desc">원면이 어디서 왔는지, 어떻게 짜여졌는지 모두 공개해요. 숨길 이유가 없으니까요.</p>
+          </div>
+          <div class="promise-card">
+            <div class="icon-box"><i data-lucide="repeat"></i></div>
+            <h3 class="promise-card-title">촉감의 지속성</h3>
+            <p class="promise-card-desc">[숫자]회 세탁 테스트를 직접 진행해요. 처음 만졌을 때의 감동이 오래 가야 하니까요.</p>
+          </div>
+          <div class="promise-card">
+            <div class="icon-box"><i data-lucide="leaf"></i></div>
+            <h3 class="promise-card-title">지구에 덜 미안한 방식</h3>
+            <p class="promise-card-desc">친환경 소재와 최소 포장. 좋은 타월이 좋은 선택이 되도록.</p>
+          </div>
+        </div>
+        <div style="text-align:center; margin-top:40px;">
+          <a href="/brand/material" class="btn btn-secondary">소재 이야기 보기</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 3: 숫자 -->
+    <section class="section">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">숫자로 보는 집중의 결과</h2>
+        </div>
+        <div class="stats-grid">
+          <div>
+            <p class="stat-number">[숫자]장</p>
+            <p class="stat-label">누적 판매</p>
+          </div>
+          <div>
+            <p class="stat-number">[숫자]%</p>
+            <p class="stat-label">재구매율</p>
+          </div>
+          <div>
+            <p class="stat-number">[숫자]/5</p>
+            <p class="stat-label">고객 리뷰 평점</p>
+          </div>
+          <div>
+            <p class="stat-number">[숫자]회</p>
+            <p class="stat-label">세탁 테스트 검증</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 4: 우리가 만들지 않는 것 -->
+    <section class="section" style="background:var(--bg-light);">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">우리가 만들지 않는 것</h2>
+        </div>
+        <div class="not-list">
+          <div class="not-item">
+            <i data-lucide="x" class="not-icon"></i>
+            <p class="not-text"><strong>배스타월</strong> — 얼굴 전용이 아니면 만들지 않아요</p>
+          </div>
+          <div class="not-item">
+            <i data-lucide="x" class="not-icon"></i>
+            <p class="not-text"><strong>100가지 컬러</strong> — 검증된 염료로 피부에 안전한 컬러만 선별해요</p>
+          </div>
+          <div class="not-item">
+            <i data-lucide="x" class="not-icon"></i>
+            <p class="not-text"><strong>유연제 마감</strong> — 인위적인 부드러움은 세탁 3회면 사라져요. 원단 자체의 촉감이 답이에요.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand-name">[브랜드명]</p>
+          <p class="footer-brand-desc">프리미엄 페이스타월 전문 브랜드</p>
+        </div>
+        <div>
+          <p class="footer-col-title">BRAND</p>
+          <a href="/brand/philosophy">브랜드 철학</a>
+          <a href="/brand/story">브랜드 스토리</a>
+          <a href="/brand/material">소재 이야기</a>
+          <a href="/brand/sustainability">지속가능성</a>
+        </div>
+        <div>
+          <p class="footer-col-title">SHOP</p>
+          <a href="/product">제품</a>
+          <a href="/towel-guide">타월 가이드</a>
+        </div>
+        <div>
+          <p class="footer-col-title">SUPPORT</p>
+          <a href="/support/faq">FAQ</a>
+          <a href="/support/contact">1:1 문의</a>
+          <a href="/support/order-tracking">주문 조회</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 [브랜드명]. All Rights Reserved.</span>
+        <span>개인정보처리방침 | 이용약관</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
