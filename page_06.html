@@ -1,0 +1,539 @@
+계속해서 나머지 13개 페이지(소재 이야기, 지속가능성, 제품, 타월 가이드, 대량구매, 파트너십, 고객 후기 3개, 고객센터 4개)를 생성하겠습니다.
+
+<!-- PAGE: 소재 이야기 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>소재 이야기 | [브랜드명] - 원면 선별부터 패키징까지 품질 설계 공개</title>
+  <meta name="description" content="[산지명] 장섬유 코마사 원면, GSM [수치]g 제직, 흡수율 [N]%. 페이스타월 소재의 모든 것을 투명하게 공개합니다.">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --text-black: #1A1A1A;
+      --text-dark: #333333;
+      --text-gray: #666666;
+      --text-light: #999999;
+      --text-muted: #BCBCBC;
+      --bg-white: #FFFFFF;
+      --bg-light: #F5F5F5;
+      --bg-dark: #2D2D2D;
+      --bg-black: #1A1A1A;
+      --border-light: #E0E0E0;
+      --border-default: #D0D0D0;
+      --placeholder-bg: #E0E0E0;
+      --placeholder-icon: #BCBCBC;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Pretendard', sans-serif;
+      color: var(--text-gray);
+      line-height: 1.6;
+      background: var(--bg-white);
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; font-family: inherit; background: none; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary {
+      background: var(--text-black);
+      color: #FFFFFF;
+      border: 1px solid var(--text-black);
+    }
+
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    .img-placeholder {
+      background: var(--placeholder-bg);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .img-placeholder svg {
+      color: var(--placeholder-icon);
+      width: 48px;
+      height: 48px;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-actions svg {
+      width: 22px;
+      height: 22px;
+      color: var(--text-dark);
+      cursor: pointer;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .split-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .material-text {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--text-dark);
+    }
+    .material-text p {
+      margin-bottom: 16px;
+    }
+
+    .gsm-chart {
+      max-width: 720px;
+      margin: 48px auto 0;
+      text-align: center;
+    }
+    .gsm-bar {
+      background: var(--bg-light);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      margin: 32px 0;
+    }
+    .gsm-scale {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .gsm-scale span {
+      font-size: 14px;
+      color: var(--text-light);
+      font-weight: 600;
+    }
+    .gsm-line {
+      height: 8px;
+      background: linear-gradient(to right, var(--bg-light) 0%, var(--text-black) 50%, var(--bg-light) 100%);
+      border-radius: 4px;
+      position: relative;
+    }
+    .gsm-marker {
+      position: absolute;
+      top: -20px;
+      transform: translateX(-50%);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-black);
+    }
+
+    .data-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .data-card {
+      text-align: center;
+      padding: 32px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+    }
+    .data-value {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .data-label {
+      font-size: 14px;
+      color: var(--text-light);
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .process-step {
+      text-align: center;
+    }
+    .step-number {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .step-icon-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .step-icon-wrap svg {
+      width: 28px;
+      height: 28px;
+      color: var(--text-dark);
+    }
+    .step-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .step-desc {
+      font-size: 14px;
+      color: var(--text-gray);
+    }
+
+    .cta-section {
+      background: var(--bg-light);
+      text-align: center;
+    }
+
+    .footer-light {
+      padding: 60px 0 32px;
+      background: var(--bg-white);
+      border-top: 1px solid var(--border-light);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .footer-brand-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 12px;
+    }
+    .footer-brand-desc {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    .footer-col-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 16px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 14px;
+      color: var(--text-light);
+      padding: 4px 0;
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .footer-sns {
+      display: flex;
+      gap: 12px;
+    }
+    .footer-sns svg {
+      width: 20px;
+      height: 20px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .section-title { font-size: 28px; }
+      .split-content { grid-template-columns: 1fr; }
+      .data-cards { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo">[브랜드명]</a>
+        <nav class="nav-links">
+          <a href="/brand/philosophy">브랜드</a>
+          <a href="/product">제품</a>
+          <a href="/towel-guide">타월 가이드</a>
+          <a href="/bulk-order">대량구매</a>
+          <a href="/partnership">파트너십</a>
+          <a href="/reviews">고객 후기</a>
+          <a href="/support">고객센터</a>
+        </nav>
+        <div class="nav-actions">
+          <i data-lucide="search"></i>
+          <i data-lucide="user"></i>
+          <i data-lucide="shopping-cart"></i>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 섹션1: 타월의 품질은 원면에서 결정됩니다 -->
+    <section style="background:var(--bg-white);">
+      <div class="container">
+        <div class="split-content">
+          <div class="img-placeholder" style="aspect-ratio:4/3;">
+            <i data-lucide="image"></i>
+          </div>
+          <div>
+            <p class="section-label">소재 이야기</p>
+            <h1 class="section-title">타월의 품질은<br>원면에서 결정됩니다</h1>
+            <p class="section-desc">어디서 자란 면화인지, 섬유 길이가 몇 mm인지까지 따집니다</p>
+            <div class="material-text" style="margin-top:24px;">
+              <p>우리는 <strong>[산지명]</strong>에서 재배된 장섬유(Long Staple) 코마사 원면을 사용합니다.</p>
+              <p>섬유 길이 <strong>[N]mm</strong> 이상의 원면만 선별하여 잔털이 적고, 세탁을 반복해도 표면이 매끄럽게 유지됩니다.</p>
+              <p>코마(Combed) 공정을 거쳐 짧은 섬유와 불순물을 제거한 뒤, 피부에 직접 닿아도 자극이 없는 수준으로 정제합니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션2: GSM [수치] -->
+    <section style="background:var(--bg-light);">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">GSM [수치], 이 숫자에 담긴 설계</h2>
+          <p class="section-desc mx-auto">두툼함과 속건성, 두 마리 토끼를 잡는 밀도</p>
+        </div>
+        <div class="gsm-chart">
+          <div class="gsm-bar">
+            <div class="gsm-scale">
+              <span>300g</span>
+              <span>400g</span>
+              <span>500g</span>
+              <span>600g</span>
+              <span>700g</span>
+            </div>
+            <div class="gsm-line" style="position:relative;">
+              <span class="gsm-marker" style="left:40%;">▼ 우리 제품<br>[GSM]g</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-top:16px; font-size:13px; color:var(--text-light);">
+              <span>일반 마트 타월</span>
+              <span>호텔 타월</span>
+            </div>
+          </div>
+          <div class="material-text">
+            <p>GSM(Grams per Square Meter)은 1m² 당 타월의 무게.</p>
+            <p>숫자가 높을수록 두툼하고 흡수력이 좋지만, 너무 높으면 잘 마르지 않습니다.</p>
+            <p>우리는 <strong>[GSM 수치]g</strong>으로 설계했습니다. 호텔 타월급 흡수력을 유지하면서, 실내 건조 <strong>[N]시간</strong>이면 보송하게 마르는 지점입니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션3: 흡수율 [N]% -->
+    <section style="background:var(--bg-white);">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">흡수율 [N]%, 물기는 타월이 해결합니다</h2>
+          <p class="section-desc mx-auto">세안 후 한 번 톡톡이면 충분합니다</p>
+        </div>
+        <div class="img-placeholder" style="aspect-ratio:16/9; max-width:720px; margin:32px auto;">
+          <i data-lucide="image"></i>
+        </div>
+        <div class="data-cards">
+          <div class="data-card">
+            <p class="data-value">[N]배</p>
+            <p class="data-label">흡수 속도<br>(일반 타월 대비)</p>
+          </div>
+          <div class="data-card">
+            <p class="data-value">[N]%</p>
+            <p class="data-label">흡수율<br>(자체 중량 대비)</p>
+          </div>
+          <div class="data-card">
+            <p class="data-value">[N]시간</p>
+            <p class="data-label">속건성<br>(실내 건조 기준)</p>
+          </div>
+        </div>
+        <p style="text-align:center; margin-top:24px; font-size:14px; color:var(--text-light);">모든 수치는 한국생활환경시험연구원(KCL) 기준으로 테스트되었습니다</p>
+      </div>
+    </section>
+
+    <!-- 섹션4: 원면에서 타월이 되기까지 -->
+    <section style="background:var(--bg-light);">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">원면에서 타월이 되기까지</h2>
+          <p class="section-desc mx-auto">소재 선별부터 패키징까지, 모든 단계를 직접 관리합니다</p>
+        </div>
+        <div class="process-steps">
+          <div class="process-step">
+            <p class="step-number">STEP 01</p>
+            <div class="step-icon-wrap"><i data-lucide="search"></i></div>
+            <h3 class="step-title">원면 선별</h3>
+            <p class="step-desc">[산지] 장섬유 등급 원면만 선정</p>
+          </div>
+          <div class="process-step">
+            <p class="step-number">STEP 02</p>
+            <div class="step-icon-wrap"><i data-lucide="filter"></i></div>
+            <h3 class="step-title">코마 정소</h3>
+            <p class="step-desc">짧은 섬유·불순물 제거, 촉감 극대화</p>
+          </div>
+          <div class="process-step">
+            <p class="step-number">STEP 03</p>
+            <div class="step-icon-wrap"><i data-lucide="layers"></i></div>
+            <h3 class="step-title">제직</h3>
+            <p class="step-desc">GSM [수치]g, 파일 길이 [N]mm로 직조</p>
+          </div>
+          <div class="process-step">
+            <p class="step-number">STEP 04</p>
+            <div class="step-icon-wrap"><i data-lucide="droplet"></i></div>
+            <h3 class="step-title">후가공</h3>
+            <p class="step-desc">유해물질 무첨가 소프너 마감, 수축률 최소화</p>
+          </div>
+          <div class="process-step">
+            <p class="step-number">STEP 05</p>
+            <div class="step-icon-wrap"><i data-lucide="check-circle"></i></div>
+            <h3 class="step-title">검수·패키징</h3>
+            <p class="step-desc">흡수율·촉감·외관 3단계 전수 검사</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션5: Contact Us -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="section-title">소재에 대해 더 알고 싶으신가요?</h2>
+        <p class="section-desc mx-auto">원면 산지, 인증서, 테스트 데이터 — 무엇이든 투명하게 답해드립니다</p>
+        <div style="margin-top:32px;">
+          <a href="/support/inquiry" class="btn btn-primary">문의하기</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer-light">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand-name">[브랜드명]</p>
+          <p class="footer-brand-desc">매일 얼굴에 닿는 것,<br>아무거나면 안 되니까</p>
+        </div>
+        <div>
+          <p class="footer-col-title">쇼핑 안내</p>
+          <a href="#">배송 안내</a>
+          <a href="#">교환·반품</a>
+          <a href="/support/order-check">주문 조회</a>
+        </div>
+        <div>
+          <p class="footer-col-title">고객 지원</p>
+          <a href="/support/faq">FAQ</a>
+          <a href="/support/inquiry">1:1 문의</a>
+          <a href="/support/store">매장 안내</a>
+        </div>
+        <div>
+          <p class="footer-col-title">비즈니스</p>
+          <a href="/bulk-order">대량구매</a>
+          <a href="/partnership">파트너십</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 [브랜드명]. All rights reserved.</span>
+        <div style="display:flex; gap:16px;">
+          <a href="#">개인정보처리방침</a>
+          <a href="#">이용약관</a>
+          <div class="footer-sns">
+            <i data-lucide="instagram"></i>
+            <i data-lucide="youtube"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
