@@ -7,6 +7,17 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f8f9fa; color: #333; }
+    .gnb { display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 64px; background: #fff; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; }
+    .gnb-brand { font-weight: 700; font-size: 18px; text-decoration: none; color: #111; }
+    .gnb-nav { display: flex; align-items: center; gap: 8px; }
+    .gnb-link { text-decoration: none; color: #555; font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 6px; transition: all 0.2s; }
+    .gnb-link:hover { color: #111; background: #f3f4f6; }
+    .gnb-link .arrow { font-size: 10px; margin-left: 2px; }
+    .gnb-dropdown { position: relative; }
+    .gnb-dropdown-content { display: none; position: absolute; top: 100%; left: 0; min-width: 180px; background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 6px 0; z-index: 200; }
+    .gnb-dropdown:hover .gnb-dropdown-content { display: block; }
+    .gnb-dropdown-content a { display: block; padding: 8px 16px; text-decoration: none; color: #555; font-size: 13px; transition: background 0.15s; }
+    .gnb-dropdown-content a:hover { background: #f3f4f6; color: #111; }
     .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
     .header { text-align: center; margin-bottom: 48px; }
     .header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
@@ -21,6 +32,41 @@
   </style>
 </head>
 <body>
+  <nav class="gnb">
+    <a href="index.html" class="gnb-brand">언커먼타올(uncommon towel)</a>
+    <div class="gnb-nav">
+          <a href="page_01.html" class="gnb-link">메인 (Home)</a>
+          <div class="gnb-dropdown">
+            <a href="page_02.html" class="gnb-link">브랜드 (About) <span class="arrow">▾</span></a>
+            <div class="gnb-dropdown-content">
+            <a href="page_02.html">브랜드 철학</a>
+            <a href="page_03.html">브랜드 스토리</a>
+            <a href="page_04.html">브랜드 여정</a>
+            <a href="page_05.html">소재 이야기</a>
+            <a href="page_06.html">지속가능성</a>
+            </div>
+          </div>
+          <a href="page_07.html" class="gnb-link">제품 (Product)</a>
+          <a href="page_08.html" class="gnb-link">타월 가이드 (Towel Guide)</a>
+          <div class="gnb-dropdown">
+            <a href="page_09.html" class="gnb-link">B2B문의 <span class="arrow">▾</span></a>
+            <div class="gnb-dropdown-content">
+            <a href="page_09.html">대량구매 (Bulk Order)</a>
+            <a href="page_10.html">파트너십 (Partnership)</a>
+            </div>
+          </div>
+          <a href="page_11.html" class="gnb-link">고객 후기 (Reviews)</a>
+          <div class="gnb-dropdown">
+            <a href="page_12.html" class="gnb-link">고객센터 (Support) <span class="arrow">▾</span></a>
+            <div class="gnb-dropdown-content">
+            <a href="page_12.html">FAQ</a>
+            <a href="page_13.html">1:1 문의</a>
+            <a href="page_14.html">주문 조회</a>
+            <a href="page_15.html">매장 안내 (오프라인 매장 또는 팝업스토어)</a>
+            </div>
+          </div>
+    </div>
+  </nav>
   <div class="container">
     <div class="header">
       <div class="badge">NoFail Design</div>
