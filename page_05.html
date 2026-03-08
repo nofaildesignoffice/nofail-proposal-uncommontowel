@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>소재 이야기 | [브랜드명] - 페이스타월 전문 브랜드</title>
-  <meta name="description" content="원면 산지부터 제직 공법, GSM·흡수율까지. [브랜드명]이 페이스타월 한 장에 담는 소재와 품질 기준을 투명하게 공개합니다.">
+  <meta name="description" content="[원면 산지명] 장섬유 원면, [GSM]g/㎡ 고밀도 제직. [브랜드명] 페이스타월의 소재를 원면 산지부터 품질 수치까지 투명하게 공개합니다.">
+  <meta name="keywords" content="타월 GSM, 페이스타월 소재, 면타월 원면 산지, 타월 흡수율, 장섬유 면, 페이스타월, 세안타월, 고급타월, 면타월, 타월추천, 타월선물, 페이스타올">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -70,7 +71,7 @@
       border: 1px solid var(--border-default);
     }
 
-    /* 공통 텍스트 */
+    /* 섹션 공통 */
     .section-label {
       font-size: 14px;
       font-weight: 600;
@@ -107,6 +108,22 @@
       width: 48px;
       height: 48px;
     }
+    .img-placeholder-fullscreen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--placeholder-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .img-placeholder-fullscreen svg {
+      color: var(--placeholder-icon);
+      width: 64px;
+      height: 64px;
+    }
 
     /* 아이콘 박스 */
     .icon-box {
@@ -126,7 +143,7 @@
     }
 
     /* ==========================================
-       헤더
+       NAV
        ========================================== */
     .nav {
       position: sticky;
@@ -134,6 +151,7 @@
       z-index: 100;
       background: var(--bg-white);
       border-bottom: 1px solid var(--border-light);
+      transition: all 0.3s;
     }
     .nav-inner {
       display: flex;
@@ -150,224 +168,228 @@
       display: flex;
       gap: 32px;
     }
-    .nav-links a {
+    .nav-links > li {
+      position: relative;
+    }
+    .nav-links > li > a {
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
-      position: relative;
+      display: block;
+      padding: 8px 0;
+    }
+    .nav-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 8px 0;
+      min-width: 180px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s, visibility 0.2s;
+      box-shadow: var(--shadow-md);
+    }
+    .nav-links > li:hover .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+    }
+    .nav-dropdown a {
+      display: block;
+      padding: 10px 20px;
+      font-size: 14px;
+      color: var(--text-gray);
+    }
+    .nav-dropdown a:hover {
+      background: var(--bg-light);
+      color: var(--text-black);
     }
     .nav-actions {
       display: flex;
       align-items: center;
       gap: 16px;
     }
-    .nav-actions svg {
-      width: 22px;
-      height: 22px;
+    .nav-icon-btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: var(--text-dark);
-      cursor: pointer;
     }
-    .hamburger {
+    .nav-icon-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+    .mobile-menu-btn {
       display: none;
-      flex-direction: column;
-      gap: 4px;
-      cursor: pointer;
-    }
-    .hamburger span {
-      width: 24px;
-      height: 2px;
-      background: var(--text-dark);
     }
 
     /* ==========================================
-       페이지 헤더
+       섹션 1: 히어로 (풀 와이드 이미지 + 텍스트 오버레이)
        ========================================== */
-    .page-header {
-      padding: 80px 0 60px;
-      background: var(--bg-white);
+    .hero-fullscreen {
+      position: relative;
+      height: 80vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-dark);
+      color: #FFFFFF;
+      overflow: hidden;
+    }
+    .hero-fullscreen-content {
+      position: relative;
+      z-index: 2;
       text-align: center;
+      max-width: 800px;
+      padding: 0 24px;
     }
-    .page-header .section-label {
-      display: inline-block;
-      padding: 6px 16px;
-      background: var(--bg-light);
-      border-radius: 24px;
-      margin-bottom: 16px;
+    .hero-fullscreen .section-title {
+      font-size: 48px;
+      color: #FFFFFF;
+      margin-bottom: 20px;
     }
-    .page-header h1 {
-      font-size: 42px;
-      font-weight: 700;
-      color: var(--text-black);
-      line-height: 1.3;
-      margin-bottom: 16px;
-    }
-    .page-header .page-desc {
-      font-size: 17px;
-      color: var(--text-gray);
-      max-width: 600px;
+    .hero-fullscreen .section-desc {
+      font-size: 18px;
+      color: rgba(255,255,255,0.8);
+      max-width: 100%;
       margin: 0 auto;
-      line-height: 1.7;
     }
 
     /* ==========================================
-       섹션 1: 목화밭에서 시작되는 한 장 (LEFT CONTENT)
+       섹션 2: 원면 산지 (좌측 이미지 + 우측 텍스트)
        ========================================== */
     .origin-section {
-      padding: 80px 0;
-      background: var(--bg-light);
+      padding: 100px 0;
+      background: var(--bg-white);
     }
     .origin-inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      gap: 80px;
       align-items: center;
     }
     .origin-content h2 {
-      font-size: 32px;
+      font-size: 36px;
       font-weight: 700;
       color: var(--text-black);
       line-height: 1.3;
       margin-bottom: 16px;
     }
-    .origin-content .subtitle {
-      font-size: 18px;
-      color: var(--text-dark);
-      margin-bottom: 24px;
-      font-weight: 600;
+    .origin-content .subsection-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.8;
+      margin-bottom: 32px;
     }
-    .origin-info {
-      background: var(--bg-white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
+    .origin-text-block {
       padding: 24px;
-      margin-top: 24px;
+      background: var(--bg-light);
+      border-radius: var(--radius-md);
+      margin-bottom: 24px;
     }
-    .origin-info-item {
-      display: flex;
-      gap: 12px;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .origin-info-item:first-child { padding-top: 0; }
-    .origin-info-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .origin-info-label {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-light);
-      min-width: 80px;
-      flex-shrink: 0;
-    }
-    .origin-info-value {
+    .origin-text-block p {
       font-size: 15px;
       color: var(--text-dark);
-      line-height: 1.6;
+      line-height: 1.8;
     }
-    .notice-text {
-      font-size: 13px;
+    .comparison-note {
+      font-size: 14px;
       color: var(--text-light);
-      margin-top: 12px;
+      font-style: italic;
+      margin-top: 16px;
     }
 
     /* ==========================================
-       섹션 2: 제직 공법 (CENTER CONTENT)
+       섹션 3: 제직 공법 (우측 이미지 + 좌측 텍스트)
        ========================================== */
     .weaving-section {
-      padding: 80px 0;
-      background: var(--bg-white);
-    }
-    .weaving-section h2 {
-      font-size: 32px;
-      font-weight: 700;
-      color: var(--text-black);
-      line-height: 1.3;
-      margin-bottom: 48px;
-    }
-    .weaving-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 32px;
-    }
-    .weaving-card {
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-    }
-    .weaving-card-image {
-      aspect-ratio: 16/10;
-    }
-    .weaving-card-body {
-      padding: 24px;
-    }
-    .weaving-card-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 12px;
-    }
-    .weaving-feature {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      color: var(--text-gray);
-      margin-bottom: 8px;
-    }
-    .weaving-feature svg {
-      width: 16px;
-      height: 16px;
-      color: var(--text-light);
-      flex-shrink: 0;
-    }
-
-    /* ==========================================
-       섹션 3: 숫자로 증명하는 품질 (CENTER CONTENT + DATA TABLE)
-       ========================================== */
-    .quality-section {
-      padding: 80px 0;
+      padding: 100px 0;
       background: var(--bg-light);
     }
-    .quality-section h2 {
-      font-size: 32px;
+    .weaving-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .weaving-content h2 {
+      font-size: 36px;
       font-weight: 700;
       color: var(--text-black);
       line-height: 1.3;
       margin-bottom: 16px;
     }
-    .quality-section .subtitle {
-      font-size: 18px;
+    .weaving-content .subsection-desc {
+      font-size: 16px;
       color: var(--text-gray);
-      margin-bottom: 48px;
+      line-height: 1.8;
+      margin-bottom: 32px;
     }
-    
-    /* 품질 스펙 데이터 */
-    .quality-specs {
+    .weaving-text-block {
+      padding: 24px;
+      background: var(--bg-white);
+      border-radius: var(--radius-md);
+      margin-bottom: 24px;
+    }
+    .weaving-text-block h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .weaving-text-block p {
+      font-size: 15px;
+      color: var(--text-dark);
+      line-height: 1.8;
+    }
+    .diagram-note {
+      font-size: 14px;
+      color: var(--text-light);
+      font-style: italic;
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    /* ==========================================
+       섹션 4: 품질 기준 (스펙 카드)
+       ========================================== */
+    .quality-section {
+      padding: 100px 0;
+      background: var(--bg-white);
+    }
+    .quality-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 64px;
+    }
+    .quality-header h2 {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .quality-header .subsection-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.8;
+    }
+    .spec-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 24px;
       margin-bottom: 48px;
     }
     .spec-card {
-      background: var(--bg-white);
+      padding: 32px;
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
-      padding: 32px 24px;
-      text-align: center;
-    }
-    .spec-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: var(--bg-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-    }
-    .spec-icon svg {
-      width: 28px;
-      height: 28px;
-      color: var(--text-dark);
+      background: var(--bg-white);
     }
     .spec-label {
       font-size: 14px;
@@ -376,91 +398,37 @@
       margin-bottom: 8px;
     }
     .spec-value {
-      font-size: 28px;
+      font-size: 32px;
       font-weight: 700;
       color: var(--text-black);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .spec-value .unit {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text-gray);
     }
     .spec-desc {
-      font-size: 13px;
-      color: var(--text-gray);
-      line-height: 1.5;
-    }
-
-    /* 비교 차트 */
-    .comparison-chart {
-      background: var(--bg-white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      padding: 32px;
-      margin-bottom: 48px;
-    }
-    .comparison-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 24px;
-      text-align: center;
-    }
-    .comparison-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    .comparison-table th,
-    .comparison-table td {
-      padding: 16px;
-      text-align: left;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .comparison-table th {
       font-size: 14px;
-      font-weight: 600;
-      color: var(--text-light);
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+    .spec-note {
       background: var(--bg-light);
-    }
-    .comparison-table td {
-      font-size: 15px;
+      padding: 16px;
+      border-radius: var(--radius-sm);
+      margin-top: 12px;
+      font-size: 13px;
       color: var(--text-dark);
+      line-height: 1.6;
     }
-    .comparison-table td:first-child {
-      font-weight: 600;
-      color: var(--text-black);
-    }
-    .comparison-table tr:last-child th,
-    .comparison-table tr:last-child td {
-      border-bottom: none;
-    }
-    .highlight-value {
-      color: var(--text-black);
-      font-weight: 700;
-    }
-
-    /* CTA 박스 */
     .quality-cta {
-      background: var(--bg-dark);
-      border-radius: var(--radius-md);
-      padding: 48px;
       text-align: center;
-    }
-    .quality-cta h3 {
-      font-size: 24px;
-      font-weight: 700;
-      color: #FFFFFF;
-      margin-bottom: 16px;
-    }
-    .quality-cta p {
-      font-size: 16px;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 24px;
-    }
-    .quality-cta .btn-primary {
-      background: #FFFFFF;
-      color: var(--text-black);
-      border-color: #FFFFFF;
+      margin-top: 48px;
     }
 
     /* ==========================================
-       푸터
+       FOOTER
        ========================================== */
     .footer-light {
       padding: 60px 0 32px;
@@ -486,6 +454,11 @@
       line-height: 1.6;
       margin-bottom: 16px;
     }
+    .footer-info {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
     .footer-col-title {
       font-size: 14px;
       font-weight: 700;
@@ -499,32 +472,30 @@
       padding: 4px 0;
     }
     .footer-col a:hover {
-      color: var(--text-dark);
+      color: var(--text-black);
     }
-    .footer-info {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.8;
-      margin-top: 16px;
-    }
-    .footer-sns {
+    .footer-social {
       display: flex;
       gap: 12px;
       margin-top: 16px;
     }
-    .footer-sns a {
+    .footer-social a {
       width: 36px;
       height: 36px;
+      border: 1px solid var(--border-light);
       border-radius: 50%;
-      background: var(--bg-light);
       display: flex;
       align-items: center;
       justify-content: center;
+      color: var(--text-gray);
     }
-    .footer-sns svg {
+    .footer-social a:hover {
+      border-color: var(--text-black);
+      color: var(--text-black);
+    }
+    .footer-social svg {
       width: 18px;
       height: 18px;
-      color: var(--text-dark);
     }
     .footer-bottom {
       display: flex;
@@ -534,33 +505,15 @@
       font-size: 13px;
       color: var(--text-muted);
     }
-    .footer-links {
+    .footer-bottom-links {
       display: flex;
       gap: 16px;
     }
-    .footer-links a:hover {
-      color: var(--text-dark);
+    .footer-bottom-links a {
+      color: var(--text-muted);
     }
-
-    /* ==========================================
-       반응형
-       ========================================== */
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .section-title { font-size: 28px; }
-      .page-header h1 { font-size: 32px; }
-      .origin-inner { grid-template-columns: 1fr; gap: 32px; }
-      .origin-inner > :first-child { order: 2; }
-      .origin-inner > :last-child { order: 1; }
-      .weaving-grid { grid-template-columns: 1fr; }
-      .weaving-section h2,
-      .quality-section h2,
-      .origin-content h2 { font-size: 24px; }
-      .quality-specs { grid-template-columns: 1fr; }
-      .comparison-chart { overflow-x: auto; }
-      .comparison-table { min-width: 500px; }
-      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom-links a:hover {
+      color: var(--text-black);
     }
 
     /* TOP 버튼 */
@@ -570,9 +523,9 @@
       right: 32px;
       width: 48px;
       height: 48px;
-      border-radius: 50%;
       background: var(--text-black);
       color: #FFFFFF;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -580,6 +533,7 @@
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.3s, visibility 0.3s;
+      box-shadow: var(--shadow-md);
       z-index: 99;
     }
     .top-button.visible {
@@ -590,72 +544,173 @@
       width: 20px;
       height: 20px;
     }
+
+    /* ==========================================
+       반응형
+       ========================================== */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: flex;
+        width: 40px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-dark);
+      }
+      .mobile-menu-btn svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .hero-fullscreen {
+        height: 60vh;
+        min-height: 500px;
+      }
+      .hero-fullscreen .section-title {
+        font-size: 32px;
+      }
+      .hero-fullscreen .section-desc {
+        font-size: 16px;
+      }
+
+      .origin-section,
+      .weaving-section,
+      .quality-section {
+        padding: 60px 0;
+      }
+      .origin-inner,
+      .weaving-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .origin-content h2,
+      .weaving-content h2,
+      .quality-header h2 {
+        font-size: 28px;
+      }
+      .spec-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- 헤더 -->
+  <!-- ==================== HEADER ==================== -->
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
         <a href="/" class="nav-logo">[브랜드명]</a>
-        <nav class="nav-links">
-          <a href="/about">브랜드</a>
-          <a href="/product">제품</a>
-          <a href="/towel-guide">타월 가이드</a>
-          <a href="/b2b">B2B문의</a>
-          <a href="/reviews">고객 후기</a>
-          <a href="/support">고객센터</a>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/">메인</a></li>
+            <li>
+              <a href="/about">브랜드</a>
+              <div class="nav-dropdown">
+                <a href="/about/philosophy">브랜드 철학</a>
+                <a href="/about/story">브랜드 스토리</a>
+                <a href="/about/journey">브랜드 여정</a>
+                <a href="/about/material">소재 이야기</a>
+                <a href="/about/sustainability">지속가능성</a>
+              </div>
+            </li>
+            <li><a href="/product">제품</a></li>
+            <li><a href="/towel-guide">타월 가이드</a></li>
+            <li>
+              <a href="/b2b">B2B문의</a>
+              <div class="nav-dropdown">
+                <a href="/b2b/bulk-order">대량구매</a>
+                <a href="/b2b/partnership">파트너십</a>
+              </div>
+            </li>
+            <li><a href="/reviews">고객 후기</a></li>
+            <li>
+              <a href="/support">고객센터</a>
+              <div class="nav-dropdown">
+                <a href="/support/faq">FAQ</a>
+                <a href="/support/contact">1:1 문의</a>
+                <a href="/support/order-lookup">주문 조회</a>
+                <a href="/support/store">매장 안내</a>
+              </div>
+            </li>
+          </ul>
         </nav>
         <div class="nav-actions">
-          <i data-lucide="search"></i>
-          <i data-lucide="user"></i>
-          <i data-lucide="shopping-cart"></i>
-          <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+          <button class="nav-icon-btn"><i data-lucide="search"></i></button>
+          <button class="nav-icon-btn"><i data-lucide="user"></i></button>
+          <button class="nav-icon-btn"><i data-lucide="shopping-cart"></i></button>
+          <button class="mobile-menu-btn"><i data-lucide="menu"></i></button>
         </div>
       </div>
     </div>
   </header>
 
+  <!-- ==================== MAIN ==================== -->
   <main>
 
-    <!-- 페이지 헤더 -->
-    <section class="page-header">
-      <div class="container">
-        <p class="section-label">브랜드 스토리</p>
-        <h1>어디서 자란 목화인지,<br>숨기지 않아요</h1>
-        <p class="page-desc">[브랜드명]이 페이스타월 한 장에 담는 소재와 품질 기준을 투명하게 공개합니다.</p>
+    <!-- 섹션 1: 히어로 -->
+    <section class="hero-fullscreen">
+      <div class="img-placeholder-fullscreen">
+        <i data-lucide="image"></i>
+      </div>
+      <div class="hero-fullscreen-content">
+        <h1 class="section-title">이 타월이 어디서 왔는지,<br>전부 말해줄게요</h1>
+        <p class="section-desc">원면 산지부터 제직 공법까지 — 숨기는 것 없이</p>
       </div>
     </section>
 
-    <!-- 섹션 1: 목화밭에서 시작되는 한 장 -->
+    <!-- 섹션 2: 원면 산지 -->
     <section class="origin-section">
       <div class="container">
         <div class="origin-inner">
+          <div class="img-placeholder" style="aspect-ratio:4/3;">
+            <i data-lucide="image"></i>
+          </div>
           <div class="origin-content">
-            <h2>목화밭에서<br>시작되는 한 장</h2>
-            <p class="subtitle">[브랜드명]의 타월은 [원면 산지명]에서 시작돼요</p>
-            <p class="section-desc">우리가 사용하는 원면의 출처를 정확하게 알고 계신가요? [브랜드명]은 원면 산지부터 투명하게 공개합니다. 추적 가능한 원재료만이 진짜 신뢰를 만들 수 있다고 믿습니다.</p>
-            
-            <div class="origin-info">
-              <div class="origin-info-item">
-                <span class="origin-info-label">원면 산지</span>
-                <span class="origin-info-value">[산지명 및 지역] [클라이언트 확인 필요]</span>
-              </div>
-              <div class="origin-info-item">
-                <span class="origin-info-label">원면 등급</span>
-                <span class="origin-info-value">[장섬유/초장섬유 등급] [클라이언트 확인 필요]</span>
-              </div>
-              <div class="origin-info-item">
-                <span class="origin-info-label">기후·토양</span>
-                <span class="origin-info-value">[기후 특성 및 토양이 품질에 미치는 영향] [클라이언트 확인 필요]</span>
-              </div>
+            <h2>[원면 산지명]에서 온<br>장섬유 원면</h2>
+            <p class="subsection-desc">긴 섬유일수록 부드럽고, 오래 써도 보풀이 적어요</p>
+            <div class="origin-text-block">
+              <p><strong>왜 이 산지의 원면인가요?</strong></p>
+              <p>[클라이언트 확인 필요 — 기후·토양 조건에 따른 섬유 길이·두께 차이 설명 텍스트]</p>
             </div>
-            <p class="notice-text">※ 구체적인 원면 산지 정보는 클라이언트 확인이 필요합니다.</p>
+            <div class="origin-text-block">
+              <p><strong>장섬유 원면의 차이</strong></p>
+              <p>일반 원면 대비 섬유 길이가 [수치]% 길어 부드러움이 오래 유지되며, 보풀 발생률이 [수치]% 낮습니다.</p>
+            </div>
+            <p class="comparison-note">* 비교 인포그래픽: 일반 원면 vs 장섬유 원면 (섬유 길이, 부드러움 유지 기간) [클라이언트 확인 필요]</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 3: 제직 공법 -->
+    <section class="weaving-section">
+      <div class="container">
+        <div class="weaving-inner">
+          <div class="weaving-content">
+            <h2>짜는 방식이 다르면,<br>닿는 느낌이 달라져요</h2>
+            <p class="subsection-desc">같은 면이라도 어떻게 짜느냐에 따라 흡수력과 촉감이 완전히 바뀝니다</p>
+            <div class="weaving-text-block">
+              <h3>사용하는 제직 공법</h3>
+              <p>[클라이언트 확인 필요 — 루프 파일, 컷 파일, 이중직 등 사용하는 제직 공법명 및 상세 설명]</p>
+            </div>
+            <div class="weaving-text-block">
+              <h3>제직 구조의 차이</h3>
+              <p>직조 구조에 따라 흡수 속도와 건조 시간이 달라집니다. 저희 타월은 [제직 공법명]을 사용하여 [효과 설명].</p>
+            </div>
+            <p class="diagram-note">* 제직 구조 비교 다이어그램 또는 GIF 영역 [클라이언트 확인 필요]</p>
           </div>
           <div class="img-placeholder" style="aspect-ratio:4/3;">
             <i data-lucide="image"></i>
@@ -664,149 +719,69 @@
       </div>
     </section>
 
-    <!-- 섹션 2: 제직 공법 -->
-    <section class="weaving-section">
-      <div class="container">
-        <div class="text-center">
-          <h2>같은 면이라도,<br>짜는 방법이 다르면 촉감이 달라요</h2>
-        </div>
-        <div class="weaving-grid">
-          <div class="weaving-card">
-            <div class="img-placeholder weaving-card-image">
-              <i data-lucide="image"></i>
-            </div>
-            <div class="weaving-card-body">
-              <h3 class="weaving-card-title">제직 공법 A</h3>
-              <div class="weaving-feature">
-                <i data-lucide="check-circle"></i>
-                <span>특성 1: [예: 부드러운 터치] [클라이언트 확인 필요]</span>
-              </div>
-              <div class="weaving-feature">
-                <i data-lucide="check-circle"></i>
-                <span>특성 2: [예: 빠른 흡수] [클라이언트 확인 필요]</span>
-              </div>
-              <div class="weaving-feature">
-                <i data-lucide="check-circle"></i>
-                <span>특성 3: [예: 내구성 우수] [클라이언트 확인 필요]</span>
-              </div>
-            </div>
-          </div>
-          <div class="weaving-card">
-            <div class="img-placeholder weaving-card-image">
-              <i data-lucide="image"></i>
-            </div>
-            <div class="weaving-card-body">
-              <h3 class="weaving-card-title">제직 공법 B</h3>
-              <div class="weaving-feature">
-                <i data-lucide="check-circle"></i>
-                <span>특성 1: [예: 실크 같은 촉감] [클라이언트 확인 필요]</span>
-              </div>
-              <div class="weaving-feature">
-                <i data-lucide="check-circle"></i>
-                <span>특성 2: [예: 보풀 최소화] [클라이언트 확인 필요]</span>
-              </div>
-              <div class="weaving-feature">
-                <i data-lucide="check-circle"></i>
-                <span>특성 3: [예: 고급스러운 질감] [클라이언트 확인 필요]</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <p class="notice-text text-center" style="margin-top:24px;">※ 구체적인 제직 공법명(루프 파일, 벨벳 파일, 와플 등) 및 특성은 클라이언트 확인이 필요합니다.</p>
-      </div>
-    </section>
-
-    <!-- 섹션 3: 숫자로 증명하는 품질 -->
+    <!-- 섹션 4: 품질 기준 (GSM, 흡수율 등) -->
     <section class="quality-section">
       <div class="container">
-        <div class="text-center">
-          <h2>감이 아니라<br>데이터로 만들어요</h2>
-          <p class="subtitle">[브랜드명]이 공개하는 품질 스펙</p>
+        <div class="quality-header">
+          <h2>숫자로 보여드릴게요</h2>
+          <p class="subsection-desc">GSM, 흡수율, 건조 속도 — 타월 품질을 판단하는 기준</p>
         </div>
 
-        <!-- 품질 스펙 카드 -->
-        <div class="quality-specs">
+        <div class="spec-grid">
+          <!-- GSM -->
           <div class="spec-card">
-            <div class="spec-icon">
-              <i data-lucide="gauge"></i>
+            <p class="spec-label">GSM (g/㎡)</p>
+            <p class="spec-value">[수치]<span class="unit">g/㎡</span></p>
+            <p class="spec-desc">GSM은 1평방미터당 원단 무게를 나타내는 밀도 단위입니다. 높을수록 밀도가 높고 흡수력이 우수합니다.</p>
+            <div class="spec-note">
+              * 일반 타월 평균 GSM: 300~400g/㎡<br>
+              * [클라이언트 확인 필요 — 해당 제품 GSM 수치 및 비교 설명]
             </div>
-            <p class="spec-label">GSM (밀도)</p>
-            <p class="spec-value">[수치] GSM</p>
-            <p class="spec-desc">그램 per 평방미터<br>[클라이언트 확인 필요]</p>
           </div>
+
+          <!-- 흡수율 -->
           <div class="spec-card">
-            <div class="spec-icon">
-              <i data-lucide="droplet"></i>
-            </div>
             <p class="spec-label">흡수율</p>
-            <p class="spec-value">[수치]%</p>
-            <p class="spec-desc">자체 중량의 [배수]배 흡수<br>[클라이언트 확인 필요]</p>
-          </div>
-          <div class="spec-card">
-            <div class="spec-icon">
-              <i data-lucide="repeat"></i>
+            <p class="spec-value">[수치]<span class="unit">%</span></p>
+            <p class="spec-desc">타월이 자체 무게의 몇 배를 흡수할 수 있는지 나타내는 지표입니다.</p>
+            <div class="spec-note">
+              * 측정 기준: KS K 0815 흡수율 시험법<br>
+              * [클라이언트 확인 필요 — 흡수율 수치 및 측정 기준]
             </div>
-            <p class="spec-label">세탁 내구성</p>
-            <p class="spec-value">[횟수]회</p>
-            <p class="spec-desc">세탁 후 품질 유지율<br>[클라이언트 확인 필요]</p>
+          </div>
+
+          <!-- 건조 속도 -->
+          <div class="spec-card">
+            <p class="spec-label">건조 속도</p>
+            <p class="spec-value">[수치]<span class="unit">시간</span></p>
+            <p class="spec-desc">세탁 후 자연 건조 시 완전히 마르는 데 걸리는 시간입니다. 빠를수록 위생적입니다.</p>
+            <div class="spec-note">
+              * 실험 조건: 실온 25℃, 습도 60%<br>
+              * [클라이언트 확인 필요 — 건조 속도 수치]
+            </div>
+          </div>
+
+          <!-- 수축률 -->
+          <div class="spec-card">
+            <p class="spec-label">수축률</p>
+            <p class="spec-value">[수치]<span class="unit">%</span></p>
+            <p class="spec-desc">세탁 후 사이즈 변화율입니다. 낮을수록 사이즈가 안정적입니다.</p>
+            <div class="spec-note">
+              * 측정 기준: KS K ISO 5077 세탁 후 치수 변화 시험<br>
+              * [클라이언트 확인 필요 — 수축률 수치]
+            </div>
           </div>
         </div>
 
-        <!-- 비교 차트 -->
-        <div class="comparison-chart">
-          <p class="comparison-title">일반 수건 vs [브랜드명] 품질 비교</p>
-          <table class="comparison-table">
-            <thead>
-              <tr>
-                <th>품질 기준</th>
-                <th>일반 수건</th>
-                <th>[브랜드명]</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>GSM (밀도)</td>
-                <td>[벤치마크 수치] [클라이언트 확인 필요]</td>
-                <td class="highlight-value">[자사 수치] [클라이언트 확인 필요]</td>
-              </tr>
-              <tr>
-                <td>흡수율</td>
-                <td>[벤치마크 수치] [클라이언트 확인 필요]</td>
-                <td class="highlight-value">[자사 수치] [클라이언트 확인 필요]</td>
-              </tr>
-              <tr>
-                <td>보풀 테스트</td>
-                <td>[벤치마크 결과] [클라이언트 확인 필요]</td>
-                <td class="highlight-value">[자사 결과] [클라이언트 확인 필요]</td>
-              </tr>
-              <tr>
-                <td>세탁 내구성</td>
-                <td>[벤치마크 수치] [클라이언트 확인 필요]</td>
-                <td class="highlight-value">[자사 수치] [클라이언트 확인 필요]</td>
-              </tr>
-              <tr>
-                <td>유해물질 검사</td>
-                <td>[벤치마크 결과] [클라이언트 확인 필요]</td>
-                <td class="highlight-value">형광증백제 불검출, [인증명] 인증 [클라이언트 확인 필요]</td>
-              </tr>
-            </tbody>
-          </table>
-          <p class="notice-text" style="text-align:center; margin-top:16px;">※ 구체적인 수치 및 인증 정보는 클라이언트 확인이 필요합니다.</p>
-        </div>
-
-        <!-- CTA -->
         <div class="quality-cta">
-          <h3>나에게 맞는 타월 고르기</h3>
-          <p>GSM, 흡수율, 용도별로 비교하고 선택하세요</p>
-          <a href="/towel-guide" class="btn btn-primary">타월 가이드 보기</a>
+          <a href="/product" class="btn btn-primary">제품 보러가기</a>
         </div>
-
       </div>
     </section>
 
   </main>
 
-  <!-- 푸터 -->
+  <!-- ==================== FOOTER ==================== -->
   <footer class="footer-light">
     <div class="container">
       <div class="footer-grid">
@@ -814,51 +789,42 @@
           <p class="footer-brand-name">[브랜드명]</p>
           <p class="footer-brand-desc">페이스타월 전문 브랜드</p>
           <div class="footer-info">
-            상호: [클라이언트 확인 필요]<br>
             대표: [클라이언트 확인 필요]<br>
             사업자번호: [클라이언트 확인 필요]<br>
-            통신판매업 신고번호: [클라이언트 확인 필요]<br>
             주소: [클라이언트 확인 필요]<br>
             전화: [클라이언트 확인 필요]<br>
             이메일: [클라이언트 확인 필요]
           </div>
-          <div class="footer-sns">
-            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
-            <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+          <div class="footer-social">
+            <a href="#"><i data-lucide="instagram"></i></a>
+            <a href="#"><i data-lucide="youtube"></i></a>
           </div>
         </div>
         <div class="footer-col">
           <p class="footer-col-title">브랜드</p>
           <a href="/about/philosophy">브랜드 철학</a>
           <a href="/about/story">브랜드 스토리</a>
-          <a href="/about/journey">브랜드 여정</a>
           <a href="/about/material">소재 이야기</a>
           <a href="/about/sustainability">지속가능성</a>
         </div>
         <div class="footer-col">
-          <p class="footer-col-title">쇼핑</p>
+          <p class="footer-col-title">제품 & 가이드</p>
           <a href="/product">제품</a>
           <a href="/towel-guide">타월 가이드</a>
           <a href="/reviews">고객 후기</a>
         </div>
         <div class="footer-col">
-          <p class="footer-col-title">B2B</p>
-          <a href="/b2b/bulk">대량구매</a>
-          <a href="/b2b/partnership">파트너십</a>
-        </div>
-        <div class="footer-col">
-          <p class="footer-col-title">고객센터</p>
+          <p class="footer-col-title">고객 지원</p>
+          <a href="/b2b/bulk-order">대량구매</a>
           <a href="/support/faq">FAQ</a>
-          <a href="/support/inquiry">1:1 문의</a>
-          <a href="/support/order">주문 조회</a>
-          <a href="/support/store">매장 안내</a>
+          <a href="/support/contact">1:1 문의</a>
         </div>
       </div>
       <div class="footer-bottom">
         <span>© 2025 [브랜드명]. All rights reserved.</span>
-        <div class="footer-links">
-          <a href="#">이용약관</a>
+        <div class="footer-bottom-links">
           <a href="#">개인정보처리방침</a>
+          <a href="#">이용약관</a>
         </div>
       </div>
     </div>
@@ -883,6 +849,16 @@
     });
     topButton.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Nav 스크롤 축소 (선택사항)
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        nav.style.height = '60px';
+      } else {
+        nav.style.height = '72px';
+      }
     });
   </script>
 </body>
