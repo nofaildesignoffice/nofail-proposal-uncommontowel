@@ -4,9 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>매장 안내 | [브랜드명] - 페이스타월 전문 브랜드</title>
-  <meta name="description" content="[브랜드명] 오프라인 매장 및 팝업스토어 위치, 운영시간, 찾아오시는 길을 안내합니다.">
-  <meta name="keywords" content="페이스타월, 세안타월, 고급 수건, 면 타월, GSM, 페이스타올, 피부 수건, 오프라인 매장, 팝업스토어">
+  <title>매장 안내 | 페이스타월 전문 브랜드</title>
+  <meta name="description" content="페이스타월 전문 브랜드의 오프라인 매장 및 팝업스토어 위치를 확인하고 직접 방문해 보세요. 제품을 직접 만져보고 체험할 수 있습니다.">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -47,6 +46,80 @@
       padding: 0 24px;
     }
 
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary {
+      background: var(--text-black);
+      color: #FFFFFF;
+      border: 1px solid var(--text-black);
+    }
+    .btn-secondary {
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--border-default);
+    }
+
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    .img-placeholder {
+      background: var(--placeholder-bg);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .img-placeholder svg {
+      color: var(--placeholder-icon);
+      width: 48px;
+      height: 48px;
+    }
+
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .icon-box svg {
+      width: 24px;
+      height: 24px;
+      color: var(--text-dark);
+    }
+
     /* Header */
     .nav {
       position: sticky;
@@ -74,193 +147,187 @@
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
+      position: relative;
     }
-    .nav-utils {
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -24px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--text-black);
+    }
+    .nav-actions {
       display: flex;
       align-items: center;
       gap: 16px;
     }
-    .nav-utils svg {
-      width: 20px;
-      height: 20px;
+    .nav-actions svg {
+      width: 22px;
+      height: 22px;
       color: var(--text-dark);
       cursor: pointer;
     }
 
+    /* Breadcrumb */
+    .breadcrumb {
+      padding: 24px 0;
+      background: var(--bg-white);
+    }
+    .breadcrumb-inner {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-light);
+    }
+    .breadcrumb-inner a { color: var(--text-light); }
+    .breadcrumb-inner a:hover { color: var(--text-dark); }
+    .breadcrumb-inner svg { width: 16px; height: 16px; }
+    .breadcrumb-inner span:last-child { color: var(--text-dark); font-weight: 500; }
+
     /* Page Header */
     .page-header {
-      padding: 80px 0 40px;
+      padding: 60px 0 48px;
       background: var(--bg-white);
       text-align: center;
     }
-    .breadcrumb {
-      font-size: 14px;
-      color: var(--text-light);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    .breadcrumb svg {
-      width: 14px;
-      height: 14px;
-    }
-    .page-title {
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--text-black);
+    .page-header .section-title {
+      font-size: 42px;
       margin-bottom: 12px;
     }
-    .page-desc {
-      font-size: 16px;
-      color: var(--text-gray);
-      max-width: 560px;
+    .page-header .section-desc {
       margin: 0 auto;
     }
 
-    /* Store List */
-    .store-section {
-      padding: 60px 0 80px;
+    /* Store Tabs */
+    .store-tabs-section {
+      padding: 0 0 80px;
       background: var(--bg-white);
     }
-    .store-grid {
+    .store-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 48px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .store-tab {
+      padding: 16px 32px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-light);
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .store-tab.active {
+      color: var(--text-black);
+      border-bottom-color: var(--text-black);
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Store List */
+    .store-list {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 40px;
-      margin-top: 40px;
+      gap: 32px;
     }
     .store-card {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 32px;
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
       overflow: hidden;
-    }
-    .store-card-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
-    .store-map {
-      background: var(--placeholder-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 360px;
-    }
-    .store-map svg {
-      width: 48px;
-      height: 48px;
-      color: var(--placeholder-icon);
-    }
-    .store-info {
-      padding: 40px;
       background: var(--bg-white);
+    }
+    .store-card-image {
+      width: 100%;
+      height: 100%;
+    }
+    .store-card-body {
+      padding: 32px 32px 32px 0;
     }
     .store-tag {
       display: inline-block;
-      padding: 4px 12px;
-      background: var(--bg-dark);
-      color: #FFFFFF;
-      font-size: 12px;
-      font-weight: 600;
+      padding: 6px 12px;
+      background: var(--bg-light);
       border-radius: 4px;
-      margin-bottom: 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 12px;
     }
     .store-name {
       font-size: 22px;
       font-weight: 700;
       color: var(--text-black);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
-    .store-detail {
+    .store-info-item {
       display: flex;
       gap: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       align-items: flex-start;
     }
-    .store-detail svg {
+    .store-info-item .icon-box {
+      width: 40px;
+      height: 40px;
+    }
+    .store-info-item .icon-box svg {
       width: 20px;
       height: 20px;
-      color: var(--text-gray);
-      flex-shrink: 0;
-      margin-top: 2px;
     }
-    .store-detail-text {
+    .store-info-content {
+      flex: 1;
+    }
+    .store-info-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+    .store-info-text {
       font-size: 15px;
       color: var(--text-dark);
       line-height: 1.6;
     }
-    .store-detail-text strong {
-      font-weight: 600;
-      color: var(--text-black);
-      display: block;
-      margin-bottom: 4px;
-    }
     .store-actions {
       display: flex;
       gap: 12px;
-      margin-top: 24px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border-light);
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 20px;
-      border-radius: var(--radius-sm);
-      font-size: 14px;
-      font-weight: 600;
-      transition: opacity 0.2s;
-    }
-    .btn:hover { opacity: 0.85; }
-    .btn-secondary {
-      background: var(--bg-white);
-      color: var(--text-black);
-      border: 1px solid var(--border-default);
-    }
-    .btn svg {
-      width: 16px;
-      height: 16px;
+      margin-top: 20px;
     }
 
-    /* Notice Box */
-    .notice-box {
-      background: var(--bg-light);
-      padding: 32px;
-      border-radius: var(--radius-md);
-      margin-top: 60px;
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 80px 0;
     }
-    .notice-title {
-      font-size: 18px;
+    .empty-state .icon-box {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px;
+    }
+    .empty-state .icon-box svg {
+      width: 40px;
+      height: 40px;
+    }
+    .empty-state-title {
+      font-size: 20px;
       font-weight: 700;
       color: var(--text-black);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      margin-bottom: 8px;
     }
-    .notice-title svg {
-      width: 20px;
-      height: 20px;
-      color: var(--text-dark);
-    }
-    .notice-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .notice-list li {
-      font-size: 14px;
+    .empty-state-desc {
+      font-size: 15px;
       color: var(--text-gray);
-      padding-left: 16px;
-      position: relative;
-    }
-    .notice-list li:before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: var(--text-muted);
+      margin-bottom: 24px;
     }
 
     /* Footer */
@@ -288,11 +355,6 @@
       line-height: 1.6;
       margin-bottom: 16px;
     }
-    .footer-company-info {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.8;
-    }
     .footer-col-title {
       font-size: 14px;
       font-weight: 700;
@@ -305,88 +367,88 @@
       color: var(--text-light);
       padding: 4px 0;
     }
-    .footer-sns {
-      display: flex;
-      gap: 12px;
-      margin-top: 12px;
-    }
-    .footer-sns a {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: var(--bg-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .footer-sns svg {
-      width: 16px;
-      height: 16px;
+    .footer-col a:hover {
       color: var(--text-dark);
     }
     .footer-bottom {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       padding-top: 24px;
       font-size: 13px;
       color: var(--text-muted);
     }
-    .footer-bottom a {
+    .footer-bottom-links {
+      display: flex;
+      gap: 16px;
+    }
+    .footer-bottom-links a {
       color: var(--text-muted);
-      margin: 0 8px;
+    }
+    .footer-bottom-links a:hover {
+      color: var(--text-gray);
     }
 
     /* Top Button */
-    .top-btn {
+    .top-button {
       position: fixed;
       bottom: 40px;
       right: 40px;
       width: 48px;
       height: 48px;
+      background: var(--text-black);
+      color: white;
       border-radius: 50%;
-      background: var(--bg-dark);
-      color: #FFFFFF;
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       box-shadow: var(--shadow-md);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s;
+      z-index: 90;
     }
-    .top-btn.visible {
-      opacity: 1;
-      visibility: visible;
+    .top-button.visible {
+      display: flex;
     }
-    .top-btn svg {
-      width: 20px;
-      height: 20px;
+    .top-button svg {
+      width: 24px;
+      height: 24px;
     }
 
     /* Responsive */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .page-title { font-size: 28px; }
-      .store-card-inner {
+      .section-title { font-size: 28px; }
+      .page-header .section-title { font-size: 32px; }
+      
+      .store-tabs {
+        overflow-x: auto;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+      }
+      .store-tab {
+        padding: 12px 20px;
+        font-size: 15px;
+        white-space: nowrap;
+      }
+      
+      .store-card {
         grid-template-columns: 1fr;
       }
-      .store-map { min-height: 240px; }
-      .store-info { padding: 24px; }
-      .store-name { font-size: 20px; }
-      .store-actions {
-        flex-direction: column;
+      .store-card-body {
+        padding: 24px;
       }
-      .btn { justify-content: center; }
+      
       .footer-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         gap: 32px;
       }
-      .footer-brand {
-        grid-column: 1 / -1;
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
       }
-      .notice-box { padding: 24px; }
-      .top-btn {
+      
+      .top-button {
         bottom: 24px;
         right: 24px;
         width: 44px;
@@ -401,16 +463,17 @@
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
-        <span class="nav-logo">[브랜드명]</span>
+        <a href="/" class="nav-logo">Brand Logo</a>
         <nav class="nav-links">
-          <a href="#">브랜드</a>
-          <a href="#">제품</a>
-          <a href="#">타월 가이드</a>
-          <a href="#">B2B문의</a>
-          <a href="#">고객 후기</a>
-          <a href="#">고객센터</a>
+          <a href="/">메인</a>
+          <a href="/about">브랜드</a>
+          <a href="/product">제품</a>
+          <a href="/towel-guide">타월 가이드</a>
+          <a href="/b2b">B2B문의</a>
+          <a href="/reviews">고객 후기</a>
+          <a href="/support" class="active">고객센터</a>
         </nav>
-        <div class="nav-utils">
+        <div class="nav-actions">
           <i data-lucide="search"></i>
           <i data-lucide="user"></i>
           <i data-lucide="shopping-cart"></i>
@@ -419,157 +482,220 @@
     </div>
   </header>
 
+  <!-- Breadcrumb -->
+  <section class="breadcrumb">
+    <div class="container">
+      <div class="breadcrumb-inner">
+        <a href="/">홈</a>
+        <i data-lucide="chevron-right"></i>
+        <a href="/support">고객센터</a>
+        <i data-lucide="chevron-right"></i>
+        <span>매장 안내</span>
+      </div>
+    </div>
+  </section>
+
   <main>
 
     <!-- Page Header -->
     <section class="page-header">
       <div class="container">
-        <div class="breadcrumb">
-          <span>홈</span>
-          <i data-lucide="chevron-right"></i>
-          <span>고객센터</span>
-          <i data-lucide="chevron-right"></i>
-          <span>매장 안내</span>
-        </div>
-        <h1 class="page-title">매장 안내</h1>
-        <p class="page-desc">[브랜드명]의 제품을 직접 만나볼 수 있는 오프라인 매장 및 팝업스토어를 안내합니다.</p>
+        <h1 class="section-title">매장 안내</h1>
+        <p class="section-desc mx-auto">페이스타월을 직접 만져보고 체험할 수 있는 오프라인 매장과 팝업스토어를 확인하세요.</p>
       </div>
     </section>
 
-    <!-- Store List -->
-    <section class="store-section">
+    <!-- Store Tabs & List -->
+    <section class="store-tabs-section">
       <div class="container">
-        <div class="store-grid">
+        
+        <!-- Tabs -->
+        <div class="store-tabs">
+          <button class="store-tab active" data-tab="permanent">상설 매장</button>
+          <button class="store-tab" data-tab="popup">팝업스토어</button>
+        </div>
 
-          <!-- Store Card 1 -->
-          <div class="store-card">
-            <div class="store-card-inner">
-              <div class="store-map">
-                <i data-lucide="map-pin"></i>
+        <!-- Tab Content: 상설 매장 -->
+        <div class="tab-content active" id="permanent">
+          <div class="store-list">
+            
+            <!-- Store Card 1 -->
+            <div class="store-card">
+              <div class="store-card-image img-placeholder" style="aspect-ratio:4/3;">
+                <i data-lucide="image"></i>
               </div>
-              <div class="store-info">
-                <span class="store-tag">본점</span>
-                <h3 class="store-name">[브랜드명] 플래그십 스토어</h3>
+              <div class="store-card-body">
+                <span class="store-tag">상설 매장</span>
+                <h3 class="store-name">플래그십 스토어 [지역명]</h3>
                 
-                <div class="store-detail">
-                  <i data-lucide="map-pin"></i>
-                  <div class="store-detail-text">
-                    <strong>주소</strong>
-                    [주소 정보 — 클라이언트 확인 필요]
+                <div class="store-info-item">
+                  <div class="icon-box">
+                    <i data-lucide="map-pin"></i>
+                  </div>
+                  <div class="store-info-content">
+                    <p class="store-info-label">주소</p>
+                    <p class="store-info-text">[클라이언트 확인 필요 - 매장 주소]</p>
                   </div>
                 </div>
 
-                <div class="store-detail">
-                  <i data-lucide="clock"></i>
-                  <div class="store-detail-text">
-                    <strong>운영시간</strong>
-                    평일 10:00 - 20:00<br>
-                    주말 10:00 - 19:00<br>
-                    매주 월요일 정기휴무
+                <div class="store-info-item">
+                  <div class="icon-box">
+                    <i data-lucide="clock"></i>
+                  </div>
+                  <div class="store-info-content">
+                    <p class="store-info-label">운영시간</p>
+                    <p class="store-info-text">[클라이언트 확인 필요 - 운영시간]<br>정기 휴무: [클라이언트 확인 필요]</p>
                   </div>
                 </div>
 
-                <div class="store-detail">
-                  <i data-lucide="phone"></i>
-                  <div class="store-detail-text">
-                    <strong>매장 문의</strong>
-                    [전화번호 — 클라이언트 확인 필요]
+                <div class="store-info-item">
+                  <div class="icon-box">
+                    <i data-lucide="phone"></i>
                   </div>
-                </div>
-
-                <div class="store-detail">
-                  <i data-lucide="car"></i>
-                  <div class="store-detail-text">
-                    <strong>주차 안내</strong>
-                    건물 지하 주차장 이용 가능 (2시간 무료)
+                  <div class="store-info-content">
+                    <p class="store-info-label">연락처</p>
+                    <p class="store-info-text">[클라이언트 확인 필요 - 매장 전화번호]</p>
                   </div>
                 </div>
 
                 <div class="store-actions">
-                  <a href="#" class="btn btn-secondary">
-                    <i data-lucide="navigation"></i>
-                    길찾기
+                  <a href="#" class="btn btn-primary">
+                    <i data-lucide="map"></i>
+                    지도에서 보기
                   </a>
                   <a href="#" class="btn btn-secondary">
                     <i data-lucide="phone"></i>
-                    전화하기
+                    전화 걸기
                   </a>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Store Card 2 -->
-          <div class="store-card">
-            <div class="store-card-inner">
-              <div class="store-map">
-                <i data-lucide="map-pin"></i>
+            <!-- Store Card 2 -->
+            <div class="store-card">
+              <div class="store-card-image img-placeholder" style="aspect-ratio:4/3;">
+                <i data-lucide="image"></i>
               </div>
-              <div class="store-info">
-                <span class="store-tag" style="background:var(--text-gray);">팝업스토어</span>
-                <h3 class="store-name">[브랜드명] 현대백화점 팝업</h3>
+              <div class="store-card-body">
+                <span class="store-tag">상설 매장</span>
+                <h3 class="store-name">쇼룸 [지역명]</h3>
                 
-                <div class="store-detail">
-                  <i data-lucide="map-pin"></i>
-                  <div class="store-detail-text">
-                    <strong>주소</strong>
-                    [주소 정보 — 클라이언트 확인 필요]
+                <div class="store-info-item">
+                  <div class="icon-box">
+                    <i data-lucide="map-pin"></i>
+                  </div>
+                  <div class="store-info-content">
+                    <p class="store-info-label">주소</p>
+                    <p class="store-info-text">[클라이언트 확인 필요 - 매장 주소]</p>
                   </div>
                 </div>
 
-                <div class="store-detail">
-                  <i data-lucide="calendar"></i>
-                  <div class="store-detail-text">
-                    <strong>운영 기간</strong>
-                    2024.03.01 - 2024.03.31 (한정 운영)
+                <div class="store-info-item">
+                  <div class="icon-box">
+                    <i data-lucide="clock"></i>
+                  </div>
+                  <div class="store-info-content">
+                    <p class="store-info-label">운영시간</p>
+                    <p class="store-info-text">[클라이언트 확인 필요 - 운영시간]<br>정기 휴무: [클라이언트 확인 필요]</p>
                   </div>
                 </div>
 
-                <div class="store-detail">
-                  <i data-lucide="clock"></i>
-                  <div class="store-detail-text">
-                    <strong>운영시간</strong>
-                    백화점 영업시간 동일 (10:30 - 20:00)
+                <div class="store-info-item">
+                  <div class="icon-box">
+                    <i data-lucide="phone"></i>
                   </div>
-                </div>
-
-                <div class="store-detail">
-                  <i data-lucide="info"></i>
-                  <div class="store-detail-text">
-                    <strong>특별 혜택</strong>
-                    팝업스토어 한정 세트 상품 및 현장 할인 이벤트 진행
+                  <div class="store-info-content">
+                    <p class="store-info-label">연락처</p>
+                    <p class="store-info-text">[클라이언트 확인 필요 - 매장 전화번호]</p>
                   </div>
                 </div>
 
                 <div class="store-actions">
-                  <a href="#" class="btn btn-secondary">
-                    <i data-lucide="navigation"></i>
-                    길찾기
+                  <a href="#" class="btn btn-primary">
+                    <i data-lucide="map"></i>
+                    지도에서 보기
                   </a>
                   <a href="#" class="btn btn-secondary">
-                    <i data-lucide="info"></i>
-                    상세보기
+                    <i data-lucide="phone"></i>
+                    전화 걸기
                   </a>
                 </div>
               </div>
             </div>
-          </div>
 
+          </div>
         </div>
 
-        <!-- Notice Box -->
-        <div class="notice-box">
-          <h4 class="notice-title">
-            <i data-lucide="info"></i>
-            방문 전 확인사항
-          </h4>
-          <ul class="notice-list">
-            <li>매장별 운영시간과 정기휴무일이 다를 수 있으니 방문 전 확인 부탁드립니다.</li>
-            <li>팝업스토어는 기간 한정 운영이며, 종료 시점은 사전 공지 없이 변경될 수 있습니다.</li>
-            <li>매장 재고 상황에 따라 일부 제품은 품절될 수 있습니다.</li>
-            <li>매장 문의 전화는 운영시간 내에만 가능합니다.</li>
-            <li>대량 구매 또는 기업 선물 상담은 B2B 문의 페이지를 이용해주세요.</li>
-          </ul>
+        <!-- Tab Content: 팝업스토어 -->
+        <div class="tab-content" id="popup">
+          <div class="store-list">
+            
+            <!-- Popup Store Card 1 -->
+            <div class="store-card">
+              <div class="store-card-image img-placeholder" style="aspect-ratio:4/3;">
+                <i data-lucide="image"></i>
+              </div>
+              <div class="store-card-body">
+                <span class="store-tag" style="background:var(--bg-dark); color:#FFFFFF;">팝업스토어</span>
+                <h3 class="store-name">[팝업명] at [장소명]</h3>
+                
+                <div class="store-info-item">
+                  <div class="icon-box">
+                    <i data-lucide="calendar"></i>
+                  </div>
+                  <div class="store-info-content">
+                    <p class="store-info-label">운영기간</p>
+                    <p class="store-info-text">[클라이언트 확인 필요 - 시작일] ~ [클라이언트 확인 필요 - 종료일]</p>
+                  </div>
+                </div>
+
+                <div class="store-info-item">
+                  <div class="icon-box">
+                    <i data-lucide="map-pin"></i>
+                  </div>
+                  <div class="store-info-content">
+                    <p class="store-info-label">주소</p>
+                    <p class="store-info-text">[클라이언트 확인 필요 - 팝업 주소]</p>
+                  </div>
+                </div>
+
+                <div class="store-info-item">
+                  <div class="icon-box">
+                    <i data-lucide="clock"></i>
+                  </div>
+                  <div class="store-info-content">
+                    <p class="store-info-label">운영시간</p>
+                    <p class="store-info-text">[클라이언트 확인 필요 - 운영시간]</p>
+                  </div>
+                </div>
+
+                <div class="store-actions">
+                  <a href="#" class="btn btn-primary">
+                    <i data-lucide="map"></i>
+                    지도에서 보기
+                  </a>
+                  <a href="#" class="btn btn-secondary">
+                    <i data-lucide="share-2"></i>
+                    공유하기
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Empty State (현재 운영 중인 팝업 없을 경우) -->
+            <!-- <div class="empty-state">
+              <div class="icon-box">
+                <i data-lucide="calendar-x"></i>
+              </div>
+              <h3 class="empty-state-title">현재 운영 중인 팝업스토어가 없어요</h3>
+              <p class="empty-state-desc">새로운 팝업스토어 소식은 인스타그램에서 가장 먼저 확인하실 수 있어요.</p>
+              <a href="#" class="btn btn-primary">
+                <i data-lucide="instagram"></i>
+                인스타그램 팔로우
+              </a>
+            </div> -->
+
+          </div>
         </div>
 
       </div>
@@ -581,73 +707,90 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-brand">
-          <p class="footer-brand-name">[브랜드명]</p>
+        <div>
+          <p class="footer-brand-name">Brand Logo</p>
           <p class="footer-brand-desc">페이스타월 전문 브랜드</p>
-          <div class="footer-company-info">
-            상호: [클라이언트 확인 필요] | 대표: [클라이언트 확인 필요]<br>
-            사업자번호: [클라이언트 확인 필요] | 통신판매업: [클라이언트 확인 필요]<br>
+          <p style="font-size:13px; color:var(--text-light); line-height:1.8;">
+            상호: [클라이언트 확인 필요]<br>
+            대표: [클라이언트 확인 필요]<br>
+            사업자번호: [클라이언트 확인 필요]<br>
             주소: [클라이언트 확인 필요]<br>
-            전화: [클라이언트 확인 필요] | 이메일: [클라이언트 확인 필요]
-          </div>
-          <div class="footer-sns">
-            <a href="#"><i data-lucide="instagram"></i></a>
-            <a href="#"><i data-lucide="youtube"></i></a>
-          </div>
+            전화: [클라이언트 확인 필요]<br>
+            이메일: [클라이언트 확인 필요]
+          </p>
         </div>
-        <div class="footer-col">
+        <div>
           <p class="footer-col-title">브랜드</p>
-          <a href="#">브랜드 철학</a>
-          <a href="#">브랜드 스토리</a>
-          <a href="#">브랜드 여정</a>
-          <a href="#">소재 이야기</a>
-          <a href="#">지속가능성</a>
+          <a href="/about/philosophy">브랜드 철학</a>
+          <a href="/product">제품</a>
+          <a href="/towel-guide">타월 가이드</a>
         </div>
-        <div class="footer-col">
-          <p class="footer-col-title">쇼핑</p>
-          <a href="#">제품</a>
-          <a href="#">타월 가이드</a>
-          <a href="#">고객 후기</a>
+        <div>
+          <p class="footer-col-title">비즈니스</p>
+          <a href="/b2b/bulk-order">대량구매</a>
+          <a href="/reviews">고객 후기</a>
+          <a href="/support/faq">FAQ</a>
         </div>
-        <div class="footer-col">
-          <p class="footer-col-title">고객센터</p>
-          <a href="#">FAQ</a>
-          <a href="#">1:1 문의</a>
-          <a href="#">주문 조회</a>
-          <a href="#">매장 안내</a>
+        <div>
+          <p class="footer-col-title">SNS</p>
+          <a href="#" style="display:flex; align-items:center; gap:8px;">
+            <i data-lucide="instagram" style="width:16px; height:16px;"></i>
+            인스타그램
+          </a>
+          <a href="#" style="display:flex; align-items:center; gap:8px;">
+            <i data-lucide="youtube" style="width:16px; height:16px;"></i>
+            유튜브
+          </a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 [브랜드명]. All rights reserved.</span>
-        <div>
-          <a href="#">이용약관</a>
+        <span>© 2025 Brand. All rights reserved.</span>
+        <div class="footer-bottom-links">
           <a href="#">개인정보처리방침</a>
+          <a href="#">이용약관</a>
         </div>
       </div>
     </div>
   </footer>
 
   <!-- Top Button -->
-  <button class="top-btn" id="topBtn">
-    <i data-lucide="chevron-up"></i>
+  <button class="top-button" id="topButton">
+    <i data-lucide="arrow-up"></i>
   </button>
 
   <script>
     lucide.createIcons();
 
     // Top Button
-    const topBtn = document.getElementById('topBtn');
+    const topButton = document.getElementById('topButton');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
-        topBtn.classList.add('visible');
+        topButton.classList.add('visible');
       } else {
-        topBtn.classList.remove('visible');
+        topButton.classList.remove('visible');
       }
     });
-    topBtn.addEventListener('click', () => {
+    topButton.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-  </script>
 
+    // Tab Switching
+    const tabs = document.querySelectorAll('.store-tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.getAttribute('data-tab');
+        
+        // Remove active from all tabs and contents
+        tabs.forEach(t => t.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+        
+        // Add active to clicked tab and corresponding content
+        tab.classList.add('active');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
