@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>지속가능성 | 언커먼타올 - 프리미엄 페이스타월</title>
-  <meta name="description" content="좋은 타월이 오래 쓰이는 것, 그 자체가 친환경입니다. 덜 버리고, 덜 만들고, 더 오래 쓰이도록. 언커먼타올의 지속가능성 철학과 실천을 확인하세요.">
-  <meta name="keywords" content="페이스타월, 세안타월, 고급타월, 면타월, 페이스타올, 프리미엄타월, 친환경타월, 지속가능성">
+  <title>지속가능성 | 언커먼타올 - 지구에도 좋은 타월을 만드는 노력</title>
+  <meta name="description" content="친환경 소재, 재활용 패키징, 탄소 절감. 완벽하진 않지만 덜 미안한 방법을 계속 찾는 페이스타월 브랜드의 지속가능성 이야기.">
+  <meta name="keywords" content="친환경 타월, 지속가능 타월 브랜드, 오가닉 코튼 타월, 에코 페이스타월">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -83,7 +83,7 @@
     }
     .nav-item.active > a {
       color: var(--text-black);
-      font-weight: 600;
+      font-weight: 700;
     }
     .nav-dropdown {
       position: absolute;
@@ -92,7 +92,7 @@
       background: var(--bg-white);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-sm);
-      padding: 12px 0;
+      padding: 8px 0;
       min-width: 180px;
       opacity: 0;
       visibility: hidden;
@@ -107,266 +107,32 @@
     }
     .nav-dropdown a {
       display: block;
-      padding: 8px 20px;
+      padding: 10px 20px;
       font-size: 14px;
-      color: var(--text-gray);
+      color: var(--text-dark);
       white-space: nowrap;
     }
     .nav-dropdown a:hover {
       background: var(--bg-light);
       color: var(--text-black);
     }
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
+    .nav-dropdown a.active {
+      color: var(--text-black);
+      font-weight: 600;
     }
-    .nav-icon {
-      width: 24px;
-      height: 24px;
-      color: var(--text-dark);
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
       cursor: pointer;
     }
-    .nav-icon:hover {
-      color: var(--text-black);
-    }
-    .cart-badge {
-      position: relative;
-    }
-    .cart-badge::after {
-      content: '0';
-      position: absolute;
-      top: -6px;
-      right: -6px;
-      background: var(--text-black);
-      color: white;
-      font-size: 10px;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .mobile-menu-btn {
-      display: none;
-    }
-
-    /* 히어로 섹션 */
-    .hero-section {
-      padding: 120px 0 80px;
-      background: var(--bg-light);
-      text-align: center;
-      position: relative;
-    }
-    .hero-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--bg-light);
-      z-index: 0;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
-    .hero-title {
-      font-size: 42px;
-      font-weight: 700;
-      color: var(--text-black);
-      line-height: 1.3;
-      margin-bottom: 16px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .hero-desc {
-      font-size: 18px;
-      color: var(--text-gray);
-      line-height: 1.7;
-      max-width: 560px;
-      margin: 0 auto;
-    }
-
-    /* 친환경 소재 섹션 */
-    .material-section {
-      padding: 80px 0;
-      background: var(--bg-white);
-    }
-    .section-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-    .section-title {
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--text-black);
-      line-height: 1.3;
-      margin-bottom: 16px;
-    }
-    .material-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .material-card {
-      padding: 32px;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      background: var(--bg-white);
-    }
-    .material-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--radius-sm);
-      background: var(--bg-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-    .material-icon svg {
+    .hamburger span {
       width: 24px;
-      height: 24px;
-      color: var(--text-dark);
-    }
-    .material-card-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 8px;
-    }
-    .material-card-desc {
-      font-size: 15px;
-      color: var(--text-gray);
-      line-height: 1.6;
+      height: 2px;
+      background: var(--text-black);
     }
 
-    /* 친환경 패키징 섹션 */
-    .packaging-section {
-      padding: 80px 0;
-      background: var(--bg-light);
-    }
-    .packaging-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-    .img-placeholder {
-      background: var(--placeholder-bg);
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-    .img-placeholder svg {
-      color: var(--placeholder-icon);
-      width: 48px;
-      height: 48px;
-    }
-    .section-label {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-light);
-      margin-bottom: 12px;
-    }
-    .packaging-list {
-      margin-top: 24px;
-    }
-    .packaging-item {
-      display: flex;
-      gap: 12px;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .packaging-item:last-child {
-      border-bottom: none;
-    }
-    .packaging-icon {
-      flex-shrink: 0;
-      width: 20px;
-      height: 20px;
-      color: var(--text-dark);
-      margin-top: 2px;
-    }
-    .packaging-text {
-      font-size: 15px;
-      color: var(--text-gray);
-      line-height: 1.6;
-    }
-
-    /* 탄소 절감 섹션 */
-    .carbon-section {
-      padding: 80px 0;
-      background: var(--bg-white);
-    }
-    .carbon-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    /* 인증 섹션 */
-    .certification-section {
-      padding: 80px 0;
-      background: var(--bg-light);
-    }
-    .cert-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-top: 48px;
-    }
-    .cert-card {
-      padding: 24px;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      background: var(--bg-white);
-      text-align: center;
-    }
-    .cert-logo {
-      width: 80px;
-      height: 80px;
-      background: var(--placeholder-bg);
-      border-radius: var(--radius-sm);
-      margin: 0 auto 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .cert-logo svg {
-      width: 32px;
-      height: 32px;
-      color: var(--placeholder-icon);
-    }
-    .cert-name {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-black);
-    }
-
-    /* CTA 섹션 */
-    .cta-section {
-      padding: 80px 0;
-      background: var(--bg-white);
-      text-align: center;
-    }
-    .cta-section .section-title {
-      max-width: 600px;
-      margin: 0 auto 16px;
-    }
-    .cta-section .section-desc {
-      font-size: 16px;
-      color: var(--text-gray);
-      line-height: 1.7;
-      max-width: 560px;
-      margin: 0 auto 32px;
-    }
+    /* 공통 컴포넌트 */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -377,13 +143,167 @@
       font-weight: 600;
       transition: opacity 0.2s;
     }
-    .btn:hover {
-      opacity: 0.85;
-    }
+    .btn:hover { opacity: 0.85; }
     .btn-primary {
       background: var(--text-black);
       color: #FFFFFF;
       border: 1px solid var(--text-black);
+    }
+    .btn-secondary {
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--border-default);
+    }
+
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    .img-placeholder {
+      background: var(--placeholder-bg);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .img-placeholder svg {
+      color: var(--placeholder-icon);
+      width: 48px;
+      height: 48px;
+    }
+
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .icon-box svg {
+      width: 24px;
+      height: 24px;
+      color: var(--text-dark);
+    }
+
+    /* 섹션 1: 히어로 */
+    .hero-intro {
+      padding: 120px 0 80px;
+      background: var(--bg-white);
+    }
+    .hero-intro-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-intro .section-title {
+      font-size: 42px;
+    }
+    .hero-intro-text p {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.8;
+      margin-top: 24px;
+    }
+
+    /* 섹션 2: 실천 카드 */
+    .practices-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .practices-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .practice-card {
+      padding: 32px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      background: var(--bg-white);
+    }
+    .practice-card .icon-box {
+      margin-bottom: 20px;
+    }
+    .practice-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .practice-card-desc {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+
+    /* 섹션 3: 향후 목표 */
+    .future-section {
+      padding: 80px 0;
+      background: var(--bg-white);
+    }
+    .future-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .future-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .future-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .future-item .icon-box {
+      margin-top: 4px;
+    }
+    .future-item-text {
+      font-size: 15px;
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    /* CTA 섹션 */
+    .cta-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+      text-align: center;
+    }
+    .cta-section .section-title {
+      max-width: 500px;
+      margin: 0 auto 32px;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
     }
 
     /* 푸터 */
@@ -409,12 +329,6 @@
       font-size: 14px;
       color: var(--text-light);
       line-height: 1.6;
-      margin-bottom: 16px;
-    }
-    .footer-info {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.8;
     }
     .footer-col-title {
       font-size: 14px;
@@ -431,6 +345,25 @@
     .footer-col a:hover {
       color: var(--text-black);
     }
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .footer-social a {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .footer-social svg {
+      width: 16px;
+      height: 16px;
+      color: var(--text-dark);
+    }
     .footer-bottom {
       display: flex;
       justify-content: space-between;
@@ -439,62 +372,68 @@
       font-size: 13px;
       color: var(--text-muted);
     }
-    .footer-links {
+    .footer-bottom-links {
       display: flex;
       gap: 16px;
     }
-    .footer-links a:hover {
-      color: var(--text-black);
+    .footer-bottom-links a {
+      color: var(--text-muted);
+    }
+    .footer-bottom-links a:hover {
+      color: var(--text-dark);
     }
 
     /* TOP 버튼 */
-    .top-btn {
+    .top-button {
       position: fixed;
-      bottom: 40px;
-      right: 40px;
+      bottom: 32px;
+      right: 32px;
       width: 48px;
       height: 48px;
+      border-radius: 50%;
       background: var(--text-black);
       color: white;
-      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
       visibility: hidden;
       transition: all 0.3s;
+      box-shadow: var(--shadow-md);
       z-index: 90;
     }
-    .top-btn.visible {
+    .top-button.visible {
       opacity: 1;
       visibility: visible;
     }
-    .top-btn:hover {
-      background: var(--text-dark);
+    .top-button:hover {
+      transform: translateY(-4px);
+    }
+    .top-button svg {
+      width: 20px;
+      height: 20px;
     }
 
     /* 반응형 */
     @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      .mobile-menu-btn {
-        display: block;
-      }
-      .hero-title {
-        font-size: 32px;
-      }
-      .section-title {
-        font-size: 28px;
-      }
-      .material-grid,
-      .cert-grid {
-        grid-template-columns: 1fr;
-      }
-      .packaging-inner,
-      .carbon-inner {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .section-title { font-size: 28px; }
+      .hero-intro { padding: 80px 0 60px; }
+      .hero-intro-inner {
         grid-template-columns: 1fr;
         gap: 32px;
+      }
+      .hero-intro .section-title { font-size: 32px; }
+      .practices-grid {
+        grid-template-columns: 1fr;
+      }
+      .future-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .cta-buttons {
+        flex-direction: column;
       }
       .footer-grid {
         grid-template-columns: 1fr 1fr;
@@ -504,6 +443,12 @@
         flex-direction: column;
         gap: 12px;
         text-align: center;
+      }
+      .top-button {
+        bottom: 20px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
       }
     }
   </style>
@@ -523,7 +468,7 @@
               <a href="page_03.html">브랜드 스토리</a>
               <a href="page_04.html">브랜드 여정</a>
               <a href="page_05.html">소재 이야기</a>
-              <a href="page_06.html">지속가능성</a>
+              <a href="page_06.html" class="active">지속가능성</a>
             </div>
           </div>
           <div class="nav-item">
@@ -552,15 +497,10 @@
             </div>
           </div>
         </nav>
-        <div class="nav-actions">
-          <i data-lucide="search" class="nav-icon"></i>
-          <i data-lucide="user" class="nav-icon"></i>
-          <div class="cart-badge">
-            <i data-lucide="shopping-cart" class="nav-icon"></i>
-          </div>
-          <button class="mobile-menu-btn">
-            <i data-lucide="menu" class="nav-icon"></i>
-          </button>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
       </div>
     </div>
@@ -568,105 +508,72 @@
 
   <main>
 
-    <!-- 섹션 1: 히어로 -->
-    <section class="hero-section">
-      <div class="hero-bg"></div>
+    <!-- 섹션 1: 히어로 인트로 -->
+    <section class="hero-intro">
       <div class="container">
-        <div class="hero-content">
-          <h1 class="hero-title">좋은 타월이 오래 쓰이는 것,<br>그 자체가 친환경입니다</h1>
-          <p class="hero-desc">덜 버리고, 덜 만들고, 더 오래 쓰이도록</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 섹션 2: 친환경 소재 -->
-    <section class="material-section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">소재를 고르는 기준에 환경이 포함됩니다</h2>
-        </div>
-        <div class="material-grid">
-          <div class="material-card">
-            <div class="material-icon">
-              <i data-lucide="leaf"></i>
-            </div>
-            <h3 class="material-card-title">원면 재배 방식</h3>
-            <p class="material-card-desc">농약·화학비료 사용 최소화 / 유기농 인증 원면</p>
+        <div class="hero-intro-inner">
+          <div class="hero-intro-text">
+            <h1 class="section-title">좋은 타월이<br>지구에도 좋을 수<br>있을까</h1>
+            <p class="section-desc">완벽하진 않지만, 덜 미안한 방법을 계속 찾고 있어요.</p>
+            <p>섬유 산업은 전 세계 탄소 배출의 상당 부분을 차지합니다. 우리는 이 문제를 외면하지 않기로 했어요. 매일 사용하는 타월 하나가 조금 더 지구에 덜 미안한 방법으로 만들어질 수 있다면, 그 작은 변화가 모여 큰 차이를 만들 수 있다고 믿습니다.</p>
           </div>
-          <div class="material-card">
-            <div class="material-icon">
-              <i data-lucide="droplet"></i>
-            </div>
-            <h3 class="material-card-title">염색 공정</h3>
-            <p class="material-card-desc">무형광·무표백 공정 / 저독성 염료 사용</p>
-          </div>
-          <div class="material-card">
-            <div class="material-icon">
-              <i data-lucide="recycle"></i>
-            </div>
-            <h3 class="material-card-title">생분해성</h3>
-            <p class="material-card-desc">100% 천연 면 소재로 자연 분해 가능</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 섹션 3: 친환경 패키징 -->
-    <section class="packaging-section">
-      <div class="container">
-        <div class="packaging-inner">
           <div class="img-placeholder" style="aspect-ratio:4/3;">
             <i data-lucide="image"></i>
           </div>
-          <div>
-            <p class="section-label">PACKAGING</p>
-            <h2 class="section-title">포장재도<br>환경을 생각합니다</h2>
-            <div class="packaging-list">
-              <div class="packaging-item">
-                <i data-lucide="check" class="packaging-icon"></i>
-                <p class="packaging-text">재생 종이 박스 + 콩기름 인쇄</p>
-              </div>
-              <div class="packaging-item">
-                <i data-lucide="check" class="packaging-icon"></i>
-                <p class="packaging-text">생분해 비닐 (옥수수 전분 소재)</p>
-              </div>
-              <div class="packaging-item">
-                <i data-lucide="check" class="packaging-icon"></i>
-                <p class="packaging-text">라벨 최소화 (종이 택 대체)</p>
-              </div>
-              <div class="packaging-item">
-                <i data-lucide="check" class="packaging-icon"></i>
-                <p class="packaging-text">완충재 제로 (박스 구조 설계로 해결)</p>
-              </div>
-            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 2: 실천 카드 -->
+    <section class="practices-section">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">우리가 실천하고 있는 것들</h2>
+        </div>
+        <div class="practices-grid">
+          <div class="practice-card">
+            <div class="icon-box"><i data-lucide="leaf"></i></div>
+            <h3 class="practice-card-title">친환경 소재</h3>
+            <p class="practice-card-desc">[구체적 소재명/인증 — 클라이언트 확인 필요] 오가닉 코튼, BCI 인증 면 등 환경에 미치는 영향을 최소화한 원료를 사용해요.</p>
+          </div>
+          <div class="practice-card">
+            <div class="icon-box"><i data-lucide="package"></i></div>
+            <h3 class="practice-card-title">지속가능한 패키징</h3>
+            <p class="practice-card-desc">[클라이언트 확인 필요 — 실제 패키징 사양] 재활용 가능한 소재를 사용하고, 불필요한 플라스틱을 최대한 줄였어요.</p>
+          </div>
+          <div class="practice-card">
+            <div class="icon-box"><i data-lucide="wind"></i></div>
+            <h3 class="practice-card-title">탄소 절감</h3>
+            <p class="practice-card-desc">[구체적 노력 — 클라이언트 확인 필요] 탄소 배출량을 측정하고, 단계적으로 감축하는 목표를 설정했어요.</p>
+          </div>
+          <div class="practice-card">
+            <div class="icon-box"><i data-lucide="droplet"></i></div>
+            <h3 class="practice-card-title">깨끗한 제조 공정</h3>
+            <p class="practice-card-desc">[폐수 절감, 에너지 효율 등 — 클라이언트 확인 필요] 물과 에너지 사용을 줄이는 제조 방식을 지속적으로 개선하고 있어요.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 섹션 4: 탄소 절감 -->
-    <section class="carbon-section">
+    <!-- 섹션 3: 향후 목표 -->
+    <section class="future-section">
       <div class="container">
-        <div class="carbon-inner">
+        <div class="future-inner">
           <div>
-            <p class="section-label">CARBON REDUCTION</p>
-            <h2 class="section-title">물류·생산 과정에서<br>탄소를 줄입니다</h2>
-            <div class="packaging-list">
-              <div class="packaging-item">
-                <i data-lucide="check" class="packaging-icon"></i>
-                <p class="packaging-text">국내 생산 — 공장 직배송으로 이동 거리 최소화</p>
+            <h2 class="section-title">아직 가야 할 길</h2>
+            <p class="section-desc">솔직하게 공유해요.</p>
+            <div class="future-list">
+              <div class="future-item">
+                <div class="icon-box"><i data-lucide="target"></i></div>
+                <p class="future-item-text">[클라이언트 확인 필요 — 구체적 지속가능성 목표 및 타임라인] 예: 2025년까지 전 제품 패키징 100% 재활용 소재 전환</p>
               </div>
-              <div class="packaging-item">
-                <i data-lucide="check" class="packaging-icon"></i>
-                <p class="packaging-text">태양광 패널 설치 공장과 우선 협력</p>
+              <div class="future-item">
+                <div class="icon-box"><i data-lucide="file-text"></i></div>
+                <p class="future-item-text">탄소 발자국 연간 리포트를 투명하게 공개하는 것을 목표로 하고 있어요.</p>
               </div>
-              <div class="packaging-item">
-                <i data-lucide="check" class="packaging-icon"></i>
-                <p class="packaging-text">물 재사용 시스템 (제직·염색 공정)</p>
-              </div>
-              <div class="packaging-item">
-                <i data-lucide="check" class="packaging-icon"></i>
-                <p class="packaging-text">불량률 1% 미만 유지로 생산 낭비 최소화</p>
+              <div class="future-item">
+                <div class="icon-box"><i data-lucide="users"></i></div>
+                <p class="future-item-text">더 나은 방법이 있다면 언제든 시도하고, 그 과정을 여러분과 함께 나누겠습니다.</p>
               </div>
             </div>
           </div>
@@ -677,47 +584,14 @@
       </div>
     </section>
 
-    <!-- 섹션 5: 인증 -->
-    <section class="certification-section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">제3자 인증으로 증명합니다</h2>
-        </div>
-        <div class="cert-grid">
-          <div class="cert-card">
-            <div class="cert-logo">
-              <i data-lucide="award"></i>
-            </div>
-            <p class="cert-name">친환경 인증 1</p>
-          </div>
-          <div class="cert-card">
-            <div class="cert-logo">
-              <i data-lucide="award"></i>
-            </div>
-            <p class="cert-name">친환경 인증 2</p>
-          </div>
-          <div class="cert-card">
-            <div class="cert-logo">
-              <i data-lucide="award"></i>
-            </div>
-            <p class="cert-name">친환경 인증 3</p>
-          </div>
-          <div class="cert-card">
-            <div class="cert-logo">
-              <i data-lucide="award"></i>
-            </div>
-            <p class="cert-name">친환경 인증 4</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 섹션 6: CTA -->
+    <!-- CTA 섹션 -->
     <section class="cta-section">
       <div class="container">
-        <h2 class="section-title">환경을 생각하는 선택,<br>지금 시작하세요</h2>
-        <p class="section-desc">좋은 타월 하나로 시작하는 지속가능한 일상</p>
-        <a href="page_07.html" class="btn btn-primary">제품 보러가기</a>
+        <h2 class="section-title">지속가능한 타월을 경험해보세요</h2>
+        <div class="cta-buttons">
+          <a href="page_07.html" class="btn btn-primary">제품 보러가기</a>
+          <a href="page_05.html" class="btn btn-secondary">소재 이야기 읽기</a>
+        </div>
       </div>
     </section>
 
@@ -729,65 +603,59 @@
       <div class="footer-grid">
         <div>
           <p class="footer-brand-name">언커먼타올</p>
-          <p class="footer-brand-desc">프리미엄 페이스타월 전문 브랜드</p>
-          <div class="footer-info">
-            상호: [상호명]<br>
-            대표: [대표자명]<br>
-            사업자번호: [사업자번호]<br>
-            주소: [주소]<br>
-            전화: [전화번호]<br>
-            이메일: [이메일]
+          <p class="footer-brand-desc">프리미엄 페이스타월</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
           </div>
-        </div>
-        <div class="footer-col">
-          <p class="footer-col-title">쇼핑</p>
-          <a href="page_07.html">제품</a>
-          <a href="page_07.html">베스트셀러</a>
-          <a href="#">장바구니</a>
         </div>
         <div class="footer-col">
           <p class="footer-col-title">브랜드</p>
           <a href="page_02.html">브랜드 철학</a>
-          <a href="page_03.html">브랜드 스토리</a>
           <a href="page_05.html">소재 이야기</a>
           <a href="page_06.html">지속가능성</a>
         </div>
         <div class="footer-col">
-          <p class="footer-col-title">고객지원</p>
+          <p class="footer-col-title">제품</p>
+          <a href="page_07.html">제품</a>
+          <a href="page_08.html">타월 가이드</a>
+          <a href="page_09.html">대량구매</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">고객센터</p>
           <a href="page_12.html">FAQ</a>
           <a href="page_13.html">1:1 문의</a>
-          <a href="page_14.html">주문 조회</a>
           <a href="page_15.html">매장 안내</a>
         </div>
       </div>
       <div class="footer-bottom">
         <span>© 2025 언커먼타올. All rights reserved.</span>
-        <div class="footer-links">
-          <a href="#">개인정보처리방침</a>
+        <div class="footer-bottom-links">
           <a href="#">이용약관</a>
+          <a href="#">개인정보처리방침</a>
         </div>
       </div>
     </div>
   </footer>
 
   <!-- TOP 버튼 -->
-  <button class="top-btn" id="topBtn">
-    <i data-lucide="arrow-up" style="width:20px;height:20px;"></i>
+  <button class="top-button" id="topButton" aria-label="맨 위로">
+    <i data-lucide="arrow-up"></i>
   </button>
 
   <script>
     lucide.createIcons();
 
     // TOP 버튼
-    const topBtn = document.getElementById('topBtn');
+    const topButton = document.getElementById('topButton');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
-        topBtn.classList.add('visible');
+        topButton.classList.add('visible');
       } else {
-        topBtn.classList.remove('visible');
+        topButton.classList.remove('visible');
       }
     });
-    topBtn.addEventListener('click', () => {
+    topButton.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
