@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>브랜드 철학 | [브랜드명] - 페이스타월 전문 브랜드</title>
-  <meta name="description" content="왜 페이스타월 하나에 집중할까요? 매일 얼굴에 닿는 타월, 소재부터 제직까지 기준을 세운 [브랜드명]의 브랜드 철학을 만나보세요.">
-  <meta name="keywords" content="페이스타월 브랜드, 타월 브랜드 철학, 세안타월 전문, 페이스타월, 세안타월, 고급타월, 면타월, GSM, 타월추천, 타월선물, 페이스타올">
+  <title>브랜드 철학 | [브랜드명] - 페이스타월 하나에 집중하는 이유</title>
+  <meta name="description" content="백 가지를 잘 만드는 것보다, 한 가지를 제대로. 매일 얼굴에 닿는 타월 하나에 모든 기준을 건 브랜드의 이야기.">
+  <meta name="keywords" content="페이스타월브랜드, 타월브랜드철학, 프리미엄수건브랜드, 페이스타월, 세안타월, 프리미엄타월, 순면타월, 타월추천, 얼굴수건">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -19,7 +19,6 @@
       --bg-white: #FFFFFF;
       --bg-light: #F5F5F5;
       --bg-dark: #2D2D2D;
-      --bg-black: #1A1A1A;
       --border-light: #E0E0E0;
       --border-default: #D0D0D0;
       --placeholder-bg: #E0E0E0;
@@ -48,6 +47,80 @@
       padding: 0 24px;
     }
 
+    /* 헤더 */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+    }
+    .gnb {
+      display: flex;
+      gap: 40px;
+    }
+    .gnb > li {
+      position: relative;
+    }
+    .gnb > li > a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-dark);
+      display: block;
+      padding: 24px 0;
+    }
+    .gnb-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 12px 0;
+      min-width: 180px;
+      box-shadow: var(--shadow-md);
+    }
+    .gnb > li:hover .gnb-dropdown {
+      display: block;
+    }
+    .gnb-dropdown a {
+      display: block;
+      padding: 10px 20px;
+      font-size: 14px;
+      color: var(--text-gray);
+      white-space: nowrap;
+    }
+    .gnb-dropdown a:hover {
+      background: var(--bg-light);
+      color: var(--text-black);
+    }
+    .header-utils {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .header-utils svg {
+      width: 22px;
+      height: 22px;
+      color: var(--text-dark);
+      cursor: pointer;
+    }
+    .mobile-menu-btn {
+      display: none;
+    }
+
     /* 버튼 */
     .btn {
       display: inline-flex;
@@ -72,6 +145,9 @@
     }
 
     /* 섹션 공통 */
+    .section {
+      padding: 100px 0;
+    }
     .section-label {
       font-size: 14px;
       font-weight: 600;
@@ -108,192 +184,121 @@
       width: 48px;
       height: 48px;
     }
-    .img-placeholder-fullscreen {
-      background: var(--placeholder-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0;
-    }
-    .img-placeholder-fullscreen svg {
-      color: var(--placeholder-icon);
-      width: 64px;
-      height: 64px;
-    }
 
     /* 아이콘 박스 */
     .icon-box {
-      width: 48px;
-      height: 48px;
+      width: 56px;
+      height: 56px;
       border-radius: var(--radius-sm);
       background: var(--bg-light);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      margin-bottom: 20px;
     }
     .icon-box svg {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       color: var(--text-dark);
     }
 
-    /* 네비게이션 */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--bg-white);
-      border-bottom: 1px solid var(--border-light);
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 72px;
-    }
-    .nav-logo {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-black);
-    }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-    }
-    .nav-links a {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text-dark);
-    }
-    .nav-utils {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .nav-utils svg {
-      width: 20px;
-      height: 20px;
-      color: var(--text-dark);
-      cursor: pointer;
-    }
-
-    /* 히어로 - 풀 와이드 이미지 + 텍스트 오버레이 */
-    .hero-fullwidth {
-      position: relative;
-      height: 600px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--bg-dark);
-      overflow: hidden;
-    }
-    .hero-fullwidth .hero-content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      max-width: 800px;
-      padding: 0 24px;
-    }
-    .hero-fullwidth .section-title {
-      color: #FFFFFF;
-      font-size: 48px;
-      margin-bottom: 16px;
-    }
-    .hero-fullwidth .section-desc {
-      color: rgba(255,255,255,0.8);
-      font-size: 18px;
-      max-width: 100%;
-      margin: 0 auto;
-    }
-
-    /* 왜 페이스타월 하나인가 섹션 */
-    .why-section {
-      padding: 100px 0;
+    /* 섹션 1: 왜 페이스타월 하나에 집중하는가 */
+    .philosophy-hero {
+      padding: 120px 0 100px;
       background: var(--bg-white);
     }
-    .why-content {
+    .philosophy-hero-inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      gap: 80px;
       align-items: center;
-      margin-top: 48px;
     }
-    .why-text-block {
+    .philosophy-hero-content h1 {
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
       margin-bottom: 24px;
     }
-    .why-text-block:last-child {
-      margin-bottom: 0;
+    .philosophy-hero-content .sub {
+      font-size: 17px;
+      color: var(--text-gray);
+      line-height: 1.8;
+      margin-bottom: 32px;
     }
-    .why-text-block p {
-      font-size: 16px;
+    .philosophy-hero-text {
+      font-size: 15px;
       color: var(--text-gray);
       line-height: 1.8;
     }
+    .philosophy-hero-text p {
+      margin-bottom: 16px;
+    }
+    .philosophy-hero-text p:last-child {
+      margin-bottom: 0;
+    }
 
-    /* 우리가 지키는 기준 섹션 */
-    .standards-section {
+    /* 섹션 2: 우리가 믿는 세 가지 */
+    .philosophy-values {
       padding: 100px 0;
       background: var(--bg-light);
     }
-    .standards-grid {
+    .values-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-top: 48px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 56px;
     }
-    .standard-card {
-      padding: 32px;
-      background: var(--bg-white);
+    .value-card {
+      padding: 40px 32px;
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
-      text-align: center;
+      background: var(--bg-white);
     }
-    .standard-card .icon-box {
-      margin: 0 auto 20px;
-    }
-    .standard-card-title {
-      font-size: 17px;
+    .value-card-title {
+      font-size: 20px;
       font-weight: 700;
       color: var(--text-black);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
-    .standard-card-desc {
-      font-size: 14px;
+    .value-card-desc {
+      font-size: 15px;
       color: var(--text-gray);
-      line-height: 1.6;
+      line-height: 1.7;
+      margin-bottom: 20px;
     }
-    .standards-cta {
-      text-align: center;
-      margin-top: 48px;
+    .value-card-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .value-card-link svg {
+      width: 16px;
+      height: 16px;
     }
 
-    /* 브랜드 선언 섹션 */
-    .declaration-section {
-      position: relative;
-      height: 500px;
+    /* 하단 링크 */
+    .bottom-link-section {
+      padding: 60px 0;
+      background: var(--bg-white);
+      border-top: 1px solid var(--border-light);
+    }
+    .bottom-link {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--bg-dark);
-      overflow: hidden;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-dark);
     }
-    .declaration-section .declaration-content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      max-width: 700px;
-      padding: 0 24px;
-    }
-    .declaration-section .section-title {
-      color: #FFFFFF;
-      font-size: 42px;
-      margin-bottom: 32px;
+    .bottom-link svg {
+      width: 20px;
+      height: 20px;
     }
 
     /* 푸터 */
@@ -319,6 +324,12 @@
       font-size: 14px;
       color: var(--text-light);
       line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .footer-info {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
     }
     .footer-col-title {
       font-size: 14px;
@@ -332,6 +343,16 @@
       color: var(--text-light);
       padding: 4px 0;
     }
+    .footer-sns {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .footer-sns svg {
+      width: 20px;
+      height: 20px;
+      color: var(--text-muted);
+    }
     .footer-bottom {
       display: flex;
       justify-content: space-between;
@@ -339,36 +360,9 @@
       font-size: 13px;
       color: var(--text-muted);
     }
-    .footer-info {
-      margin-bottom: 16px;
-    }
-    .footer-info p {
-      font-size: 13px;
-      color: var(--text-light);
-      line-height: 1.6;
-    }
-    .footer-sns {
-      display: flex;
-      gap: 12px;
-      margin-top: 16px;
-    }
-    .footer-sns a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--bg-light);
-    }
-    .footer-sns svg {
-      width: 18px;
-      height: 18px;
-      color: var(--text-dark);
-    }
 
     /* TOP 버튼 */
-    .btn-top {
+    .top-btn {
       position: fixed;
       bottom: 40px;
       right: 40px;
@@ -377,62 +371,74 @@
       border-radius: 50%;
       background: var(--text-black);
       color: #FFFFFF;
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s, visibility 0.3s;
+      box-shadow: var(--shadow-md);
       z-index: 90;
     }
-    .btn-top.visible {
-      opacity: 1;
-      visibility: visible;
+    .top-btn.show {
+      display: flex;
     }
-    .btn-top svg {
+    .top-btn svg {
       width: 20px;
       height: 20px;
     }
 
     /* 반응형 */
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .section-title { font-size: 28px; }
-      
-      .hero-fullwidth {
-        height: 400px;
+      .gnb { display: none; }
+      .mobile-menu-btn {
+        display: block;
       }
-      .hero-fullwidth .section-title {
-        font-size: 32px;
+      .mobile-menu-btn svg {
+        width: 24px;
+        height: 24px;
+        color: var(--text-dark);
       }
       
-      .why-section,
-      .standards-section {
+      .section {
         padding: 60px 0;
       }
-      .why-content {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-      .standards-grid {
-        grid-template-columns: 1fr;
+      .section-title {
+        font-size: 28px;
       }
       
-      .declaration-section {
-        height: 400px;
+      .philosophy-hero {
+        padding: 80px 0 60px;
       }
-      .declaration-section .section-title {
-        font-size: 28px;
+      .philosophy-hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .philosophy-hero-content h1 {
+        font-size: 32px;
+      }
+      .philosophy-hero-content .sub {
+        font-size: 16px;
+      }
+      
+      .philosophy-values {
+        padding: 60px 0;
+      }
+      .values-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 40px;
+      }
+      .value-card {
+        padding: 32px 24px;
       }
       
       .footer-grid {
         grid-template-columns: 1fr;
         gap: 32px;
       }
-      .footer-bottom {
-        flex-direction: column;
-        gap: 8px;
+      
+      .top-btn {
+        bottom: 24px;
+        right: 24px;
       }
     }
   </style>
@@ -440,115 +446,132 @@
 <body>
 
   <!-- 헤더 -->
-  <header class="nav">
+  <header class="header">
     <div class="container">
-      <div class="nav-inner">
-        <a href="/" class="nav-logo">[브랜드명]</a>
-        <nav class="nav-links">
-          <a href="/">메인</a>
-          <a href="/about">브랜드</a>
-          <a href="/product">제품</a>
-          <a href="/guide">타월 가이드</a>
-          <a href="/b2b">B2B문의</a>
-          <a href="/reviews">고객 후기</a>
-          <a href="/support">고객센터</a>
+      <div class="header-inner">
+        <a href="/" class="logo">[브랜드명]</a>
+        <nav>
+          <ul class="gnb">
+            <li>
+              <a href="/about">브랜드</a>
+              <div class="gnb-dropdown">
+                <a href="/about/philosophy">브랜드 철학</a>
+                <a href="/about/story">브랜드 스토리</a>
+                <a href="/about/journey">브랜드 여정</a>
+                <a href="/about/material">소재 이야기</a>
+                <a href="/about/sustainability">지속가능성</a>
+              </div>
+            </li>
+            <li><a href="/product">제품</a></li>
+            <li><a href="/guide">타월 가이드</a></li>
+            <li>
+              <a href="/b2b">B2B문의</a>
+              <div class="gnb-dropdown">
+                <a href="/b2b/bulk">대량구매</a>
+                <a href="/b2b/partnership">파트너십</a>
+              </div>
+            </li>
+            <li><a href="/reviews">고객 후기</a></li>
+            <li>
+              <a href="/support">고객센터</a>
+              <div class="gnb-dropdown">
+                <a href="/support/faq">FAQ</a>
+                <a href="/support/inquiry">1:1 문의</a>
+                <a href="/support/order">주문 조회</a>
+                <a href="/support/store">매장 안내</a>
+              </div>
+            </li>
+          </ul>
         </nav>
-        <div class="nav-utils">
+        <div class="header-utils">
           <i data-lucide="search"></i>
           <i data-lucide="user"></i>
           <i data-lucide="shopping-cart"></i>
+          <button class="mobile-menu-btn">
+            <i data-lucide="menu"></i>
+          </button>
         </div>
       </div>
     </div>
   </header>
 
+  <!-- 메인 -->
   <main>
 
-    <!-- 섹션 1: 히어로 -->
-    <section class="hero-fullwidth">
-      <div class="img-placeholder-fullscreen">
-        <i data-lucide="image"></i>
-      </div>
-      <div class="hero-content">
-        <h1 class="section-title">타월 하나에 집중하면,<br>피부가 달라져요</h1>
-        <p class="section-desc">많이 만드는 대신, 하나를 제대로 만드는 길을 택했습니다</p>
-      </div>
-    </section>
-
-    <!-- 섹션 2: 왜 페이스타월 '하나'인가 -->
-    <section class="why-section">
+    <!-- 섹션 1: 왜 페이스타월 하나에 집중하는가 -->
+    <section class="philosophy-hero">
       <div class="container">
-        <div class="text-center">
-          <h2 class="section-title">매일 얼굴에 닿는데,<br>왜 아무거나 쓰고 있었을까요</h2>
-          <p class="section-desc mx-auto">스킨케어는 꼼꼼히 고르면서 세안 후 닿는 타월은 신경 쓰지 않았어요</p>
-        </div>
-        <div class="why-content">
-          <div>
-            <div class="why-text-block">
-              <p>세안 후 피부가 가장 민감한 순간에 닿는 것이 타월입니다. 그런데 우리는 그 타월에 대해 얼마나 알고 있을까요?</p>
-            </div>
-            <div class="why-text-block">
-              <p>배스타월, 핸드타월이 아닌 '페이스타월'에만 집중하는 이유가 있습니다. 얼굴 피부에 맞는 밀도, 소재, 사이즈가 따로 있다는 관점에서 시작했습니다.</p>
+        <div class="philosophy-hero-inner">
+          <div class="philosophy-hero-content">
+            <h1>백 가지를 잘 만드는 것보다,<br>한 가지를 제대로 만들고 싶었어요</h1>
+            <p class="sub">매일 아침저녁, 하루에 두 번 얼굴에 닿는 물건. 우리는 그 타월 하나에 모든 걸 걸었습니다.</p>
+            <div class="philosophy-hero-text">
+              <p>세안 후 타월이 피부에 미치는 영향은 생각보다 큽니다. 거친 섬유는 피부를 자극하고, 흡수력이 낮은 타월은 물기를 제대로 흡수하지 못해 피부를 여러 번 문지르게 만듭니다.</p>
+              <p>좋은 화장품을 쓰면서 수건은 아무거나 쓰는 모순. 우리는 이 지점에서 시작했습니다.</p>
+              <p>페이스타월 하나에 집중하기로 한 이유는 단순합니다. 배스타월도, 핸드타월도 아닌, 오직 얼굴용 타월의 기준을 만들고 싶었기 때문입니다.</p>
             </div>
           </div>
-          <div class="img-placeholder" style="aspect-ratio:4/3;">
+          <div class="img-placeholder" style="aspect-ratio:4/5;">
             <i data-lucide="image"></i>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 섹션 3: 우리가 지키는 기준 -->
-    <section class="standards-section">
+    <!-- 섹션 2: 우리가 믿는 세 가지 -->
+    <section class="philosophy-values">
       <div class="container">
         <div class="text-center">
-          <h2 class="section-title">보이지 않는 곳까지<br>기준을 세웠어요</h2>
-          <p class="section-desc mx-auto">소재, 제직, 마감 — 타월 한 장에 담긴 기준들</p>
+          <h2 class="section-title">타월 하나에도 기준이 있어야 하니까요</h2>
         </div>
-        <div class="standards-grid">
-          <div class="standard-card">
+        <div class="values-grid">
+          
+          <!-- 카드 1: 소재 정직 -->
+          <div class="value-card">
+            <div class="icon-box">
+              <i data-lucide="file-text"></i>
+            </div>
+            <h3 class="value-card-title">소재 정직</h3>
+            <p class="value-card-desc">원면 산지, 제직 공법, GSM까지 숨기지 않고 전부 공개해요</p>
+            <a href="/about/material" class="value-card-link">
+              소재 이야기 보기
+              <i data-lucide="arrow-right"></i>
+            </a>
+          </div>
+
+          <!-- 카드 2: 하나에 집중 -->
+          <div class="value-card">
+            <div class="icon-box">
+              <i data-lucide="target"></i>
+            </div>
+            <h3 class="value-card-title">하나에 집중</h3>
+            <p class="value-card-desc">페이스타월만 연구합니다. 배스타월도, 핸드타월도 아닌 오직 얼굴용</p>
+          </div>
+
+          <!-- 카드 3: 지속가능한 선택 -->
+          <div class="value-card">
             <div class="icon-box">
               <i data-lucide="leaf"></i>
             </div>
-            <h3 class="standard-card-title">원면</h3>
-            <p class="standard-card-desc">[원면 산지명] 장섬유 원면만 사용해요</p>
+            <h3 class="value-card-title">지속가능한 선택</h3>
+            <p class="value-card-desc">좋은 소재가 환경에도 좋은 선택이 되도록 고민합니다</p>
+            <a href="/about/sustainability" class="value-card-link">
+              자세히 보기
+              <i data-lucide="arrow-right"></i>
+            </a>
           </div>
-          <div class="standard-card">
-            <div class="icon-box">
-              <i data-lucide="grid-3x3"></i>
-            </div>
-            <h3 class="standard-card-title">밀도</h3>
-            <p class="standard-card-desc">[GSM 수치]g/㎡, 얼굴에 닿기에 적합한 밀도</p>
-          </div>
-          <div class="standard-card">
-            <div class="icon-box">
-              <i data-lucide="shield-check"></i>
-            </div>
-            <h3 class="standard-card-title">안심</h3>
-            <p class="standard-card-desc">형광증백제·유연제 무첨가</p>
-          </div>
-          <div class="standard-card">
-            <div class="icon-box">
-              <i data-lucide="package"></i>
-            </div>
-            <h3 class="standard-card-title">환경</h3>
-            <p class="standard-card-desc">친환경 패키징, 과대포장 없이</p>
-          </div>
-        </div>
-        <div class="standards-cta">
-          <a href="/about/material" class="btn btn-primary">소재 이야기 자세히 보기</a>
+
         </div>
       </div>
     </section>
 
-    <!-- 섹션 4: 브랜드 한 줄 선언 -->
-    <section class="declaration-section">
-      <div class="img-placeholder-fullscreen">
-        <i data-lucide="image"></i>
-      </div>
-      <div class="declaration-content">
-        <h2 class="section-title">한 장의 타월이<br>하루를 바꿀 수 있다고 믿어요</h2>
-        <a href="/about/story" class="btn btn-primary">브랜드 스토리 보기</a>
+    <!-- 하단 링크 -->
+    <section class="bottom-link-section">
+      <div class="container">
+        <a href="/about/story" class="bottom-link">
+          브랜드가 만들어진 이야기
+          <i data-lucide="arrow-right"></i>
+        </a>
       </div>
     </section>
 
@@ -560,69 +583,62 @@
       <div class="footer-grid">
         <div>
           <p class="footer-brand-name">[브랜드명]</p>
-          <p class="footer-brand-desc">페이스타월 전문 브랜드</p>
+          <p class="footer-brand-desc">프리미엄 페이스타월</p>
           <div class="footer-info">
-            <p>상호: [클라이언트 확인 필요]</p>
-            <p>대표: [클라이언트 확인 필요]</p>
-            <p>사업자번호: [클라이언트 확인 필요]</p>
-            <p>주소: [클라이언트 확인 필요]</p>
-            <p>전화: [클라이언트 확인 필요]</p>
-            <p>이메일: [클라이언트 확인 필요]</p>
+            상호: [클라이언트 확인 필요]<br>
+            대표: [클라이언트 확인 필요]<br>
+            사업자번호: [클라이언트 확인 필요]<br>
+            주소: [클라이언트 확인 필요]<br>
+            전화: [클라이언트 확인 필요]<br>
+            이메일: [클라이언트 확인 필요]
           </div>
           <div class="footer-sns">
-            <a href="#"><i data-lucide="instagram"></i></a>
-            <a href="#"><i data-lucide="youtube"></i></a>
+            <i data-lucide="instagram"></i>
+            <i data-lucide="youtube"></i>
           </div>
         </div>
         <div>
           <p class="footer-col-title">브랜드</p>
           <a href="/about/philosophy">브랜드 철학</a>
-          <a href="/about/story">브랜드 스토리</a>
-          <a href="/about/journey">브랜드 여정</a>
-          <a href="/about/material">소재 이야기</a>
-          <a href="/about/sustainability">지속가능성</a>
-        </div>
-        <div>
-          <p class="footer-col-title">쇼핑</p>
           <a href="/product">제품</a>
           <a href="/guide">타월 가이드</a>
+        </div>
+        <div>
+          <p class="footer-col-title">비즈니스</p>
+          <a href="/b2b/bulk">대량구매</a>
           <a href="/reviews">고객 후기</a>
         </div>
         <div>
-          <p class="footer-col-title">고객지원</p>
+          <p class="footer-col-title">고객 지원</p>
           <a href="/support/faq">FAQ</a>
           <a href="/support/inquiry">1:1 문의</a>
-          <a href="/support/order">주문 조회</a>
-          <a href="/support/store">매장 안내</a>
         </div>
       </div>
       <div class="footer-bottom">
         <span>© 2025 [브랜드명]. All rights reserved.</span>
-        <span><a href="#">개인정보처리방침</a> | <a href="#">이용약관</a></span>
+        <span>이용약관 | 개인정보처리방침</span>
       </div>
     </div>
   </footer>
 
   <!-- TOP 버튼 -->
-  <button class="btn-top" id="btnTop">
+  <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
     <i data-lucide="arrow-up"></i>
   </button>
 
   <script>
     lucide.createIcons();
 
-    // TOP 버튼
-    const btnTop = document.getElementById('btnTop');
+    // TOP 버튼 표시
     window.addEventListener('scroll', () => {
+      const topBtn = document.querySelector('.top-btn');
       if (window.scrollY > 300) {
-        btnTop.classList.add('visible');
+        topBtn.classList.add('show');
       } else {
-        btnTop.classList.remove('visible');
+        topBtn.classList.remove('show');
       }
     });
-    btnTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
   </script>
+
 </body>
 </html>
