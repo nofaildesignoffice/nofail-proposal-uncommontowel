@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>브랜드 스토리 | 언커먼타올 - 페이스타월 하나에 담긴 이야기</title>
-  <meta name="description" content="좋은 수건은 많은데, 좋은 페이스타월은 왜 없었을까. 그 의문에서 시작된 브랜드 이야기를 전해드립니다.">
-  <meta name="keywords" content="페이스타월 브랜드 스토리, 타월 브랜드, 세안타월 브랜드, 언커먼타올">
+  <title>브랜드 스토리 | 언커먼타올 - 좋은 타월을 찾다가, 직접 만들었습니다</title>
+  <meta name="description" content="시중 어디에서도 만족스러운 페이스타월을 찾을 수 없었던 날, 언커먼타올이 시작되었습니다. 브랜드의 탄생 배경과 핵심 가치를 소개합니다.">
+  <meta name="keywords" content="타월 브랜드 스토리, 프리미엄 타월 브랜드, 페이스타월 브랜드 소개, 언커먼타올">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -19,7 +19,6 @@
       --bg-white: #FFFFFF;
       --bg-light: #F5F5F5;
       --bg-dark: #2D2D2D;
-      --bg-black: #1A1A1A;
       --border-light: #E0E0E0;
       --border-default: #D0D0D0;
       --placeholder-bg: #E0E0E0;
@@ -48,9 +47,7 @@
       padding: 0 24px;
     }
 
-    /* ==========================================
-       HEADER
-       ========================================== */
+    /* Header */
     .header {
       position: sticky;
       top: 0;
@@ -68,41 +65,33 @@
       justify-content: space-between;
       height: 72px;
     }
-    .header.scrolled .header-inner {
-      height: 64px;
-    }
     .logo {
       font-size: 18px;
       font-weight: 700;
       color: var(--text-black);
-      transition: font-size 0.3s;
-    }
-    .header.scrolled .logo {
-      font-size: 16px;
     }
     .gnb {
       display: flex;
       gap: 32px;
     }
-    .gnb > li {
+    .gnb-item {
       position: relative;
     }
-    .gnb > li > a {
-      display: block;
+    .gnb-link {
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
       padding: 8px 0;
+      display: block;
     }
-    .gnb > li > a.active {
+    .gnb-link.active {
       color: var(--text-black);
       font-weight: 600;
     }
     .gnb-dropdown {
       position: absolute;
       top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
+      left: 0;
       background: var(--bg-white);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-sm);
@@ -111,12 +100,13 @@
       box-shadow: var(--shadow-md);
       opacity: 0;
       visibility: hidden;
+      transform: translateY(-8px);
       transition: all 0.2s;
-      margin-top: 8px;
     }
-    .gnb > li:hover .gnb-dropdown {
+    .gnb-item:hover .gnb-dropdown {
       opacity: 1;
       visibility: visible;
+      transform: translateY(0);
     }
     .gnb-dropdown a {
       display: block;
@@ -134,15 +124,13 @@
       align-items: center;
       gap: 16px;
     }
-    .header-utils button {
-      width: 24px;
-      height: 24px;
+    .util-btn {
+      color: var(--text-dark);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-dark);
     }
-    .header-utils svg {
+    .util-btn svg {
       width: 22px;
       height: 22px;
     }
@@ -150,69 +138,37 @@
       display: none;
     }
 
-    /* ==========================================
-       HERO
-       ========================================== */
-    .hero-story {
-      position: relative;
-      height: 560px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* Page Hero */
+    .page-hero {
+      padding: 80px 0 60px;
       text-align: center;
-      background: var(--bg-dark);
-      overflow: hidden;
+      background: var(--bg-light);
     }
-    .hero-story-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--bg-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hero-story-bg svg {
-      width: 80px;
-      height: 80px;
-      color: rgba(255,255,255,0.15);
-    }
-    .hero-story-content {
-      position: relative;
-      z-index: 2;
-      max-width: 720px;
-      padding: 0 24px;
-    }
-    .hero-story-title {
-      font-size: 42px;
+    .page-hero h1 {
+      font-size: 36px;
       font-weight: 700;
-      color: #FFFFFF;
+      color: var(--text-black);
       line-height: 1.3;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
-    .hero-story-subtitle {
-      font-size: 18px;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.6;
+    .page-hero-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
     }
 
-    /* ==========================================
-       SECTION COMMON
-       ========================================== */
-    .section {
-      padding: 100px 0;
+    /* Section Common */
+    section {
+      padding: 80px 0;
     }
     .section-label {
       font-size: 14px;
       font-weight: 600;
       color: var(--text-light);
       margin-bottom: 12px;
-      letter-spacing: 0.5px;
     }
     .section-title {
-      font-size: 36px;
+      font-size: 32px;
       font-weight: 700;
       color: var(--text-black);
       line-height: 1.3;
@@ -221,82 +177,64 @@
     .section-desc {
       font-size: 16px;
       color: var(--text-gray);
-      line-height: 1.8;
+      line-height: 1.7;
+      max-width: 640px;
     }
     .text-center { text-align: center; }
     .mx-auto { margin-left: auto; margin-right: auto; }
 
-    /* ==========================================
-       BACKGROUND SECTION
-       ========================================== */
-    .background-section {
-      background: var(--bg-light);
+    /* Story Section */
+    .story-section {
+      background: var(--bg-white);
     }
-    .background-inner {
+    .story-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      gap: 60px;
       align-items: center;
+      margin-top: 48px;
     }
-    .background-text {
-      max-width: 520px;
-    }
-    .background-text .section-title {
-      margin-bottom: 20px;
-    }
-    .background-text .section-desc {
-      margin-bottom: 24px;
-    }
-    .background-story {
-      font-size: 15px;
+    .story-text {
+      font-size: 17px;
       color: var(--text-dark);
       line-height: 1.9;
     }
-    .background-story p {
+    .story-text p {
       margin-bottom: 20px;
     }
-    .background-story p:last-child {
-      margin-bottom: 0;
-    }
-    .background-image {
+    .img-placeholder {
       background: var(--placeholder-bg);
       border-radius: var(--radius-md);
-      aspect-ratio: 4/5;
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 100%;
     }
-    .background-image svg {
-      width: 64px;
-      height: 64px;
+    .img-placeholder svg {
       color: var(--placeholder-icon);
+      width: 48px;
+      height: 48px;
     }
 
-    /* ==========================================
-       VALUES SECTION
-       ========================================== */
+    /* Values Section */
     .values-section {
-      background: var(--bg-white);
-    }
-    .values-header {
-      text-align: center;
-      max-width: 640px;
-      margin: 0 auto 64px;
+      background: var(--bg-light);
     }
     .values-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 32px;
+      margin-top: 48px;
     }
-    .value-card {
+    .value-item {
       padding: 40px 32px;
-      border: 1px solid var(--border-light);
+      background: var(--bg-white);
       border-radius: var(--radius-md);
       text-align: center;
     }
     .value-icon {
-      width: 56px;
-      height: 56px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       background: var(--bg-light);
       display: flex;
@@ -310,7 +248,7 @@
       color: var(--text-dark);
     }
     .value-title {
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 700;
       color: var(--text-black);
       margin-bottom: 12px;
@@ -321,55 +259,55 @@
       line-height: 1.7;
     }
 
-    /* ==========================================
-       INTERNAL LINKS
-       ========================================== */
-    .internal-links {
-      background: var(--bg-light);
-      padding: 80px 0;
+    /* Vision Section */
+    .vision-section {
+      background: var(--bg-dark);
+      text-align: center;
     }
-    .internal-links-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
+    .vision-section .section-title {
+      color: #FFFFFF;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .internal-link-card {
-      padding: 32px;
-      background: var(--bg-white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: all 0.2s;
+    .vision-section .section-desc {
+      color: rgba(255,255,255,0.6);
+      margin-left: auto;
+      margin-right: auto;
     }
-    .internal-link-card:hover {
-      border-color: var(--text-dark);
-      box-shadow: var(--shadow-sm);
-    }
-    .internal-link-text {
-      flex: 1;
-    }
-    .internal-link-label {
-      font-size: 13px;
-      color: var(--text-light);
-      margin-bottom: 4px;
-    }
-    .internal-link-title {
-      font-size: 17px;
-      font-weight: 600;
-      color: var(--text-black);
-    }
-    .internal-link-card svg {
-      width: 20px;
-      height: 20px;
-      color: var(--text-light);
-      flex-shrink: 0;
+    .vision-cta {
+      margin-top: 40px;
     }
 
-    /* ==========================================
-       FOOTER
-       ========================================== */
+    /* Button */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary {
+      background: var(--text-black);
+      color: #FFFFFF;
+      border: 1px solid var(--text-black);
+    }
+    .btn-secondary {
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--border-default);
+    }
+    .btn-white {
+      background: #FFFFFF;
+      color: var(--text-black);
+      border: 1px solid #FFFFFF;
+    }
+
+    /* Footer */
     .footer {
       padding: 60px 0 32px;
       background: var(--bg-white);
@@ -396,7 +334,7 @@
     }
     .footer-info {
       font-size: 13px;
-      color: var(--text-muted);
+      color: var(--text-light);
       line-height: 1.8;
     }
     .footer-col-title {
@@ -412,21 +350,21 @@
       padding: 4px 0;
     }
     .footer-col a:hover {
-      color: var(--text-black);
+      color: var(--text-dark);
     }
     .footer-sns {
       display: flex;
       gap: 12px;
-      margin-top: 16px;
+      margin-top: 12px;
     }
     .footer-sns a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 36px;
       height: 36px;
       border-radius: 50%;
       background: var(--bg-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
     .footer-sns svg {
       width: 18px;
@@ -436,7 +374,6 @@
     .footer-bottom {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       padding-top: 24px;
       font-size: 13px;
       color: var(--text-muted);
@@ -445,86 +382,70 @@
       display: flex;
       gap: 16px;
     }
-    .footer-bottom-links a {
-      color: var(--text-muted);
-    }
     .footer-bottom-links a:hover {
       color: var(--text-dark);
     }
 
-    /* ==========================================
-       TOP BUTTON
-       ========================================== */
-    .top-button {
+    /* Top Button */
+    .top-btn {
       position: fixed;
-      bottom: 32px;
-      right: 32px;
+      bottom: 40px;
+      right: 40px;
       width: 48px;
       height: 48px;
-      border-radius: 50%;
       background: var(--text-black);
       color: #FFFFFF;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
       visibility: hidden;
       transition: all 0.3s;
-      z-index: 90;
+      box-shadow: var(--shadow-md);
     }
-    .top-button.visible {
+    .top-btn.show {
       opacity: 1;
       visibility: visible;
     }
-    .top-button svg {
+    .top-btn:hover {
+      transform: translateY(-4px);
+    }
+    .top-btn svg {
       width: 20px;
       height: 20px;
     }
 
-    /* ==========================================
-       RESPONSIVE
-       ========================================== */
+    /* Responsive */
     @media (max-width: 768px) {
-      .gnb {
-        display: none;
-      }
+      .gnb { display: none; }
       .mobile-menu-btn {
         display: flex;
-        width: 24px;
-        height: 24px;
         color: var(--text-dark);
       }
-      .hero-story {
-        height: 440px;
+      .mobile-menu-btn svg {
+        width: 24px;
+        height: 24px;
       }
-      .hero-story-title {
+      .page-hero {
+        padding: 60px 0 40px;
+      }
+      .page-hero h1 {
         font-size: 28px;
       }
-      .hero-story-subtitle {
-        font-size: 15px;
-      }
-      .section {
+      section {
         padding: 60px 0;
       }
       .section-title {
         font-size: 26px;
       }
-      .background-inner {
+      .story-content {
         grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .background-image {
-        order: -1;
-      }
-      .values-header {
-        margin-bottom: 40px;
+        gap: 32px;
       }
       .values-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      .internal-links-grid {
-        grid-template-columns: 1fr;
+        gap: 24px;
       }
       .footer-grid {
         grid-template-columns: 1fr;
@@ -533,9 +454,8 @@
       .footer-bottom {
         flex-direction: column;
         gap: 12px;
-        text-align: center;
       }
-      .top-button {
+      .top-btn {
         bottom: 24px;
         right: 24px;
         width: 44px;
@@ -546,239 +466,219 @@
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- Header -->
   <header class="header">
     <div class="container">
       <div class="header-inner">
         <a href="page_01.html" class="logo">언커먼타올</a>
-        
-        <nav>
-          <ul class="gnb">
-            <li><a href="page_01.html">메인</a></li>
-            <li>
-              <a href="page_02.html" class="active">브랜드</a>
-              <ul class="gnb-dropdown">
-                <li><a href="page_02.html">브랜드 철학</a></li>
-                <li><a href="page_03.html">브랜드 스토리</a></li>
-                <li><a href="page_04.html">브랜드 여정</a></li>
-                <li><a href="page_05.html">소재 이야기</a></li>
-                <li><a href="page_06.html">지속가능성</a></li>
-              </ul>
-            </li>
-            <li><a href="page_07.html">제품</a></li>
-            <li><a href="page_08.html">타월 가이드</a></li>
-            <li>
-              <a href="page_09.html">B2B문의</a>
-              <ul class="gnb-dropdown">
-                <li><a href="page_09.html">대량구매</a></li>
-                <li><a href="page_10.html">파트너십</a></li>
-              </ul>
-            </li>
-            <li><a href="page_11.html">고객 후기</a></li>
-            <li>
-              <a href="page_12.html">고객센터</a>
-              <ul class="gnb-dropdown">
-                <li><a href="page_12.html">FAQ</a></li>
-                <li><a href="page_13.html">1:1 문의</a></li>
-                <li><a href="page_14.html">주문 조회</a></li>
-                <li><a href="page_15.html">매장 안내</a></li>
-              </ul>
-            </li>
-          </ul>
+        <nav class="gnb">
+          <div class="gnb-item">
+            <a href="page_02.html" class="gnb-link active">브랜드</a>
+            <div class="gnb-dropdown">
+              <a href="page_02.html">브랜드 철학</a>
+              <a href="page_03.html">브랜드 스토리</a>
+              <a href="page_04.html">브랜드 여정</a>
+              <a href="page_05.html">소재 이야기</a>
+              <a href="page_06.html">지속가능성</a>
+            </div>
+          </div>
+          <div class="gnb-item">
+            <a href="page_07.html" class="gnb-link">제품</a>
+          </div>
+          <div class="gnb-item">
+            <a href="page_08.html" class="gnb-link">타월 가이드</a>
+          </div>
+          <div class="gnb-item">
+            <a href="page_09.html" class="gnb-link">B2B문의</a>
+            <div class="gnb-dropdown">
+              <a href="page_09.html">대량구매</a>
+              <a href="page_10.html">파트너십</a>
+            </div>
+          </div>
+          <div class="gnb-item">
+            <a href="page_11.html" class="gnb-link">고객 후기</a>
+          </div>
+          <div class="gnb-item">
+            <a href="page_12.html" class="gnb-link">고객센터</a>
+            <div class="gnb-dropdown">
+              <a href="page_12.html">FAQ</a>
+              <a href="page_13.html">1:1 문의</a>
+              <a href="page_14.html">주문 조회</a>
+              <a href="page_15.html">매장 안내</a>
+            </div>
+          </div>
         </nav>
-
         <div class="header-utils">
-          <button type="button" aria-label="검색">
-            <i data-lucide="search"></i>
-          </button>
-          <button type="button" aria-label="마이페이지">
-            <i data-lucide="user"></i>
-          </button>
-          <button type="button" aria-label="장바구니">
-            <i data-lucide="shopping-cart"></i>
-          </button>
-          <button type="button" class="mobile-menu-btn" aria-label="메뉴">
-            <i data-lucide="menu"></i>
-          </button>
+          <button class="util-btn" aria-label="검색"><i data-lucide="search"></i></button>
+          <button class="util-btn" aria-label="마이페이지"><i data-lucide="user"></i></button>
+          <button class="util-btn" aria-label="장바구니"><i data-lucide="shopping-cart"></i></button>
+          <button class="mobile-menu-btn" aria-label="메뉴"><i data-lucide="menu"></i></button>
         </div>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- HERO -->
-    <section class="hero-story">
-      <div class="hero-story-bg">
-        <i data-lucide="image"></i>
-      </div>
-      <div class="hero-story-content">
-        <h1 class="hero-story-title">좋은 수건은 많은데,<br>좋은 페이스타월은 없었습니다</h1>
-        <p class="hero-story-subtitle">그 의문이 이 브랜드의 시작이었습니다</p>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <h1>좋은 타월을 찾다가,<br>직접 만들기로 했습니다</h1>
+        <p class="page-hero-desc">시중 어디에서도 만족스러운 페이스타월을 찾을 수 없었던 그날부터</p>
       </div>
     </section>
 
-    <!-- BACKGROUND -->
-    <section class="section background-section">
+    <!-- Section 1: 브랜드 탄생 이야기 -->
+    <section class="story-section">
       <div class="container">
-        <div class="background-inner">
-          <div class="background-text">
-            <p class="section-label">BRAND STORY</p>
-            <h2 class="section-title">세안 후 얼굴을 닦는 그 순간이,<br>스킨케어의 시작이었습니다</h2>
-            <p class="section-desc">수십만 원의 에센스를 바르면서, 얼굴을 닦는 타월은 왜 아무거나 쓰고 있었을까요?</p>
-            
-            <div class="background-story">
-              <p>우리는 스킨케어에 많은 시간과 비용을 투자합니다. 그런데 세안 후 얼굴을 닦는 타월은 무심히 선택하고 있었습니다. 바디타월, 바스타월은 시장에 많지만, 얼굴 전용 타월은 찾기 어려웠습니다.</p>
-              
-              <p>피부에 직접 닿는 순간, 촉감이 거칠거나 보풀이 일어나는 타월은 스킨케어의 첫 단계를 망치고 있었습니다. 이 문제를 발견한 순간, 우리는 페이스타월 하나만 제대로 만들어보기로 결심했습니다.</p>
-              
-              <p>수많은 원면을 테스트하고, 제직 공법을 연구하며, 실제 사용자들의 피드백을 반영했습니다. 그렇게 탄생한 것이 언커먼타올입니다.</p>
+        <div class="story-content">
+          <div>
+            <p class="section-label">브랜드 탄생 배경</p>
+            <h2 class="section-title">이 브랜드가<br>시작된 이유</h2>
+            <div class="story-text">
+              <p>매일 아침, 세안 후 얼굴을 닦을 때마다 느꼈던 불편함. 부드럽지 않은 촉감, 흡수력이 떨어지는 원단, 알 수 없는 원산지와 제조 과정. 시중에서 판매되는 타월은 너무 많았지만, 정작 '좋은 타월'은 찾을 수 없었습니다.</p>
+              <p>그날 이후, 우리는 직접 만들기로 결심했습니다. 원면의 출처부터 제직 공법, 마감 처리까지 모든 과정을 투명하게 공개하고, 매일 피부에 닿는 순간을 더 좋게 만드는 페이스타월. 그것이 언커먼타올이 시작된 이유입니다.</p>
             </div>
           </div>
-
-          <div class="background-image">
+          <div class="img-placeholder" style="aspect-ratio:4/3;">
             <i data-lucide="image"></i>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- VALUES -->
-    <section class="section values-section">
+    <!-- Section 2: 핵심 가치 -->
+    <section class="values-section">
       <div class="container">
-        <div class="values-header">
-          <p class="section-label">OUR VALUES</p>
-          <h2 class="section-title">우리가 타월을 만드는 마음</h2>
+        <div class="text-center">
+          <p class="section-label">브랜드 핵심 가치</p>
+          <h2 class="section-title">타협하지 않는<br>기준이 있습니다</h2>
         </div>
-
         <div class="values-grid">
-          <div class="value-card">
+          <div class="value-item">
             <div class="value-icon">
-              <i data-lucide="file-check"></i>
+              <i data-lucide="eye"></i>
             </div>
-            <h3 class="value-title">정직한 소재</h3>
-            <p class="value-desc">원면부터 염색까지, 모든 성분과 공정을 투명하게 공개합니다</p>
+            <h3 class="value-title">원면의 출처를 밝힙니다</h3>
+            <p class="value-desc">원면 산지부터 제직 공장까지, 모든 공급망을 투명하게 공개합니다. 고객이 믿고 선택할 수 있도록 숨기지 않습니다.</p>
           </div>
-
-          <div class="value-card">
+          <div class="value-item">
             <div class="value-icon">
-              <i data-lucide="calendar"></i>
+              <i data-lucide="shield"></i>
             </div>
-            <h3 class="value-title">매일의 기준</h3>
-            <p class="value-desc">특별한 날이 아니라, 매일 쓰는 물건이 좋아야 합니다</p>
+            <h3 class="value-title">불필요한 화학 가공을<br>하지 않습니다</h3>
+            <p class="value-desc">피부에 직접 닿는 제품이기에, 표백·염색·형광증백제를 최소화하고 원면 본연의 부드러움을 살립니다.</p>
           </div>
-
-          <div class="value-card">
+          <div class="value-item">
             <div class="value-icon">
-              <i data-lucide="heart"></i>
+              <i data-lucide="leaf"></i>
             </div>
-            <h3 class="value-title">피부를 생각하는 마음</h3>
-            <p class="value-desc">부드러움은 기본, 안전은 타협하지 않습니다</p>
+            <h3 class="value-title">한 장을 만들더라도<br>환경을 생각합니다</h3>
+            <p class="value-desc">재생 가능한 소재, 최소 포장재, 탄소 절감 공정. 한 장의 타월이 지구에 남기는 흔적을 줄이기 위해 노력합니다.</p>
           </div>
+        </div>
+        <div class="text-center" style="margin-top:40px;">
+          <a href="page_02.html" class="btn btn-secondary">우리의 철학 더 알아보기</a>
         </div>
       </div>
     </section>
 
-    <!-- INTERNAL LINKS -->
-    <section class="internal-links">
+    <!-- Section 3: 비전 -->
+    <section class="vision-section">
       <div class="container">
-        <div class="internal-links-grid">
-          <a href="page_05.html" class="internal-link-card">
-            <div class="internal-link-text">
-              <p class="internal-link-label">정직한 소재의 근거</p>
-              <p class="internal-link-title">소재 이야기</p>
-            </div>
-            <i data-lucide="arrow-right"></i>
-          </a>
-
-          <a href="page_04.html" class="internal-link-card">
-            <div class="internal-link-text">
-              <p class="internal-link-label">브랜드의 시간</p>
-              <p class="internal-link-title">브랜드 여정</p>
-            </div>
-            <i data-lucide="arrow-right"></i>
-          </a>
+        <p class="section-label" style="color:rgba(255,255,255,0.5);">브랜드 비전</p>
+        <h2 class="section-title">한 장의 타월에서 시작해,<br>매일의 루틴을 바꾸겠습니다</h2>
+        <p class="section-desc">페이스타월을 시작으로, 피부에 닿는 모든 순간을 더 좋게. 언커먼타올은 한 가지 제품에 집중하며 쌓은 노하우를 바탕으로, 일상 속 작은 변화를 만들어갑니다. 고객의 매일이 더 건강하고 기분 좋아지는 그날까지, 우리의 여정은 계속됩니다.</p>
+        <div class="vision-cta">
+          <a href="page_04.html" class="btn btn-white">브랜드 여정 보기</a>
         </div>
       </div>
     </section>
+
   </main>
 
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div>
           <p class="footer-brand-name">언커먼타올</p>
-          <p class="footer-brand-desc">매일 얼굴에 닿는 타월, 프리미엄 페이스타월 전문 브랜드</p>
+          <p class="footer-brand-desc">매일 얼굴에 닿는 타월의 품질에 집중하는 프리미엄 페이스타월 브랜드</p>
           <div class="footer-info">
-            상호: [클라이언트 확인 필요]<br>
-            대표: [클라이언트 확인 필요]<br>
-            사업자번호: [클라이언트 확인 필요]<br>
-            주소: [클라이언트 확인 필요]<br>
-            전화: [클라이언트 확인 필요]<br>
-            이메일: [클라이언트 확인 필요]
+            상호: [상호명]<br>
+            대표: [대표명]<br>
+            사업자번호: [사업자번호]<br>
+            주소: [주소]<br>
+            전화: [전화번호]<br>
+            이메일: [이메일]
           </div>
           <div class="footer-sns">
             <a href="#" aria-label="인스타그램"><i data-lucide="instagram"></i></a>
             <a href="#" aria-label="유튜브"><i data-lucide="youtube"></i></a>
           </div>
         </div>
-
         <div class="footer-col">
           <p class="footer-col-title">브랜드</p>
           <a href="page_02.html">브랜드 철학</a>
+          <a href="page_03.html">브랜드 스토리</a>
+          <a href="page_04.html">브랜드 여정</a>
           <a href="page_05.html">소재 이야기</a>
           <a href="page_06.html">지속가능성</a>
         </div>
-
         <div class="footer-col">
-          <p class="footer-col-title">제품</p>
+          <p class="footer-col-title">제품·서비스</p>
           <a href="page_07.html">제품</a>
           <a href="page_08.html">타월 가이드</a>
+          <a href="page_09.html">대량구매</a>
+          <a href="page_10.html">파트너십</a>
           <a href="page_11.html">고객 후기</a>
         </div>
-
         <div class="footer-col">
-          <p class="footer-col-title">고객지원</p>
+          <p class="footer-col-title">고객센터</p>
           <a href="page_12.html">FAQ</a>
-          <a href="page_09.html">대량구매</a>
           <a href="page_13.html">1:1 문의</a>
+          <a href="page_14.html">주문 조회</a>
+          <a href="page_15.html">매장 안내</a>
         </div>
       </div>
-
       <div class="footer-bottom">
         <span>© 2025 언커먼타올. All rights reserved.</span>
         <div class="footer-bottom-links">
-          <a href="#">개인정보처리방침</a>
           <a href="#">이용약관</a>
+          <a href="#">개인정보처리방침</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- TOP BUTTON -->
-  <button type="button" class="top-button" aria-label="맨 위로">
+  <!-- Top Button -->
+  <button class="top-btn" aria-label="맨 위로">
     <i data-lucide="arrow-up"></i>
   </button>
 
   <script>
     lucide.createIcons();
 
-    // Header scroll
+    // Header scroll effect
     const header = document.querySelector('.header');
-    const topButton = document.querySelector('.top-button');
-    
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 50) {
         header.classList.add('scrolled');
-        topButton.classList.add('visible');
       } else {
         header.classList.remove('scrolled');
-        topButton.classList.remove('visible');
       }
     });
 
     // Top button
-    topButton.addEventListener('click', () => {
+    const topBtn = document.querySelector('.top-btn');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        topBtn.classList.add('show');
+      } else {
+        topBtn.classList.remove('show');
+      }
+    });
+    topBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
