@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>제품 | 언커먼타올 - 프리미엄 페이스타월</title>
-  <meta name="description" content="매일 얼굴에 닿는 한 장, 나에게 맞는 타월을 골라보세요. 언커먼타올의 전체 페이스타월 컬렉션을 만나보세요.">
-  <meta name="keywords" content="페이스타월, 프리미엄타월, 세안타월, 면타월, 타월선물세트, 페이스타올">
+  <title>제품 | 언커먼타올 - 페이스타월 전문 브랜드</title>
+  <meta name="description" content="언커먼타올의 페이스타월 제품 라인업. 컬러와 패키지 옵션별로 선택 가능합니다.">
+  <meta name="keywords" content="페이스타월, 세안타월, 고급타월, 면타월, 언커먼타올">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -49,7 +49,7 @@
     }
 
     /* Header */
-    .nav {
+    .header {
       position: sticky;
       top: 0;
       z-index: 100;
@@ -57,90 +57,114 @@
       border-bottom: 1px solid var(--border-light);
       transition: all 0.3s;
     }
-    .nav.scrolled {
+    .header.scrolled {
       box-shadow: var(--shadow-sm);
     }
-    .nav-inner {
+    .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       height: 72px;
     }
-    .nav-logo {
+    .header.scrolled .header-inner {
+      height: 64px;
+    }
+    .logo {
       font-size: 18px;
       font-weight: 700;
       color: var(--text-black);
+      transition: font-size 0.3s;
     }
-    .nav-links {
+    .header.scrolled .logo {
+      font-size: 16px;
+    }
+    .gnb {
       display: flex;
       gap: 32px;
     }
-    .nav-item {
+    .gnb > li {
       position: relative;
     }
-    .nav-item > a {
+    .gnb > li > a {
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
-      padding: 8px 0;
       display: block;
+      padding: 8px 0;
     }
-    .nav-item.active > a {
+    .gnb > li > a.active {
       color: var(--text-black);
       font-weight: 600;
     }
-    .nav-dropdown {
+    .gnb-dropdown {
       position: absolute;
       top: 100%;
       left: 0;
       background: var(--bg-white);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-sm);
+      min-width: 160px;
       padding: 8px 0;
-      min-width: 180px;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-8px);
-      transition: all 0.2s;
+      display: none;
       box-shadow: var(--shadow-md);
     }
-    .nav-item:hover .nav-dropdown {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-    .nav-dropdown a {
+    .gnb > li:hover .gnb-dropdown {
       display: block;
-      padding: 10px 20px;
+    }
+    .gnb-dropdown a {
+      display: block;
+      padding: 8px 16px;
       font-size: 14px;
       color: var(--text-gray);
     }
-    .nav-dropdown a:hover {
+    .gnb-dropdown a:hover {
       background: var(--bg-light);
       color: var(--text-black);
     }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
+    .header-utils {
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
-    .hamburger span {
-      display: block;
-      width: 100%;
-      height: 2px;
-      background: var(--text-black);
-      transition: all 0.3s;
+    .header-utils button {
+      color: var(--text-dark);
+    }
+    .header-utils svg {
+      width: 20px;
+      height: 20px;
+    }
+    .mobile-menu-btn {
+      display: none;
     }
 
-    /* Section Common */
+    /* Mobile Header */
+    @media (max-width: 768px) {
+      .gnb {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .header-utils button:first-child {
+        display: none;
+      }
+    }
+
+    /* Product List Section */
+    .product-list-section {
+      padding: 80px 0 120px;
+      background: var(--bg-white);
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
     .section-label {
       font-size: 14px;
       font-weight: 600;
       color: var(--text-light);
       margin-bottom: 12px;
+      letter-spacing: 1px;
     }
     .section-title {
       font-size: 36px;
@@ -154,65 +178,32 @@
       color: var(--text-gray);
       line-height: 1.7;
       max-width: 560px;
-    }
-    .text-center { text-align: center; }
-    .mx-auto { margin-left: auto; margin-right: auto; }
-
-    /* Product Section */
-    .product-section {
-      padding: 80px 0 100px;
-      background: var(--bg-white);
-    }
-    .product-header {
-      text-align: center;
-      margin-bottom: 48px;
+      margin: 0 auto;
     }
 
-    /* Filter Bar */
-    .filter-bar {
+    /* Filter Tabs */
+    .filter-tabs {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 40px;
-      padding: 20px 24px;
-      background: var(--bg-light);
-      border-radius: var(--radius-md);
-    }
-    .filter-group {
-      display: flex;
+      justify-content: center;
       gap: 16px;
+      margin-bottom: 48px;
       flex-wrap: wrap;
     }
-    .filter-label {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-dark);
-      margin-right: 8px;
-    }
-    .filter-btn {
-      padding: 8px 16px;
+    .filter-tab {
+      padding: 10px 24px;
       border: 1px solid var(--border-default);
       border-radius: var(--radius-sm);
-      background: var(--bg-white);
-      font-size: 14px;
+      font-size: 15px;
+      font-weight: 500;
       color: var(--text-gray);
+      background: var(--bg-white);
       transition: all 0.2s;
     }
-    .filter-btn:hover,
-    .filter-btn.active {
+    .filter-tab:hover,
+    .filter-tab.active {
       background: var(--text-black);
       color: var(--bg-white);
       border-color: var(--text-black);
-    }
-    .sort-select {
-      padding: 8px 16px;
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-sm);
-      background: var(--bg-white);
-      font-size: 14px;
-      color: var(--text-dark);
-      cursor: pointer;
     }
 
     /* Product Grid */
@@ -226,35 +217,37 @@
       border-radius: var(--radius-md);
       overflow: hidden;
       transition: all 0.3s;
-      cursor: pointer;
+      background: var(--bg-white);
     }
     .product-card:hover {
       box-shadow: var(--shadow-md);
       transform: translateY(-4px);
     }
-    .product-img {
+    .product-image {
+      width: 100%;
+      aspect-ratio: 1/1;
       background: var(--placeholder-bg);
-      aspect-ratio: 1;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
+      overflow: hidden;
     }
-    .product-img svg {
-      width: 64px;
-      height: 64px;
+    .product-image svg {
+      width: 48px;
+      height: 48px;
       color: var(--placeholder-icon);
     }
     .product-badge {
       position: absolute;
       top: 12px;
       left: 12px;
-      padding: 6px 12px;
       background: var(--text-black);
       color: var(--bg-white);
+      padding: 4px 12px;
+      border-radius: var(--radius-sm);
       font-size: 12px;
       font-weight: 600;
-      border-radius: var(--radius-sm);
     }
     .product-info {
       padding: 24px;
@@ -265,7 +258,7 @@
       margin-bottom: 8px;
     }
     .product-name {
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 700;
       color: var(--text-black);
       margin-bottom: 8px;
@@ -276,51 +269,68 @@
       line-height: 1.6;
       margin-bottom: 16px;
     }
-    .product-colors {
+    .product-specs {
       display: flex;
-      gap: 6px;
+      gap: 8px;
+      flex-wrap: wrap;
       margin-bottom: 16px;
     }
-    .color-dot {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: 1px solid var(--border-light);
+    .product-spec {
+      padding: 4px 10px;
       background: var(--bg-light);
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      color: var(--text-gray);
     }
     .product-price {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-    .price-original {
-      font-size: 15px;
-      color: var(--text-light);
-      text-decoration: line-through;
-    }
-    .price-current {
       font-size: 20px;
       font-weight: 700;
       color: var(--text-black);
+      margin-bottom: 16px;
     }
-    .price-discount {
-      font-size: 15px;
-      color: #E53935;
-      font-weight: 600;
+    .product-colors {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
     }
-    .product-btn {
-      width: 100%;
-      padding: 12px;
-      background: var(--text-black);
-      color: var(--bg-white);
+    .color-option {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid var(--border-light);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .color-option:hover {
+      border-color: var(--text-black);
+      transform: scale(1.1);
+    }
+    .product-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
       border-radius: var(--radius-sm);
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
       transition: opacity 0.2s;
+      flex: 1;
     }
-    .product-btn:hover {
-      opacity: 0.85;
+    .btn:hover { opacity: 0.85; }
+    .btn-primary {
+      background: var(--text-black);
+      color: var(--bg-white);
+      border: 1px solid var(--text-black);
+    }
+    .btn-secondary {
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--border-default);
     }
 
     /* Footer */
@@ -350,7 +360,7 @@
     }
     .footer-info {
       font-size: 13px;
-      color: var(--text-light);
+      color: var(--text-muted);
       line-height: 1.8;
     }
     .footer-col-title {
@@ -368,24 +378,29 @@
     .footer-col a:hover {
       color: var(--text-black);
     }
-    .footer-sns {
+    .footer-social {
       display: flex;
       gap: 12px;
       margin-top: 16px;
     }
-    .sns-icon {
+    .footer-social a {
       width: 36px;
       height: 36px;
+      border: 1px solid var(--border-light);
       border-radius: 50%;
-      background: var(--bg-light);
       display: flex;
       align-items: center;
       justify-content: center;
+      color: var(--text-gray);
     }
-    .sns-icon svg {
+    .footer-social a:hover {
+      background: var(--text-black);
+      color: var(--bg-white);
+      border-color: var(--text-black);
+    }
+    .footer-social svg {
       width: 18px;
       height: 18px;
-      color: var(--text-dark);
     }
     .footer-bottom {
       display: flex;
@@ -395,38 +410,41 @@
       font-size: 13px;
       color: var(--text-muted);
     }
-    .footer-links {
+    .footer-bottom-links {
       display: flex;
       gap: 16px;
     }
-    .footer-links a {
+    .footer-bottom-links a {
       color: var(--text-muted);
     }
-    .footer-links a:hover {
-      color: var(--text-dark);
+    .footer-bottom-links a:hover {
+      color: var(--text-black);
     }
 
-    /* TOP Button */
+    /* Top Button */
     .top-btn {
       position: fixed;
-      bottom: 40px;
-      right: 40px;
+      bottom: 32px;
+      right: 32px;
       width: 48px;
       height: 48px;
-      border-radius: 50%;
       background: var(--text-black);
       color: var(--bg-white);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
       visibility: hidden;
       transition: all 0.3s;
-      box-shadow: var(--shadow-md);
+      z-index: 90;
     }
     .top-btn.visible {
       opacity: 1;
       visibility: visible;
+    }
+    .top-btn:hover {
+      transform: translateY(-4px);
     }
     .top-btn svg {
       width: 20px;
@@ -434,34 +452,21 @@
     }
 
     /* Responsive */
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .section-title { font-size: 28px; }
-      
-      .filter-bar {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 16px;
-      }
-      .filter-group {
-        flex-wrap: wrap;
-      }
-      
+    @media (max-width: 1024px) {
       .product-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        gap: 24px;
       }
-      .product-info {
-        padding: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 28px;
       }
-      .product-name {
-        font-size: 15px;
+      .product-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
       }
-      .price-current {
-        font-size: 18px;
-      }
-      
       .footer-grid {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -471,9 +476,12 @@
         gap: 16px;
         text-align: center;
       }
-      .top-btn {
-        bottom: 24px;
-        right: 24px;
+      .filter-tabs {
+        gap: 8px;
+      }
+      .filter-tab {
+        padding: 8px 16px;
+        font-size: 14px;
       }
     }
   </style>
@@ -481,239 +489,325 @@
 <body>
 
   <!-- Header -->
-  <header class="nav">
+  <header class="header">
     <div class="container">
-      <div class="nav-inner">
-        <a href="page_01.html" class="nav-logo">언커먼타올</a>
-        <nav class="nav-links">
-          <div class="nav-item">
-            <a href="page_02.html">브랜드</a>
-            <div class="nav-dropdown">
-              <a href="page_02.html">브랜드 철학</a>
-              <a href="page_03.html">브랜드 스토리</a>
-              <a href="page_04.html">브랜드 여정</a>
-              <a href="page_05.html">소재 이야기</a>
-              <a href="page_06.html">지속가능성</a>
-            </div>
-          </div>
-          <div class="nav-item active">
-            <a href="page_07.html">제품</a>
-          </div>
-          <div class="nav-item">
-            <a href="page_08.html">타월 가이드</a>
-          </div>
-          <div class="nav-item">
-            <a href="page_09.html">B2B문의</a>
-            <div class="nav-dropdown">
-              <a href="page_09.html">대량구매</a>
-              <a href="page_10.html">파트너십</a>
-            </div>
-          </div>
-          <div class="nav-item">
-            <a href="page_11.html">고객 후기</a>
-          </div>
-          <div class="nav-item">
-            <a href="page_12.html">고객센터</a>
-            <div class="nav-dropdown">
-              <a href="page_12.html">FAQ</a>
-              <a href="page_13.html">1:1 문의</a>
-              <a href="page_14.html">주문 조회</a>
-              <a href="page_15.html">매장 안내</a>
-            </div>
-          </div>
+      <div class="header-inner">
+        <a href="page_01.html" class="logo">언커먼타올</a>
+        <nav>
+          <ul class="gnb">
+            <li>
+              <a href="page_02.html">브랜드</a>
+              <div class="gnb-dropdown">
+                <a href="page_02.html">브랜드 철학</a>
+                <a href="page_03.html">브랜드 스토리</a>
+                <a href="page_04.html">브랜드 여정</a>
+                <a href="page_05.html">소재 이야기</a>
+                <a href="page_06.html">지속가능성</a>
+              </div>
+            </li>
+            <li><a href="page_07.html" class="active">제품</a></li>
+            <li><a href="page_08.html">타월 가이드</a></li>
+            <li>
+              <a href="page_09.html">B2B문의</a>
+              <div class="gnb-dropdown">
+                <a href="page_09.html">대량구매</a>
+                <a href="page_10.html">파트너십</a>
+              </div>
+            </li>
+            <li><a href="page_11.html">고객 후기</a></li>
+            <li>
+              <a href="page_12.html">고객센터</a>
+              <div class="gnb-dropdown">
+                <a href="page_12.html">FAQ</a>
+                <a href="page_13.html">1:1 문의</a>
+                <a href="page_14.html">주문 조회</a>
+                <a href="page_15.html">매장 안내</a>
+              </div>
+            </li>
+          </ul>
         </nav>
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div class="header-utils">
+          <button type="button" aria-label="검색"><i data-lucide="search"></i></button>
+          <button type="button" aria-label="마이페이지"><i data-lucide="user"></i></button>
+          <button type="button" aria-label="장바구니"><i data-lucide="shopping-cart"></i></button>
+          <button type="button" class="mobile-menu-btn" aria-label="메뉴"><i data-lucide="menu"></i></button>
         </div>
       </div>
     </div>
   </header>
 
   <main>
-
-    <!-- Product Section -->
-    <section class="product-section">
+    <!-- Product List Section -->
+    <section class="product-list-section">
       <div class="container">
-        
-        <!-- Header -->
-        <div class="product-header">
-          <h1 class="section-title">페이스타월 컬렉션</h1>
-          <p class="section-desc mx-auto">매일 얼굴에 닿는 한 장, 나에게 맞는 타월을 골라보세요.</p>
+        <div class="section-header">
+          <p class="section-label">PRODUCTS</p>
+          <h1 class="section-title">페이스타월 전체 제품</h1>
+          <p class="section-desc">컬러와 패키지 옵션별로 선택 가능합니다.<br>모든 제품은 동일한 품질 기준을 충족합니다.</p>
         </div>
 
-        <!-- Filter Bar -->
-        <div class="filter-bar">
-          <div class="filter-group">
-            <span class="filter-label">컬러</span>
-            <button class="filter-btn active">전체</button>
-            <button class="filter-btn">화이트</button>
-            <button class="filter-btn">그레이</button>
-            <button class="filter-btn">베이지</button>
-            <button class="filter-btn">네이비</button>
-          </div>
-          <div class="filter-group">
-            <span class="filter-label">패키지</span>
-            <button class="filter-btn active">전체</button>
-            <button class="filter-btn">단품</button>
-            <button class="filter-btn">2장 세트</button>
-            <button class="filter-btn">선물세트</button>
-          </div>
-          <select class="sort-select">
-            <option>인기순</option>
-            <option>최신순</option>
-            <option>낮은 가격순</option>
-            <option>높은 가격순</option>
-          </select>
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+          <button class="filter-tab active">전체</button>
+          <button class="filter-tab">단품</button>
+          <button class="filter-tab">세트</button>
+          <button class="filter-tab">컬러별</button>
         </div>
 
         <!-- Product Grid -->
         <div class="product-grid">
-          
-          <!-- Product 1 -->
-          <div class="product-card">
-            <div class="product-img">
+          <!-- Product Card 1 -->
+          <article class="product-card">
+            <div class="product-image">
               <span class="product-badge">BEST</span>
               <i data-lucide="image"></i>
             </div>
             <div class="product-info">
               <p class="product-category">단품</p>
-              <h3 class="product-name">프리미엄 페이스타월 — 화이트</h3>
-              <p class="product-desc">매일 얼굴에 닿는 부드러움. 600 GSM 고밀도 원면 100%</p>
+              <h3 class="product-name">페이스타월 / 화이트</h3>
+              <p class="product-desc">가장 기본이 되는 화이트 컬러 페이스타월입니다.</p>
+              <div class="product-specs">
+                <span class="product-spec">면 100%</span>
+                <span class="product-spec">34×80cm</span>
+                <span class="product-spec">GSM 400</span>
+              </div>
+              <p class="product-price">[가격 정보]</p>
               <div class="product-colors">
-                <span class="color-dot"></span>
-                <span class="color-dot"></span>
-                <span class="color-dot"></span>
-                <span class="color-dot"></span>
+                <button class="color-option" style="background:#FFFFFF; border-color: var(--text-black);" aria-label="화이트"></button>
+                <button class="color-option" style="background:#F5F5F5;" aria-label="아이보리"></button>
+                <button class="color-option" style="background:#D3D3D3;" aria-label="그레이"></button>
               </div>
-              <div class="product-price">
-                <span class="price-current">18,000원</span>
+              <div class="product-actions">
+                <button class="btn btn-primary">구매하기</button>
+                <button class="btn btn-secondary"><i data-lucide="shopping-cart"></i></button>
               </div>
-              <button class="product-btn">구매하기</button>
             </div>
-          </div>
+          </article>
 
-          <!-- Product 2 -->
-          <div class="product-card">
-            <div class="product-img">
+          <!-- Product Card 2 -->
+          <article class="product-card">
+            <div class="product-image">
               <i data-lucide="image"></i>
             </div>
             <div class="product-info">
-              <p class="product-category">2장 세트</p>
-              <h3 class="product-name">페이스타월 세트 — 그레이</h3>
-              <p class="product-desc">두 장이면 충분한 일주일. 실속 구성</p>
+              <p class="product-category">단품</p>
+              <h3 class="product-name">페이스타월 / 아이보리</h3>
+              <p class="product-desc">따뜻한 느낌의 아이보리 컬러 페이스타월입니다.</p>
+              <div class="product-specs">
+                <span class="product-spec">면 100%</span>
+                <span class="product-spec">34×80cm</span>
+                <span class="product-spec">GSM 400</span>
+              </div>
+              <p class="product-price">[가격 정보]</p>
               <div class="product-colors">
-                <span class="color-dot"></span>
-                <span class="color-dot"></span>
-                <span class="color-dot"></span>
+                <button class="color-option" style="background:#FFFFFF;" aria-label="화이트"></button>
+                <button class="color-option" style="background:#F5F5F5; border-color: var(--text-black);" aria-label="아이보리"></button>
+                <button class="color-option" style="background:#D3D3D3;" aria-label="그레이"></button>
               </div>
-              <div class="product-price">
-                <span class="price-original">36,000원</span>
-                <span class="price-current">32,400원</span>
-                <span class="price-discount">10%</span>
+              <div class="product-actions">
+                <button class="btn btn-primary">구매하기</button>
+                <button class="btn btn-secondary"><i data-lucide="shopping-cart"></i></button>
               </div>
-              <button class="product-btn">구매하기</button>
             </div>
-          </div>
+          </article>
 
-          <!-- Product 3 -->
-          <div class="product-card">
-            <div class="product-img">
+          <!-- Product Card 3 -->
+          <article class="product-card">
+            <div class="product-image">
               <i data-lucide="image"></i>
             </div>
             <div class="product-info">
-              <p class="product-category">선물세트</p>
-              <h3 class="product-name">선물세트 프리미엄 박스</h3>
-              <p class="product-desc">3장 + 전용 패키징. 소중한 사람에게</p>
+              <p class="product-category">단품</p>
+              <h3 class="product-name">페이스타월 / 그레이</h3>
+              <p class="product-desc">모던한 그레이 컬러 페이스타월입니다.</p>
+              <div class="product-specs">
+                <span class="product-spec">면 100%</span>
+                <span class="product-spec">34×80cm</span>
+                <span class="product-spec">GSM 400</span>
+              </div>
+              <p class="product-price">[가격 정보]</p>
               <div class="product-colors">
-                <span class="color-dot"></span>
-                <span class="color-dot"></span>
-                <span class="color-dot"></span>
-                <span class="color-dot"></span>
+                <button class="color-option" style="background:#FFFFFF;" aria-label="화이트"></button>
+                <button class="color-option" style="background:#F5F5F5;" aria-label="아이보리"></button>
+                <button class="color-option" style="background:#D3D3D3; border-color: var(--text-black);" aria-label="그레이"></button>
               </div>
-              <div class="product-price">
-                <span class="price-original">54,000원</span>
-                <span class="price-current">48,000원</span>
-                <span class="price-discount">11%</span>
+              <div class="product-actions">
+                <button class="btn btn-primary">구매하기</button>
+                <button class="btn btn-secondary"><i data-lucide="shopping-cart"></i></button>
               </div>
-              <button class="product-btn">구매하기</button>
             </div>
-          </div>
+          </article>
 
-          <!-- Product 4 -->
-          <div class="product-card">
-            <div class="product-img">
+          <!-- Product Card 4 -->
+          <article class="product-card">
+            <div class="product-image">
+              <span class="product-badge">SET</span>
+              <i data-lucide="image"></i>
+            </div>
+            <div class="product-info">
+              <p class="product-category">세트 (3장)</p>
+              <h3 class="product-name">페이스타월 3장 세트 / 화이트</h3>
+              <p class="product-desc">화이트 페이스타월 3장으로 구성된 세트입니다.</p>
+              <div class="product-specs">
+                <span class="product-spec">면 100%</span>
+                <span class="product-spec">34×80cm</span>
+                <span class="product-spec">GSM 400</span>
+              </div>
+              <p class="product-price">[가격 정보]</p>
+              <div class="product-colors">
+                <button class="color-option" style="background:#FFFFFF; border-color: var(--text-black);" aria-label="화이트"></button>
+                <button class="color-option" style="background:#F5F5F5;" aria-label="아이보리"></button>
+                <button class="color-option" style="background:#D3D3D3;" aria-label="그레이"></button>
+              </div>
+              <div class="product-actions">
+                <button class="btn btn-primary">구매하기</button>
+                <button class="btn btn-secondary"><i data-lucide="shopping-cart"></i></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product Card 5 -->
+          <article class="product-card">
+            <div class="product-image">
+              <span class="product-badge">SET</span>
+              <i data-lucide="image"></i>
+            </div>
+            <div class="product-info">
+              <p class="product-category">세트 (3장)</p>
+              <h3 class="product-name">페이스타월 3장 세트 / 아이보리</h3>
+              <p class="product-desc">아이보리 페이스타월 3장으로 구성된 세트입니다.</p>
+              <div class="product-specs">
+                <span class="product-spec">면 100%</span>
+                <span class="product-spec">34×80cm</span>
+                <span class="product-spec">GSM 400</span>
+              </div>
+              <p class="product-price">[가격 정보]</p>
+              <div class="product-colors">
+                <button class="color-option" style="background:#FFFFFF;" aria-label="화이트"></button>
+                <button class="color-option" style="background:#F5F5F5; border-color: var(--text-black);" aria-label="아이보리"></button>
+                <button class="color-option" style="background:#D3D3D3;" aria-label="그레이"></button>
+              </div>
+              <div class="product-actions">
+                <button class="btn btn-primary">구매하기</button>
+                <button class="btn btn-secondary"><i data-lucide="shopping-cart"></i></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product Card 6 -->
+          <article class="product-card">
+            <div class="product-image">
+              <span class="product-badge">SET</span>
+              <i data-lucide="image"></i>
+            </div>
+            <div class="product-info">
+              <p class="product-category">세트 (3장)</p>
+              <h3 class="product-name">페이스타월 3장 세트 / 그레이</h3>
+              <p class="product-desc">그레이 페이스타월 3장으로 구성된 세트입니다.</p>
+              <div class="product-specs">
+                <span class="product-spec">면 100%</span>
+                <span class="product-spec">34×80cm</span>
+                <span class="product-spec">GSM 400</span>
+              </div>
+              <p class="product-price">[가격 정보]</p>
+              <div class="product-colors">
+                <button class="color-option" style="background:#FFFFFF;" aria-label="화이트"></button>
+                <button class="color-option" style="background:#F5F5F5;" aria-label="아이보리"></button>
+                <button class="color-option" style="background:#D3D3D3; border-color: var(--text-black);" aria-label="그레이"></button>
+              </div>
+              <div class="product-actions">
+                <button class="btn btn-primary">구매하기</button>
+                <button class="btn btn-secondary"><i data-lucide="shopping-cart"></i></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product Card 7 -->
+          <article class="product-card">
+            <div class="product-image">
+              <span class="product-badge">SET</span>
+              <i data-lucide="image"></i>
+            </div>
+            <div class="product-info">
+              <p class="product-category">세트 (5장)</p>
+              <h3 class="product-name">페이스타월 5장 세트 / 믹스</h3>
+              <p class="product-desc">화이트, 아이보리, 그레이를 조합한 5장 세트입니다.</p>
+              <div class="product-specs">
+                <span class="product-spec">면 100%</span>
+                <span class="product-spec">34×80cm</span>
+                <span class="product-spec">GSM 400</span>
+              </div>
+              <p class="product-price">[가격 정보]</p>
+              <div class="product-colors">
+                <button class="color-option" style="background:#FFFFFF;" aria-label="화이트"></button>
+                <button class="color-option" style="background:#F5F5F5;" aria-label="아이보리"></button>
+                <button class="color-option" style="background:#D3D3D3;" aria-label="그레이"></button>
+              </div>
+              <div class="product-actions">
+                <button class="btn btn-primary">구매하기</button>
+                <button class="btn btn-secondary"><i data-lucide="shopping-cart"></i></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product Card 8 -->
+          <article class="product-card">
+            <div class="product-image">
+              <span class="product-badge">GIFT</span>
+              <i data-lucide="image"></i>
+            </div>
+            <div class="product-info">
+              <p class="product-category">세트 (선물 패키지)</p>
+              <h3 class="product-name">페이스타월 선물 세트 / 2장</h3>
+              <p class="product-desc">선물용 패키지로 제공되는 2장 세트입니다.</p>
+              <div class="product-specs">
+                <span class="product-spec">면 100%</span>
+                <span class="product-spec">34×80cm</span>
+                <span class="product-spec">GSM 400</span>
+              </div>
+              <p class="product-price">[가격 정보]</p>
+              <div class="product-colors">
+                <button class="color-option" style="background:#FFFFFF;" aria-label="화이트"></button>
+                <button class="color-option" style="background:#F5F5F5;" aria-label="아이보리"></button>
+                <button class="color-option" style="background:#D3D3D3;" aria-label="그레이"></button>
+              </div>
+              <div class="product-actions">
+                <button class="btn btn-primary">구매하기</button>
+                <button class="btn btn-secondary"><i data-lucide="shopping-cart"></i></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product Card 9 -->
+          <article class="product-card">
+            <div class="product-image">
               <span class="product-badge">NEW</span>
               <i data-lucide="image"></i>
             </div>
             <div class="product-info">
               <p class="product-category">단품</p>
-              <h3 class="product-name">프리미엄 페이스타월 — 베이지</h3>
-              <p class="product-desc">따뜻한 톤으로 욕실을 채우는 감성</p>
+              <h3 class="product-name">페이스타월 / [신규 컬러명]</h3>
+              <p class="product-desc">[신규 컬러 설명]</p>
+              <div class="product-specs">
+                <span class="product-spec">면 100%</span>
+                <span class="product-spec">34×80cm</span>
+                <span class="product-spec">GSM 400</span>
+              </div>
+              <p class="product-price">[가격 정보]</p>
               <div class="product-colors">
-                <span class="color-dot"></span>
-                <span class="color-dot"></span>
-                <span class="color-dot"></span>
+                <button class="color-option" style="background:#FFFFFF;" aria-label="화이트"></button>
+                <button class="color-option" style="background:#F5F5F5;" aria-label="아이보리"></button>
+                <button class="color-option" style="background:#D3D3D3;" aria-label="그레이"></button>
               </div>
-              <div class="product-price">
-                <span class="price-current">18,000원</span>
+              <div class="product-actions">
+                <button class="btn btn-primary">구매하기</button>
+                <button class="btn btn-secondary"><i data-lucide="shopping-cart"></i></button>
               </div>
-              <button class="product-btn">구매하기</button>
             </div>
-          </div>
-
-          <!-- Product 5 -->
-          <div class="product-card">
-            <div class="product-img">
-              <i data-lucide="image"></i>
-            </div>
-            <div class="product-info">
-              <p class="product-category">단품</p>
-              <h3 class="product-name">프리미엄 페이스타월 — 네이비</h3>
-              <p class="product-desc">차분하고 세련된 컬러 선택</p>
-              <div class="product-colors">
-                <span class="color-dot"></span>
-                <span class="color-dot"></span>
-                <span class="color-dot"></span>
-                <span class="color-dot"></span>
-              </div>
-              <div class="product-price">
-                <span class="price-current">18,000원</span>
-              </div>
-              <button class="product-btn">구매하기</button>
-            </div>
-          </div>
-
-          <!-- Product 6 -->
-          <div class="product-card">
-            <div class="product-img">
-              <i data-lucide="image"></i>
-            </div>
-            <div class="product-info">
-              <p class="product-category">선물세트</p>
-              <h3 class="product-name">컬러믹스 선물세트</h3>
-              <p class="product-desc">4가지 컬러 + 프리미엄 박스. 특별한 날을 위해</p>
-              <div class="product-colors">
-                <span class="color-dot"></span>
-                <span class="color-dot"></span>
-                <span class="color-dot"></span>
-                <span class="color-dot"></span>
-              </div>
-              <div class="product-price">
-                <span class="price-original">72,000원</span>
-                <span class="price-current">64,800원</span>
-                <span class="price-discount">10%</span>
-              </div>
-              <button class="product-btn">구매하기</button>
-            </div>
-          </div>
-
+          </article>
         </div>
-
       </div>
     </section>
-
   </main>
 
   <!-- Footer -->
@@ -722,18 +816,19 @@
       <div class="footer-grid">
         <div>
           <p class="footer-brand-name">언커먼타올</p>
-          <p class="footer-brand-desc">매일 얼굴에 닿는 타월 하나에 집중합니다</p>
+          <p class="footer-brand-desc">페이스타월 전문 브랜드</p>
           <div class="footer-info">
-            상호: [클라이언트 확인 필요]<br>
-            대표: [클라이언트 확인 필요]<br>
-            사업자번호: [클라이언트 확인 필요]<br>
-            주소: [클라이언트 확인 필요]<br>
-            전화: [클라이언트 확인 필요]<br>
-            이메일: [클라이언트 확인 필요]
+            [클라이언트 확인 필요: 상호]<br>
+            대표: [클라이언트 확인 필요: 대표자명]<br>
+            사업자등록번호: [클라이언트 확인 필요: 사업자등록번호]<br>
+            통신판매업 신고번호: [클라이언트 확인 필요: 통신판매업 신고번호]<br>
+            주소: [클라이언트 확인 필요: 주소]<br>
+            전화: [클라이언트 확인 필요: 전화번호]<br>
+            이메일: [클라이언트 확인 필요: 이메일]
           </div>
-          <div class="footer-sns">
-            <a href="#" class="sns-icon"><i data-lucide="instagram"></i></a>
-            <a href="#" class="sns-icon"><i data-lucide="youtube"></i></a>
+          <div class="footer-social">
+            <a href="[클라이언트 확인 필요: 인스타그램 URL]" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="[클라이언트 확인 필요: 유튜브 URL]" aria-label="YouTube"><i data-lucide="youtube"></i></a>
           </div>
         </div>
         <div>
@@ -741,53 +836,51 @@
           <a href="page_02.html">브랜드 철학</a>
           <a href="page_03.html">브랜드 스토리</a>
           <a href="page_05.html">소재 이야기</a>
-          <a href="page_06.html">지속가능성</a>
         </div>
         <div>
-          <p class="footer-col-title">제품 & 가이드</p>
+          <p class="footer-col-title">쇼핑</p>
           <a href="page_07.html">제품</a>
           <a href="page_08.html">타월 가이드</a>
-          <a href="page_09.html">대량구매</a>
-          <a href="page_10.html">파트너십</a>
         </div>
         <div>
           <p class="footer-col-title">고객 지원</p>
+          <a href="page_09.html">대량구매</a>
+          <a href="page_10.html">파트너십</a>
           <a href="page_12.html">FAQ</a>
           <a href="page_13.html">1:1 문의</a>
           <a href="page_14.html">주문 조회</a>
-          <a href="page_15.html">매장 안내</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 언커먼타올. All rights reserved.</span>
-        <div class="footer-links">
-          <a href="#">이용약관</a>
+        <span>© 언커먼타올. All rights reserved.</span>
+        <div class="footer-bottom-links">
           <a href="#">개인정보처리방침</a>
+          <a href="#">이용약관</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- TOP Button -->
-  <button class="top-btn" id="topBtn">
-    <i data-lucide="chevron-up"></i>
+  <!-- Top Button -->
+  <button class="top-btn" aria-label="맨 위로">
+    <i data-lucide="arrow-up"></i>
   </button>
 
   <script>
     lucide.createIcons();
 
     // Header Scroll
-    const nav = document.querySelector('.nav');
+    const header = document.querySelector('.header');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 100) {
-        nav.classList.add('scrolled');
+        header.classList.add('scrolled');
       } else {
-        nav.classList.remove('scrolled');
+        header.classList.remove('scrolled');
       }
     });
 
-    // TOP Button
-    const topBtn = document.getElementById('topBtn');
+    // Top Button
+    const topBtn = document.querySelector('.top-btn');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
         topBtn.classList.add('visible');
@@ -799,12 +892,13 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Filter Buttons
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const group = btn.closest('.filter-group');
-        group.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+    // Filter Tabs
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        // 필터링 로직은 실제 구현 시 추가
       });
     });
   </script>
