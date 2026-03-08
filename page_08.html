@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>타월 가이드 | 언커먼타올 - 프리미엄 페이스타월</title>
-  <meta name="description" content="GSM별 차이, 소재별 특성, 피부 타입별 선택 가이드까지. 언커먼타올이 알려드리는 프리미엄 페이스타월 선택 가이드입니다.">
-  <meta name="keywords" content="페이스타월, 타월 고르는 법, GSM, 타월 세탁법, 피부 타입별 타월, 타월 관리법">
+  <meta name="description" content="페이스타월 고르는 법부터 세탁·관리법, 피부 타입별 추천까지. 언커먼타올이 제안하는 타월 가이드.">
+  <meta name="keywords" content="페이스타월, 세안타월, 고급타월, 면타월, 페이스타올, 프리미엄타월, GSM, 타월관리법">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -19,6 +19,7 @@
       --bg-white: #FFFFFF;
       --bg-light: #F5F5F5;
       --bg-dark: #2D2D2D;
+      --bg-black: #1A1A1A;
       --border-light: #E0E0E0;
       --border-default: #D0D0D0;
       --placeholder-bg: #E0E0E0;
@@ -47,7 +48,7 @@
       padding: 0 24px;
     }
 
-    /* 헤더 */
+    /* Header */
     .nav {
       position: sticky;
       top: 0;
@@ -82,19 +83,20 @@
     }
     .nav-links > li > a.active {
       color: var(--text-black);
-      font-weight: 700;
+      font-weight: 600;
     }
     .nav-dropdown {
+      display: none;
       position: absolute;
       top: 100%;
       left: 0;
       background: var(--bg-white);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-sm);
-      padding: 8px 0;
       min-width: 180px;
+      padding: 8px 0;
       box-shadow: var(--shadow-md);
-      display: none;
+      margin-top: 4px;
     }
     .nav-links > li:hover .nav-dropdown {
       display: block;
@@ -103,63 +105,73 @@
       display: block;
       padding: 10px 20px;
       font-size: 14px;
-      color: var(--text-gray);
+      color: var(--text-dark);
+      white-space: nowrap;
     }
     .nav-dropdown a:hover {
       background: var(--bg-light);
-      color: var(--text-black);
     }
-    .nav-utils {
+    .nav-actions {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 20px;
     }
-    .nav-utils button {
+    .nav-icon {
       width: 24px;
       height: 24px;
+      color: var(--text-dark);
+      cursor: pointer;
+    }
+    .cart-badge {
+      position: relative;
+    }
+    .cart-badge::after {
+      content: '0';
+      position: absolute;
+      top: -6px;
+      right: -8px;
+      background: var(--text-black);
+      color: white;
+      font-size: 10px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-dark);
-    }
-    .nav-utils svg {
-      width: 20px;
-      height: 20px;
     }
     .mobile-menu-btn {
       display: none;
     }
 
-    /* 버튼 */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border-radius: var(--radius-sm);
-      font-size: 15px;
-      font-weight: 600;
-      transition: opacity 0.2s;
+    /* Hero */
+    .hero-guide {
+      padding: 100px 0 60px;
+      background: var(--bg-light);
+      text-align: center;
     }
-    .btn:hover { opacity: 0.85; }
-    .btn-primary {
-      background: var(--text-black);
-      color: #FFFFFF;
-      border: 1px solid var(--text-black);
-    }
-    .btn-secondary {
-      background: var(--bg-white);
-      color: var(--text-black);
-      border: 1px solid var(--border-default);
-    }
-
-    /* 섹션 공통 */
-    .section-label {
+    .hero-guide .section-label {
       font-size: 14px;
       font-weight: 600;
       color: var(--text-light);
       margin-bottom: 12px;
     }
+    .hero-guide .section-title {
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .hero-guide .section-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* Section Common */
     .section-title {
       font-size: 36px;
       font-weight: 700;
@@ -171,60 +183,14 @@
       font-size: 16px;
       color: var(--text-gray);
       line-height: 1.7;
-      max-width: 560px;
     }
     .text-center { text-align: center; }
     .mx-auto { margin-left: auto; margin-right: auto; }
 
-    /* 이미지 플레이스홀더 */
-    .img-placeholder {
-      background: var(--placeholder-bg);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-    .img-placeholder svg {
-      color: var(--placeholder-icon);
-      width: 48px;
-      height: 48px;
-    }
-
-    /* 아이콘 박스 */
-    .icon-box {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--radius-sm);
-      background: var(--bg-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .icon-box svg {
-      width: 24px;
-      height: 24px;
-      color: var(--text-dark);
-    }
-
-    /* 히어로 */
-    .hero-guide {
-      padding: 120px 0 80px;
-      background: var(--bg-white);
-      text-align: center;
-    }
-    .hero-guide .section-title {
-      font-size: 42px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* 섹션 1: GSM별 차이 */
-    .guide-gsm {
+    /* Section 1: GSM별 차이 비교 */
+    .gsm-comparison {
       padding: 80px 0;
-      background: var(--bg-light);
+      background: var(--bg-white);
     }
     .gsm-grid {
       display: grid;
@@ -233,159 +199,216 @@
       margin-top: 48px;
     }
     .gsm-card {
-      padding: 32px;
-      background: var(--bg-white);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
+      padding: 32px;
       text-align: center;
     }
     .gsm-number {
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 700;
       color: var(--text-black);
       margin-bottom: 8px;
     }
-    .gsm-label {
+    .gsm-type {
       font-size: 14px;
+      font-weight: 600;
       color: var(--text-light);
       margin-bottom: 20px;
     }
-    .gsm-title {
-      font-size: 18px;
+    .gsm-features {
+      text-align: left;
+      margin-top: 20px;
+    }
+    .gsm-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: var(--text-gray);
+    }
+    .gsm-feature-item i {
+      width: 16px;
+      height: 16px;
+      color: var(--text-light);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .img-placeholder {
+      background: var(--placeholder-bg);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .img-placeholder svg {
+      color: var(--placeholder-icon);
+      width: 48px;
+      height: 48px;
+    }
+
+    /* Section 2: 세탁·관리법 */
+    .care-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .care-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 48px;
+    }
+    .care-card {
+      background: var(--bg-white);
+      border-radius: var(--radius-md);
+      padding: 32px;
+    }
+    .care-title {
+      font-size: 20px;
       font-weight: 700;
       color: var(--text-black);
-      margin-bottom: 12px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
-    .gsm-desc {
+    .care-title i {
+      width: 24px;
+      height: 24px;
+      color: var(--text-dark);
+    }
+    .care-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .care-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .care-item-number {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-dark);
+      flex-shrink: 0;
+    }
+    .care-item-text {
       font-size: 15px;
       color: var(--text-gray);
       line-height: 1.6;
     }
 
-    /* 섹션 2: 세탁/관리법 */
-    .guide-care {
+    /* Section 3: 피부 타입별 가이드 */
+    .skin-type-section {
       padding: 80px 0;
       background: var(--bg-white);
     }
-    .care-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      margin-top: 48px;
-    }
-    .care-list-item {
-      padding: 20px 0;
-      border-bottom: 1px solid var(--border-light);
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-    .care-list-item:last-child { border-bottom: none; }
-    .care-list-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 4px;
-    }
-    .care-list-desc {
-      font-size: 14px;
-      color: var(--text-gray);
-      line-height: 1.6;
-    }
-
-    /* 섹션 3: 피부 타입별 */
-    .guide-skin {
-      padding: 80px 0;
-      background: var(--bg-light);
-    }
-    .skin-grid {
+    .skin-type-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       margin-top: 48px;
     }
-    .skin-card {
-      padding: 32px;
-      background: var(--bg-white);
+    .skin-type-card {
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
+      padding: 32px;
     }
-    .skin-card .icon-box { margin-bottom: 20px; }
-    .skin-title {
+    .skin-type-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .skin-type-icon i {
+      width: 28px;
+      height: 28px;
+      color: var(--text-dark);
+    }
+    .skin-type-title {
       font-size: 18px;
       font-weight: 700;
       color: var(--text-black);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
-    .skin-subtitle {
-      font-size: 14px;
-      color: var(--text-light);
-      margin-bottom: 16px;
-    }
-    .skin-desc {
+    .skin-type-desc {
       font-size: 15px;
       color: var(--text-gray);
       line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .skin-type-recommend {
+      padding-top: 16px;
+      border-top: 1px solid var(--border-light);
+    }
+    .skin-type-recommend-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 8px;
+    }
+    .skin-type-recommend-text {
+      font-size: 14px;
+      color: var(--text-dark);
+      font-weight: 600;
     }
 
-    /* 섹션 4: 사이즈 가이드 */
-    .guide-size {
+    /* Section 4: 사이즈 가이드 */
+    .size-guide-section {
       padding: 80px 0;
-      background: var(--bg-white);
+      background: var(--bg-light);
     }
-    .size-comparison {
+    .size-table-wrap {
       margin-top: 48px;
+      overflow-x: auto;
     }
-    .size-row {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 24px;
-      align-items: center;
-      padding: 24px 0;
-      border-bottom: 1px solid var(--border-light);
+    .size-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--bg-white);
+      border-radius: var(--radius-md);
+      overflow: hidden;
     }
-    .size-row:last-child { border-bottom: none; }
-    .size-name {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-black);
-    }
-    .size-spec {
-      font-size: 15px;
-      color: var(--text-gray);
-      margin-bottom: 12px;
-    }
-    .size-visual {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 24px;
-      align-items: center;
-    }
-
-    /* CTA */
-    .cta-guide {
-      padding: 80px 0;
+    .size-table thead {
       background: var(--bg-dark);
-      text-align: center;
     }
-    .cta-guide .section-title {
+    .size-table th {
+      padding: 16px;
+      text-align: left;
+      font-size: 14px;
+      font-weight: 600;
       color: #FFFFFF;
-      max-width: 500px;
-      margin: 0 auto 16px;
     }
-    .cta-guide .section-desc {
-      color: rgba(255,255,255,0.6);
-      margin: 0 auto 32px;
+    .size-table td {
+      padding: 16px;
+      border-bottom: 1px solid var(--border-light);
+      font-size: 14px;
+      color: var(--text-gray);
     }
-    .cta-guide .btn-primary {
-      background: #FFFFFF;
-      color: var(--text-black);
-      border-color: #FFFFFF;
+    .size-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .size-comparison-image {
+      margin-top: 40px;
     }
 
-    /* 푸터 */
-    .footer {
+    /* Footer */
+    .footer-light {
       padding: 60px 0 32px;
       background: var(--bg-white);
       border-top: 1px solid var(--border-light);
@@ -420,64 +443,84 @@
       color: var(--text-light);
       padding: 4px 0;
     }
+    .footer-col a:hover {
+      color: var(--text-dark);
+    }
     .footer-bottom {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       padding-top: 24px;
       font-size: 13px;
       color: var(--text-muted);
     }
-    .footer-sns {
+    .footer-links {
       display: flex;
-      gap: 12px;
-      margin-top: 16px;
-    }
-    .footer-sns a {
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--bg-light);
-      border-radius: 50%;
+      gap: 16px;
     }
 
-    /* TOP 버튼 */
-    .btn-top {
+    /* TOP Button */
+    .top-btn {
       position: fixed;
       bottom: 40px;
       right: 40px;
       width: 48px;
       height: 48px;
-      background: var(--text-black);
-      color: white;
       border-radius: 50%;
+      background: var(--bg-dark);
+      color: white;
       display: none;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
       box-shadow: var(--shadow-md);
       z-index: 90;
     }
-    .btn-top.visible { display: flex; }
+    .top-btn.show {
+      display: flex;
+    }
+    .top-btn i {
+      width: 20px;
+      height: 20px;
+    }
 
-    /* 반응형 */
+    /* Responsive */
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .mobile-menu-btn { display: block; }
-      .section-title { font-size: 28px; }
-      .hero-guide .section-title { font-size: 32px; }
+      .nav-links {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .hero-guide .section-title {
+        font-size: 32px;
+      }
+      .section-title {
+        font-size: 28px;
+      }
       .gsm-grid,
-      .skin-grid { grid-template-columns: 1fr; }
-      .care-inner { grid-template-columns: 1fr; gap: 32px; }
-      .size-row { grid-template-columns: 1fr; }
-      .size-visual { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .skin-type-grid {
+        grid-template-columns: 1fr;
+      }
+      .care-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- 헤더 -->
+  <!-- Header -->
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
@@ -485,125 +528,127 @@
         <ul class="nav-links">
           <li>
             <a href="page_02.html">브랜드</a>
-            <ul class="nav-dropdown">
-              <li><a href="page_02.html">브랜드 철학</a></li>
-              <li><a href="page_03.html">브랜드 스토리</a></li>
-              <li><a href="page_04.html">브랜드 여정</a></li>
-              <li><a href="page_05.html">소재 이야기</a></li>
-              <li><a href="page_06.html">지속가능성</a></li>
-            </ul>
+            <div class="nav-dropdown">
+              <a href="page_02.html">브랜드 철학</a>
+              <a href="page_03.html">브랜드 스토리</a>
+              <a href="page_04.html">브랜드 여정</a>
+              <a href="page_05.html">소재 이야기</a>
+              <a href="page_06.html">지속가능성</a>
+            </div>
           </li>
           <li><a href="page_07.html">제품</a></li>
           <li><a href="page_08.html" class="active">타월 가이드</a></li>
           <li>
             <a href="page_09.html">B2B문의</a>
-            <ul class="nav-dropdown">
-              <li><a href="page_09.html">대량구매</a></li>
-              <li><a href="page_10.html">파트너십</a></li>
-            </ul>
+            <div class="nav-dropdown">
+              <a href="page_09.html">대량구매</a>
+              <a href="page_10.html">파트너십</a>
+            </div>
           </li>
           <li><a href="page_11.html">고객 후기</a></li>
           <li>
             <a href="page_12.html">고객센터</a>
-            <ul class="nav-dropdown">
-              <li><a href="page_12.html">FAQ</a></li>
-              <li><a href="page_13.html">1:1 문의</a></li>
-              <li><a href="page_14.html">주문 조회</a></li>
-              <li><a href="page_15.html">매장 안내</a></li>
-            </ul>
+            <div class="nav-dropdown">
+              <a href="page_12.html">FAQ</a>
+              <a href="page_13.html">1:1 문의</a>
+              <a href="page_14.html">주문 조회</a>
+              <a href="page_15.html">매장 안내</a>
+            </div>
           </li>
         </ul>
-        <div class="nav-utils">
-          <button><i data-lucide="search"></i></button>
-          <button><i data-lucide="user"></i></button>
-          <button><i data-lucide="shopping-cart"></i></button>
-          <button class="mobile-menu-btn"><i data-lucide="menu"></i></button>
+        <div class="nav-actions">
+          <i data-lucide="search" class="nav-icon"></i>
+          <i data-lucide="user" class="nav-icon"></i>
+          <div class="cart-badge">
+            <i data-lucide="shopping-cart" class="nav-icon"></i>
+          </div>
+          <button class="mobile-menu-btn">
+            <i data-lucide="menu" class="nav-icon"></i>
+          </button>
         </div>
       </div>
     </div>
   </header>
 
   <main>
-
-    <!-- 히어로 -->
+    
+    <!-- Hero -->
     <section class="hero-guide">
       <div class="container">
         <p class="section-label">TOWEL GUIDE</p>
-        <h1 class="section-title">프리미엄 페이스타월<br>선택 가이드</h1>
-        <p class="section-desc mx-auto">GSM, 소재, 피부 타입별 선택법부터 올바른 관리법까지. 언커먼타올이 알려드리는 타월 가이드입니다.</p>
+        <h1 class="section-title">타월 가이드</h1>
+        <p class="section-desc">GSM부터 소재, 세탁법까지.<br>페이스타월에 대해 알아야 할 모든 것을 안내해요.</p>
       </div>
     </section>
 
-    <!-- 섹션 1: GSM별 차이 -->
-    <section class="guide-gsm">
+    <!-- Section 1: GSM별 차이 -->
+    <section class="gsm-comparison">
       <div class="container">
         <div class="text-center">
-          <p class="section-label">GSM GUIDE</p>
-          <h2 class="section-title">GSM별 타월 차이</h2>
-          <p class="section-desc mx-auto">GSM(Grams per Square Meter)은 타월의 밀도를 나타내는 단위입니다. 숫자가 높을수록 두껍고 흡수력이 뛰어납니다.</p>
+          <h2 class="section-title">GSM별 차이, 소재별 특성</h2>
+          <p class="section-desc mx-auto" style="max-width:560px;">GSM(Grams per Square Meter)은 타월의 밀도와 두께를 나타내요. 숫자가 높을수록 두껍고 흡수력이 좋아요.</p>
         </div>
         <div class="gsm-grid">
           <div class="gsm-card">
-            <p class="gsm-number">300-400</p>
-            <p class="gsm-label">GSM</p>
-            <h3 class="gsm-title">라이트급</h3>
-            <p class="gsm-desc">가볍고 빠르게 건조되는 일상용. 여름철이나 빠른 건조가 필요할 때 적합합니다.</p>
+            <div class="img-placeholder" style="aspect-ratio:1/1;">
+              <i data-lucide="feather"></i>
+            </div>
+            <p class="gsm-number">200~300 GSM</p>
+            <p class="gsm-type">가벼운 타입</p>
+            <div class="gsm-features">
+              <div class="gsm-feature-item">
+                <i data-lucide="check"></i>
+                <span>얇고 가벼워 빠른 건조</span>
+              </div>
+              <div class="gsm-feature-item">
+                <i data-lucide="check"></i>
+                <span>여름철, 습한 환경에 적합</span>
+              </div>
+              <div class="gsm-feature-item">
+                <i data-lucide="check"></i>
+                <span>민감성 피부에도 부담 없는 촉감</span>
+              </div>
+            </div>
           </div>
           <div class="gsm-card">
-            <p class="gsm-number">450-550</p>
-            <p class="gsm-label">GSM</p>
-            <h3 class="gsm-title">미디엄급</h3>
-            <p class="gsm-desc">흡수력과 부드러움이 균형을 이루는 페이스타월의 골든 스펙. 언커먼타올의 기준입니다.</p>
+            <div class="img-placeholder" style="aspect-ratio:1/1;">
+              <i data-lucide="layers"></i>
+            </div>
+            <p class="gsm-number">400~500 GSM</p>
+            <p class="gsm-type">중간 밸런스 타입</p>
+            <div class="gsm-features">
+              <div class="gsm-feature-item">
+                <i data-lucide="check"></i>
+                <span>흡수력과 건조 속도의 균형</span>
+              </div>
+              <div class="gsm-feature-item">
+                <i data-lucide="check"></i>
+                <span>사계절 범용 사용</span>
+              </div>
+              <div class="gsm-feature-item">
+                <i data-lucide="check"></i>
+                <span>가장 범용적인 페이스타월 스펙</span>
+              </div>
+            </div>
           </div>
           <div class="gsm-card">
-            <p class="gsm-number">600+</p>
-            <p class="gsm-label">GSM</p>
-            <h3 class="gsm-title">헤비급</h3>
-            <p class="gsm-desc">호텔급 두께감과 최상의 흡수력. 고급스러운 사용감을 선호하는 분께 추천합니다.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 섹션 2: 세탁/관리법 -->
-    <section class="guide-care">
-      <div class="container">
-        <div class="text-center">
-          <p class="section-label">CARE GUIDE</p>
-          <h2 class="section-title">올바른 세탁 & 관리법</h2>
-          <p class="section-desc mx-auto">프리미엄 타월의 수명을 연장하는 세탁과 관리 방법입니다.</p>
-        </div>
-        <div class="care-inner">
-          <div class="img-placeholder" style="aspect-ratio:4/3;">
-            <i data-lucide="image"></i>
-          </div>
-          <div>
-            <div class="care-list-item">
-              <div class="icon-box"><i data-lucide="droplet"></i></div>
-              <div>
-                <p class="care-list-title">첫 세탁은 단독으로</p>
-                <p class="care-list-desc">새 타월은 염료와 보풀이 빠질 수 있으므로 첫 세탁은 단독으로 진행하세요.</p>
-              </div>
+            <div class="img-placeholder" style="aspect-ratio:1/1;">
+              <i data-lucide="cloud"></i>
             </div>
-            <div class="care-list-item">
-              <div class="icon-box"><i data-lucide="wind"></i></div>
-              <div>
-                <p class="care-list-title">유연제 사용 최소화</p>
-                <p class="care-list-desc">유연제는 섬유에 코팅되어 흡수력을 떨어뜨립니다. 세제만 사용하시거나 최소량만 넣어주세요.</p>
+            <p class="gsm-number">600 GSM 이상</p>
+            <p class="gsm-type">두껍고 고급스러운 타입</p>
+            <div class="gsm-features">
+              <div class="gsm-feature-item">
+                <i data-lucide="check"></i>
+                <span>뛰어난 흡수력과 부드러운 촉감</span>
               </div>
-            </div>
-            <div class="care-list-item">
-              <div class="icon-box"><i data-lucide="sun"></i></div>
-              <div>
-                <p class="care-list-title">그늘에서 자연 건조</p>
-                <p class="care-list-desc">직사광선은 섬유를 손상시킵니다. 통풍이 잘 되는 그늘에서 건조하세요.</p>
+              <div class="gsm-feature-item">
+                <i data-lucide="check"></i>
+                <span>고급 호텔, 스파급 품질</span>
               </div>
-            </div>
-            <div class="care-list-item">
-              <div class="icon-box"><i data-lucide="thermometer"></i></div>
-              <div>
-                <p class="care-list-title">미온수 세탁 권장</p>
-                <p class="care-list-desc">40도 이하의 미온수 세탁이 섬유를 보호하고 흡수력을 유지합니다.</p>
+              <div class="gsm-feature-item">
+                <i data-lucide="check"></i>
+                <span>건조 시간이 길어 통풍 필수</span>
               </div>
             </div>
           </div>
@@ -611,130 +656,198 @@
       </div>
     </section>
 
-    <!-- 섹션 3: 피부 타입별 -->
-    <section class="guide-skin">
+    <!-- Section 2: 세탁·관리법 -->
+    <section class="care-section">
       <div class="container">
         <div class="text-center">
-          <p class="section-label">SKIN TYPE GUIDE</p>
-          <h2 class="section-title">피부 타입별 적합 이유</h2>
-          <p class="section-desc mx-auto">민감성, 건성, 지성 피부에 언커먼타올이 적합한 이유를 알려드립니다.</p>
+          <h2 class="section-title">올바른 세탁·관리법</h2>
+          <p class="section-desc mx-auto" style="max-width:560px;">제대로 관리하면 타월 수명이 2배 이상 연장돼요. 유연제 사용은 피하고, 통풍이 중요해요.</p>
         </div>
-        <div class="skin-grid">
-          <div class="skin-card">
-            <div class="icon-box"><i data-lucide="shield-alert"></i></div>
-            <h3 class="skin-title">민감성 피부</h3>
-            <p class="skin-subtitle">자극 없는 순면 100%</p>
-            <p class="skin-desc">화학 처리를 최소화한 순면 소재가 피부 자극을 줄여줍니다. 염료와 형광증백제를 사용하지 않아 알레르기 위험이 낮습니다.</p>
+        <div class="care-grid">
+          <div class="care-card">
+            <h3 class="care-title">
+              <i data-lucide="droplets"></i>
+              <span>세탁 팁</span>
+            </h3>
+            <div class="care-list">
+              <div class="care-item">
+                <span class="care-item-number">1</span>
+                <p class="care-item-text">첫 세탁 시 미온수에 단독 세탁하여 잔여 섬유 제거</p>
+              </div>
+              <div class="care-item">
+                <span class="care-item-number">2</span>
+                <p class="care-item-text">유연제 사용 금지 — 흡수력을 떨어뜨려요</p>
+              </div>
+              <div class="care-item">
+                <span class="care-item-number">3</span>
+                <p class="care-item-text">세제는 적정량만 — 과다 사용 시 섬유에 잔류</p>
+              </div>
+              <div class="care-item">
+                <span class="care-item-number">4</span>
+                <p class="care-item-text">30~40도 미온수 세탁 권장</p>
+              </div>
+              <div class="care-item">
+                <span class="care-item-number">5</span>
+                <p class="care-item-text">표백제는 피하고, 산소계 표백제만 간헐적 사용</p>
+              </div>
+            </div>
           </div>
-          <div class="skin-card">
-            <div class="icon-box"><i data-lucide="droplets"></i></div>
-            <h3 class="skin-title">건성 피부</h3>
-            <p class="skin-subtitle">부드러운 흡수력</p>
-            <p class="skin-desc">긴 원면 섬유가 부드러운 표면을 만들어 피부를 문지르지 않고 수분만 흡수합니다. 과도한 마찰 없이 토닥토닥 눌러주세요.</p>
-          </div>
-          <div class="skin-card">
-            <div class="icon-box"><i data-lucide="sparkles"></i></div>
-            <h3 class="skin-title">지성 피부</h3>
-            <p class="skin-subtitle">빠른 건조 & 청결</p>
-            <p class="skin-desc">최적의 GSM 설계로 빠르게 건조되어 세균 번식을 억제합니다. 피지가 많은 피부에도 청결한 사용감을 유지합니다.</p>
+          <div class="care-card">
+            <h3 class="care-title">
+              <i data-lucide="wind"></i>
+              <span>건조·보관 팁</span>
+            </h3>
+            <div class="care-list">
+              <div class="care-item">
+                <span class="care-item-number">1</span>
+                <p class="care-item-text">자연 건조 권장 — 그늘에서 완전히 말려요</p>
+              </div>
+              <div class="care-item">
+                <span class="care-item-number">2</span>
+                <p class="care-item-text">건조기 사용 시 저온 설정 (고온은 섬유 손상)</p>
+              </div>
+              <div class="care-item">
+                <span class="care-item-number">3</span>
+                <p class="care-item-text">사용 후 즉시 펴서 건조 — 냄새와 곰팡이 방지</p>
+              </div>
+              <div class="care-item">
+                <span class="care-item-number">4</span>
+                <p class="care-item-text">보관 시 통풍이 잘 되는 곳에 보관</p>
+              </div>
+              <div class="care-item">
+                <span class="care-item-number">5</span>
+                <p class="care-item-text">3~4개 로테이션으로 사용하여 수명 연장</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 섹션 4: 사이즈 가이드 -->
-    <section class="guide-size">
+    <!-- Section 3: 피부 타입별 가이드 -->
+    <section class="skin-type-section">
       <div class="container">
         <div class="text-center">
-          <p class="section-label">SIZE GUIDE</p>
+          <h2 class="section-title">피부 타입별 타월 선택 가이드</h2>
+          <p class="section-desc mx-auto" style="max-width:560px;">민감성, 건성, 지성 피부마다 최적의 소재와 GSM이 달라요.</p>
+        </div>
+        <div class="skin-type-grid">
+          <div class="skin-type-card">
+            <div class="skin-type-icon">
+              <i data-lucide="heart"></i>
+            </div>
+            <h3 class="skin-type-title">민감성 피부</h3>
+            <p class="skin-type-desc">피부 자극을 최소화하는 부드럽고 가벼운 타월이 필요해요. 화학 처리를 하지 않은 순면 소재가 적합해요.</p>
+            <div class="skin-type-recommend">
+              <p class="skin-type-recommend-label">추천 스펙</p>
+              <p class="skin-type-recommend-text">300~400 GSM | 유기농 순면 | 무형광·무표백</p>
+            </div>
+          </div>
+          <div class="skin-type-card">
+            <div class="skin-type-icon">
+              <i data-lucide="droplet"></i>
+            </div>
+            <h3 class="skin-type-title">건성 피부</h3>
+            <p class="skin-type-desc">수분을 빼앗지 않는 부드럽고 밀도 높은 타월이 좋아요. 두꺼운 파일 소재로 피부에 마찰을 줄여요.</p>
+            <div class="skin-type-recommend">
+              <p class="skin-type-recommend-label">추천 스펙</p>
+              <p class="skin-type-recommend-text">500~600 GSM | 고밀도 순면 | 긴 파일 구조</p>
+            </div>
+          </div>
+          <div class="skin-type-card">
+            <div class="skin-type-icon">
+              <i data-lucide="sun"></i>
+            </div>
+            <h3 class="skin-type-title">지성 피부</h3>
+            <p class="skin-type-desc">피지와 수분을 빠르게 흡수하고 빠르게 건조되는 타월이 적합해요. 통기성 좋은 얇은 소재를 추천해요.</p>
+            <div class="skin-type-recommend">
+              <p class="skin-type-recommend-label">추천 스펙</p>
+              <p class="skin-type-recommend-text">250~350 GSM | 속건성 면 혼방 | 짧은 파일</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: 사이즈 가이드 -->
+    <section class="size-guide-section">
+      <div class="container">
+        <div class="text-center">
           <h2 class="section-title">사이즈 가이드</h2>
-          <p class="section-desc mx-auto">언커먼타올의 정확한 실측 사이즈와 용도별 추천 사이즈입니다.</p>
+          <p class="section-desc mx-auto" style="max-width:560px;">페이스타월 표준 사이즈와 실측 비교예요. 용도에 맞는 사이즈를 선택하세요.</p>
         </div>
-        <div class="size-comparison">
-          <div class="size-row">
-            <div>
-              <p class="size-name">페이스타월</p>
-            </div>
-            <div class="size-visual">
-              <div>
-                <p class="size-spec">34cm × 80cm (±2cm)</p>
-                <p class="size-spec" style="color:var(--text-light); font-size:14px;">세탁 후 약간의 수축이 있을 수 있습니다</p>
-              </div>
-              <div class="img-placeholder" style="aspect-ratio:16/6;">
-                <i data-lucide="image"></i>
-              </div>
-            </div>
-          </div>
-          <div class="size-row">
-            <div>
-              <p class="size-name">헤어타월</p>
-            </div>
-            <div class="size-visual">
-              <div>
-                <p class="size-spec">34cm × 110cm (±2cm)</p>
-                <p class="size-spec" style="color:var(--text-light); font-size:14px;">긴 머리를 감싸기에 적합한 길이</p>
-              </div>
-              <div class="img-placeholder" style="aspect-ratio:16/6;">
-                <i data-lucide="image"></i>
-              </div>
-            </div>
-          </div>
-          <div class="size-row">
-            <div>
-              <p class="size-name">바디타월</p>
-            </div>
-            <div class="size-visual">
-              <div>
-                <p class="size-spec">70cm × 140cm (±2cm)</p>
-                <p class="size-spec" style="color:var(--text-light); font-size:14px;">전신을 감싸기에 충분한 크기</p>
-              </div>
-              <div class="img-placeholder" style="aspect-ratio:16/6;">
-                <i data-lucide="image"></i>
-              </div>
-            </div>
-          </div>
+        <div class="size-table-wrap">
+          <table class="size-table">
+            <thead>
+              <tr>
+                <th>사이즈</th>
+                <th>가로 × 세로 (cm)</th>
+                <th>용도</th>
+                <th>특징</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Small</strong></td>
+                <td>30 × 30</td>
+                <td>세안용, 휴대용</td>
+                <td>가방에 넣고 다니기 좋은 크기</td>
+              </tr>
+              <tr>
+                <td><strong>Medium</strong></td>
+                <td>34 × 80</td>
+                <td>일반 페이스타월</td>
+                <td>가장 범용적으로 사용되는 사이즈</td>
+              </tr>
+              <tr>
+                <td><strong>Large</strong></td>
+                <td>40 × 90</td>
+                <td>넓은 면적 흡수</td>
+                <td>머리카락 물기 제거까지 가능</td>
+              </tr>
+              <tr>
+                <td><strong>X-Large</strong></td>
+                <td>50 × 100</td>
+                <td>바디타월 겸용</td>
+                <td>얼굴~상체까지 넓게 사용</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta-guide">
-      <div class="container">
-        <h2 class="section-title">이제 나에게 맞는<br>타월을 선택해보세요</h2>
-        <p class="section-desc mx-auto">언커먼타올이 제안하는 프리미엄 페이스타월을 경험해보세요.</p>
-        <a href="page_07.html" class="btn btn-primary">제품 보러 가기</a>
+        <div class="size-comparison-image">
+          <div class="img-placeholder" style="aspect-ratio:16/9; max-width:800px; margin:0 auto;">
+            <i data-lucide="ruler"></i>
+          </div>
+          <p style="text-align:center; margin-top:12px; font-size:14px; color:var(--text-light);">실측 사이즈 비교 이미지 — 손에 들었을 때 크기 비교</p>
+        </div>
       </div>
     </section>
 
   </main>
 
-  <!-- 푸터 -->
-  <footer class="footer">
+  <!-- Footer -->
+  <footer class="footer-light">
     <div class="container">
       <div class="footer-grid">
         <div>
           <p class="footer-brand-name">언커먼타올</p>
           <p class="footer-brand-desc">프리미엄 페이스타월 전문 브랜드</p>
-          <div class="footer-sns">
-            <a href="#"><i data-lucide="instagram"></i></a>
-            <a href="#"><i data-lucide="youtube"></i></a>
-          </div>
         </div>
-        <div>
+        <div class="footer-col">
+          <p class="footer-col-title">쇼핑</p>
+          <a href="page_07.html">제품</a>
+          <a href="page_07.html">베스트셀러</a>
+          <a href="#">장바구니</a>
+        </div>
+        <div class="footer-col">
           <p class="footer-col-title">브랜드</p>
           <a href="page_02.html">브랜드 철학</a>
           <a href="page_03.html">브랜드 스토리</a>
           <a href="page_05.html">소재 이야기</a>
           <a href="page_06.html">지속가능성</a>
         </div>
-        <div>
-          <p class="footer-col-title">제품 & 가이드</p>
-          <a href="page_07.html">제품</a>
-          <a href="page_08.html">타월 가이드</a>
-          <a href="page_11.html">고객 후기</a>
-        </div>
-        <div>
-          <p class="footer-col-title">고객센터</p>
+        <div class="footer-col">
+          <p class="footer-col-title">고객지원</p>
           <a href="page_12.html">FAQ</a>
           <a href="page_13.html">1:1 문의</a>
           <a href="page_14.html">주문 조회</a>
@@ -742,30 +855,33 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 언커먼타올. All rights reserved.</span>
-        <span><a href="#">개인정보처리방침</a> | <a href="#">이용약관</a></span>
+        <span>© 언커먼타올. All rights reserved.</span>
+        <div class="footer-links">
+          <span>개인정보처리방침</span>
+          <span>이용약관</span>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- TOP 버튼 -->
-  <button class="btn-top" id="btnTop">
-    <i data-lucide="arrow-up"></i>
+  <!-- TOP Button -->
+  <button class="top-btn" id="topBtn">
+    <i data-lucide="chevron-up"></i>
   </button>
 
   <script>
     lucide.createIcons();
 
-    // TOP 버튼
-    const btnTop = document.getElementById('btnTop');
+    // TOP Button
+    const topBtn = document.getElementById('topBtn');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
-        btnTop.classList.add('visible');
+        topBtn.classList.add('show');
       } else {
-        btnTop.classList.remove('visible');
+        topBtn.classList.remove('show');
       }
     });
-    btnTop.addEventListener('click', () => {
+    topBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
