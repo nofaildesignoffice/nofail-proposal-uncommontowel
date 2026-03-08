@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>매장 안내 | [브랜드명] - 프리미엄 페이스타월</title>
-  <meta name="description" content="[브랜드명]의 오프라인 매장과 팝업스토어를 방문하여 프리미엄 페이스타월을 직접 만져보세요. 부드러운 촉감을 직접 확인하실 수 있습니다.">
-  <meta name="keywords" content="페이스타월, 세안타월, 프리미엄타월, 순면타월, 타월추천, 얼굴수건">
+  <meta name="description" content="[브랜드명] 페이스타월을 직접 만나볼 수 있는 오프라인 매장과 팝업스토어 안내. 매장 위치, 운영 시간, 찾아오시는 길을 확인하세요.">
+  <meta name="keywords" content="페이스타월, 세안타월, 프리미엄타월, 얼굴수건, 면타월, 타월추천, 매장안내, 오프라인매장">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -55,12 +55,17 @@
       z-index: 100;
       background: var(--bg-white);
       border-bottom: 1px solid var(--border-light);
+      transition: all 0.3s;
     }
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       height: 72px;
+    }
+    .nav.scrolled {
+      height: 64px;
+      box-shadow: var(--shadow-sm);
     }
     .nav-logo {
       font-size: 18px;
@@ -75,25 +80,13 @@
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
-      position: relative;
+      transition: color 0.2s;
     }
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
+    .nav-links a:hover {
+      color: var(--text-black);
     }
-    .nav-actions svg {
-      width: 22px;
-      height: 22px;
-      color: var(--text-dark);
-      cursor: pointer;
-    }
-    .hamburger {
+    .nav-mobile-toggle {
       display: none;
-      width: 24px;
-      height: 24px;
-      color: var(--text-dark);
-      cursor: pointer;
     }
 
     /* 버튼 */
@@ -125,8 +118,6 @@
       font-weight: 600;
       color: var(--text-light);
       margin-bottom: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
     }
     .section-title {
       font-size: 36px;
@@ -159,28 +150,42 @@
       height: 48px;
     }
 
-    /* 페이지 헤더 */
-    .page-header {
-      padding: 80px 0 60px;
-      background: var(--bg-white);
-      text-align: center;
+    /* 아이콘 박스 */
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
-    .page-header .section-title {
-      font-size: 42px;
-      margin-bottom: 16px;
-    }
-    .page-header .section-desc {
-      margin: 0 auto;
+    .icon-box svg {
+      width: 24px;
+      height: 24px;
+      color: var(--text-dark);
     }
 
-    /* 매장 리스트 섹션 */
-    .store-list-section {
+    /* 페이지 히어로 */
+    .page-hero {
+      padding: 80px 0 60px;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .page-hero .section-title {
+      font-size: 42px;
+      max-width: 700px;
+    }
+
+    /* 매장 안내 섹션 */
+    .stores-section {
       padding: 80px 0;
       background: var(--bg-light);
     }
-    .store-grid {
+    .stores-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr 1fr;
       gap: 24px;
       margin-top: 48px;
     }
@@ -190,160 +195,151 @@
       border-radius: var(--radius-md);
       overflow: hidden;
     }
+    .store-card-image {
+      position: relative;
+    }
+    .store-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--bg-white);
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-black);
+    }
     .store-card-body {
       padding: 32px;
     }
-    .store-badge {
-      display: inline-block;
-      padding: 6px 12px;
-      background: var(--bg-dark);
-      color: #FFFFFF;
-      font-size: 12px;
-      font-weight: 600;
-      border-radius: 4px;
-      margin-bottom: 16px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .store-badge.popup {
-      background: var(--text-light);
-    }
-    .store-name {
-      font-size: 22px;
+    .store-card-title {
+      font-size: 20px;
       font-weight: 700;
       color: var(--text-black);
-      margin-bottom: 16px;
+      margin-bottom: 20px;
+    }
+    .store-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
     }
     .store-info-item {
       display: flex;
-      align-items: flex-start;
       gap: 12px;
-      margin-bottom: 12px;
+      align-items: flex-start;
+    }
+    .store-info-item .icon-box {
+      width: 40px;
+      height: 40px;
     }
     .store-info-item svg {
       width: 20px;
       height: 20px;
+    }
+    .store-info-label {
+      font-size: 13px;
+      font-weight: 600;
       color: var(--text-light);
-      flex-shrink: 0;
-      margin-top: 2px;
+      margin-bottom: 4px;
     }
     .store-info-text {
       font-size: 15px;
-      color: var(--text-gray);
+      color: var(--text-dark);
       line-height: 1.6;
     }
-    .store-actions {
+    .store-card-actions {
       display: flex;
-      gap: 12px;
-      margin-top: 24px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border-light);
+      gap: 8px;
     }
 
-    /* 매장 없음 상태 */
-    .no-store-section {
-      padding: 120px 0;
-      background: var(--bg-light);
-      text-align: center;
-    }
-    .no-store-icon {
-      width: 80px;
-      height: 80px;
-      background: var(--bg-white);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 24px;
-    }
-    .no-store-icon svg {
-      width: 40px;
-      height: 40px;
-      color: var(--text-light);
-    }
-    .no-store-title {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 12px;
-    }
-    .no-store-desc {
-      font-size: 16px;
-      color: var(--text-gray);
-      margin-bottom: 32px;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .no-store-actions {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-    }
-
-    /* 안내사항 섹션 */
-    .info-section {
+    /* 지도 섹션 */
+    .map-section {
       padding: 80px 0;
       background: var(--bg-white);
     }
-    .info-grid {
+    .map-container {
+      margin-top: 48px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+    }
+    .map-placeholder {
+      aspect-ratio: 16/9;
+      background: var(--placeholder-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .map-placeholder svg {
+      width: 64px;
+      height: 64px;
+      color: var(--placeholder-icon);
+    }
+
+    /* 방문 안내 섹션 */
+    .visit-guide-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .visit-guide-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       margin-top: 48px;
     }
-    .info-card {
+    .visit-guide-card {
       padding: 32px;
+      background: var(--bg-white);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
       text-align: center;
     }
-    .info-icon-wrap {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: var(--bg-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .visit-guide-card .icon-box {
+      width: 56px;
+      height: 56px;
       margin: 0 auto 20px;
     }
-    .info-icon-wrap svg {
+    .visit-guide-card svg {
       width: 28px;
       height: 28px;
-      color: var(--text-dark);
     }
-    .info-card-title {
+    .visit-guide-title {
       font-size: 17px;
       font-weight: 700;
       color: var(--text-black);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
-    .info-card-desc {
-      font-size: 14px;
+    .visit-guide-desc {
+      font-size: 15px;
       color: var(--text-gray);
       line-height: 1.6;
     }
 
-    /* CTA 섹션 */
-    .cta-section {
+    /* 문의 CTA 섹션 */
+    .contact-cta-section {
       padding: 80px 0;
       background: var(--bg-dark);
       text-align: center;
     }
-    .cta-section .section-title {
+    .contact-cta-section .section-title {
       color: #FFFFFF;
-      max-width: 640px;
-      margin: 0 auto 16px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .cta-section .section-desc {
+    .contact-cta-section .section-desc {
       color: rgba(255,255,255,0.6);
       margin: 0 auto 32px;
     }
-    .cta-section .btn-primary {
+    .contact-cta-section .btn-primary {
       background: #FFFFFF;
       color: var(--text-black);
       border-color: #FFFFFF;
+    }
+    .contact-cta-section .btn-secondary {
+      color: #FFFFFF;
+      border-color: rgba(255,255,255,0.3);
     }
 
     /* 푸터 */
@@ -382,6 +378,38 @@
       font-size: 14px;
       color: var(--text-light);
       padding: 4px 0;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover {
+      color: var(--text-dark);
+    }
+    .footer-company-info {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .footer-sns {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .footer-sns a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .footer-sns a:hover {
+      background: var(--border-default);
+    }
+    .footer-sns svg {
+      width: 18px;
+      height: 18px;
+      color: var(--text-dark);
     }
     .footer-bottom {
       display: flex;
@@ -395,31 +423,38 @@
       display: flex;
       gap: 16px;
     }
+    .footer-links a {
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: var(--text-dark);
+    }
 
     /* TOP 버튼 */
-    .top-button {
+    .btn-top {
       position: fixed;
       bottom: 32px;
       right: 32px;
       width: 48px;
       height: 48px;
-      background: var(--text-black);
+      background: var(--bg-dark);
       color: #FFFFFF;
       border-radius: 50%;
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
+      box-shadow: var(--shadow-md);
+      transition: opacity 0.2s;
       z-index: 90;
     }
-    .top-button.visible {
-      opacity: 1;
-      pointer-events: auto;
+    .btn-top.visible {
+      display: flex;
     }
-    .top-button svg {
+    .btn-top:hover {
+      opacity: 0.85;
+    }
+    .btn-top svg {
       width: 20px;
       height: 20px;
     }
@@ -427,36 +462,23 @@
     /* 반응형 */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .hamburger { display: block; }
-      .nav-actions { gap: 12px; }
-      
+      .nav-mobile-toggle {
+        display: block;
+        padding: 8px;
+      }
+      .nav-mobile-toggle svg {
+        width: 24px;
+        height: 24px;
+        color: var(--text-dark);
+      }
       .section-title { font-size: 28px; }
-      .page-header .section-title { font-size: 32px; }
-      .page-header { padding: 60px 0 40px; }
-
-      .store-grid,
-      .info-grid {
+      .page-hero .section-title { font-size: 32px; }
+      .stores-grid {
         grid-template-columns: 1fr;
       }
-
-      .store-actions {
-        flex-direction: column;
+      .visit-guide-grid {
+        grid-template-columns: 1fr;
       }
-      .store-actions .btn {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .no-store-section { padding: 80px 0; }
-      .no-store-actions {
-        flex-direction: column;
-        align-items: center;
-      }
-      .no-store-actions .btn {
-        width: 100%;
-        max-width: 280px;
-      }
-
       .footer-grid {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -466,8 +488,7 @@
         gap: 16px;
         text-align: center;
       }
-
-      .top-button {
+      .btn-top {
         bottom: 24px;
         right: 24px;
         width: 44px;
@@ -486,153 +507,187 @@
         <nav class="nav-links">
           <a href="/brand">브랜드</a>
           <a href="/product">제품</a>
-          <a href="/towel-guide">타월 가이드</a>
+          <a href="/guide">타월 가이드</a>
           <a href="/b2b">B2B문의</a>
           <a href="/reviews">고객 후기</a>
           <a href="/support">고객센터</a>
         </nav>
-        <div class="nav-actions">
-          <i data-lucide="search"></i>
-          <i data-lucide="user"></i>
-          <i data-lucide="shopping-cart"></i>
-          <i data-lucide="menu" class="hamburger"></i>
-        </div>
+        <button class="nav-mobile-toggle">
+          <i data-lucide="menu"></i>
+        </button>
       </div>
     </div>
   </header>
 
   <main>
 
-    <!-- 페이지 헤더 -->
-    <section class="page-header">
-      <div class="container">
-        <p class="section-label">Store Location</p>
-        <h1 class="section-title">매장 안내</h1>
-        <p class="section-desc mx-auto">[브랜드명]의 프리미엄 페이스타월을 직접 만져보고 느껴보세요.</p>
-      </div>
-    </section>
-
-    <!-- 매장 없음 상태 (실제 매장 정보 확인 필요) -->
-    <section class="no-store-section">
-      <div class="container">
-        <div class="no-store-icon">
-          <i data-lucide="map-pin"></i>
-        </div>
-        <h2 class="no-store-title">현재 운영 중인 오프라인 매장이 없어요</h2>
-        <p class="no-store-desc">빠른 시일 내에 고객님을 만날 수 있도록 준비 중이에요. 팝업스토어 및 매장 오픈 소식은 뉴스레터와 SNS를 통해 가장 먼저 알려드릴게요.</p>
-        <div class="no-store-actions">
-          <a href="/" class="btn btn-primary">온라인몰 바로가기</a>
-          <a href="/support/contact" class="btn btn-secondary">1:1 문의하기</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 매장 리스트 (매장 정보 확인 후 활성화) -->
-    <!-- 
-    <section class="store-list-section">
+    <!-- 페이지 히어로 -->
+    <section class="page-hero">
       <div class="container">
         <div class="text-center">
-          <p class="section-label">Offline Store</p>
-          <h2 class="section-title">방문 가능한 매장</h2>
-          <p class="section-desc mx-auto">부드러운 촉감을 직접 경험해보세요.</p>
+          <p class="section-label">STORES</p>
+          <h1 class="section-title mx-auto">매장 안내</h1>
+          <p class="section-desc mx-auto">[브랜드명]의 프리미엄 페이스타월을 직접 만나보세요.</p>
         </div>
-        <div class="store-grid">
-          
+      </div>
+    </section>
+
+    <!-- 매장 안내 섹션 -->
+    <section class="stores-section">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">오프라인 매장 & 팝업스토어</h2>
+          <p class="section-desc mx-auto">직접 방문하셔서 페이스타월의 촉감을 경험해보실 수 있어요.</p>
+        </div>
+        <div class="stores-grid">
+          <!-- 매장 카드 1 -->
           <div class="store-card">
-            <div class="img-placeholder" style="aspect-ratio:16/9;">
-              <i data-lucide="image"></i>
-            </div>
-            <div class="store-card-body">
+            <div class="store-card-image img-placeholder" style="aspect-ratio:16/10;">
               <span class="store-badge">상설 매장</span>
-              <h3 class="store-name">[매장명]</h3>
-              <div class="store-info-item">
-                <i data-lucide="map-pin"></i>
-                <p class="store-info-text">[주소 전체]</p>
-              </div>
-              <div class="store-info-item">
-                <i data-lucide="phone"></i>
-                <p class="store-info-text">[전화번호]</p>
-              </div>
-              <div class="store-info-item">
-                <i data-lucide="clock"></i>
-                <p class="store-info-text">평일 10:00 - 19:00 / 주말 11:00 - 18:00</p>
-              </div>
-              <div class="store-actions">
-                <a href="#" class="btn btn-primary" style="flex:1;">지도 보기</a>
-                <a href="tel:[전화번호]" class="btn btn-secondary" style="flex:1;">전화하기</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="store-card">
-            <div class="img-placeholder" style="aspect-ratio:16/9;">
               <i data-lucide="image"></i>
             </div>
             <div class="store-card-body">
-              <span class="store-badge popup">팝업 스토어</span>
-              <h3 class="store-name">[팝업 매장명]</h3>
-              <div class="store-info-item">
-                <i data-lucide="map-pin"></i>
-                <p class="store-info-text">[주소 전체]</p>
+              <h3 class="store-card-title">[브랜드명] 플래그십 스토어</h3>
+              <div class="store-info-list">
+                <div class="store-info-item">
+                  <div class="icon-box">
+                    <i data-lucide="map-pin"></i>
+                  </div>
+                  <div>
+                    <p class="store-info-label">주소</p>
+                    <p class="store-info-text">[클라이언트 확인 필요]<br>서울특별시 성동구 성수이로 000</p>
+                  </div>
+                </div>
+                <div class="store-info-item">
+                  <div class="icon-box">
+                    <i data-lucide="clock"></i>
+                  </div>
+                  <div>
+                    <p class="store-info-label">운영 시간</p>
+                    <p class="store-info-text">화~일 11:00~19:00<br>(월요일 정기 휴무)</p>
+                  </div>
+                </div>
+                <div class="store-info-item">
+                  <div class="icon-box">
+                    <i data-lucide="phone"></i>
+                  </div>
+                  <div>
+                    <p class="store-info-label">문의</p>
+                    <p class="store-info-text">[클라이언트 확인 필요]<br>02-000-0000</p>
+                  </div>
+                </div>
               </div>
-              <div class="store-info-item">
-                <i data-lucide="calendar"></i>
-                <p class="store-info-text">[운영 기간: 예: 2025.01.15 - 2025.02.15]</p>
-              </div>
-              <div class="store-info-item">
-                <i data-lucide="clock"></i>
-                <p class="store-info-text">매일 11:00 - 20:00</p>
-              </div>
-              <div class="store-actions">
-                <a href="#" class="btn btn-primary" style="flex:1;">지도 보기</a>
+              <div class="store-card-actions">
+                <a href="#map" class="btn btn-primary">지도 보기</a>
+                <a href="tel:02-000-0000" class="btn btn-secondary">전화 문의</a>
               </div>
             </div>
           </div>
 
+          <!-- 매장 카드 2 -->
+          <div class="store-card">
+            <div class="store-card-image img-placeholder" style="aspect-ratio:16/10;">
+              <span class="store-badge" style="background:var(--bg-dark); color:#FFFFFF;">팝업스토어</span>
+              <i data-lucide="image"></i>
+            </div>
+            <div class="store-card-body">
+              <h3 class="store-card-title">[브랜드명] 현대백화점 팝업</h3>
+              <div class="store-info-list">
+                <div class="store-info-item">
+                  <div class="icon-box">
+                    <i data-lucide="map-pin"></i>
+                  </div>
+                  <div>
+                    <p class="store-info-label">주소</p>
+                    <p class="store-info-text">[클라이언트 확인 필요]<br>현대백화점 판교점 5층</p>
+                  </div>
+                </div>
+                <div class="store-info-item">
+                  <div class="icon-box">
+                    <i data-lucide="calendar"></i>
+                  </div>
+                  <div>
+                    <p class="store-info-label">운영 기간</p>
+                    <p class="store-info-text">2026년 1월 15일 ~ 2월 28일<br>(한정 운영)</p>
+                  </div>
+                </div>
+                <div class="store-info-item">
+                  <div class="icon-box">
+                    <i data-lucide="clock"></i>
+                  </div>
+                  <div>
+                    <p class="store-info-label">운영 시간</p>
+                    <p class="store-info-text">매일 10:30~20:00<br>(백화점 운영 시간 동일)</p>
+                  </div>
+                </div>
+              </div>
+              <div class="store-card-actions">
+                <a href="#map" class="btn btn-primary">지도 보기</a>
+                <a href="/support/contact" class="btn btn-secondary">1:1 문의</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-    -->
 
-    <!-- 방문 안내 -->
-    <section class="info-section">
+    <!-- 지도 섹션 -->
+    <section class="map-section" id="map">
       <div class="container">
         <div class="text-center">
-          <p class="section-label">Visit Guide</p>
-          <h2 class="section-title">매장 방문 안내</h2>
+          <h2 class="section-title">찾아오시는 길</h2>
+          <p class="section-desc mx-auto">지도를 확인하시고 편리하게 방문하세요.</p>
         </div>
-        <div class="info-grid">
-          <div class="info-card">
-            <div class="info-icon-wrap">
+        <div class="map-container">
+          <div class="map-placeholder">
+            <i data-lucide="map"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 방문 안내 섹션 -->
+    <section class="visit-guide-section">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">방문 전 안내</h2>
+          <p class="section-desc mx-auto">편안한 방문을 위해 확인해 주세요.</p>
+        </div>
+        <div class="visit-guide-grid">
+          <div class="visit-guide-card">
+            <div class="icon-box">
               <i data-lucide="hand"></i>
             </div>
-            <h3 class="info-card-title">촉감 체험 가능</h3>
-            <p class="info-card-desc">모든 제품을 직접 만져보고 부드러움을 확인하실 수 있어요.</p>
+            <h3 class="visit-guide-title">체험 가능</h3>
+            <p class="visit-guide-desc">모든 제품의 촉감을 직접 만져보시고 비교하실 수 있어요.</p>
           </div>
-          <div class="info-card">
-            <div class="info-icon-wrap">
-              <i data-lucide="package"></i>
+          <div class="visit-guide-card">
+            <div class="icon-box">
+              <i data-lucide="credit-card"></i>
             </div>
-            <h3 class="info-card-title">현장 구매 가능</h3>
-            <p class="info-card-desc">매장에서 바로 구매하고 가져가실 수 있어요.</p>
+            <h3 class="visit-guide-title">현장 구매 가능</h3>
+            <p class="visit-guide-desc">카드 / 현금 / 간편결제 모두 가능합니다.</p>
           </div>
-          <div class="info-card">
-            <div class="info-icon-wrap">
-              <i data-lucide="message-circle"></i>
+          <div class="visit-guide-card">
+            <div class="icon-box">
+              <i data-lucide="gift"></i>
             </div>
-            <h3 class="info-card-title">전문가 상담</h3>
-            <p class="info-card-desc">타월 선택부터 관리법까지 상세히 안내해드려요.</p>
+            <h3 class="visit-guide-title">선물 포장 무료</h3>
+            <p class="visit-guide-desc">매장 방문 구매 시 선물 포장을 무료로 제공합니다.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA 섹션 -->
-    <section class="cta-section">
+    <!-- 문의 CTA 섹션 -->
+    <section class="contact-cta-section">
       <div class="container">
-        <h2 class="section-title">온라인몰에서 더 많은 제품을 만나보세요</h2>
-        <p class="section-desc mx-auto">24시간 언제든 편하게 쇼핑하고, 무료배송 혜택도 받으세요.</p>
-        <a href="/" class="btn btn-primary">온라인몰 바로가기</a>
+        <h2 class="section-title">매장 방문이 어려우신가요?</h2>
+        <p class="section-desc mx-auto">온라인몰에서도 동일한 제품을 만나보실 수 있어요.</p>
+        <div style="display:flex; gap:12px; justify-content:center; margin-top:32px;">
+          <a href="/product" class="btn btn-primary">온라인몰 바로가기</a>
+          <a href="/support/contact" class="btn btn-secondary">1:1 문의하기</a>
+        </div>
       </div>
     </section>
 
@@ -644,61 +699,76 @@
       <div class="footer-grid">
         <div>
           <p class="footer-brand-name">[브랜드명]</p>
-          <p class="footer-brand-desc">프리미엄 페이스타월</p>
-          <p class="footer-brand-desc" style="font-size:13px; line-height:1.8;">
+          <p class="footer-brand-desc">매일 얼굴에 닿는 타월 하나에 집착하는<br>프리미엄 페이스타월 브랜드</p>
+          <div class="footer-company-info">
             상호: [클라이언트 확인 필요]<br>
             대표: [클라이언트 확인 필요]<br>
             사업자번호: [클라이언트 확인 필요]<br>
             주소: [클라이언트 확인 필요]<br>
             전화: [클라이언트 확인 필요]<br>
             이메일: [클라이언트 확인 필요]
-          </p>
+          </div>
+          <div class="footer-sns">
+            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+          </div>
         </div>
-        <div>
+        <div class="footer-col">
           <p class="footer-col-title">브랜드</p>
           <a href="/brand/philosophy">브랜드 철학</a>
-          <a href="/product">제품</a>
-          <a href="/towel-guide">타월 가이드</a>
+          <a href="/brand/story">브랜드 스토리</a>
+          <a href="/brand/journey">브랜드 여정</a>
+          <a href="/brand/material">소재 이야기</a>
+          <a href="/brand/sustainability">지속가능성</a>
         </div>
-        <div>
-          <p class="footer-col-title">B2B</p>
-          <a href="/b2b/bulk">대량구매</a>
+        <div class="footer-col">
+          <p class="footer-col-title">제품 & 가이드</p>
+          <a href="/product">제품</a>
+          <a href="/guide">타월 가이드</a>
           <a href="/reviews">고객 후기</a>
         </div>
-        <div>
+        <div class="footer-col">
           <p class="footer-col-title">고객센터</p>
           <a href="/support/faq">FAQ</a>
           <a href="/support/contact">1:1 문의</a>
+          <a href="/support/order">주문 조회</a>
+          <a href="/support/stores">매장 안내</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 [브랜드명]. All rights reserved.</span>
+        <span>ⓒ 2026 [브랜드명]. All rights reserved.</span>
         <div class="footer-links">
-          <a href="#">이용약관</a>
-          <a href="#">개인정보처리방침</a>
+          <a href="/privacy">개인정보처리방침</a>
+          <a href="/terms">이용약관</a>
         </div>
       </div>
     </div>
   </footer>
 
   <!-- TOP 버튼 -->
-  <button class="top-button" id="topButton">
+  <button class="btn-top" id="btnTop" aria-label="맨 위로">
     <i data-lucide="arrow-up"></i>
   </button>
 
   <script>
     lucide.createIcons();
 
-    // TOP 버튼
-    const topButton = document.getElementById('topButton');
+    // 스크롤 이벤트
+    const nav = document.querySelector('.nav');
+    const btnTop = document.getElementById('btnTop');
+
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        topButton.classList.add('visible');
+      if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+        btnTop.classList.add('visible');
       } else {
-        topButton.classList.remove('visible');
+        nav.classList.remove('scrolled');
+        btnTop.classList.remove('visible');
       }
     });
-    topButton.addEventListener('click', () => {
+
+    // TOP 버튼
+    btnTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
