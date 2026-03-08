@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>브랜드 여정 | [브랜드명] - 한 장의 타월에서 시작된 성장 이야기</title>
-  <meta name="description" content="페이스타월 하나에 집중해온 브랜드의 런칭부터 현재까지. 주요 마일스톤과 앞으로의 비전을 소개합니다.">
-  <meta name="keywords" content="타월브랜드연혁, 페이스타월브랜드, 페이스타월, 세안타월, 프리미엄타월, 순면타월, 타월추천, 얼굴수건">
+  <title>브랜드 여정 | [브랜드명] - 한 장의 타월에서 시작한 여정</title>
+  <meta name="description" content="브랜드의 주요 마일스톤과 성장 과정, 그리고 앞으로의 비전을 소개합니다.">
+  <meta name="keywords" content="페이스타월 브랜드 연혁, 타월 브랜드 성장, 페이스타월, 세안타월, 프리미엄타월, 얼굴수건, 면타월, 타월추천">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -48,6 +48,67 @@
       padding: 0 24px;
     }
 
+    /* 버튼 */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary {
+      background: var(--text-black);
+      color: #FFFFFF;
+      border: 1px solid var(--text-black);
+    }
+    .btn-secondary {
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--border-default);
+    }
+
+    /* 섹션 공통 */
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    /* 이미지 플레이스홀더 */
+    .img-placeholder {
+      background: var(--placeholder-bg);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .img-placeholder svg {
+      color: var(--placeholder-icon);
+      width: 48px;
+      height: 48px;
+    }
+
     /* 헤더 */
     .nav {
       position: sticky;
@@ -75,190 +136,163 @@
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
-      position: relative;
     }
-    .nav-links a.active::after {
-      content: '';
-      position: absolute;
-      bottom: -24px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--text-black);
-    }
-    .nav-utils {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .nav-utils button {
+    .nav-hamburger {
+      display: none;
       width: 24px;
       height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-dark);
-    }
-    .nav-utils svg {
-      width: 20px;
-      height: 20px;
+      cursor: pointer;
     }
 
-    /* 섹션 공통 */
-    .section-label {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-light);
+    /* 페이지 히어로 */
+    .page-hero {
+      padding: 80px 0 60px;
+      background: var(--bg-white);
+      text-align: center;
+    }
+    .page-hero .section-title {
+      font-size: 42px;
       margin-bottom: 12px;
     }
-    .section-title {
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--text-black);
-      line-height: 1.3;
-      margin-bottom: 16px;
-    }
-    .section-desc {
-      font-size: 16px;
-      color: var(--text-gray);
-      line-height: 1.7;
-      max-width: 560px;
-    }
-    .text-center { text-align: center; }
-    .mx-auto { margin-left: auto; margin-right: auto; }
-
-    /* 버튼 */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border-radius: var(--radius-sm);
-      font-size: 15px;
-      font-weight: 600;
-      transition: opacity 0.2s;
-    }
-    .btn:hover { opacity: 0.85; }
-    .btn-primary {
-      background: var(--text-black);
-      color: #FFFFFF;
-      border: 1px solid var(--text-black);
-    }
-
-    .text-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text-dark);
-      transition: opacity 0.2s;
-    }
-    .text-link:hover { opacity: 0.7; }
-    .text-link svg {
-      width: 16px;
-      height: 16px;
+    .page-hero .section-desc {
+      margin: 0 auto;
     }
 
     /* 섹션 1: 타임라인 */
     .timeline-section {
-      padding: 120px 0 80px;
-      background: var(--bg-white);
+      padding: 80px 0;
+      background: var(--bg-light);
     }
-    .timeline-track {
+    .timeline-content {
       max-width: 800px;
-      margin: 60px auto 0;
-      position: relative;
-    }
-    .timeline-track::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--border-light);
-      transform: translateX(-50%);
+      margin: 48px auto 0;
     }
     .timeline-item {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      margin-bottom: 60px;
+      grid-template-columns: 120px 1fr;
+      gap: 40px;
       position: relative;
+      padding-bottom: 48px;
     }
     .timeline-item:last-child {
-      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .timeline-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 60px;
+      top: 60px;
+      width: 1px;
+      height: calc(100% - 60px);
+      background: var(--border-light);
     }
     .timeline-year {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
       text-align: right;
-      padding-right: 60px;
+      padding-top: 8px;
     }
-    .timeline-content {
-      padding-left: 60px;
+    .timeline-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      position: relative;
     }
-    .timeline-item:nth-child(even) .timeline-year {
-      text-align: left;
-      padding-right: 0;
-      padding-left: 60px;
-      grid-column: 2;
-    }
-    .timeline-item:nth-child(even) .timeline-content {
-      padding-left: 0;
-      padding-right: 60px;
-      grid-column: 1;
-      grid-row: 1;
-    }
-    .timeline-dot {
+    .timeline-card::before {
+      content: '';
       position: absolute;
-      left: 50%;
-      top: 8px;
-      width: 16px;
-      height: 16px;
+      left: -40px;
+      top: 30px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
       background: var(--text-black);
-      border: 3px solid var(--bg-white);
-      transform: translateX(-50%);
-      z-index: 2;
     }
-    .year-text {
-      font-size: 18px;
+    .timeline-title {
+      font-size: 17px;
       font-weight: 700;
       color: var(--text-black);
       margin-bottom: 8px;
     }
-    .milestone-title {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 4px;
-    }
-    .milestone-desc {
+    .timeline-desc {
       font-size: 15px;
       color: var(--text-gray);
       line-height: 1.6;
     }
-
-    /* 섹션 2: 비전 */
-    .vision-section {
-      padding: 120px 0;
-      background: var(--bg-dark);
+    .timeline-placeholder {
+      padding: 32px;
       text-align: center;
+      color: var(--text-light);
+      font-size: 15px;
+      border: 1px dashed var(--border-light);
+      border-radius: var(--radius-md);
+      background: var(--bg-white);
+    }
+
+    /* 섹션 2: 숫자로 보는 브랜드 */
+    .stats-section {
+      padding: 80px 0;
+      background: var(--bg-white);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .stat-card {
+      text-align: center;
+      padding: 32px 24px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+    }
+    .stat-number {
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-label {
+      font-size: 15px;
+      color: var(--text-gray);
+    }
+    .stat-note {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--text-light);
+    }
+
+    /* 섹션 3: 비전 */
+    .vision-section {
+      padding: 80px 0;
+      background: var(--bg-dark);
     }
     .vision-section .section-title {
       color: #FFFFFF;
-      max-width: 700px;
-      margin: 0 auto 32px;
+      margin-bottom: 16px;
+    }
+    .vision-section .section-desc {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 32px;
+    }
+    .vision-content {
+      max-width: 720px;
+      margin: 0 auto;
     }
     .vision-text {
-      font-size: 17px;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.8;
-      max-width: 640px;
-      margin: 0 auto 40px;
-    }
-    .vision-section .text-link {
+      font-size: 16px;
       color: rgba(255,255,255,0.8);
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+    .vision-section .btn-primary {
+      background: #FFFFFF;
+      color: var(--text-black);
+      border-color: #FFFFFF;
     }
 
     /* 푸터 */
@@ -297,59 +331,96 @@
       color: var(--text-light);
       padding: 4px 0;
     }
+    .footer-info {
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
     .footer-bottom {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       padding-top: 24px;
       font-size: 13px;
       color: var(--text-muted);
+    }
+    .footer-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    /* TOP 버튼 */
+    .btn-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 48px;
+      height: 48px;
+      background: var(--text-black);
+      color: #FFFFFF;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      z-index: 90;
+    }
+    .btn-top.visible {
+      display: flex;
+    }
+    .btn-top svg {
+      width: 20px;
+      height: 20px;
     }
 
     /* 반응형 */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .section-title { font-size: 28px; }
+      .nav-hamburger { display: block; }
       
-      .timeline-section { padding: 80px 0 60px; }
-      .timeline-track::before {
-        left: 20px;
-      }
+      .section-title { font-size: 28px; }
+      .page-hero .section-title { font-size: 32px; }
+      
       .timeline-item {
-        grid-template-columns: 1fr;
-        gap: 0;
-        margin-bottom: 40px;
-        padding-left: 60px;
+        grid-template-columns: 80px 1fr;
+        gap: 24px;
+      }
+      .timeline-item:not(:last-child)::after {
+        left: 40px;
+      }
+      .timeline-card::before {
+        left: -24px;
       }
       .timeline-year {
-        text-align: left;
-        padding-right: 0;
-        padding-left: 0;
-        margin-bottom: 8px;
+        font-size: 16px;
       }
-      .timeline-content {
-        padding-left: 0;
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
       }
-      .timeline-item:nth-child(even) .timeline-year {
-        text-align: left;
-        padding-left: 0;
-        grid-column: 1;
+      .stat-card {
+        padding: 24px 16px;
       }
-      .timeline-item:nth-child(even) .timeline-content {
-        padding-right: 0;
-        grid-column: 1;
-        grid-row: 2;
-      }
-      .timeline-dot {
-        left: 20px;
-      }
-
-      .vision-section { padding: 80px 0; }
-      .vision-section .section-title { font-size: 28px; }
-      .vision-text { font-size: 15px; }
-
-      .footer-grid { 
+      .stat-number { font-size: 32px; }
+      
+      .footer-grid {
         grid-template-columns: 1fr;
         gap: 32px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+      
+      .btn-top {
+        bottom: 24px;
+        right: 24px;
+        width: 44px;
+        height: 44px;
       }
     }
   </style>
@@ -362,130 +433,146 @@
       <div class="nav-inner">
         <a href="/" class="nav-logo">[브랜드명]</a>
         <nav class="nav-links">
-          <a href="/about" class="active">브랜드</a>
+          <a href="/about">브랜드</a>
           <a href="/product">제품</a>
           <a href="/guide">타월 가이드</a>
           <a href="/b2b">B2B문의</a>
           <a href="/reviews">고객 후기</a>
           <a href="/support">고객센터</a>
         </nav>
-        <div class="nav-utils">
-          <button aria-label="검색"><i data-lucide="search"></i></button>
-          <button aria-label="마이페이지"><i data-lucide="user"></i></button>
-          <button aria-label="장바구니"><i data-lucide="shopping-cart"></i></button>
-        </div>
+        <button class="nav-hamburger">
+          <i data-lucide="menu"></i>
+        </button>
       </div>
     </div>
   </header>
 
   <main>
 
+    <!-- 페이지 히어로 -->
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="section-title">한 장의 타월에서 시작한 여정</h1>
+        <p class="section-desc mx-auto">작은 시작, 꾸준한 성장</p>
+      </div>
+    </section>
+
     <!-- 섹션 1: 타임라인 -->
     <section class="timeline-section">
       <div class="container">
         <div class="text-center">
-          <h1 class="section-title">한 장의 타월에서 시작해,<br>여기까지 왔습니다</h1>
-          <p class="section-desc mx-auto">매년 조금씩, 하지만 확실하게 성장하고 있어요</p>
+          <h2 class="section-title">우리의 발자취</h2>
         </div>
+        <div class="timeline-content">
+          
+          <div class="timeline-placeholder">
+            [클라이언트 확인 필요 — 연혁 데이터 제공 시 타임라인 구성]<br>
+            <br>
+            아래는 타임라인 예시 구조입니다:<br>
+            • 브랜드 설립 연도<br>
+            • 첫 제품 출시<br>
+            • 누적 판매 수량 돌파 시점<br>
+            • 주요 입점/파트너십 체결<br>
+            • 인증 획득 (OEKO-TEX, GOTS 등)<br>
+            • 팝업스토어/오프라인 매장 오픈
+          </div>
 
-        <div class="timeline-track">
-          <!-- 타임라인 항목 1 -->
+          <!-- 타임라인 샘플 구조 (데이터 제공 시 활성화) -->
+          <!-- 
           <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-year">
-              <p class="year-text">20XX년</p>
-            </div>
-            <div class="timeline-content">
-              <p class="milestone-title">브랜드 런칭, 첫 번째 페이스타월 출시</p>
-              <p class="milestone-desc">[클라이언트 확인 필요 — 런칭 시점 및 첫 제품 스토리]</p>
+            <div class="timeline-year">2020</div>
+            <div class="timeline-card">
+              <h3 class="timeline-title">브랜드 설립</h3>
+              <p class="timeline-desc">페이스타월 전문 브랜드 [브랜드명] 설립</p>
             </div>
           </div>
 
-          <!-- 타임라인 항목 2 -->
           <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-year">
-              <p class="year-text">20XX년</p>
-            </div>
-            <div class="timeline-content">
-              <p class="milestone-title">자사몰 오픈, 누적 판매 [수치]장 돌파</p>
-              <p class="milestone-desc">[클라이언트 확인 필요 — 자사몰 오픈 시점 및 초기 판매량]</p>
+            <div class="timeline-year">2021</div>
+            <div class="timeline-card">
+              <h3 class="timeline-title">첫 제품 출시</h3>
+              <p class="timeline-desc">프리미엄 페이스타월 첫 론칭</p>
             </div>
           </div>
 
-          <!-- 타임라인 항목 3 -->
           <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-year">
-              <p class="year-text">20XX년</p>
-            </div>
-            <div class="timeline-content">
-              <p class="milestone-title">[인증명] 인증 획득</p>
-              <p class="milestone-desc">[클라이언트 확인 필요 — OEKO-TEX 등 섬유 인증 획득 시점 및 인증명]</p>
-              <a href="/about/sustainability" class="text-link" style="margin-top:8px;">자세히 보기 <i data-lucide="arrow-right"></i></a>
+            <div class="timeline-year">2022</div>
+            <div class="timeline-card">
+              <h3 class="timeline-title">누적 판매 10,000개 돌파</h3>
+              <p class="timeline-desc">고객 신뢰를 기반으로 한 성장</p>
             </div>
           </div>
 
-          <!-- 타임라인 항목 4 -->
           <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-year">
-              <p class="year-text">20XX년</p>
-            </div>
-            <div class="timeline-content">
-              <p class="milestone-title">첫 오프라인 팝업스토어 오픈</p>
-              <p class="milestone-desc">[클라이언트 확인 필요 — 팝업 스토어 개최 시점 및 장소]</p>
+            <div class="timeline-year">2023</div>
+            <div class="timeline-card">
+              <h3 class="timeline-title">B2B 사업 본격화</h3>
+              <p class="timeline-desc">호텔·리조트 납품 시작</p>
             </div>
           </div>
 
-          <!-- 타임라인 항목 5 -->
           <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-year">
-              <p class="year-text">20XX년</p>
-            </div>
-            <div class="timeline-content">
-              <p class="milestone-title">B2B 대량 납품 시작 (호텔/기업 납품)</p>
-              <p class="milestone-desc">[클라이언트 확인 필요 — B2B 사업 시작 시점 및 주요 납품처]</p>
+            <div class="timeline-year">2024</div>
+            <div class="timeline-card">
+              <h3 class="timeline-title">OEKO-TEX 인증 획득</h3>
+              <p class="timeline-desc">안전한 소재 품질 입증</p>
             </div>
           </div>
+          -->
 
-          <!-- 타임라인 항목 6 -->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-year">
-              <p class="year-text">20XX년</p>
-            </div>
-            <div class="timeline-content">
-              <p class="milestone-title">누적 리뷰 [수치]건 돌파</p>
-              <p class="milestone-desc">[클라이언트 확인 필요 — 리뷰 마일스톤 달성 시점 및 수치]</p>
-            </div>
-          </div>
-
-          <!-- 타임라인 항목 7 (비전) -->
-          <div class="timeline-item">
-            <div class="timeline-dot" style="background: var(--bg-light); border-color: var(--text-black);"></div>
-            <div class="timeline-year">
-              <p class="year-text">현재~비전</p>
-            </div>
-            <div class="timeline-content">
-              <p class="milestone-title">[브랜드가 지향하는 다음 단계]</p>
-              <p class="milestone-desc">[클라이언트 확인 필요 — 향후 계획 및 목표]</p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- 섹션 2: 비전 -->
+    <!-- 섹션 2: 숫자로 보는 브랜드 -->
+    <section class="stats-section">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">숫자가 말해주는 것</h2>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">[클라이언트 확인 필요]</div>
+            <div class="stat-label">누적 판매 수량</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">[클라이언트 확인 필요]</div>
+            <div class="stat-label">고객 리뷰 수</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">[클라이언트 확인 필요]</div>
+            <div class="stat-label">재구매율</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">[클라이언트 확인 필요]</div>
+            <div class="stat-label">B2B 납품 건수</div>
+          </div>
+        </div>
+        <p class="stat-note">* 수치 데이터는 클라이언트 제공 시 반영됩니다</p>
+      </div>
+    </section>
+
+    <!-- 섹션 3: 비전 -->
     <section class="vision-section">
       <div class="container">
-        <h2 class="section-title">페이스타월의 기준을<br>만드는 브랜드가 되려 합니다</h2>
-        <p class="vision-text">
-          아직 한국에는 '페이스타월 전문 브랜드'라는 카테고리 자체가 없습니다. 우리는 그 카테고리를 만들고, 기준을 세우고 싶어요. 매일 얼굴에 닿는 한 장이 화장품만큼 중요하게 여겨지는 날까지.<br><br>
-          [클라이언트 확인 필요 — 실제 비전 선언문 2문단]
-        </p>
-        <a href="/product" class="text-link">지금 우리 제품 만나보기 <i data-lucide="arrow-right"></i></a>
+        <div class="vision-content text-center">
+          <h2 class="section-title">페이스타월의 기준을 바꾸겠습니다</h2>
+          <p class="section-desc mx-auto">매일 쓰는 것이니까, 매일 더 좋아져야 하니까요</p>
+          
+          <div class="vision-text">
+            [클라이언트 확인 필요 — 실제 비전 방향]<br>
+            <br>
+            자동 적용 방향:<br>
+            우리는 페이스타월의 기준을 높이기 위해 끊임없이 연구합니다.<br>
+            더 나은 소재, 더 정직한 제작 과정, 더 친환경적인 패키징.<br>
+            작지만 매일 닿는 것이기에, 더욱 신중하게 만듭니다.<br>
+            <br>
+            국내를 넘어 글로벌 시장에서도 인정받는 브랜드로 성장하여,<br>
+            세계 어디서나 믿고 선택할 수 있는 페이스타월 브랜드가 되겠습니다.
+          </div>
+          
+          <a href="/about/sustainability" class="btn btn-primary">지속가능성 이야기 보기</a>
+        </div>
       </div>
     </section>
 
@@ -497,14 +584,15 @@
       <div class="footer-grid">
         <div>
           <p class="footer-brand-name">[브랜드명]</p>
-          <p class="footer-brand-desc">
+          <p class="footer-brand-desc">프리미엄 페이스타월</p>
+          <div class="footer-info">
             상호: [클라이언트 확인 필요]<br>
             대표: [클라이언트 확인 필요]<br>
             사업자번호: [클라이언트 확인 필요]<br>
             주소: [클라이언트 확인 필요]<br>
             전화: [클라이언트 확인 필요]<br>
             이메일: [클라이언트 확인 필요]
-          </p>
+          </div>
         </div>
         <div>
           <p class="footer-col-title">브랜드</p>
@@ -515,27 +603,83 @@
           <a href="/about/sustainability">지속가능성</a>
         </div>
         <div>
-          <p class="footer-col-title">제품·가이드</p>
+          <p class="footer-col-title">제품 및 서비스</p>
           <a href="/product">제품</a>
           <a href="/guide">타월 가이드</a>
-          <a href="/reviews">고객 후기</a>
+          <a href="/b2b/bulk">대량구매</a>
+          <a href="/b2b/partnership">파트너십</a>
         </div>
         <div>
-          <p class="footer-col-title">고객지원</p>
-          <a href="/b2b/bulk">대량구매</a>
+          <p class="footer-col-title">고객 지원</p>
           <a href="/support/faq">FAQ</a>
-          <a href="/support/inquiry">1:1 문의</a>
+          <a href="/support/contact">1:1 문의</a>
+          <a href="/support/order">주문 조회</a>
+          <a href="/support/store">매장 안내</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 [브랜드명]. All rights reserved.</span>
-        <span>이용약관 | 개인정보처리방침</span>
+        <span>ⓒ 2026 [브랜드명]. All rights reserved.</span>
+        <div class="footer-links">
+          <a href="/privacy">개인정보처리방침</a>
+          <a href="/terms">이용약관</a>
+        </div>
       </div>
     </div>
   </footer>
 
+  <!-- TOP 버튼 -->
+  <button class="btn-top" id="btnTop">
+    <i data-lucide="arrow-up"></i>
+  </button>
+
   <script>
     lucide.createIcons();
+
+    // TOP 버튼
+    const btnTop = document.getElementById('btnTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        btnTop.classList.add('visible');
+      } else {
+        btnTop.classList.remove('visible');
+      }
+    });
+    btnTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 카운터 애니메이션 (수치 데이터 제공 시 활성화)
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const observerOptions = {
+      threshold: 0.5
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = entry.target;
+          // 실제 숫자가 있을 때만 애니메이션 작동
+          // 예: animateNumber(target, 0, 50000, 2000);
+        }
+      });
+    }, observerOptions);
+
+    statNumbers.forEach(num => observer.observe(num));
+
+    function animateNumber(element, start, end, duration) {
+      let startTime = null;
+      const step = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const current = Math.floor(progress * (end - start) + start);
+        element.textContent = current.toLocaleString();
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        }
+      };
+      requestAnimationFrame(step);
+    }
   </script>
+
 </body>
 </html>
