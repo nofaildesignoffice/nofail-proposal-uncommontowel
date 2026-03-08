@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>1:1 문의 | 언커먼타올 - 프리미엄 페이스타월</title>
-  <meta name="description" content="언커먼타올 고객센터 1:1 문의. 제품, 주문, 배송 등 궁금하신 사항을 남겨주시면 신속하게 답변드리겠습니다.">
-  <meta name="keywords" content="페이스타월, 프리미엄 타월, 얼굴 수건, 면 타월, 피부 자극 없는 타월, 고객센터, 문의">
+  <meta name="description" content="언커먼타올 1:1 문의. 제품, 주문, 배송 등 궁금하신 사항을 남겨주시면 빠르게 답변 드리겠습니다.">
+  <meta name="keywords" content="페이스타월, 세안타월, 고급타월, 면타월, 페이스타올, 프리미엄타월, 고객문의, 1대1문의">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -19,6 +19,7 @@
       --bg-white: #FFFFFF;
       --bg-light: #F5F5F5;
       --bg-dark: #2D2D2D;
+      --bg-black: #1A1A1A;
       --border-light: #E0E0E0;
       --border-default: #D0D0D0;
       --placeholder-bg: #E0E0E0;
@@ -40,29 +41,70 @@
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
     button { cursor: pointer; border: none; font-family: inherit; background: none; }
-    input, select, textarea {
+    input, textarea, select {
       font-family: 'Pretendard', sans-serif;
       border: 1px solid var(--border-default);
       border-radius: var(--radius-sm);
       padding: 12px 16px;
       font-size: 15px;
-      color: var(--text-dark);
       width: 100%;
       transition: border-color 0.2s;
     }
-    input:focus, select:focus, textarea:focus {
+    input:focus, textarea:focus, select:focus {
       outline: none;
       border-color: var(--text-dark);
     }
-    textarea { resize: vertical; min-height: 160px; }
+    textarea { resize: vertical; min-height: 200px; line-height: 1.6; }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* 버튼 */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary {
+      background: var(--text-black);
+      color: #FFFFFF;
+      border: 1px solid var(--text-black);
+    }
+    .btn-secondary {
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--border-default);
     }
 
-    /* 헤더 */
+    /* 섹션 공통 */
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    /* NAV */
     .nav {
       position: sticky;
       top: 0;
@@ -84,7 +126,6 @@
     .nav-links {
       display: flex;
       gap: 32px;
-      position: relative;
     }
     .nav-item {
       position: relative;
@@ -108,10 +149,10 @@
       background: var(--bg-white);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-sm);
-      box-shadow: var(--shadow-md);
       padding: 8px 0;
       min-width: 180px;
-      margin-top: 8px;
+      box-shadow: var(--shadow-md);
+      margin-top: 4px;
     }
     .nav-item:hover .nav-dropdown {
       display: block;
@@ -127,252 +168,145 @@
       background: var(--bg-light);
       color: var(--text-black);
     }
-    .nav-utils {
+    .nav-actions {
       display: flex;
       align-items: center;
       gap: 16px;
     }
-    .nav-utils svg {
-      width: 22px;
-      height: 22px;
-      color: var(--text-dark);
-      cursor: pointer;
-    }
-    .mobile-menu-btn {
-      display: none;
-    }
-
-    /* 버튼 */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border-radius: var(--radius-sm);
-      font-size: 15px;
-      font-weight: 600;
-      transition: opacity 0.2s;
-      cursor: pointer;
-    }
-    .btn:hover { opacity: 0.85; }
-    .btn-primary {
-      background: var(--text-black);
-      color: #FFFFFF;
-      border: 1px solid var(--text-black);
-    }
-    .btn-secondary {
-      background: var(--bg-white);
-      color: var(--text-black);
-      border: 1px solid var(--border-default);
-    }
-    .btn-full {
-      width: 100%;
-    }
-
-    /* 페이지 헤더 */
-    .page-header {
-      padding: 80px 0 60px;
-      background: var(--bg-light);
-      text-align: center;
-    }
-    .page-title {
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 12px;
-    }
-    .page-desc {
-      font-size: 16px;
-      color: var(--text-gray);
-      max-width: 560px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
-
-    /* 브레드크럼 */
-    .breadcrumb {
-      padding: 24px 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .breadcrumb-list {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      color: var(--text-light);
-    }
-    .breadcrumb-list a {
-      color: var(--text-gray);
-    }
-    .breadcrumb-list a:hover {
-      color: var(--text-black);
-    }
-    .breadcrumb-list span {
-      color: var(--text-muted);
-    }
-
-    /* 문의 섹션 */
-    .inquiry-section {
-      padding: 80px 0;
-    }
-    .inquiry-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 60px;
-      align-items: start;
-    }
-    .inquiry-info {
-      position: sticky;
-      top: 100px;
-    }
-    .inquiry-info-title {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 20px;
-    }
-    .inquiry-info-text {
-      font-size: 15px;
-      color: var(--text-gray);
-      line-height: 1.7;
-      margin-bottom: 32px;
-    }
-    .inquiry-contact-list {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .inquiry-contact-item {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-    .inquiry-contact-icon {
-      width: 48px;
-      height: 48px;
-      background: var(--bg-light);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .inquiry-contact-icon svg {
+    .nav-icon {
       width: 24px;
       height: 24px;
       color: var(--text-dark);
+      cursor: pointer;
     }
-    .inquiry-contact-label {
-      font-size: 14px;
+    .cart-badge {
+      position: relative;
+    }
+    .cart-badge::after {
+      content: '0';
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: var(--text-black);
+      color: white;
+      font-size: 11px;
       font-weight: 600;
-      color: var(--text-dark);
-      margin-bottom: 4px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .inquiry-contact-value {
-      font-size: 15px;
-      color: var(--text-gray);
+    .mobile-menu-btn { display: none; }
+
+    /* 페이지 헤더 */
+    .page-header {
+      padding: 80px 0 40px;
+      background: var(--bg-white);
+      text-align: center;
+    }
+    .page-header .section-title {
+      font-size: 32px;
+      margin-bottom: 12px;
     }
 
-    /* 문의 폼 */
-    .inquiry-form {
+    /* 폼 섹션 */
+    .form-section {
+      padding: 60px 0 100px;
       background: var(--bg-white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      padding: 40px;
+    }
+    .form-wrapper {
+      max-width: 720px;
+      margin: 0 auto;
     }
     .form-group {
       margin-bottom: 24px;
     }
     .form-label {
       display: block;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 600;
-      color: var(--text-dark);
+      color: var(--text-black);
       margin-bottom: 8px;
     }
     .form-label .required {
       color: #FF6B6B;
-      margin-left: 2px;
+      margin-left: 4px;
+    }
+    .form-hint {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 6px;
     }
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
     }
-    .form-note {
-      font-size: 13px;
-      color: var(--text-light);
-      margin-top: 8px;
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 40px;
+      justify-content: center;
     }
-    .privacy-agree {
-      margin-top: 32px;
-      padding: 20px;
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      padding: 16px;
       background: var(--bg-light);
       border-radius: var(--radius-sm);
     }
-    .privacy-checkbox {
+    .checkbox-group input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+    .checkbox-group label {
+      font-size: 14px;
+      color: var(--text-dark);
+      cursor: pointer;
+    }
+
+    /* 안내 박스 */
+    .info-box {
+      background: var(--bg-light);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 40px;
+    }
+    .info-box-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-black);
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
-    .privacy-checkbox input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      cursor: pointer;
+    .info-box-title svg {
+      width: 20px;
+      height: 20px;
     }
-    .privacy-checkbox label {
-      font-size: 14px;
-      color: var(--text-dark);
-      cursor: pointer;
-    }
-    .privacy-link {
-      color: var(--text-gray);
-      text-decoration: underline;
-      margin-left: 4px;
-    }
-
-    /* 안내 카드 */
-    .info-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 60px;
-    }
-    .info-card {
-      padding: 28px;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      text-align: center;
-    }
-    .info-card-icon {
-      width: 48px;
-      height: 48px;
-      background: var(--bg-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 16px;
-    }
-    .info-card-icon svg {
-      width: 24px;
-      height: 24px;
-      color: var(--text-dark);
-    }
-    .info-card-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 8px;
-    }
-    .info-card-desc {
+    .info-box-list {
       font-size: 14px;
       color: var(--text-gray);
-      line-height: 1.6;
+      line-height: 1.8;
+    }
+    .info-box-list li {
+      position: relative;
+      padding-left: 16px;
+    }
+    .info-box-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
     }
 
-    /* 푸터 */
+    /* FOOTER */
     .footer {
       padding: 60px 0 32px;
       background: var(--bg-white);
@@ -395,12 +329,6 @@
       font-size: 14px;
       color: var(--text-light);
       line-height: 1.6;
-      margin-bottom: 16px;
-    }
-    .footer-company-info {
-      font-size: 13px;
-      color: var(--text-light);
-      line-height: 1.8;
     }
     .footer-col-title {
       font-size: 14px;
@@ -414,45 +342,16 @@
       color: var(--text-light);
       padding: 4px 0;
     }
-    .footer-col a:hover {
-      color: var(--text-black);
-    }
-    .footer-sns {
-      display: flex;
-      gap: 12px;
-      margin-top: 16px;
-    }
-    .footer-sns a {
-      width: 36px;
-      height: 36px;
-      background: var(--bg-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .footer-sns svg {
-      width: 18px;
-      height: 18px;
-      color: var(--text-dark);
-    }
     .footer-bottom {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       padding-top: 24px;
       font-size: 13px;
       color: var(--text-muted);
     }
-    .footer-links {
+    .footer-bottom-links {
       display: flex;
       gap: 16px;
-    }
-    .footer-links a {
-      color: var(--text-muted);
-    }
-    .footer-links a:hover {
-      color: var(--text-dark);
     }
 
     /* TOP 버튼 */
@@ -465,75 +364,39 @@
       background: var(--text-black);
       color: white;
       border-radius: 50%;
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s;
-      z-index: 99;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      transition: opacity 0.2s;
     }
-    .top-btn.visible {
-      opacity: 1;
-      visibility: visible;
-    }
-    .top-btn:hover {
-      background: var(--text-dark);
-    }
-    .top-btn svg {
-      width: 24px;
-      height: 24px;
-    }
+    .top-btn:hover { opacity: 0.85; }
+    .top-btn.visible { display: flex; }
 
     /* 반응형 */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .mobile-menu-btn {
+      .mobile-menu-btn { 
         display: block;
-        cursor: pointer;
-      }
-      .mobile-menu-btn svg {
         width: 24px;
         height: 24px;
         color: var(--text-dark);
       }
-      .page-header {
-        padding: 60px 0 40px;
-      }
-      .page-title {
-        font-size: 28px;
-      }
-      .inquiry-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .inquiry-info {
-        position: static;
-      }
-      .inquiry-form {
-        padding: 28px 20px;
-      }
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-      .info-cards {
-        grid-template-columns: 1fr;
-      }
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-      .footer-bottom {
-        flex-direction: column;
-        gap: 16px;
-        text-align: center;
-      }
+      .section-title { font-size: 28px; }
+      .page-header .section-title { font-size: 24px; }
+      .page-header { padding: 60px 0 32px; }
+      .form-section { padding: 40px 0 80px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 12px; }
+      .top-btn { bottom: 24px; right: 24px; width: 44px; height: 44px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 헤더 -->
+  <!-- NAV -->
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
@@ -575,229 +438,157 @@
             </div>
           </div>
         </nav>
-        <div class="nav-utils">
-          <i data-lucide="search"></i>
-          <i data-lucide="user"></i>
-          <i data-lucide="shopping-cart"></i>
-          <div class="mobile-menu-btn">
-            <i data-lucide="menu"></i>
+        <div class="nav-actions">
+          <i data-lucide="search" class="nav-icon"></i>
+          <i data-lucide="user" class="nav-icon"></i>
+          <div class="cart-badge">
+            <i data-lucide="shopping-cart" class="nav-icon"></i>
           </div>
+          <i data-lucide="menu" class="mobile-menu-btn"></i>
         </div>
       </div>
     </div>
   </header>
 
   <main>
+
     <!-- 페이지 헤더 -->
     <section class="page-header">
       <div class="container">
-        <h1 class="page-title">1:1 문의</h1>
-        <p class="page-desc">제품, 주문, 배송 등 궁금하신 사항을 남겨주시면<br>신속하게 답변드리겠습니다</p>
+        <p class="section-label">CONTACT</p>
+        <h1 class="section-title">1:1 문의</h1>
+        <p class="section-desc mx-auto">제품, 주문, 배송 등 궁금하신 사항을 남겨주시면<br>빠르게 답변 드리겠습니다.</p>
       </div>
     </section>
 
-    <!-- 브레드크럼 -->
-    <section class="breadcrumb">
+    <!-- 폼 섹션 -->
+    <section class="form-section">
       <div class="container">
-        <div class="breadcrumb-list">
-          <a href="page_01.html">홈</a>
-          <span>/</span>
-          <a href="page_12.html">고객센터</a>
-          <span>/</span>
-          <span>1:1 문의</span>
-        </div>
-      </div>
-    </section>
+        <div class="form-wrapper">
 
-    <!-- 문의 폼 섹션 -->
-    <section class="inquiry-section">
-      <div class="container">
-        <div class="inquiry-grid">
-          <!-- 좌측 안내 -->
-          <div class="inquiry-info">
-            <h2 class="inquiry-info-title">문의하기 전에<br>확인해 주세요</h2>
-            <p class="inquiry-info-text">자주 묻는 질문(FAQ)에서 원하시는 답변을 빠르게 찾으실 수 있습니다. 그 외 문의사항은 아래 양식을 작성해 주세요.</p>
-            
-            <div class="inquiry-contact-list">
-              <div class="inquiry-contact-item">
-                <div class="inquiry-contact-icon">
-                  <i data-lucide="clock"></i>
-                </div>
-                <div>
-                  <p class="inquiry-contact-label">답변 시간</p>
-                  <p class="inquiry-contact-value">평일 09:00~18:00<br>영업일 기준 24시간 이내</p>
-                </div>
-              </div>
-              
-              <div class="inquiry-contact-item">
-                <div class="inquiry-contact-icon">
-                  <i data-lucide="phone"></i>
-                </div>
-                <div>
-                  <p class="inquiry-contact-label">전화 문의</p>
-                  <p class="inquiry-contact-value">평일 09:00~18:00<br>(점심시간 12:00~13:00)</p>
-                </div>
-              </div>
-              
-              <div class="inquiry-contact-item">
-                <div class="inquiry-contact-icon">
-                  <i data-lucide="mail"></i>
-                </div>
-                <div>
-                  <p class="inquiry-contact-label">이메일 문의</p>
-                  <p class="inquiry-contact-value">support@uncommontowel.com</p>
-                </div>
-              </div>
+          <!-- 안내 박스 -->
+          <div class="info-box">
+            <div class="info-box-title">
+              <i data-lucide="info"></i>
+              <span>문의 전 확인해주세요</span>
             </div>
+            <ul class="info-box-list">
+              <li>평일(월~금) 9시~18시 접수 기준, 순차적으로 답변 드립니다.</li>
+              <li>주말 및 공휴일에는 답변이 지연될 수 있습니다.</li>
+              <li>자주 묻는 질문은 <a href="page_12.html" style="text-decoration:underline; color:var(--text-dark); font-weight:600;">FAQ</a>에서 먼저 확인해보세요.</li>
+              <li>주문 조회는 <a href="page_14.html" style="text-decoration:underline; color:var(--text-dark); font-weight:600;">주문 조회</a> 페이지를 이용해주세요.</li>
+            </ul>
           </div>
 
-          <!-- 우측 폼 -->
-          <div>
-            <form class="inquiry-form">
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label">이름 <span class="required">*</span></label>
-                  <input type="text" placeholder="이름을 입력해 주세요" required>
-                </div>
-                <div class="form-group">
-                  <label class="form-label">연락처 <span class="required">*</span></label>
-                  <input type="tel" placeholder="010-0000-0000" required>
-                </div>
-              </div>
-
+          <!-- 문의 폼 -->
+          <form>
+            <div class="form-row">
               <div class="form-group">
-                <label class="form-label">이메일 <span class="required">*</span></label>
-                <input type="email" placeholder="example@email.com" required>
-                <p class="form-note">답변은 입력하신 이메일로 발송됩니다</p>
+                <label class="form-label">이름<span class="required">*</span></label>
+                <input type="text" placeholder="홍길동" required>
               </div>
-
               <div class="form-group">
-                <label class="form-label">문의 유형 <span class="required">*</span></label>
-                <select required>
-                  <option value="">문의 유형을 선택해 주세요</option>
-                  <option value="product">제품 문의</option>
-                  <option value="order">주문/결제 문의</option>
-                  <option value="delivery">배송 문의</option>
-                  <option value="return">교환/반품 문의</option>
-                  <option value="b2b">B2B 문의</option>
-                  <option value="etc">기타 문의</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">주문번호</label>
-                <input type="text" placeholder="주문 관련 문의 시 입력해 주세요">
-                <p class="form-note">주문번호는 주문 완료 이메일 또는 마이페이지에서 확인하실 수 있습니다</p>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">문의 제목 <span class="required">*</span></label>
-                <input type="text" placeholder="문의 제목을 입력해 주세요" required>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">문의 내용 <span class="required">*</span></label>
-                <textarea placeholder="문의 내용을 상세히 입력해 주세요" required></textarea>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">파일 첨부</label>
-                <input type="file" multiple>
-                <p class="form-note">최대 5개, 파일당 10MB 이하 (jpg, png, pdf)</p>
-              </div>
-
-              <div class="privacy-agree">
-                <div class="privacy-checkbox">
-                  <input type="checkbox" id="privacy" required>
-                  <label for="privacy">개인정보 수집 및 이용에 동의합니다 <span class="required">*</span></label>
-                  <a href="#" class="privacy-link">[내용보기]</a>
-                </div>
-              </div>
-
-              <button type="submit" class="btn btn-primary btn-full" style="margin-top: 24px;">문의하기</button>
-            </form>
-
-            <!-- 안내 카드 -->
-            <div class="info-cards">
-              <div class="info-card">
-                <div class="info-card-icon">
-                  <i data-lucide="help-circle"></i>
-                </div>
-                <h3 class="info-card-title">FAQ</h3>
-                <p class="info-card-desc">자주 묻는 질문을 먼저 확인해 보세요</p>
-              </div>
-              <div class="info-card">
-                <div class="info-card-icon">
-                  <i data-lucide="package"></i>
-                </div>
-                <h3 class="info-card-title">주문 조회</h3>
-                <p class="info-card-desc">주문 내역 및 배송 현황을 확인하세요</p>
-              </div>
-              <div class="info-card">
-                <div class="info-card-icon">
-                  <i data-lucide="map-pin"></i>
-                </div>
-                <h3 class="info-card-title">매장 안내</h3>
-                <p class="info-card-desc">오프라인 매장 정보를 확인하세요</p>
+                <label class="form-label">연락처<span class="required">*</span></label>
+                <input type="tel" placeholder="010-1234-5678" required>
               </div>
             </div>
-          </div>
+
+            <div class="form-group">
+              <label class="form-label">이메일<span class="required">*</span></label>
+              <input type="email" placeholder="example@email.com" required>
+              <p class="form-hint">답변을 받으실 이메일 주소를 입력해주세요.</p>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">문의 유형<span class="required">*</span></label>
+              <select required>
+                <option value="">선택해주세요</option>
+                <option value="product">제품 문의</option>
+                <option value="order">주문/결제 문의</option>
+                <option value="delivery">배송 문의</option>
+                <option value="exchange">교환/반품 문의</option>
+                <option value="bulk">대량구매 문의</option>
+                <option value="partnership">파트너십 문의</option>
+                <option value="etc">기타 문의</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">주문번호</label>
+              <input type="text" placeholder="주문번호를 입력해주세요 (선택)">
+              <p class="form-hint">주문 관련 문의 시 입력하시면 더 빠른 답변이 가능합니다.</p>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">문의 제목<span class="required">*</span></label>
+              <input type="text" placeholder="문의 제목을 입력해주세요" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">문의 내용<span class="required">*</span></label>
+              <textarea placeholder="문의 내용을 상세히 입력해주세요" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">첨부 파일</label>
+              <input type="file" style="padding:10px;">
+              <p class="form-hint">제품 사진, 주문 내역 등을 첨부하시면 더 정확한 답변이 가능합니다. (최대 10MB)</p>
+            </div>
+
+            <div class="checkbox-group">
+              <input type="checkbox" id="privacy-agree" required>
+              <label for="privacy-agree">개인정보 수집 및 이용에 동의합니다. (필수)</label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">문의하기</button>
+              <button type="reset" class="btn btn-secondary">다시 작성</button>
+            </div>
+          </form>
+
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- 푸터 -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div>
           <p class="footer-brand-name">언커먼타올</p>
-          <p class="footer-brand-desc">매일 사용하는 타월, 프리미엄으로 경험하세요</p>
-          <div class="footer-company-info">
-            상호: [상호명]<br>
-            대표: [대표자명]<br>
-            사업자번호: [000-00-00000]<br>
-            주소: [사업장 주소]<br>
-            전화: [000-0000-0000]<br>
-            이메일: [info@uncommontowel.com]
-          </div>
-          <div class="footer-sns">
-            <a href="#"><i data-lucide="instagram"></i></a>
-            <a href="#"><i data-lucide="youtube"></i></a>
-          </div>
+          <p class="footer-brand-desc">매일 얼굴에 닿는 타월 하나에 집중하는<br>프리미엄 페이스타월 브랜드</p>
         </div>
-        
-        <div class="footer-col">
+        <div>
+          <p class="footer-col-title">쇼핑</p>
+          <a href="page_07.html">제품</a>
+          <a href="page_07.html">베스트셀러</a>
+          <a href="#">장바구니</a>
+        </div>
+        <div>
           <p class="footer-col-title">브랜드</p>
           <a href="page_02.html">브랜드 철학</a>
           <a href="page_03.html">브랜드 스토리</a>
           <a href="page_05.html">소재 이야기</a>
           <a href="page_06.html">지속가능성</a>
         </div>
-        
-        <div class="footer-col">
-          <p class="footer-col-title">제품 & B2B</p>
-          <a href="page_07.html">제품</a>
-          <a href="page_08.html">타월 가이드</a>
-          <a href="page_09.html">대량구매</a>
-          <a href="page_10.html">파트너십</a>
-        </div>
-        
-        <div class="footer-col">
-          <p class="footer-col-title">고객센터</p>
-          <a href="page_11.html">고객 후기</a>
+        <div>
+          <p class="footer-col-title">고객지원</p>
           <a href="page_12.html">FAQ</a>
           <a href="page_13.html">1:1 문의</a>
           <a href="page_14.html">주문 조회</a>
           <a href="page_15.html">매장 안내</a>
         </div>
+        <div>
+          <p class="footer-col-title">비즈니스</p>
+          <a href="page_09.html">대량구매</a>
+          <a href="page_10.html">파트너십</a>
+        </div>
       </div>
-      
       <div class="footer-bottom">
-        <span>© 2025 언커먼타올. All rights reserved.</span>
-        <div class="footer-links">
+        <span>© 언커먼타올. All rights reserved.</span>
+        <div class="footer-bottom-links">
           <a href="#">개인정보처리방침</a>
           <a href="#">이용약관</a>
         </div>
@@ -806,24 +597,21 @@
   </footer>
 
   <!-- TOP 버튼 -->
-  <button class="top-btn" id="topBtn">
-    <i data-lucide="arrow-up"></i>
+  <button class="top-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+    <i data-lucide="arrow-up" style="width:20px; height:20px;"></i>
   </button>
 
   <script>
     lucide.createIcons();
 
-    // TOP 버튼
-    const topBtn = document.getElementById('topBtn');
+    // TOP 버튼 표시
     window.addEventListener('scroll', () => {
+      const topBtn = document.querySelector('.top-btn');
       if (window.scrollY > 300) {
         topBtn.classList.add('visible');
       } else {
         topBtn.classList.remove('visible');
       }
-    });
-    topBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 </body>
