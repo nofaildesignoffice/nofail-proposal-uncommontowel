@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>브랜드 스토리 | [브랜드명] - 페이스타월 전문 브랜드</title>
-  <meta name="description" content="[브랜드명]이 만들어진 배경과 핵심 가치. 매일 얼굴에 닿는 페이스타월 하나에 집중하게 된 이유를 소개합니다.">
-  <meta name="keywords" content="[브랜드명] 스토리, 페이스타월 브랜드 스토리, [브랜드명] 창업">
+  <meta name="description" content="스킨케어는 꼼꼼하게, 타월은 아무거나? [브랜드명]은 얼굴에 닿는 타월 한 장의 차이에서 시작되었습니다. 브랜드 탄생 이야기를 만나보세요.">
+  <meta name="keywords" content="페이스타월 브랜드 스토리, 타월 브랜드, 세안타월 브랜드, 페이스타월, 세안타월, 고급타월, 면타월">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -48,7 +48,84 @@
       padding: 0 24px;
     }
 
-    /* 헤더 */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary {
+      background: var(--text-black);
+      color: #FFFFFF;
+      border: 1px solid var(--text-black);
+    }
+    .btn-secondary {
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--border-default);
+    }
+
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    .img-placeholder {
+      background: var(--placeholder-bg);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .img-placeholder svg {
+      color: var(--placeholder-icon);
+      width: 48px;
+      height: 48px;
+    }
+
+    .icon-box {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin: 0 auto 20px;
+    }
+    .icon-box svg {
+      width: 28px;
+      height: 28px;
+      color: var(--text-dark);
+    }
+
+    /* ==========================================
+       NAV
+       ========================================== */
     .nav {
       position: sticky;
       top: 0;
@@ -75,183 +152,148 @@
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
+      position: relative;
+    }
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -24px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--text-black);
     }
     .nav-utils {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 20px;
     }
     .nav-utils svg {
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       color: var(--text-dark);
       cursor: pointer;
     }
 
-    /* 페이지 헤더 */
-    .page-header {
-      padding: 80px 0 60px;
-      background: var(--bg-light);
-      text-align: center;
-    }
-    .page-header-label {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-light);
-      margin-bottom: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .page-header-title {
-      font-size: 42px;
-      font-weight: 700;
-      color: var(--text-black);
-      line-height: 1.3;
-      margin-bottom: 16px;
-    }
-    .page-header-desc {
-      font-size: 17px;
-      color: var(--text-gray);
-      line-height: 1.7;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* 공통 섹션 */
-    section {
-      padding: 80px 0;
-    }
-    .section-title {
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--text-black);
-      line-height: 1.3;
-      margin-bottom: 16px;
-    }
-    .section-desc {
-      font-size: 16px;
-      color: var(--text-gray);
-      line-height: 1.7;
-      max-width: 560px;
-    }
-    .text-center { text-align: center; }
-    .mx-auto { margin-left: auto; margin-right: auto; }
-
-    /* 이미지 플레이스홀더 */
-    .img-placeholder {
-      background: var(--placeholder-bg);
-      border-radius: var(--radius-sm);
+    /* ==========================================
+       HERO - 풀스크린 오버레이 텍스트
+       ========================================== */
+    .hero-fullscreen {
+      position: relative;
+      height: 80vh;
+      min-height: 600px;
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
+      background: var(--bg-dark);
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-    }
-    .img-placeholder svg {
-      color: var(--placeholder-icon);
-      width: 48px;
-      height: 48px;
-    }
-
-    /* 버튼 */
-    .btn {
-      display: inline-flex;
+      height: 100%;
+      background: var(--placeholder-bg);
+      display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border-radius: var(--radius-sm);
-      font-size: 15px;
-      font-weight: 600;
-      transition: opacity 0.2s;
+      justify-content: center;
     }
-    .btn:hover { opacity: 0.85; }
-    .btn-primary {
-      background: var(--text-black);
+    .hero-bg svg {
+      width: 80px;
+      height: 80px;
+      color: var(--placeholder-icon);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 10;
       color: #FFFFFF;
-      border: 1px solid var(--text-black);
+      max-width: 800px;
+      padding: 0 24px;
     }
-    .btn-secondary {
-      background: var(--bg-white);
-      color: var(--text-black);
-      border: 1px solid var(--border-default);
+    .hero-content h1 {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 24px;
+      color: #FFFFFF;
+    }
+    .hero-content p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.7;
     }
 
-    /* 섹션 1: 스토리 텍스트 + 이미지 */
+    /* ==========================================
+       스토리 섹션 - 좌우 분할
+       ========================================== */
     .story-section {
       padding: 100px 0;
       background: var(--bg-white);
     }
-    .story-content {
-      max-width: 800px;
-      margin: 0 auto;
+    .story-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
     }
-    .story-content .section-title {
+    .story-text h2 {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.4;
       margin-bottom: 24px;
     }
-    .story-content .section-desc {
-      max-width: 100%;
-      margin-bottom: 32px;
-      font-size: 17px;
-    }
-    .story-text {
+    .story-paragraph {
       font-size: 16px;
-      color: var(--text-dark);
+      color: var(--text-gray);
       line-height: 1.8;
       margin-bottom: 20px;
     }
-    .story-image {
-      margin-top: 48px;
+    .story-paragraph:last-child {
+      margin-bottom: 0;
     }
 
-    /* 섹션 2: 핵심 가치 */
+    /* ==========================================
+       가치 카드 섹션
+       ========================================== */
     .values-section {
       padding: 100px 0;
       background: var(--bg-light);
     }
-    .values-list {
-      max-width: 900px;
-      margin: 48px auto 0;
+    .values-grid {
       display: grid;
-      gap: 40px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 64px;
     }
-    .value-item {
-      padding: 32px;
+    .value-card {
+      text-align: center;
+      padding: 40px 24px;
       background: var(--bg-white);
       border-radius: var(--radius-md);
       border: 1px solid var(--border-light);
     }
-    .value-keyword {
-      font-size: 24px;
+    .value-title {
+      font-size: 20px;
       font-weight: 700;
       color: var(--text-black);
       margin-bottom: 12px;
     }
     .value-desc {
-      font-size: 16px;
+      font-size: 15px;
       color: var(--text-gray);
       line-height: 1.7;
     }
-
-    /* 섹션 3: 비전 + CTA */
-    .vision-section {
-      padding: 100px 0;
-      background: var(--bg-white);
-    }
-    .vision-content {
-      max-width: 800px;
-      margin: 0 auto;
+    .values-cta {
       text-align: center;
-    }
-    .vision-content .section-title {
-      margin-bottom: 24px;
-    }
-    .vision-text {
-      font-size: 16px;
-      color: var(--text-dark);
-      line-height: 1.8;
-      margin-bottom: 32px;
+      margin-top: 48px;
     }
 
-    /* 푸터 */
+    /* ==========================================
+       FOOTER
+       ========================================== */
     .footer {
       padding: 60px 0 32px;
       background: var(--bg-white);
@@ -279,7 +321,7 @@
     .footer-info {
       font-size: 13px;
       color: var(--text-muted);
-      line-height: 1.7;
+      line-height: 1.6;
     }
     .footer-col-title {
       font-size: 14px;
@@ -293,19 +335,32 @@
       color: var(--text-light);
       padding: 4px 0;
     }
+    .footer-col a:hover {
+      color: var(--text-dark);
+    }
     .footer-social {
       display: flex;
       gap: 12px;
       margin-top: 16px;
     }
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     .footer-social svg {
-      width: 20px;
-      height: 20px;
-      color: var(--text-muted);
+      width: 18px;
+      height: 18px;
+      color: var(--text-dark);
     }
     .footer-bottom {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       padding-top: 24px;
       font-size: 13px;
       color: var(--text-muted);
@@ -317,82 +372,100 @@
     .footer-bottom-links a {
       color: var(--text-muted);
     }
+    .footer-bottom-links a:hover {
+      color: var(--text-dark);
+    }
 
     /* TOP 버튼 */
-    .top-button {
+    .btn-top {
       position: fixed;
       bottom: 40px;
       right: 40px;
       width: 48px;
       height: 48px;
-      background: var(--text-black);
-      color: #FFFFFF;
       border-radius: 50%;
+      background: var(--text-black);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.3s, visibility 0.3s;
-      z-index: 99;
+      transition: all 0.3s;
+      z-index: 90;
     }
-    .top-button.visible {
+    .btn-top.visible {
       opacity: 1;
       visibility: visible;
     }
-    .top-button svg {
+    .btn-top svg {
       width: 20px;
       height: 20px;
+      color: #FFFFFF;
     }
 
-    /* 반응형 */
+    /* ==========================================
+       반응형
+       ========================================== */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .page-header {
-        padding: 60px 0 40px;
+      .section-title { font-size: 28px; }
+      
+      .hero-fullscreen {
+        height: 60vh;
+        min-height: 500px;
       }
-      .page-header-title {
-        font-size: 28px;
+      .hero-content h1 {
+        font-size: 32px;
       }
-      section {
+      .hero-content p {
+        font-size: 16px;
+      }
+
+      .story-section {
         padding: 60px 0;
       }
-      .section-title {
+      .story-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .story-text h2 {
         font-size: 28px;
       }
-      .story-section,
-      .values-section,
-      .vision-section {
+
+      .values-section {
         padding: 60px 0;
       }
+      .values-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin-top: 40px;
+      }
+
       .footer-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+        gap: 32px;
       }
-      .footer-bottom {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-      }
-      .footer-bottom-links {
-        justify-content: center;
-      }
-      .top-button {
+
+      .btn-top {
         bottom: 24px;
         right: 24px;
+        width: 44px;
+        height: 44px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- 헤더 -->
+  <!-- HEADER -->
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
         <a href="/" class="nav-logo">[브랜드명]</a>
         <nav class="nav-links">
-          <a href="/about">브랜드</a>
+          <a href="/">메인</a>
+          <a href="/about" class="active">브랜드</a>
           <a href="/product">제품</a>
           <a href="/towel-guide">타월 가이드</a>
           <a href="/b2b">B2B문의</a>
@@ -410,88 +483,79 @@
 
   <main>
 
-    <!-- 페이지 헤더 -->
-    <section class="page-header">
-      <div class="container">
-        <p class="page-header-label">Brand Story</p>
-        <h1 class="page-header-title">브랜드 스토리</h1>
-        <p class="page-header-desc">[브랜드명]이 만들어진 배경과 핵심 가치를 소개합니다</p>
+    <!-- 섹션 1: 히어로 -->
+    <section class="hero-fullscreen">
+      <div class="hero-bg">
+        <i data-lucide="image"></i>
+      </div>
+      <div class="hero-content">
+        <h1>이 브랜드는 작은 불편함에서 시작했어요</h1>
+        <p>왜 얼굴에 닿는 타월은 아무도 신경 쓰지 않았을까?</p>
       </div>
     </section>
 
-    <!-- 섹션 1: 시작은 하나의 질문이었어요 -->
+    <!-- 섹션 2: 브랜드가 만들어진 배경 -->
     <section class="story-section">
       <div class="container">
-        <div class="story-content">
-          <h2 class="section-title">"매일 쓰는 수건인데, 왜 아무거나 골라야 하죠?"</h2>
-          <p class="section-desc">[브랜드명]이 시작된 이유는 단순했어요.</p>
-          
-          <p class="story-text">
-            [클라이언트 확인 필요 — 창업자가 겪은 구체적 계기를 여기에 작성합니다. 피부 트러블, 수건 품질에 대한 불만 등 개인적 경험을 구체적으로 서술합니다. 3~4문장 정도의 첫 번째 단락]
-          </p>
-          
-          <p class="story-text">
-            [클라이언트 확인 필요 — 시장을 조사하며 발견한 갭에 대해 작성합니다. "페이스타월 전문 브랜드가 없었다"는 깨달음, 기존 시장의 문제점 등을 서술합니다. 3~4문장 정도의 두 번째 단락]
-          </p>
-          
-          <p class="story-text">
-            [클라이언트 확인 필요 — 결심의 순간에 대해 작성합니다. "그래서 직접 만들기로 했다"는 결정, 브랜드를 시작하게 된 계기를 마무리합니다. 3~4문장 정도의 세 번째 단락]
-          </p>
-
-          <div class="story-image img-placeholder" style="aspect-ratio:16/9; margin-top:48px;">
+        <div class="story-inner">
+          <div class="story-text">
+            <h2>세안은 꼼꼼하게, 타월은 아무거나<br>— 그게 이상했어요</h2>
+            <p class="story-paragraph">
+              스킨케어에는 수십만 원을 쓰면서, 세안 후 얼굴을 닦는 타월은 대형마트에서 묶음으로 사고 있었어요. 누구나 그렇게 하니까 당연하다고 생각했죠.
+            </p>
+            <p class="story-paragraph">
+              하지만 타월 소재를 파고들수록, 원면 산지·제직 밀도·마감 처리에 따라 피부에 닿는 느낌이 완전히 다르다는 걸 알게 되었어요. 같은 '면 100%'라도 품질 격차는 생각보다 컸습니다.
+            </p>
+            <p class="story-paragraph">
+              그래서 결심했어요.<br>
+              얼굴에 닿는 타월 한 장을 제대로 만들어 보자고.
+            </p>
+          </div>
+          <div class="img-placeholder" style="aspect-ratio:3/4;">
             <i data-lucide="image"></i>
           </div>
-          <p style="font-size:14px; color:var(--text-light); margin-top:12px; text-align:center;">[클라이언트 확인 필요 — 창업자 또는 팀 관련 비주얼 이미지]</p>
         </div>
       </div>
     </section>
 
-    <!-- 섹션 2: 우리가 믿는 것 -->
+    <!-- 섹션 3: 핵심 가치와 신념 -->
     <section class="values-section">
       <div class="container">
         <div class="text-center">
-          <h2 class="section-title">작은 물건에도 정직한 기준이 필요하다고 믿어요</h2>
+          <h2 class="section-title">우리가 타월을 만들 때 지키는 것들</h2>
         </div>
-        
-        <div class="values-list">
-          <div class="value-item">
-            <h3 class="value-keyword">투명함</h3>
-            <p class="value-desc">원재료 산지부터 제직 공장까지, 숨기지 않고 전부 공개해요</p>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="icon-box">
+              <i data-lucide="eye"></i>
+            </div>
+            <h3 class="value-title">투명함</h3>
+            <p class="value-desc">원면 산지, GSM, 흡수율까지 모든 스펙을 숨기지 않아요</p>
           </div>
-          
-          <div class="value-item">
-            <h3 class="value-keyword">집중</h3>
-            <p class="value-desc">단일 카테고리에 모든 역량을 쏟아 진짜 좋은 것을 만들어요</p>
+          <div class="value-card">
+            <div class="icon-box">
+              <i data-lucide="focus"></i>
+            </div>
+            <h3 class="value-title">집중</h3>
+            <p class="value-desc">많은 제품을 만드는 대신, 페이스타월 하나를 깊이 파고들어요</p>
           </div>
-          
-          <div class="value-item">
-            <h3 class="value-keyword">지속</h3>
-            <p class="value-desc">한 번 쓰고 버리는 게 아니라, 오래 쓸 수 있는 품질을 추구해요</p>
+          <div class="value-card">
+            <div class="icon-box">
+              <i data-lucide="leaf"></i>
+            </div>
+            <h3 class="value-title">지속가능</h3>
+            <p class="value-desc">피부에 좋은 것이 환경에도 좋을 수 있도록 고민해요</p>
           </div>
         </div>
-        
-        <p style="font-size:14px; color:var(--text-light); margin-top:24px; text-align:center;">[클라이언트 확인 필요 — 실제 핵심 가치로 내용 대체]</p>
-      </div>
-    </section>
-
-    <!-- 섹션 3: 앞으로 만들어갈 이야기 -->
-    <section class="vision-section">
-      <div class="container">
-        <div class="vision-content">
-          <h2 class="section-title">페이스타월 하나로 시작해, 일상을 바꾸는 브랜드가 되려 해요</h2>
-          
-          <p class="vision-text">
-            [클라이언트 확인 필요 — 브랜드가 궁극적으로 지향하는 모습에 대해 작성합니다. 비전, 장기 목표, 고객에게 제공하고자 하는 가치 등을 1~2단락으로 서술합니다]
-          </p>
-          
-          <a href="/about/journey" class="btn btn-primary">우리의 여정 보기</a>
+        <div class="values-cta">
+          <a href="/about/journey" class="btn btn-primary">브랜드 여정 보기</a>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- 푸터 -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
@@ -499,61 +563,49 @@
           <p class="footer-brand-name">[브랜드명]</p>
           <p class="footer-brand-desc">페이스타월 전문 브랜드</p>
           <div class="footer-info">
-            <p>상호: [클라이언트 확인 필요]</p>
-            <p>대표: [클라이언트 확인 필요]</p>
+            <p>상호: [클라이언트 확인 필요] | 대표: [클라이언트 확인 필요]</p>
             <p>사업자번호: [클라이언트 확인 필요]</p>
-            <p>통신판매업: [클라이언트 확인 필요]</p>
             <p>주소: [클라이언트 확인 필요]</p>
-            <p>전화: [클라이언트 확인 필요]</p>
-            <p>이메일: [클라이언트 확인 필요]</p>
+            <p>전화: [클라이언트 확인 필요] | 이메일: [클라이언트 확인 필요]</p>
           </div>
           <div class="footer-social">
-            <a href="#"><i data-lucide="instagram"></i></a>
-            <a href="#"><i data-lucide="youtube"></i></a>
+            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
           </div>
         </div>
-        
         <div>
           <p class="footer-col-title">브랜드</p>
           <a href="/about/philosophy">브랜드 철학</a>
           <a href="/about/story">브랜드 스토리</a>
           <a href="/about/journey">브랜드 여정</a>
           <a href="/about/material">소재 이야기</a>
-          <a href="/about/sustainability">지속가능성</a>
         </div>
-        
         <div>
-          <p class="footer-col-title">쇼핑</p>
-          <a href="/product">제품</a>
+          <p class="footer-col-title">제품</p>
+          <a href="/product">제품 보기</a>
           <a href="/towel-guide">타월 가이드</a>
           <a href="/reviews">고객 후기</a>
         </div>
-        
         <div>
-          <p class="footer-col-title">B2B</p>
-          <a href="/b2b/bulk">대량구매</a>
-          <a href="/b2b/partnership">파트너십</a>
-          <p class="footer-col-title" style="margin-top:24px;">고객센터</p>
+          <p class="footer-col-title">고객지원</p>
           <a href="/support/faq">FAQ</a>
-          <a href="/support/contact">1:1 문의</a>
+          <a href="/support/inquiry">1:1 문의</a>
           <a href="/support/order">주문 조회</a>
-          <a href="/support/store">매장 안내</a>
+          <a href="/b2b/bulk">대량구매</a>
         </div>
       </div>
-      
       <div class="footer-bottom">
         <span>© 2025 [브랜드명]. All rights reserved.</span>
         <div class="footer-bottom-links">
-          <a href="/terms">이용약관</a>
-          <span>|</span>
           <a href="/privacy">개인정보처리방침</a>
+          <a href="/terms">이용약관</a>
         </div>
       </div>
     </div>
   </footer>
 
   <!-- TOP 버튼 -->
-  <button class="top-button" id="topButton">
+  <button class="btn-top" id="btnTop" aria-label="맨 위로">
     <i data-lucide="arrow-up"></i>
   </button>
 
@@ -561,15 +613,15 @@
     lucide.createIcons();
 
     // TOP 버튼
-    const topButton = document.getElementById('topButton');
+    const btnTop = document.getElementById('btnTop');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
-        topButton.classList.add('visible');
+        btnTop.classList.add('visible');
       } else {
-        topButton.classList.remove('visible');
+        btnTop.classList.remove('visible');
       }
     });
-    topButton.addEventListener('click', () => {
+    btnTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
