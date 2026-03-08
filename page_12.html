@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FAQ | 페이스타월 전문 브랜드</title>
-  <meta name="description" content="페이스타월 구매, 배송, 관리 등 자주 묻는 질문과 답변을 확인하세요.">
-  <meta name="keywords" content="페이스타월, 세안타월, 고급 수건, 면 타월, GSM, 페이스타올, 피부 수건">
+  <title>FAQ | [브랜드명] - 페이스타월 전문 브랜드</title>
+  <meta name="description" content="페이스타월 구매, 배송, 품질, B2B 문의 등 자주 묻는 질문과 답변을 확인하세요.">
+  <meta name="keywords" content="페이스타월, 세안타월, 고급타월, 면타월, GSM, 타월추천, 타월선물, 페이스타올, FAQ, 자주묻는질문">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -19,7 +19,6 @@
       --bg-white: #FFFFFF;
       --bg-light: #F5F5F5;
       --bg-dark: #2D2D2D;
-      --bg-black: #1A1A1A;
       --border-light: #E0E0E0;
       --border-default: #D0D0D0;
       --placeholder-bg: #E0E0E0;
@@ -55,6 +54,10 @@
       z-index: 100;
       background: var(--bg-white);
       border-bottom: 1px solid var(--border-light);
+      transition: all 0.3s;
+    }
+    .nav.scrolled {
+      box-shadow: var(--shadow-sm);
     }
     .nav-inner {
       display: flex;
@@ -71,40 +74,62 @@
       display: flex;
       gap: 32px;
     }
-    .nav-links a {
+    .nav-links > li {
+      position: relative;
+    }
+    .nav-links > li > a {
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
-      position: relative;
+      display: block;
+      padding: 8px 0;
     }
-    .nav-utils {
+    .nav-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 8px 0;
+      min-width: 180px;
+      display: none;
+      box-shadow: var(--shadow-md);
+    }
+    .nav-links > li:hover .nav-dropdown {
+      display: block;
+    }
+    .nav-dropdown a {
+      display: block;
+      padding: 10px 20px;
+      font-size: 14px;
+      color: var(--text-gray);
+      white-space: nowrap;
+    }
+    .nav-dropdown a:hover {
+      background: var(--bg-light);
+      color: var(--text-black);
+    }
+    .nav-actions {
       display: flex;
       align-items: center;
       gap: 16px;
     }
-    .nav-utils svg {
+    .nav-actions button {
+      color: var(--text-dark);
+    }
+    .nav-actions svg {
       width: 22px;
       height: 22px;
-      color: var(--text-dark);
-      cursor: pointer;
     }
-    .hamburger {
+    .mobile-menu-toggle {
       display: none;
-      flex-direction: column;
-      gap: 4px;
-      cursor: pointer;
-    }
-    .hamburger span {
-      width: 22px;
-      height: 2px;
-      background: var(--text-dark);
     }
 
     /* Breadcrumb */
     .breadcrumb {
       padding: 24px 0;
-      background: var(--bg-light);
-      border-bottom: 1px solid var(--border-light);
+      background: var(--bg-white);
     }
     .breadcrumb-inner {
       display: flex;
@@ -114,73 +139,75 @@
       color: var(--text-light);
     }
     .breadcrumb-inner a {
-      color: var(--text-gray);
+      color: var(--text-light);
+    }
+    .breadcrumb-inner a:hover {
+      color: var(--text-dark);
     }
     .breadcrumb-inner svg {
       width: 14px;
       height: 14px;
     }
     .breadcrumb-inner .current {
-      color: var(--text-black);
-      font-weight: 600;
+      color: var(--text-dark);
+      font-weight: 500;
     }
 
     /* Page Header */
     .page-header {
       padding: 60px 0 40px;
-      text-align: center;
       background: var(--bg-white);
+      text-align: center;
     }
-    .page-header h1 {
+    .page-title {
       font-size: 36px;
       font-weight: 700;
       color: var(--text-black);
       margin-bottom: 12px;
     }
-    .page-header p {
+    .page-desc {
       font-size: 16px;
       color: var(--text-gray);
-      line-height: 1.6;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.7;
     }
 
-    /* FAQ Tabs */
-    .faq-tabs-section {
+    /* FAQ Categories */
+    .faq-categories {
       padding: 40px 0 0;
       background: var(--bg-white);
     }
-    .faq-tabs {
+    .category-tabs {
       display: flex;
+      justify-content: center;
       gap: 8px;
       border-bottom: 1px solid var(--border-light);
-      margin-bottom: 40px;
+      flex-wrap: wrap;
     }
-    .faq-tab {
-      padding: 14px 24px;
+    .category-tab {
+      padding: 12px 24px;
       font-size: 15px;
-      font-weight: 600;
-      color: var(--text-light);
+      font-weight: 500;
+      color: var(--text-gray);
       border-bottom: 2px solid transparent;
-      cursor: pointer;
       transition: all 0.2s;
     }
-    .faq-tab:hover {
-      color: var(--text-dark);
-    }
-    .faq-tab.active {
+    .category-tab.active {
       color: var(--text-black);
       border-bottom-color: var(--text-black);
     }
-
-    /* FAQ List */
-    .faq-content {
-      display: none;
-      padding-bottom: 80px;
+    .category-tab:hover {
+      color: var(--text-dark);
     }
-    .faq-content.active {
-      display: block;
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 60px 0 80px;
+      background: var(--bg-white);
     }
     .faq-list {
-      max-width: 920px;
+      max-width: 840px;
       margin: 0 auto;
     }
     .faq-item {
@@ -204,16 +231,16 @@
       align-items: center;
       gap: 12px;
     }
-    .faq-q-badge {
-      width: 28px;
-      height: 28px;
+    .faq-q-icon {
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
-      background: var(--bg-dark);
-      color: #FFFFFF;
+      background: var(--text-black);
+      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       flex-shrink: 0;
     }
@@ -229,67 +256,73 @@
     }
     .faq-answer {
       display: none;
-      padding: 0 40px 24px;
+      padding: 0 36px 24px;
       font-size: 15px;
       color: var(--text-gray);
-      line-height: 1.7;
+      line-height: 1.8;
     }
     .faq-item.is-open .faq-answer {
       display: block;
     }
-    .faq-answer strong {
-      color: var(--text-black);
-      font-weight: 600;
+    .faq-answer-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
     }
-
-    /* Search Box */
-    .faq-search {
-      max-width: 640px;
-      margin: 0 auto 48px;
-      position: relative;
-    }
-    .faq-search input {
-      width: 100%;
-      padding: 16px 48px 16px 20px;
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-sm);
-      font-size: 15px;
+    .faq-a-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--bg-light);
       color: var(--text-dark);
-    }
-    .faq-search input::placeholder {
-      color: var(--text-light);
-    }
-    .faq-search button {
-      position: absolute;
-      right: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-    .faq-search button svg {
-      width: 20px;
-      height: 20px;
-      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
     }
 
-    /* CTA Section */
-    .cta-section {
-      padding: 80px 0;
+    /* Category Panel */
+    .category-panel {
+      display: none;
+    }
+    .category-panel.active {
+      display: block;
+    }
+
+    /* Contact CTA */
+    .faq-contact-cta {
+      padding: 60px 0 80px;
       background: var(--bg-light);
       text-align: center;
     }
-    .cta-section h2 {
-      font-size: 28px;
+    .cta-box {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 48px 32px;
+      background: var(--bg-white);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+    }
+    .cta-title {
+      font-size: 24px;
       font-weight: 700;
       color: var(--text-black);
       margin-bottom: 12px;
     }
-    .cta-section p {
-      font-size: 16px;
+    .cta-desc {
+      font-size: 15px;
       color: var(--text-gray);
       margin-bottom: 32px;
+      line-height: 1.7;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
     .btn {
       display: inline-flex;
@@ -301,15 +334,18 @@
       font-weight: 600;
       transition: opacity 0.2s;
     }
-    .btn:hover { opacity: 0.85; }
+    .btn:hover {
+      opacity: 0.85;
+    }
     .btn-primary {
       background: var(--text-black);
       color: #FFFFFF;
       border: 1px solid var(--text-black);
     }
-    .btn svg {
-      width: 18px;
-      height: 18px;
+    .btn-secondary {
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--border-default);
     }
 
     /* Footer */
@@ -320,7 +356,7 @@
     }
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
       gap: 40px;
       padding-bottom: 40px;
       border-bottom: 1px solid var(--border-light);
@@ -330,6 +366,12 @@
       font-weight: 700;
       color: var(--text-black);
       margin-bottom: 12px;
+    }
+    .footer-brand-desc {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: 16px;
     }
     .footer-info {
       font-size: 13px;
@@ -348,107 +390,136 @@
       color: var(--text-light);
       padding: 4px 0;
     }
+    .footer-col a:hover {
+      color: var(--text-dark);
+    }
+    .footer-sns {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .footer-sns a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dark);
+    }
+    .footer-sns a:hover {
+      background: var(--text-dark);
+      color: white;
+    }
+    .footer-sns svg {
+      width: 18px;
+      height: 18px;
+    }
     .footer-bottom {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       padding-top: 24px;
       font-size: 13px;
       color: var(--text-muted);
+      flex-wrap: wrap;
+      gap: 16px;
     }
     .footer-links {
       display: flex;
       gap: 16px;
     }
+    .footer-links a {
+      color: var(--text-muted);
+    }
+    .footer-links a:hover {
+      color: var(--text-dark);
+    }
 
     /* TOP Button */
-    .top-btn {
+    .top-button {
       position: fixed;
-      right: 32px;
       bottom: 32px;
+      right: 32px;
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      background: var(--bg-dark);
-      color: #FFFFFF;
+      background: var(--text-black);
+      color: white;
       display: none;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
       box-shadow: var(--shadow-md);
-      z-index: 50;
+      z-index: 90;
     }
-    .top-btn.visible {
+    .top-button.visible {
       display: flex;
     }
-    .top-btn svg {
+    .top-button svg {
       width: 20px;
       height: 20px;
     }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      
-      .page-header {
-        padding: 40px 0 32px;
-      }
-      .page-header h1 {
-        font-size: 28px;
-      }
-      
-      .faq-tabs {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-      }
-      .faq-tabs::-webkit-scrollbar {
+      .nav-links {
         display: none;
       }
-      .faq-tab {
-        white-space: nowrap;
+      .mobile-menu-toggle {
+        display: block;
+      }
+      .nav-actions {
+        gap: 12px;
+      }
+      .page-title {
+        font-size: 28px;
+      }
+      .page-desc {
+        font-size: 15px;
+      }
+      .category-tabs {
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 0 24px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .category-tab {
         flex-shrink: 0;
       }
-      
       .faq-question {
         font-size: 15px;
         padding: 20px 0;
       }
-      .faq-q-badge {
-        width: 24px;
-        height: 24px;
-        font-size: 12px;
+      .faq-q-icon,
+      .faq-a-icon {
+        width: 20px;
+        height: 20px;
+        font-size: 11px;
       }
       .faq-answer {
-        padding: 0 0 20px 36px;
+        padding: 0 28px 20px;
         font-size: 14px;
       }
-      
-      .faq-search {
-        margin-bottom: 32px;
+      .cta-title {
+        font-size: 20px;
       }
-      
-      .cta-section {
-        padding: 60px 0;
+      .cta-desc {
+        font-size: 14px;
       }
-      .cta-section h2 {
-        font-size: 24px;
+      .cta-buttons {
+        flex-direction: column;
       }
-      
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
       .footer-grid {
         grid-template-columns: 1fr;
         gap: 32px;
       }
-      .footer-bottom {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-      }
-      
-      .top-btn {
-        right: 20px;
-        bottom: 20px;
+      .top-button {
+        bottom: 24px;
+        right: 24px;
         width: 44px;
         height: 44px;
       }
@@ -461,24 +532,46 @@
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
-        <a href="/" class="nav-logo">Brand Logo</a>
-        <nav class="nav-links">
-          <a href="/about">브랜드</a>
-          <a href="/product">제품</a>
-          <a href="/towel-guide">타월 가이드</a>
-          <a href="/b2b">B2B문의</a>
-          <a href="/reviews">고객 후기</a>
-          <a href="/support">고객센터</a>
+        <a href="/" class="nav-logo">[브랜드 로고]</a>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/">메인</a></li>
+            <li>
+              <a href="/about">브랜드</a>
+              <div class="nav-dropdown">
+                <a href="/about/philosophy">브랜드 철학</a>
+                <a href="/about/story">브랜드 스토리</a>
+                <a href="/about/journey">브랜드 여정</a>
+                <a href="/about/material">소재 이야기</a>
+                <a href="/about/sustainability">지속가능성</a>
+              </div>
+            </li>
+            <li><a href="/product">제품</a></li>
+            <li><a href="/guide">타월 가이드</a></li>
+            <li>
+              <a href="/b2b">B2B문의</a>
+              <div class="nav-dropdown">
+                <a href="/b2b/bulk">대량구매</a>
+                <a href="/b2b/partnership">파트너십</a>
+              </div>
+            </li>
+            <li><a href="/reviews">고객 후기</a></li>
+            <li>
+              <a href="/support">고객센터</a>
+              <div class="nav-dropdown">
+                <a href="/support/faq">FAQ</a>
+                <a href="/support/contact">1:1 문의</a>
+                <a href="/support/order">주문 조회</a>
+                <a href="/support/store">매장 안내</a>
+              </div>
+            </li>
+          </ul>
         </nav>
-        <div class="nav-utils">
-          <i data-lucide="search"></i>
-          <i data-lucide="user"></i>
-          <i data-lucide="shopping-cart"></i>
-          <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+        <div class="nav-actions">
+          <button><i data-lucide="search"></i></button>
+          <button><i data-lucide="user"></i></button>
+          <button><i data-lucide="shopping-cart"></i></button>
+          <button class="mobile-menu-toggle"><i data-lucide="menu"></i></button>
         </div>
       </div>
     </div>
@@ -497,411 +590,574 @@
     </div>
   </section>
 
-  <!-- Page Header -->
-  <section class="page-header">
-    <div class="container">
-      <h1>자주 묻는 질문</h1>
-      <p>페이스타월 구매, 배송, 관리 등 궁금하신 사항을 빠르게 확인하세요</p>
-    </div>
-  </section>
-
   <main>
-    <!-- FAQ Tabs & Content -->
-    <section class="faq-tabs-section">
+
+    <!-- Page Header -->
+    <section class="page-header">
       <div class="container">
-        <!-- Search -->
-        <div class="faq-search">
-          <input type="text" placeholder="궁금하신 내용을 검색해보세요">
-          <button>
-            <i data-lucide="search"></i>
-          </button>
-        </div>
+        <h1 class="page-title">자주 묻는 질문</h1>
+        <p class="page-desc">페이스타월 구매, 배송, 품질, B2B 문의 등 궁금하신 내용을 확인해보세요</p>
+      </div>
+    </section>
 
-        <!-- Tabs -->
-        <div class="faq-tabs">
-          <button class="faq-tab active" data-tab="all">전체</button>
-          <button class="faq-tab" data-tab="product">제품/소재</button>
-          <button class="faq-tab" data-tab="order">주문/결제</button>
-          <button class="faq-tab" data-tab="delivery">배송</button>
-          <button class="faq-tab" data-tab="care">관리/세탁</button>
-          <button class="faq-tab" data-tab="exchange">교환/반품</button>
-          <button class="faq-tab" data-tab="b2b">B2B문의</button>
+    <!-- FAQ Categories -->
+    <section class="faq-categories">
+      <div class="container">
+        <div class="category-tabs">
+          <button class="category-tab active" data-category="all">전체</button>
+          <button class="category-tab" data-category="product">제품/품질</button>
+          <button class="category-tab" data-category="order">주문/결제</button>
+          <button class="category-tab" data-category="shipping">배송</button>
+          <button class="category-tab" data-category="exchange">교환/반품</button>
+          <button class="category-tab" data-category="b2b">B2B/대량구매</button>
         </div>
+      </div>
+    </section>
 
-        <!-- Tab Content: 전체 -->
-        <div class="faq-content active" data-content="all">
+    <!-- FAQ List - 전체 -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="category-panel active" data-panel="all">
           <div class="faq-list">
-            <div class="faq-item">
+            <!-- 제품/품질 -->
+            <div class="faq-item is-open" data-category="product">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  페이스타월은 일반 수건과 어떻게 다른가요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>페이스타월과 일반 타월의 차이는 무엇인가요?</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                페이스타월은 얼굴 피부에 최적화된 타월입니다. <strong>일반 수건 대비 더 부드러운 원면</strong>을 사용하며, GSM(평량)과 흡수율을 얼굴 세안 후 사용에 맞춰 설계했습니다. 형광증백제 무첨가, 잔류 화학물질 최소화로 민감 피부에도 안전하게 사용하실 수 있습니다.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>페이스타월은 얼굴 전용으로 설계된 타월로, 일반 타월보다 낮은 GSM(원단 밀도)과 부드러운 면 소재를 사용하여 피부 자극을 최소화합니다. 또한 원면 산지부터 제직 공법까지 투명하게 공개하며, 흡수율과 건조 속도를 최적화한 것이 특징이에요.</p>
               </div>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item" data-category="product">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  GSM이 무엇인가요? 어떤 GSM을 선택해야 하나요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>GSM이 무엇이고, 어떤 기준으로 선택해야 하나요?</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                GSM(Grams per Square Meter)은 타월의 평량으로, 1㎡당 무게를 의미합니다. <strong>GSM이 높을수록 두껍고 흡수력이 좋으며</strong>, 낮을수록 가볍고 빨리 마릅니다.<br><br>
-                • 세안 후 가볍게 두드리는 용도: 300~400 GSM<br>
-                • 샤워 후 온몸 닦는 용도: 500~600 GSM<br><br>
-                타월 가이드 페이지에서 상세 비교표를 확인하실 수 있습니다.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>GSM(Grams per Square Meter)은 면적당 원단 무게를 나타내는 단위예요. 페이스타월은 200~350 GSM 범위가 적당하며, 낮을수록 가볍고 빠르게 마르고, 높을수록 두껍고 흡수력이 좋아요. 민감성 피부는 낮은 GSM, 풍부한 볼륨감을 원하시면 높은 GSM을 추천드려요.</p>
               </div>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item" data-category="product">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  최소 주문 수량이 있나요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>타월의 원면 산지를 왜 공개하나요?</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                B2C 개인 구매는 <strong>1장부터 주문 가능</strong>합니다. B2B 대량구매의 경우 최소 수량은 50장부터이며, 커스텀 패키징 및 자수는 100장부터 가능합니다. 자세한 사항은 B2B문의 페이지를 참고해주세요.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>면 품질은 산지에 따라 크게 달라져요. 이집트산 기자 면, 미국산 피마 면 등 원면의 섬유 길이와 순도가 다르기 때문에 부드러움과 내구성에 차이가 나요. 저희는 고객님께서 정확히 '무엇을 사는지' 아실 수 있도록 원산지와 품질 등급을 모두 공개하고 있어요.</p>
               </div>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item" data-category="product">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  배송은 얼마나 걸리나요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>타월 세탁 방법과 관리 팁을 알려주세요</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                <strong>평일 오후 2시 이전 주문 시 당일 출고</strong>되며, 서울/경기 지역은 익일 도착, 그 외 지역은 2~3일 소요됩니다. 도서산간 지역은 추가 1~2일이 소요될 수 있습니다. 주말/공휴일 주문은 익일 평일에 순차 출고됩니다.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>처음 사용 전 미지근한 물에 한 번 헹궈주시고, 세탁 시 중성 세제를 사용해 주세요. 섬유유연제는 흡수력을 떨어뜨릴 수 있으니 피해주시고, 직사광선보다는 그늘에서 자연 건조하면 오래 사용할 수 있어요. 자세한 내용은 '타월 가이드' 페이지를 참고해 주세요.</p>
               </div>
             </div>
 
-            <div class="faq-item">
+            <!-- 주문/결제 -->
+            <div class="faq-item" data-category="order">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  첫 세탁 시 주의사항이 있나요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>주문은 어떻게 하나요?</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                <strong>첫 사용 전 반드시 미지근한 물로 단독 세탁</strong>해주세요. 제직 과정에서 미세한 섬유 가루가 남아있을 수 있습니다. 첫 세탁 후 충분히 헹궈 자연 건조하시면 흡수력과 촉감이 더욱 좋아집니다. 섬유유연제는 흡수력을 저하시킬 수 있으니 사용을 권장하지 않습니다.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>자사몰 또는 스마트스토어를 통해 주문하실 수 있어요. 제품 페이지에서 수량과 옵션을 선택한 후 장바구니에 담고, 결제 페이지에서 배송지와 결제 수단을 입력하시면 완료예요. 회원가입 없이도 비회원 주문이 가능하지만, 회원 가입 시 포인트 적립과 주문 이력 조회가 편리해요.</p>
               </div>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item" data-category="order">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  교환/반품은 어떻게 하나요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>어떤 결제 수단을 사용할 수 있나요?</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                상품 수령 후 <strong>7일 이내 미개봉 상태</strong>에 한해 교환/반품이 가능합니다. 위생 상품 특성상 개봉 후에는 단순 변심에 의한 반품이 불가하며, 제품 하자 시에는 개봉 후에도 교환/환불이 가능합니다. 고객센터 1:1 문의 또는 전화로 접수 후 반송해주세요.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>신용카드, 실시간 계좌이체, 무통장입금, 카카오페이, 네이버페이 등 다양한 결제 수단을 지원해요. 무통장입금의 경우 입금 확인 후 발송되며, 입금 기한은 주문일로부터 3일 이내예요.</p>
               </div>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item" data-category="order">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  B2B 견적은 어떻게 받나요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>주문 취소는 어떻게 하나요?</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                B2B문의 > 대량구매 페이지에서 견적 신청 폼을 작성해주시거나, 이메일/전화로 문의 주시면 <strong>1영업일 내 답변</strong> 드립니다. 수량, 자수/인쇄 여부, 패키징 옵션에 따라 단가가 달라지므로, 상세한 요구사항을 함께 전달해주시면 정확한 견적을 받으실 수 있습니다.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>상품 발송 전까지는 마이페이지 > 주문 조회에서 직접 취소하실 수 있어요. 발송 후에는 취소가 불가하며, 수령 후 교환/반품 절차를 이용해 주세요. 무통장입금의 경우 입금 전까지 자동 취소돼요.</p>
+              </div>
+            </div>
+
+            <!-- 배송 -->
+            <div class="faq-item" data-category="shipping">
+              <button class="faq-question">
+                <span class="faq-question-text">
+                  <span class="faq-q-icon">Q</span>
+                  <span>배송 기간은 얼마나 걸리나요?</span>
+                </span>
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>결제 완료 후 영업일 기준 2~3일 이내 발송되며, 발송 후 1~2일 내 수령 가능해요. 제주도 및 도서산간 지역은 추가 1~2일 소요될 수 있어요. 배송 조회는 마이페이지 또는 발송 안내 문자의 운송장 번호로 확인하실 수 있어요.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-category="shipping">
+              <button class="faq-question">
+                <span class="faq-question-text">
+                  <span class="faq-q-icon">Q</span>
+                  <span>배송비는 얼마인가요?</span>
+                </span>
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>기본 배송비는 3,000원이며, 3만 원 이상 구매 시 무료 배송이에요. 제주도 및 도서산간 지역은 추가 배송비 3,000원이 발생할 수 있어요.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-category="shipping">
+              <button class="faq-question">
+                <span class="faq-question-text">
+                  <span class="faq-q-icon">Q</span>
+                  <span>배송지 변경이 가능한가요?</span>
+                </span>
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>발송 전까지는 고객센터로 연락 주시면 변경 가능해요. 발송 후에는 택배사 고객센터로 직접 문의하셔서 배송지 변경 또는 영업소 보관 후 재배송을 요청하실 수 있어요.</p>
+              </div>
+            </div>
+
+            <!-- 교환/반품 -->
+            <div class="faq-item" data-category="exchange">
+              <button class="faq-question">
+                <span class="faq-question-text">
+                  <span class="faq-q-icon">Q</span>
+                  <span>교환/반품 정책이 어떻게 되나요?</span>
+                </span>
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>제품 수령 후 7일 이내 미개봉/미사용 상태에서 교환/반품 가능해요. 단순 변심의 경우 왕복 배송비(6,000원)가 발생하며, 제품 하자나 오배송의 경우 무료로 처리해 드려요. 마이페이지 > 주문 조회에서 신청하시거나 고객센터로 연락 주세요.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-category="exchange">
+              <button class="faq-question">
+                <span class="faq-question-text">
+                  <span class="faq-q-icon">Q</span>
+                  <span>교환/반품이 불가한 경우도 있나요?</span>
+                </span>
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>포장을 개봉하거나 사용한 경우, 고객님의 책임 있는 사유로 상품이 훼손된 경우, 시간이 경과하여 재판매가 곤란한 경우는 교환/반품이 어려워요. B2B 커스텀 제작 상품(자수, 로고 각인 등)은 제작 특성상 교환/반품이 불가하니 주문 전 신중히 확인 부탁드려요.</p>
+              </div>
+            </div>
+
+            <!-- B2B/대량구매 -->
+            <div class="faq-item" data-category="b2b">
+              <button class="faq-question">
+                <span class="faq-question-text">
+                  <span class="faq-q-icon">Q</span>
+                  <span>B2B 대량구매는 몇 개부터 가능한가요?</span>
+                </span>
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>최소 주문 수량은 50개부터이며, 수량에 따라 할인율이 달라져요. 정확한 단가는 'B2B문의 > 대량구매' 페이지에서 견적 문의를 남겨주시면 영업일 기준 1일 내 회신해 드려요.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-category="b2b">
+              <button class="faq-question">
+                <span class="faq-question-text">
+                  <span class="faq-q-icon">Q</span>
+                  <span>로고 자수나 각인이 가능한가요?</span>
+                </span>
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>네, 자수, 프린팅, 각인 등 다양한 커스터마이징이 가능해요. 로고 파일(AI 또는 고해상도 이미지)을 보내주시면 샘플 작업 후 최종 확인 단계를 거쳐 제작해요. 커스텀 작업 비용과 제작 기간은 디자인 복잡도에 따라 달라지니 견적 문의 시 함께 안내받으실 수 있어요.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-category="b2b">
+              <button class="faq-question">
+                <span class="faq-question-text">
+                  <span class="faq-q-icon">Q</span>
+                  <span>세금계산서 발행이 가능한가요?</span>
+                </span>
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>B2B 주문의 경우 세금계산서 발행이 가능해요. 견적 문의 시 사업자등록증을 첨부해 주시거나, 주문 확정 후 사업자 정보를 전달해 주시면 발행해 드려요.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" data-category="b2b">
+              <button class="faq-question">
+                <span class="faq-question-text">
+                  <span class="faq-q-icon">Q</span>
+                  <span>샘플 제공이 가능한가요?</span>
+                </span>
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>대량 구매 검토 시 유료 샘플(실비)을 제공해 드려요. 샘플 비용은 본 계약 시 전체 금액에서 차감해 드리니 부담 없이 품질을 확인해 보세요. 샘플 신청은 견적 문의 시 함께 요청해 주시면 돼요.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Tab Content: 제품/소재 -->
-        <div class="faq-content" data-content="product">
+        <!-- 제품/품질 카테고리 -->
+        <div class="category-panel" data-panel="product">
           <div class="faq-list">
-            <div class="faq-item">
+            <div class="faq-item is-open">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  페이스타월은 일반 수건과 어떻게 다른가요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>페이스타월과 일반 타월의 차이는 무엇인가요?</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                페이스타월은 얼굴 피부에 최적화된 타월입니다. <strong>일반 수건 대비 더 부드러운 원면</strong>을 사용하며, GSM(평량)과 흡수율을 얼굴 세안 후 사용에 맞춰 설계했습니다. 형광증백제 무첨가, 잔류 화학물질 최소화로 민감 피부에도 안전하게 사용하실 수 있습니다.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>페이스타월은 얼굴 전용으로 설계된 타월로, 일반 타월보다 낮은 GSM(원단 밀도)과 부드러운 면 소재를 사용하여 피부 자극을 최소화합니다. 또한 원면 산지부터 제직 공법까지 투명하게 공개하며, 흡수율과 건조 속도를 최적화한 것이 특징이에요.</p>
               </div>
             </div>
 
             <div class="faq-item">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  GSM이 무엇인가요? 어떤 GSM을 선택해야 하나요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>GSM이 무엇이고, 어떤 기준으로 선택해야 하나요?</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                GSM(Grams per Square Meter)은 타월의 평량으로, 1㎡당 무게를 의미합니다. <strong>GSM이 높을수록 두껍고 흡수력이 좋으며</strong>, 낮을수록 가볍고 빨리 마릅니다.<br><br>
-                • 세안 후 가볍게 두드리는 용도: 300~400 GSM<br>
-                • 샤워 후 온몸 닦는 용도: 500~600 GSM<br><br>
-                타월 가이드 페이지에서 상세 비교표를 확인하실 수 있습니다.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>GSM(Grams per Square Meter)은 면적당 원단 무게를 나타내는 단위예요. 페이스타월은 200~350 GSM 범위가 적당하며, 낮을수록 가볍고 빠르게 마르고, 높을수록 두껍고 흡수력이 좋아요. 민감성 피부는 낮은 GSM, 풍부한 볼륨감을 원하시면 높은 GSM을 추천드려요.</p>
               </div>
             </div>
 
             <div class="faq-item">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  원면 산지는 어디인가요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>타월의 원면 산지를 왜 공개하나요?</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                저희는 <strong>원면 산지를 제품마다 투명하게 공개</strong>합니다. 주로 인도, 이집트, 미국 서플라이마 지역의 장섬유 면을 사용하며, 각 원면의 특성과 섬유 길이를 '소재 이야기' 페이지에서 상세히 확인하실 수 있습니다.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>면 품질은 산지에 따라 크게 달라져요. 이집트산 기자 면, 미국산 피마 면 등 원면의 섬유 길이와 순도가 다르기 때문에 부드러움과 내구성에 차이가 나요. 저희는 고객님께서 정확히 '무엇을 사는지' 아실 수 있도록 원산지와 품질 등급을 모두 공개하고 있어요.</p>
               </div>
             </div>
 
             <div class="faq-item">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  민감 피부에도 사용할 수 있나요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>타월 세탁 방법과 관리 팁을 알려주세요</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                네, 가능합니다. 저희 페이스타월은 <strong>형광증백제 무첨가, 유해 화학물질 최소화</strong> 공정으로 제작되며, 피부 자극 테스트를 완료한 제품입니다. 아토피 피부에도 안전하게 사용하실 수 있습니다.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>처음 사용 전 미지근한 물에 한 번 헹궈주시고, 세탁 시 중성 세제를 사용해 주세요. 섬유유연제는 흡수력을 떨어뜨릴 수 있으니 피해주시고, 직사광선보다는 그늘에서 자연 건조하면 오래 사용할 수 있어요. 자세한 내용은 '타월 가이드' 페이지를 참고해 주세요.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Tab Content: 주문/결제 -->
-        <div class="faq-content" data-content="order">
+        <!-- 주문/결제 카테고리 -->
+        <div class="category-panel" data-panel="order">
           <div class="faq-list">
-            <div class="faq-item">
+            <div class="faq-item is-open">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  최소 주문 수량이 있나요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>주문은 어떻게 하나요?</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                B2C 개인 구매는 <strong>1장부터 주문 가능</strong>합니다. B2B 대량구매의 경우 최소 수량은 50장부터이며, 커스텀 패키징 및 자수는 100장부터 가능합니다. 자세한 사항은 B2B문의 페이지를 참고해주세요.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>자사몰 또는 스마트스토어를 통해 주문하실 수 있어요. 제품 페이지에서 수량과 옵션을 선택한 후 장바구니에 담고, 결제 페이지에서 배송지와 결제 수단을 입력하시면 완료예요. 회원가입 없이도 비회원 주문이 가능하지만, 회원 가입 시 포인트 적립과 주문 이력 조회가 편리해요.</p>
               </div>
             </div>
 
             <div class="faq-item">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  결제 수단은 무엇이 있나요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>어떤 결제 수단을 사용할 수 있나요?</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                신용카드, 실시간 계좌이체, 무통장입금, 간편결제(네이버페이, 카카오페이 등)를 지원합니다. <strong>B2B 대량구매는 세금계산서 발행</strong>이 가능하며, 별도 문의 시 후불 결제도 협의 가능합니다.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>신용카드, 실시간 계좌이체, 무통장입금, 카카오페이, 네이버페이 등 다양한 결제 수단을 지원해요. 무통장입금의 경우 입금 확인 후 발송되며, 입금 기한은 주문일로부터 3일 이내예요.</p>
               </div>
             </div>
 
             <div class="faq-item">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  주문 후 취소는 어떻게 하나요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>주문 취소는 어떻게 하나요?</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                <strong>출고 전 상태</strong>에서는 마이페이지 > 주문 조회에서 직접 취소 가능합니다. 출고 후에는 취소가 불가하며, 배송 완료 후 교환/반품 절차를 진행하셔야 합니다.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>상품 발송 전까지는 마이페이지 > 주문 조회에서 직접 취소하실 수 있어요. 발송 후에는 취소가 불가하며, 수령 후 교환/반품 절차를 이용해 주세요. 무통장입금의 경우 입금 전까지 자동 취소돼요.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Tab Content: 배송 -->
-        <div class="faq-content" data-content="delivery">
+        <!-- 배송 카테고리 -->
+        <div class="category-panel" data-panel="shipping">
           <div class="faq-list">
-            <div class="faq-item">
+            <div class="faq-item is-open">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  배송은 얼마나 걸리나요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>배송 기간은 얼마나 걸리나요?</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                <strong>평일 오후 2시 이전 주문 시 당일 출고</strong>되며, 서울/경기 지역은 익일 도착, 그 외 지역은 2~3일 소요됩니다. 도서산간 지역은 추가 1~2일이 소요될 수 있습니다. 주말/공휴일 주문은 익일 평일에 순차 출고됩니다.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>결제 완료 후 영업일 기준 2~3일 이내 발송되며, 발송 후 1~2일 내 수령 가능해요. 제주도 및 도서산간 지역은 추가 1~2일 소요될 수 있어요. 배송 조회는 마이페이지 또는 발송 안내 문자의 운송장 번호로 확인하실 수 있어요.</p>
               </div>
             </div>
 
             <div class="faq-item">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  배송비는 얼마인가요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>배송비는 얼마인가요?</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                <strong>30,000원 이상 구매 시 무료배송</strong>입니다. 30,000원 미만 주문 시 3,000원의 배송비가 부과되며, 제주/도서산간 지역은 추가 배송비 3,000원이 발생할 수 있습니다.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>기본 배송비는 3,000원이며, 3만 원 이상 구매 시 무료 배송이에요. 제주도 및 도서산간 지역은 추가 배송비 3,000원이 발생할 수 있어요.</p>
               </div>
             </div>
 
             <div class="faq-item">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  배송 조회는 어떻게 하나요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>배송지 변경이 가능한가요?</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                마이페이지 > 주문 조회에서 송장번호를 확인하실 수 있으며, 택배사 홈페이지에서 실시간 배송 현황을 조회하실 수 있습니다. 출고 완료 시 카카오 알림톡으로도 송장번호가 발송됩니다.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>발송 전까지는 고객센터로 연락 주시면 변경 가능해요. 발송 후에는 택배사 고객센터로 직접 문의하셔서 배송지 변경 또는 영업소 보관 후 재배송을 요청하실 수 있어요.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Tab Content: 관리/세탁 -->
-        <div class="faq-content" data-content="care">
+        <!-- 교환/반품 카테고리 -->
+        <div class="category-panel" data-panel="exchange">
           <div class="faq-list">
-            <div class="faq-item">
+            <div class="faq-item is-open">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  첫 세탁 시 주의사항이 있나요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>교환/반품 정책이 어떻게 되나요?</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                <strong>첫 사용 전 반드시 미지근한 물로 단독 세탁</strong>해주세요. 제직 과정에서 미세한 섬유 가루가 남아있을 수 있습니다. 첫 세탁 후 충분히 헹궈 자연 건조하시면 흡수력과 촉감이 더욱 좋아집니다. 섬유유연제는 흡수력을 저하시킬 수 있으니 사용을 권장하지 않습니다.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>제품 수령 후 7일 이내 미개봉/미사용 상태에서 교환/반품 가능해요. 단순 변심의 경우 왕복 배송비(6,000원)가 발생하며, 제품 하자나 오배송의 경우 무료로 처리해 드려요. 마이페이지 > 주문 조회에서 신청하시거나 고객센터로 연락 주세요.</p>
               </div>
             </div>
 
             <div class="faq-item">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  세탁기 사용이 가능한가요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>교환/반품이 불가한 경우도 있나요?</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                네, 세탁기 사용 가능합니다. <strong>40도 이하 미지근한 물</strong>에 중성세제를 사용해주세요. 표백제, 섬유유연제는 사용하지 마시고, 세탁망 사용을 권장합니다. 건조기는 저온 또는 자연 건조를 추천합니다.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question">
-                <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  교체 주기는 어느 정도인가요?
-                </span>
-                <i data-lucide="chevron-down"></i>
-              </button>
-              <div class="faq-answer">
-                사용 빈도에 따라 다르지만, 일반적으로 <strong>3~6개월마다 교체</strong>를 권장합니다. 섬유가 거칠어지거나 흡수력이 떨어지면 교체 시기입니다. 위생을 위해 정기적으로 교체하시는 것이 좋습니다.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>포장을 개봉하거나 사용한 경우, 고객님의 책임 있는 사유로 상품이 훼손된 경우, 시간이 경과하여 재판매가 곤란한 경우는 교환/반품이 어려워요. B2B 커스텀 제작 상품(자수, 로고 각인 등)은 제작 특성상 교환/반품이 불가하니 주문 전 신중히 확인 부탁드려요.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Tab Content: 교환/반품 -->
-        <div class="faq-content" data-content="exchange">
+        <!-- B2B 카테고리 -->
+        <div class="category-panel" data-panel="b2b">
           <div class="faq-list">
-            <div class="faq-item">
+            <div class="faq-item is-open">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  교환/반품은 어떻게 하나요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>B2B 대량구매는 몇 개부터 가능한가요?</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                상품 수령 후 <strong>7일 이내 미개봉 상태</strong>에 한해 교환/반품이 가능합니다. 위생 상품 특성상 개봉 후에는 단순 변심에 의한 반품이 불가하며, 제품 하자 시에는 개봉 후에도 교환/환불이 가능합니다. 고객센터 1:1 문의 또는 전화로 접수 후 반송해주세요.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>최소 주문 수량은 50개부터이며, 수량에 따라 할인율이 달라져요. 정확한 단가는 'B2B문의 > 대량구매' 페이지에서 견적 문의를 남겨주시면 영업일 기준 1일 내 회신해 드려요.</p>
               </div>
             </div>
 
             <div class="faq-item">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  반품 배송비는 누가 부담하나요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>로고 자수나 각인이 가능한가요?</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                단순 변심의 경우 <strong>왕복 배송비(6,000원)는 고객 부담</strong>입니다. 제품 하자 또는 오배송의 경우 배송비는 당사가 부담하며, 착불로 반송해주시면 됩니다.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>네, 자수, 프린팅, 각인 등 다양한 커스터마이징이 가능해요. 로고 파일(AI 또는 고해상도 이미지)을 보내주시면 샘플 작업 후 최종 확인 단계를 거쳐 제작해요. 커스텀 작업 비용과 제작 기간은 디자인 복잡도에 따라 달라지니 견적 문의 시 함께 안내받으실 수 있어요.</p>
               </div>
             </div>
 
             <div class="faq-item">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  환불은 언제 받을 수 있나요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>세금계산서 발행이 가능한가요?</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                반품 상품이 입고되어 검수 완료 후 <strong>2~3 영업일 내 환불 처리</strong>됩니다. 결제 수단에 따라 환불 기간이 다를 수 있으며, 카드 결제는 카드사 정책에 따라 7~10일 소요될 수 있습니다.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tab Content: B2B문의 -->
-        <div class="faq-content" data-content="b2b">
-          <div class="faq-list">
-            <div class="faq-item">
-              <button class="faq-question">
-                <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  B2B 견적은 어떻게 받나요?
-                </span>
-                <i data-lucide="chevron-down"></i>
-              </button>
-              <div class="faq-answer">
-                B2B문의 > 대량구매 페이지에서 견적 신청 폼을 작성해주시거나, 이메일/전화로 문의 주시면 <strong>1영업일 내 답변</strong> 드립니다. 수량, 자수/인쇄 여부, 패키징 옵션에 따라 단가가 달라지므로, 상세한 요구사항을 함께 전달해주시면 정확한 견적을 받으실 수 있습니다.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>B2B 주문의 경우 세금계산서 발행이 가능해요. 견적 문의 시 사업자등록증을 첨부해 주시거나, 주문 확정 후 사업자 정보를 전달해 주시면 발행해 드려요.</p>
               </div>
             </div>
 
             <div class="faq-item">
               <button class="faq-question">
                 <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  최소 수량은 얼마인가요?
+                  <span class="faq-q-icon">Q</span>
+                  <span>샘플 제공이 가능한가요?</span>
                 </span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                대량구매 기본 최소 수량은 <strong>50장</strong>입니다. 로고 자수, 패키징 커스터마이징은 100장부터 가능하며, 납기는 7~14일 소요됩니다. 자세한 내용은 B2B 담당자와 상담 후 조율 가능합니다.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question">
-                <span class="faq-question-text">
-                  <span class="faq-q-badge">Q</span>
-                  세금계산서 발행이 가능한가요?
-                </span>
-                <i data-lucide="chevron-down"></i>
-              </button>
-              <div class="faq-answer">
-                네, 가능합니다. B2B 주문 시 <strong>세금계산서 자동 발행</strong>되며, 전자세금계산서로 이메일 발송됩니다. 사업자등록증 사본과 함께 견적 요청 시 안내드립니다.
+                <div class="faq-answer-header">
+                  <span class="faq-a-icon">A</span>
+                </div>
+                <p>대량 구매 검토 시 유료 샘플(실비)을 제공해 드려요. 샘플 비용은 본 계약 시 전체 금액에서 차감해 드리니 부담 없이 품질을 확인해 보세요. 샘플 신청은 견적 문의 시 함께 요청해 주시면 돼요.</p>
               </div>
             </div>
           </div>
@@ -909,17 +1165,23 @@
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- FAQ Contact CTA -->
+    <section class="faq-contact-cta">
       <div class="container">
-        <h2>원하는 답변을 찾지 못하셨나요?</h2>
-        <p>1:1 문의를 통해 빠르게 도움을 받으세요</p>
-        <a href="/support/contact" class="btn btn-primary">
-          1:1 문의하기
-          <i data-lucide="message-circle"></i>
-        </a>
+        <div class="cta-box">
+          <h2 class="cta-title">찾으시는 답변이 없으신가요?</h2>
+          <p class="cta-desc">1:1 문의를 남겨주시면 영업일 기준 24시간 이내에<br>답변을 드리고 있어요</p>
+          <div class="cta-buttons">
+            <a href="/support/contact" class="btn btn-primary">1:1 문의하기</a>
+            <a href="tel:[전화번호]" class="btn btn-secondary">
+              <i data-lucide="phone"></i>
+              전화 문의
+            </a>
+          </div>
+        </div>
       </div>
     </section>
+
   </main>
 
   <!-- Footer -->
@@ -927,104 +1189,20 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <p class="footer-brand-name">Brand Logo</p>
+          <p class="footer-brand-name">[브랜드 로고]</p>
+          <p class="footer-brand-desc">매일 얼굴에 닿는 타월 하나에 집중하는<br>페이스타월 전문 브랜드</p>
           <div class="footer-info">
-            상호: [상호명]<br>
-            대표: [대표자명]<br>
-            사업자번호: [사업자번호]<br>
-            통신판매업 신고번호: [신고번호]<br>
-            주소: [주소]<br>
-            전화: [전화번호]<br>
-            이메일: [이메일]
+            상호: [클라이언트 확인 필요]<br>
+            대표: [클라이언트 확인 필요]<br>
+            사업자번호: [클라이언트 확인 필요]<br>
+            주소: [클라이언트 확인 필요]<br>
+            전화: [클라이언트 확인 필요]<br>
+            이메일: [클라이언트 확인 필요]
+          </div>
+          <div class="footer-sns">
+            <a href="#"><i data-lucide="instagram"></i></a>
+            <a href="#"><i data-lucide="youtube"></i></a>
           </div>
         </div>
-        <div>
-          <p class="footer-col-title">브랜드</p>
-          <a href="/about/philosophy">브랜드 철학</a>
-          <a href="/about/story">브랜드 스토리</a>
-          <a href="/about/journey">브랜드 여정</a>
-          <a href="/about/material">소재 이야기</a>
-          <a href="/about/sustainability">지속가능성</a>
-        </div>
-        <div>
-          <p class="footer-col-title">쇼핑</p>
-          <a href="/product">제품</a>
-          <a href="/towel-guide">타월 가이드</a>
-          <a href="/reviews">고객 후기</a>
-        </div>
-        <div>
-          <p class="footer-col-title">B2B</p>
-          <a href="/b2b/bulk-order">대량구매</a>
-          <a href="/b2b/partnership">파트너십</a>
-        </div>
-        <div>
-          <p class="footer-col-title">고객센터</p>
-          <a href="/support/faq">FAQ</a>
-          <a href="/support/contact">1:1 문의</a>
-          <a href="/support/order-tracking">주문 조회</a>
-          <a href="/support/store">매장 안내</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© 2025 Brand. All rights reserved.</span>
-        <div class="footer-links">
-          <a href="/terms">이용약관</a>
-          <span>|</span>
-          <a href="/privacy">개인정보처리방침</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- TOP Button -->
-  <button class="top-btn" id="topBtn">
-    <i data-lucide="arrow-up"></i>
-  </button>
-
-  <script>
-    lucide.createIcons();
-
-    // FAQ 아코디언
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.closest('.faq-item');
-        item.classList.toggle('is-open');
-      });
-    });
-
-    // FAQ 탭 전환
-    const tabs = document.querySelectorAll('.faq-tab');
-    const contents = document.querySelectorAll('.faq-content');
-    
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const target = tab.dataset.tab;
-        
-        tabs.forEach(t => t.classList.remove('active'));
-        contents.forEach(c => c.classList.remove('active'));
-        
-        tab.classList.add('active');
-        document.querySelector(`[data-content="${target}"]`).classList.add('active');
-      });
-    });
-
-    // TOP 버튼
-    const topBtn = document.getElementById('topBtn');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        topBtn.classList.add('visible');
-      } else {
-        topBtn.classList.remove('visible');
-      }
-    });
-    topBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // 햄버거 메뉴 (모바일)
-    document.querySelector('.hamburger').addEventListener('click', () => {
-      alert('모바일 메뉴 오픈 (실제 구현 시 슬라이드 메뉴)');
-    });
-  </script>
-</body>
-</html>
+        <div class="footer-col">
+          <p
