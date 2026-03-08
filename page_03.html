@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>브랜드 스토리 | [브랜드명] - 페이스타월 전문 브랜드</title>
-  <meta name="description" content="스킨케어는 꼼꼼하게, 타월은 아무거나? [브랜드명]은 얼굴에 닿는 타월 한 장의 차이에서 시작되었습니다. 브랜드 탄생 이야기를 만나보세요.">
-  <meta name="keywords" content="페이스타월 브랜드 스토리, 타월 브랜드, 세안타월 브랜드, 페이스타월, 세안타월, 고급타월, 면타월">
+  <title>브랜드 스토리 | [브랜드명] - 좋은 수건은 왜 없을까, 그 질문에서 시작했습니다</title>
+  <meta name="description" content="좋은 화장품은 넘쳐나는데 좋은 수건은 왜 없을까. 그 질문 하나로 시작된 페이스타월 전문 브랜드의 이야기.">
+  <meta name="keywords" content="페이스타월브랜드스토리, 타월브랜드, 프리미엄수건브랜드이야기, 페이스타월, 세안타월, 프리미엄타월, 순면타월, 타월추천, 얼굴수건">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -48,6 +48,7 @@
       padding: 0 24px;
     }
 
+    /* 버튼 */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -70,11 +71,28 @@
       border: 1px solid var(--border-default);
     }
 
+    /* 텍스트 링크 */
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-dark);
+      border-bottom: 1px solid var(--border-default);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+    .text-link:hover { opacity: 0.7; }
+    .text-link svg { width: 16px; height: 16px; }
+
+    /* 공통 텍스트 */
     .section-label {
       font-size: 14px;
       font-weight: 600;
       color: var(--text-light);
       margin-bottom: 12px;
+      letter-spacing: 0.5px;
     }
     .section-title {
       font-size: 36px;
@@ -92,6 +110,7 @@
     .text-center { text-align: center; }
     .mx-auto { margin-left: auto; margin-right: auto; }
 
+    /* 이미지 플레이스홀더 */
     .img-placeholder {
       background: var(--placeholder-bg);
       border-radius: var(--radius-sm);
@@ -106,25 +125,25 @@
       height: 48px;
     }
 
+    /* 아이콘 박스 */
     .icon-box {
-      width: 64px;
-      height: 64px;
+      width: 48px;
+      height: 48px;
       border-radius: var(--radius-sm);
       background: var(--bg-light);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      margin: 0 auto 20px;
     }
     .icon-box svg {
-      width: 28px;
-      height: 28px;
+      width: 24px;
+      height: 24px;
       color: var(--text-dark);
     }
 
     /* ==========================================
-       NAV
+       헤더
        ========================================== */
     .nav {
       position: sticky;
@@ -154,147 +173,203 @@
       color: var(--text-dark);
       position: relative;
     }
-    .nav-links a.active::after {
-      content: '';
-      position: absolute;
-      bottom: -24px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--text-black);
-    }
     .nav-utils {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 16px;
     }
-    .nav-utils svg {
-      width: 20px;
-      height: 20px;
+    .nav-utils button {
       color: var(--text-dark);
-      cursor: pointer;
-    }
-
-    /* ==========================================
-       HERO - 풀스크린 오버레이 텍스트
-       ========================================== */
-    .hero-fullscreen {
-      position: relative;
-      height: 80vh;
-      min-height: 600px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: var(--bg-dark);
-      overflow: hidden;
     }
-    .hero-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--placeholder-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .nav-utils svg { width: 22px; height: 22px; }
+
+    /* 모바일 메뉴 */
+    .mobile-menu-btn {
+      display: none;
+      color: var(--text-dark);
     }
-    .hero-bg svg {
-      width: 80px;
-      height: 80px;
-      color: var(--placeholder-icon);
-    }
-    .hero-content {
-      position: relative;
-      z-index: 10;
-      color: #FFFFFF;
-      max-width: 800px;
-      padding: 0 24px;
-    }
-    .hero-content h1 {
-      font-size: 48px;
-      font-weight: 700;
-      line-height: 1.3;
-      margin-bottom: 24px;
-      color: #FFFFFF;
-    }
-    .hero-content p {
-      font-size: 18px;
-      color: rgba(255,255,255,0.8);
-      line-height: 1.7;
-    }
+    .mobile-menu-btn svg { width: 24px; height: 24px; }
 
     /* ==========================================
-       스토리 섹션 - 좌우 분할
+       페이지 헤더 (히어로)
        ========================================== */
-    .story-section {
-      padding: 100px 0;
+    .page-hero {
+      padding: 80px 0 60px;
       background: var(--bg-white);
+      border-bottom: 1px solid var(--border-light);
     }
-    .story-inner {
+    .page-hero .section-label {
+      margin-bottom: 16px;
+    }
+    .page-hero .section-title {
+      font-size: 42px;
+      max-width: 700px;
+    }
+    .page-hero .section-desc {
+      font-size: 17px;
+      margin-top: 16px;
+    }
+
+    /* ==========================================
+       섹션 1: 시작은 아주 사소한 불편함이었어요
+       ========================================== */
+    .story-origin {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .story-origin-inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      gap: 60px;
       align-items: center;
     }
-    .story-text h2 {
-      font-size: 36px;
+    .story-content h1 {
+      font-size: 32px;
       font-weight: 700;
       color: var(--text-black);
-      line-height: 1.4;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .story-content .subtitle {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-dark);
       margin-bottom: 24px;
     }
-    .story-paragraph {
+    .story-content .body-text {
       font-size: 16px;
       color: var(--text-gray);
       line-height: 1.8;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
-    .story-paragraph:last-child {
-      margin-bottom: 0;
+    .story-content .body-text:last-of-type {
+      margin-bottom: 32px;
     }
 
     /* ==========================================
-       가치 카드 섹션
+       섹션 2: 우리가 매일 되새기는 약속
        ========================================== */
-    .values-section {
-      padding: 100px 0;
-      background: var(--bg-light);
+    .brand-promise {
+      padding: 80px 0;
+      background: var(--bg-white);
     }
-    .values-grid {
+    .brand-promise .section-title {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 64px;
+    }
+    .promise-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 32px;
-      margin-top: 64px;
     }
-    .value-card {
-      text-align: center;
-      padding: 40px 24px;
-      background: var(--bg-white);
-      border-radius: var(--radius-md);
+    .promise-card {
+      padding: 40px 32px;
       border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      text-align: center;
     }
-    .value-title {
-      font-size: 20px;
+    .promise-card .icon-box {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 24px;
+    }
+    .promise-card .icon-box svg {
+      width: 28px;
+      height: 28px;
+    }
+    .promise-card-title {
+      font-size: 18px;
       font-weight: 700;
       color: var(--text-black);
       margin-bottom: 12px;
     }
-    .value-desc {
+    .promise-card-desc {
       font-size: 15px;
       color: var(--text-gray);
       line-height: 1.7;
     }
-    .values-cta {
+
+    /* ==========================================
+       섹션 3: 이 팀이 만듭니다
+       ========================================== */
+    .team-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .team-section .section-title {
       text-align: center;
-      margin-top: 48px;
+      margin-bottom: 12px;
+    }
+    .team-section .section-desc {
+      text-align: center;
+      margin: 0 auto 48px;
+    }
+    .team-photo {
+      max-width: 960px;
+      margin: 0 auto 40px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .team-note {
+      text-align: center;
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.6;
+      max-width: 560px;
+      margin: 0 auto;
     }
 
     /* ==========================================
-       FOOTER
+       페이지 하단 링크
        ========================================== */
-    .footer {
+    .page-footer-links {
+      padding: 60px 0;
+      background: var(--bg-white);
+      border-top: 1px solid var(--border-light);
+    }
+    .footer-links-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .footer-link-card {
+      padding: 32px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: border-color 0.2s;
+    }
+    .footer-link-card:hover {
+      border-color: var(--border-default);
+    }
+    .footer-link-card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-black);
+      margin-bottom: 4px;
+    }
+    .footer-link-card-desc {
+      font-size: 14px;
+      color: var(--text-light);
+    }
+    .footer-link-card svg {
+      width: 20px;
+      height: 20px;
+      color: var(--text-light);
+      flex-shrink: 0;
+    }
+
+    /* ==========================================
+       푸터
+       ========================================== */
+    .footer-light {
       padding: 60px 0 32px;
       background: var(--bg-white);
       border-top: 1px solid var(--border-light);
@@ -318,11 +393,6 @@
       line-height: 1.6;
       margin-bottom: 16px;
     }
-    .footer-info {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
     .footer-col-title {
       font-size: 14px;
       font-weight: 700;
@@ -334,16 +404,17 @@
       font-size: 14px;
       color: var(--text-light);
       padding: 4px 0;
+      transition: color 0.2s;
     }
     .footer-col a:hover {
       color: var(--text-dark);
     }
-    .footer-social {
+    .footer-sns {
       display: flex;
       gap: 12px;
       margin-top: 16px;
     }
-    .footer-social a {
+    .footer-sns a {
       width: 36px;
       height: 36px;
       border-radius: 50%;
@@ -351,8 +422,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: background 0.2s;
     }
-    .footer-social svg {
+    .footer-sns a:hover {
+      background: var(--border-light);
+    }
+    .footer-sns svg {
       width: 18px;
       height: 18px;
       color: var(--text-dark);
@@ -371,37 +446,38 @@
     }
     .footer-bottom-links a {
       color: var(--text-muted);
+      transition: color 0.2s;
     }
     .footer-bottom-links a:hover {
-      color: var(--text-dark);
+      color: var(--text-light);
     }
 
     /* TOP 버튼 */
-    .btn-top {
+    .top-btn {
       position: fixed;
-      bottom: 40px;
-      right: 40px;
+      bottom: 32px;
+      right: 32px;
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      background: var(--text-black);
+      background: var(--bg-black);
+      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
+      box-shadow: var(--shadow-md);
       opacity: 0;
       visibility: hidden;
-      transition: all 0.3s;
+      transition: opacity 0.3s, visibility 0.3s;
       z-index: 90;
     }
-    .btn-top.visible {
+    .top-btn.visible {
       opacity: 1;
       visibility: visible;
     }
-    .btn-top svg {
+    .top-btn svg {
       width: 20px;
       height: 20px;
-      color: #FFFFFF;
     }
 
     /* ==========================================
@@ -409,47 +485,46 @@
        ========================================== */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .section-title { font-size: 28px; }
+      .mobile-menu-btn { display: flex; }
       
-      .hero-fullscreen {
-        height: 60vh;
-        min-height: 500px;
+      .page-hero {
+        padding: 60px 0 40px;
       }
-      .hero-content h1 {
+      .page-hero .section-title {
         font-size: 32px;
       }
-      .hero-content p {
-        font-size: 16px;
-      }
 
-      .story-section {
-        padding: 60px 0;
-      }
-      .story-inner {
+      .story-origin-inner {
         grid-template-columns: 1fr;
         gap: 40px;
       }
-      .story-text h2 {
+      .story-content h1 {
         font-size: 28px;
       }
 
-      .values-section {
-        padding: 60px 0;
-      }
-      .values-grid {
+      .promise-grid {
         grid-template-columns: 1fr;
-        gap: 24px;
-        margin-top: 40px;
+        gap: 20px;
+      }
+
+      .footer-links-grid {
+        grid-template-columns: 1fr;
       }
 
       .footer-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 32px;
       }
 
-      .btn-top {
-        bottom: 24px;
-        right: 24px;
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+
+      .top-btn {
+        bottom: 20px;
+        right: 20px;
         width: 44px;
         height: 44px;
       }
@@ -458,14 +533,13 @@
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- ==================== 헤더 ==================== -->
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
         <a href="/" class="nav-logo">[브랜드명]</a>
         <nav class="nav-links">
-          <a href="/">메인</a>
-          <a href="/about" class="active">브랜드</a>
+          <a href="/about">브랜드</a>
           <a href="/product">제품</a>
           <a href="/towel-guide">타월 가이드</a>
           <a href="/b2b">B2B문의</a>
@@ -473,139 +547,212 @@
           <a href="/support">고객센터</a>
         </nav>
         <div class="nav-utils">
-          <i data-lucide="search"></i>
-          <i data-lucide="user"></i>
-          <i data-lucide="shopping-cart"></i>
+          <button aria-label="검색"><i data-lucide="search"></i></button>
+          <button aria-label="마이페이지"><i data-lucide="user"></i></button>
+          <button aria-label="장바구니"><i data-lucide="shopping-cart"></i></button>
+          <button class="mobile-menu-btn" aria-label="메뉴"><i data-lucide="menu"></i></button>
         </div>
       </div>
     </div>
   </header>
 
+  <!-- ==================== 메인 ==================== -->
   <main>
 
-    <!-- 섹션 1: 히어로 -->
-    <section class="hero-fullscreen">
-      <div class="hero-bg">
-        <i data-lucide="image"></i>
-      </div>
-      <div class="hero-content">
-        <h1>이 브랜드는 작은 불편함에서 시작했어요</h1>
-        <p>왜 얼굴에 닿는 타월은 아무도 신경 쓰지 않았을까?</p>
+    <!-- 페이지 히어로 -->
+    <section class="page-hero">
+      <div class="container">
+        <p class="section-label">BRAND STORY</p>
+        <h1 class="section-title">브랜드 스토리</h1>
+        <p class="section-desc">좋은 화장품은 넘쳐나는데, 좋은 수건은 왜 없을까?<br>그 질문 하나가 이 브랜드의 시작이었습니다.</p>
       </div>
     </section>
 
-    <!-- 섹션 2: 브랜드가 만들어진 배경 -->
-    <section class="story-section">
+    <!-- 섹션 1: 시작은 아주 사소한 불편함이었어요 -->
+    <section class="story-origin">
       <div class="container">
-        <div class="story-inner">
-          <div class="story-text">
-            <h2>세안은 꼼꼼하게, 타월은 아무거나<br>— 그게 이상했어요</h2>
-            <p class="story-paragraph">
-              스킨케어에는 수십만 원을 쓰면서, 세안 후 얼굴을 닦는 타월은 대형마트에서 묶음으로 사고 있었어요. 누구나 그렇게 하니까 당연하다고 생각했죠.
+        <div class="story-origin-inner">
+          <div class="story-content">
+            <h1>"좋은 화장품은 넘쳐나는데,<br>좋은 수건은 왜 없을까?"</h1>
+            <p class="subtitle">그 질문 하나가 이 브랜드의 시작이었습니다</p>
+            
+            <p class="body-text">
+              창업자(또는 팀)가 페이스타월에 주목하게 된 구체적 계기를 여기에 작성합니다.
+              <br><br>
+              [클라이언트 확인 필요 — 실제 창업 스토리, 대표 이름, 구체적 에피소드]
             </p>
-            <p class="story-paragraph">
-              하지만 타월 소재를 파고들수록, 원면 산지·제직 밀도·마감 처리에 따라 피부에 닿는 느낌이 완전히 다르다는 걸 알게 되었어요. 같은 '면 100%'라도 품질 격차는 생각보다 컸습니다.
+            
+            <p class="body-text">
+              기존 시장은 바스타월 중심으로 구성되어 있었고, 얼굴용 타월에 대한 관심은 거의 없었습니다. 하지만 우리는 매일 얼굴에 닿는 이 작은 타월이야말로 가장 중요한 스킨케어 도구라고 믿었습니다.
             </p>
-            <p class="story-paragraph">
-              그래서 결심했어요.<br>
-              얼굴에 닿는 타월 한 장을 제대로 만들어 보자고.
+            
+            <p class="body-text">
+              수백 번의 소재 테스트와 제직 실험 끝에, 우리는 피부에 정말 좋은 타월의 기준을 찾아냈습니다. 그리고 그 기준을 한 치의 타협 없이 지키기로 약속했습니다.
             </p>
+
+            <a href="/about/material" class="text-link">
+              소재 테스트 이야기 더 보기
+              <i data-lucide="arrow-right"></i>
+            </a>
           </div>
-          <div class="img-placeholder" style="aspect-ratio:3/4;">
-            <i data-lucide="image"></i>
+          <div>
+            <div class="img-placeholder" style="aspect-ratio:4/3;">
+              <i data-lucide="image"></i>
+            </div>
+            <p style="font-size:13px; color:var(--text-light); margin-top:12px; text-align:center;">
+              초기 제품 개발 과정 사진 또는 원면 샘플·시제품 이미지
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 섹션 3: 핵심 가치와 신념 -->
-    <section class="values-section">
+    <!-- 섹션 2: 우리가 매일 되새기는 약속 -->
+    <section class="brand-promise">
       <div class="container">
-        <div class="text-center">
-          <h2 class="section-title">우리가 타월을 만들 때 지키는 것들</h2>
-        </div>
-        <div class="values-grid">
-          <div class="value-card">
+        <h2 class="section-title">피부에 닿는 모든 것에는<br>기준이 있어야 합니다</h2>
+        
+        <div class="promise-grid">
+          <div class="promise-card">
             <div class="icon-box">
               <i data-lucide="eye"></i>
             </div>
-            <h3 class="value-title">투명함</h3>
-            <p class="value-desc">원면 산지, GSM, 흡수율까지 모든 스펙을 숨기지 않아요</p>
+            <h3 class="promise-card-title">소재를 숨기지 않겠습니다</h3>
+            <p class="promise-card-desc">
+              원면 산지, GSM, 제직 공법까지 전량 공개합니다. 고객님이 알 권리가 있다고 믿습니다.
+            </p>
           </div>
-          <div class="value-card">
+
+          <div class="promise-card">
             <div class="icon-box">
-              <i data-lucide="focus"></i>
+              <i data-lucide="package"></i>
             </div>
-            <h3 class="value-title">집중</h3>
-            <p class="value-desc">많은 제품을 만드는 대신, 페이스타월 하나를 깊이 파고들어요</p>
+            <h3 class="promise-card-title">과대 포장하지 않겠습니다</h3>
+            <p class="promise-card-desc">
+              불필요한 플라스틱 패키징을 배제하고, 제품 본질에 집중합니다.
+            </p>
           </div>
-          <div class="value-card">
+
+          <div class="promise-card">
             <div class="icon-box">
-              <i data-lucide="leaf"></i>
+              <i data-lucide="check-circle"></i>
             </div>
-            <h3 class="value-title">지속가능</h3>
-            <p class="value-desc">피부에 좋은 것이 환경에도 좋을 수 있도록 고민해요</p>
+            <h3 class="promise-card-title">매일 써도 좋은 품질만</h3>
+            <p class="promise-card-desc">
+              내구성과 세탁 후 복원력을 철저히 테스트합니다. 매일 쓰는 물건이니까요.
+            </p>
           </div>
         </div>
-        <div class="values-cta">
-          <a href="/about/journey" class="btn btn-primary">브랜드 여정 보기</a>
+
+        <p style="text-align:center; margin-top:32px; font-size:14px; color:var(--text-light);">
+          [클라이언트 확인 필요 — 실제 브랜드 미션·비전 텍스트]
+        </p>
+      </div>
+    </section>
+
+    <!-- 섹션 3: 이 팀이 만듭니다 -->
+    <section class="team-section">
+      <div class="container">
+        <h2 class="section-title">타월 덕후들이 모였습니다</h2>
+        <p class="section-desc mx-auto">소재를 만지고, 짜고, 테스트하는 일을 가장 좋아하는 사람들</p>
+        
+        <div class="team-photo">
+          <div class="img-placeholder" style="aspect-ratio:16/9;">
+            <i data-lucide="image"></i>
+          </div>
+        </div>
+
+        <div class="team-note">
+          <p>
+            대표 또는 핵심 팀원 2~3명의 간단한 소개 (이름·역할·한 줄 소개)와<br>
+            팀 분위기가 느껴지는 사진 (작업실, 소재 테스트 현장 등)을 여기에 배치합니다.
+          </p>
+          <p style="margin-top:12px;">
+            [클라이언트 확인 필요 — 팀 소개 텍스트 및 사진 제공 가능 여부]<br>
+            [이 섹션은 팀 공개가 어려울 경우 생략 가능]
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 페이지 하단 링크 -->
+    <section class="page-footer-links">
+      <div class="container">
+        <div class="footer-links-grid">
+          <a href="/about/material" class="footer-link-card">
+            <div>
+              <p class="footer-link-card-title">소재 이야기</p>
+              <p class="footer-link-card-desc">원면 산지부터 제직까지</p>
+            </div>
+            <i data-lucide="arrow-right"></i>
+          </a>
+          <a href="/about/journey" class="footer-link-card">
+            <div>
+              <p class="footer-link-card-title">브랜드 여정</p>
+              <p class="footer-link-card-desc">브랜드의 성장 과정 보기</p>
+            </div>
+            <i data-lucide="arrow-right"></i>
+          </a>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer">
+  <!-- ==================== 푸터 ==================== -->
+  <footer class="footer-light">
     <div class="container">
       <div class="footer-grid">
         <div>
           <p class="footer-brand-name">[브랜드명]</p>
-          <p class="footer-brand-desc">페이스타월 전문 브랜드</p>
-          <div class="footer-info">
-            <p>상호: [클라이언트 확인 필요] | 대표: [클라이언트 확인 필요]</p>
-            <p>사업자번호: [클라이언트 확인 필요]</p>
-            <p>주소: [클라이언트 확인 필요]</p>
-            <p>전화: [클라이언트 확인 필요] | 이메일: [클라이언트 확인 필요]</p>
-          </div>
-          <div class="footer-social">
-            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
-            <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+          <p class="footer-brand-desc">프리미엄 페이스타월 전문 브랜드</p>
+          <p class="footer-brand-desc" style="font-size:13px; line-height:1.8;">
+            상호: [클라이언트 확인 필요]<br>
+            대표: [클라이언트 확인 필요]<br>
+            사업자번호: [클라이언트 확인 필요]<br>
+            주소: [클라이언트 확인 필요]<br>
+            전화: [클라이언트 확인 필요]<br>
+            이메일: [클라이언트 확인 필요]
+          </p>
+          <div class="footer-sns">
+            <a href="#" aria-label="인스타그램"><i data-lucide="instagram"></i></a>
+            <a href="#" aria-label="유튜브"><i data-lucide="youtube"></i></a>
           </div>
         </div>
-        <div>
+        <div class="footer-col">
           <p class="footer-col-title">브랜드</p>
           <a href="/about/philosophy">브랜드 철학</a>
           <a href="/about/story">브랜드 스토리</a>
           <a href="/about/journey">브랜드 여정</a>
           <a href="/about/material">소재 이야기</a>
+          <a href="/about/sustainability">지속가능성</a>
         </div>
-        <div>
-          <p class="footer-col-title">제품</p>
-          <a href="/product">제품 보기</a>
+        <div class="footer-col">
+          <p class="footer-col-title">쇼핑</p>
+          <a href="/product">제품</a>
           <a href="/towel-guide">타월 가이드</a>
           <a href="/reviews">고객 후기</a>
         </div>
-        <div>
+        <div class="footer-col">
           <p class="footer-col-title">고객지원</p>
           <a href="/support/faq">FAQ</a>
           <a href="/support/inquiry">1:1 문의</a>
           <a href="/support/order">주문 조회</a>
-          <a href="/b2b/bulk">대량구매</a>
+          <a href="/support/store">매장 안내</a>
         </div>
       </div>
       <div class="footer-bottom">
         <span>© 2025 [브랜드명]. All rights reserved.</span>
         <div class="footer-bottom-links">
-          <a href="/privacy">개인정보처리방침</a>
           <a href="/terms">이용약관</a>
+          <a href="/privacy">개인정보처리방침</a>
         </div>
       </div>
     </div>
   </footer>
 
   <!-- TOP 버튼 -->
-  <button class="btn-top" id="btnTop" aria-label="맨 위로">
+  <button class="top-btn" id="topBtn" aria-label="맨 위로">
     <i data-lucide="arrow-up"></i>
   </button>
 
@@ -613,15 +760,15 @@
     lucide.createIcons();
 
     // TOP 버튼
-    const btnTop = document.getElementById('btnTop');
+    const topBtn = document.getElementById('topBtn');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
-        btnTop.classList.add('visible');
+        topBtn.classList.add('visible');
       } else {
-        btnTop.classList.remove('visible');
+        topBtn.classList.remove('visible');
       }
     });
-    btnTop.addEventListener('click', () => {
+    topBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
