@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>지속가능성 | 언커먼타올 - 피부에도 지구에도 좋은 선택</title>
-  <meta name="description" content="소재 선택부터 패키징까지, 환경을 생각하는 프리미엄 페이스타월 브랜드의 지속가능성 노력을 소개합니다.">
-  <meta name="keywords" content="친환경 수건, 지속가능 타월, 오가닉 면타월, 에코 패키징">
+  <title>지속가능성 | 언커먼타올 - 프리미엄 페이스타월</title>
+  <meta name="description" content="좋은 수건이 환경에도 좋아야 합니다. 언커먼타올의 친환경 소재, 패키징, 탄소 절감 노력을 확인하세요.">
+  <meta name="keywords" content="프리미엄 수건, 페이스타월, 고급 수건, 호텔 수건, 면 타월, 친환경 수건, 지속가능성">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -46,99 +46,6 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 24px;
-    }
-
-    /* 헤더 */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--bg-white);
-      border-bottom: 1px solid var(--border-light);
-      transition: all 0.3s;
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 72px;
-    }
-    .nav-logo {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-black);
-    }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-    }
-    .nav-links > li {
-      position: relative;
-    }
-    .nav-links > li > a {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text-dark);
-      display: block;
-      padding: 8px 0;
-    }
-    .nav-links > li > a.active {
-      color: var(--text-black);
-      font-weight: 600;
-    }
-    .nav-dropdown {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: var(--bg-white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-sm);
-      padding: 8px 0;
-      min-width: 180px;
-      box-shadow: var(--shadow-md);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-8px);
-      transition: all 0.2s;
-    }
-    .nav-links > li:hover .nav-dropdown {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-    .nav-dropdown a {
-      display: block;
-      padding: 10px 20px;
-      font-size: 14px;
-      color: var(--text-dark);
-      white-space: nowrap;
-    }
-    .nav-dropdown a:hover {
-      background: var(--bg-light);
-    }
-    .nav-utils {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .nav-utils button {
-      width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .nav-utils svg {
-      width: 20px;
-      height: 20px;
-      color: var(--text-dark);
-    }
-
-    /* 모바일 네비 */
-    .mobile-nav-toggle {
-      display: none;
-      width: 24px;
-      height: 24px;
     }
 
     /* 버튼 */
@@ -187,21 +94,6 @@
     .text-center { text-align: center; }
     .mx-auto { margin-left: auto; margin-right: auto; }
 
-    /* 이미지 플레이스홀더 */
-    .img-placeholder {
-      background: var(--placeholder-bg);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-    .img-placeholder svg {
-      color: var(--placeholder-icon);
-      width: 48px;
-      height: 48px;
-    }
-
     /* 아이콘 박스 */
     .icon-box {
       width: 64px;
@@ -220,118 +112,194 @@
       color: var(--text-dark);
     }
 
-    /* 섹션 1: 좋은 수건이 환경도 생각해야 하는 이유 */
-    .philosophy-section {
-      padding: 120px 0 80px;
+    /* ==========================================
+       NAV
+       ========================================== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
       background: var(--bg-white);
+      border-bottom: 1px solid var(--border-light);
     }
-    .philosophy-inner {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
     }
-    .philosophy-inner .section-title {
-      font-size: 42px;
-      margin-bottom: 24px;
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
     }
-    .philosophy-inner .section-desc {
-      margin: 0 auto 40px;
-      max-width: 640px;
+    .nav-links {
+      display: flex;
+      gap: 32px;
     }
-    .philosophy-content {
-      text-align: left;
-      margin-top: 48px;
+    .nav-menu-item {
+      position: relative;
     }
-    .philosophy-content p {
-      font-size: 16px;
-      color: var(--text-gray);
-      line-height: 1.8;
-      margin-bottom: 20px;
+    .nav-menu-item > a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-dark);
+      display: block;
+      padding: 8px 0;
     }
-    .philosophy-content p:last-child {
-      margin-bottom: 0;
+    .nav-menu-item.active > a {
+      color: var(--text-black);
+      font-weight: 700;
     }
-    .client-note {
-      background: var(--bg-light);
-      padding: 20px 24px;
+    .nav-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
       border-radius: var(--radius-sm);
-      margin-top: 32px;
+      padding: 8px 0;
+      min-width: 180px;
+      box-shadow: var(--shadow-md);
+    }
+    .nav-menu-item:hover .nav-dropdown {
+      display: block;
+    }
+    .nav-dropdown a {
+      display: block;
+      padding: 10px 20px;
       font-size: 14px;
-      color: var(--text-light);
-      text-align: center;
-      border: 1px dashed var(--border-default);
+      color: var(--text-dark);
+    }
+    .nav-dropdown a:hover {
+      background: var(--bg-light);
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-actions svg {
+      width: 22px;
+      height: 22px;
+      color: var(--text-dark);
+      cursor: pointer;
+    }
+    .mobile-menu-toggle {
+      display: none;
     }
 
-    /* 섹션 2: 우리의 실천 */
-    .practices-section {
+    /* ==========================================
+       HERO
+       ========================================== */
+    .hero-simple {
+      padding: 120px 0 80px;
+      background: var(--bg-white);
+      text-align: center;
+    }
+    .hero-simple .section-title {
+      font-size: 42px;
+      max-width: 700px;
+      margin: 0 auto 16px;
+    }
+    .hero-simple .section-desc {
+      margin: 0 auto 40px;
+      font-size: 18px;
+      color: var(--text-light);
+    }
+    .intro-text {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .intro-text p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    /* ==========================================
+       PRACTICE SECTION
+       ========================================== */
+    .practice-section {
       padding: 80px 0;
       background: var(--bg-light);
     }
-    .practices-grid {
+    .practice-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 32px;
       margin-top: 48px;
     }
     .practice-card {
-      padding: 40px;
+      text-align: center;
+      padding: 32px 20px;
       background: var(--bg-white);
       border-radius: var(--radius-md);
       border: 1px solid var(--border-light);
     }
-    .practice-card .icon-box {
-      margin: 0 0 24px 0;
-    }
     .practice-card-title {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 12px;
-    }
-    .practice-card-desc {
-      font-size: 15px;
-      color: var(--text-gray);
-      line-height: 1.7;
-    }
-
-    /* 섹션 3: 함께 만들어가는 변화 */
-    .change-section {
-      padding: 80px 0;
-      background: var(--bg-white);
-    }
-    .change-inner {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .change-inner .section-title {
-      font-size: 36px;
-      margin-bottom: 16px;
-    }
-    .change-inner .section-desc {
-      margin: 0 auto 32px;
-    }
-    .change-content {
-      margin-top: 40px;
-      text-align: left;
-      padding: 32px;
-      background: var(--bg-light);
-      border-radius: var(--radius-md);
-    }
-    .change-content h3 {
       font-size: 18px;
       font-weight: 700;
       color: var(--text-black);
       margin-bottom: 12px;
     }
-    .change-content p {
-      font-size: 15px;
+    .practice-card-desc {
+      font-size: 14px;
       color: var(--text-gray);
-      line-height: 1.7;
-      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .client-check {
+      color: var(--text-light);
+      font-style: italic;
+      font-size: 13px;
     }
 
-    /* 푸터 */
+    /* ==========================================
+       ROADMAP SECTION
+       ========================================== */
+    .roadmap-section {
+      padding: 80px 0;
+      background: var(--bg-white);
+    }
+    .roadmap-content {
+      max-width: 720px;
+      margin: 48px auto 0;
+    }
+    .roadmap-item {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .roadmap-item:last-child {
+      border-bottom: none;
+    }
+    .roadmap-item-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .roadmap-item-desc {
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+    .roadmap-statement {
+      text-align: center;
+      font-size: 16px;
+      color: var(--text-dark);
+      margin: 40px 0 32px;
+      font-weight: 500;
+    }
+    .roadmap-cta {
+      text-align: center;
+    }
+
+    /* ==========================================
+       FOOTER
+       ========================================== */
     .footer-light {
       padding: 60px 0 32px;
       background: var(--bg-white);
@@ -367,9 +335,6 @@
       color: var(--text-light);
       padding: 4px 0;
     }
-    .footer-col a:hover {
-      color: var(--text-dark);
-    }
     .footer-bottom {
       display: flex;
       justify-content: space-between;
@@ -391,219 +356,234 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
       opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s;
+      pointer-events: none;
+      transition: opacity 0.3s;
       z-index: 90;
     }
     .top-button.visible {
       opacity: 1;
-      visibility: visible;
+      pointer-events: auto;
     }
     .top-button svg {
       width: 20px;
       height: 20px;
     }
 
-    /* 반응형 */
+    /* ==========================================
+       반응형
+       ========================================== */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .mobile-nav-toggle { display: block; }
-      
+      .mobile-menu-toggle {
+        display: block;
+      }
+      .mobile-menu-toggle svg {
+        width: 24px;
+        height: 24px;
+        color: var(--text-dark);
+      }
       .section-title { font-size: 28px; }
-      
-      .philosophy-section { padding: 80px 0 60px; }
-      .philosophy-inner .section-title { font-size: 32px; }
-      
-      .practices-grid { grid-template-columns: 1fr; gap: 24px; }
-      .practice-card { padding: 32px 24px; }
-      
-      .change-section { padding: 60px 0; }
-      .change-content { padding: 24px; }
-      
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-      
-      .top-button { bottom: 24px; right: 24px; }
+      .hero-simple { padding: 80px 0 60px; }
+      .hero-simple .section-title { font-size: 32px; }
+      .practice-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+      .top-button {
+        bottom: 24px;
+        right: 24px;
+        width: 44px;
+        height: 44px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- 헤더 -->
+  <!-- ==================== HEADER ==================== -->
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
         <a href="page_01.html" class="nav-logo">언커먼타올</a>
-        <nav>
-          <ul class="nav-links">
-            <li><a href="page_01.html">메인</a></li>
-            <li>
-              <a href="page_02.html" class="active">브랜드</a>
-              <div class="nav-dropdown">
-                <a href="page_02.html">브랜드 철학</a>
-                <a href="page_03.html">브랜드 스토리</a>
-                <a href="page_04.html">브랜드 여정</a>
-                <a href="page_05.html">소재 이야기</a>
-                <a href="page_06.html">지속가능성</a>
-              </div>
-            </li>
-            <li><a href="page_07.html">제품</a></li>
-            <li><a href="page_08.html">타월 가이드</a></li>
-            <li>
-              <a href="page_09.html">B2B문의</a>
-              <div class="nav-dropdown">
-                <a href="page_09.html">대량구매</a>
-                <a href="page_10.html">파트너십</a>
-              </div>
-            </li>
-            <li><a href="page_11.html">고객 후기</a></li>
-            <li>
-              <a href="page_12.html">고객센터</a>
-              <div class="nav-dropdown">
-                <a href="page_12.html">FAQ</a>
-                <a href="page_13.html">1:1 문의</a>
-                <a href="page_14.html">주문 조회</a>
-                <a href="page_15.html">매장 안내</a>
-              </div>
-            </li>
-          </ul>
+        <nav class="nav-links">
+          <div class="nav-menu-item active">
+            <a href="page_02.html">브랜드</a>
+            <div class="nav-dropdown">
+              <a href="page_02.html">브랜드 철학</a>
+              <a href="page_03.html">브랜드 스토리</a>
+              <a href="page_04.html">브랜드 여정</a>
+              <a href="page_05.html">소재 이야기</a>
+              <a href="page_06.html">지속가능성</a>
+            </div>
+          </div>
+          <div class="nav-menu-item">
+            <a href="page_07.html">제품</a>
+          </div>
+          <div class="nav-menu-item">
+            <a href="page_08.html">타월 가이드</a>
+          </div>
+          <div class="nav-menu-item">
+            <a href="page_09.html">B2B문의</a>
+            <div class="nav-dropdown">
+              <a href="page_09.html">대량구매</a>
+              <a href="page_10.html">파트너십</a>
+            </div>
+          </div>
+          <div class="nav-menu-item">
+            <a href="page_11.html">고객 후기</a>
+          </div>
+          <div class="nav-menu-item">
+            <a href="page_12.html">고객센터</a>
+            <div class="nav-dropdown">
+              <a href="page_12.html">FAQ</a>
+              <a href="page_13.html">1:1 문의</a>
+              <a href="page_14.html">주문 조회</a>
+              <a href="page_15.html">매장 안내</a>
+            </div>
+          </div>
         </nav>
-        <div class="nav-utils">
-          <button aria-label="검색"><i data-lucide="search"></i></button>
-          <button aria-label="마이페이지"><i data-lucide="user"></i></button>
-          <button aria-label="장바구니"><i data-lucide="shopping-cart"></i></button>
-          <button class="mobile-nav-toggle" aria-label="메뉴"><i data-lucide="menu"></i></button>
+        <div class="nav-actions">
+          <i data-lucide="search"></i>
+          <i data-lucide="user"></i>
+          <i data-lucide="shopping-cart"></i>
+          <button class="mobile-menu-toggle">
+            <i data-lucide="menu"></i>
+          </button>
         </div>
       </div>
     </div>
   </header>
 
+  <!-- ==================== MAIN ==================== -->
   <main>
 
-    <!-- 섹션 1: 좋은 수건이 환경도 생각해야 하는 이유 -->
-    <section class="philosophy-section">
+    <!-- 섹션 1: 좋은 수건이 환경에도 좋아야 합니다 -->
+    <section class="hero-simple">
       <div class="container">
-        <div class="philosophy-inner">
-          <h1 class="section-title">피부에 좋은 수건이,<br>지구에도 좋아야 한다고 믿습니다</h1>
-          <p class="section-desc">소재 선택부터 포장, 폐기까지. 환경을 고려한 선택을 이어갑니다.</p>
-          
-          <div class="philosophy-content">
-            <p>우리는 매일 피부에 닿는 수건의 품질을 고민하는 만큼, 그 수건이 환경에 미치는 영향도 함께 고민합니다. 좋은 원료를 선택하는 것, 깨끗한 공정으로 만드는 것, 불필요한 낭비를 줄이는 것. 이 모든 선택이 지속가능한 내일을 만든다고 믿습니다.</p>
-            <p>한 장의 수건을 만들기 위해 필요한 면화 재배, 염색, 제직, 포장, 운송의 모든 단계에서 우리는 환경적 책임을 다하기 위해 노력합니다. 완벽하지는 않지만, 더 나은 방향을 향해 계속 나아가고 있습니다.</p>
-          </div>
-
-          <div class="client-note">
-            [클라이언트 확인 필요: 구체적 환경 철학이나 대표의 언급]
-          </div>
+        <h1 class="section-title">좋은 수건이 환경에도 좋아야 합니다</h1>
+        <p class="section-desc mx-auto">만드는 과정부터, 쓰고 난 뒤까지 생각합니다</p>
+        <div class="intro-text">
+          <p>수건은 매일 쓰고, 자주 빨고, 결국 버려집니다. 이 순환 전체에서 환경 부담을 줄이는 것이 우리의 책임이라고 생각합니다.</p>
+          <p>거창한 캠페인보다, 만드는 방식 자체를 바꾸는 것에 집중합니다.</p>
         </div>
       </div>
     </section>
 
-    <!-- 섹션 2: 우리의 실천 -->
-    <section class="practices-section">
+    <!-- 섹션 2: 우리가 실천하는 것들 -->
+    <section class="practice-section">
       <div class="container">
         <div class="text-center">
-          <h2 class="section-title">말이 아닌 실천으로 보여드립니다</h2>
+          <h2 class="section-title">말이 아니라 과정으로 증명합니다</h2>
         </div>
-
-        <div class="practices-grid">
+        <div class="practice-grid">
           <div class="practice-card">
             <div class="icon-box">
               <i data-lucide="leaf"></i>
             </div>
-            <h3 class="practice-card-title">친환경 소재 선택</h3>
-            <p class="practice-card-desc">[클라이언트 확인 필요: 친환경 소재 구체적 항목 — 예: 유기농 면, 리사이클 섬유 등]</p>
+            <h3 class="practice-card-title">친환경 소재</h3>
+            <p class="practice-card-desc client-check">[클라이언트 확인 필요: 오가닉 코튼 사용 여부, BCI(Better Cotton Initiative) 참여 여부, 리사이클 소재 혼용 여부 등]</p>
           </div>
 
           <div class="practice-card">
             <div class="icon-box">
               <i data-lucide="package"></i>
             </div>
-            <h3 class="practice-card-title">지속가능한 패키징</h3>
-            <p class="practice-card-desc">[클라이언트 확인 필요: 친환경 패키징 방식 — 예: 재생지, 플라스틱 프리 등]</p>
+            <h3 class="practice-card-title">패키징</h3>
+            <p class="practice-card-desc client-check">[클라이언트 확인 필요: 재생 종이 포장, 비닐 최소화, 대두 잉크 사용 등 구체적 패키징 정책]</p>
           </div>
 
           <div class="practice-card">
             <div class="icon-box">
-              <i data-lucide="cloud"></i>
+              <i data-lucide="droplet"></i>
             </div>
-            <h3 class="practice-card-title">탄소 절감 노력</h3>
-            <p class="practice-card-desc">[클라이언트 확인 필요: 탄소 절감 노력 — 예: 운송 거리 최소화, 생산 공정 에너지 절감 등]</p>
+            <h3 class="practice-card-title">가공 과정</h3>
+            <p class="practice-card-desc client-check">[클라이언트 확인 필요: 무염소 표백, 저탄소 염색 공정, 폐수 처리 기준 등]</p>
           </div>
 
           <div class="practice-card">
             <div class="icon-box">
-              <i data-lucide="award"></i>
+              <i data-lucide="wind"></i>
             </div>
-            <h3 class="practice-card-title">공인된 인증</h3>
-            <p class="practice-card-desc">[클라이언트 확인 필요: 관련 인증 — 예: OEKO-TEX, GOTS, BCI 등]</p>
+            <h3 class="practice-card-title">탄소 절감</h3>
+            <p class="practice-card-desc client-check">[클라이언트 확인 필요: 탄소 배출 저감 수치, 국내 생산으로 물류 탄소 절감, 탄소 상쇄 프로그램 참여 여부 등]</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 섹션 3: 함께 만들어가는 변화 -->
-    <section class="change-section">
+    <!-- 섹션 3: 앞으로의 목표 -->
+    <section class="roadmap-section">
       <div class="container">
-        <div class="change-inner">
-          <h2 class="section-title">한 장의 수건을 오래 쓰는 것도<br>지속가능성입니다</h2>
-          <p class="section-desc">잘 만든 수건 하나가 불필요한 소비를 줄입니다.</p>
-
-          <div class="change-content">
-            <h3>타월 오래 쓰는 법</h3>
-            <p>올바른 관리법으로 타월의 수명을 늘리는 것도 환경을 지키는 실천입니다. 세탁 방법, 건조 방법, 보관 팁까지 자세한 가이드를 확인하세요.</p>
-            <a href="page_08.html" class="btn btn-primary">타월 가이드 보기 <i data-lucide="arrow-right"></i></a>
+        <div class="text-center">
+          <h2 class="section-title">아직 완벽하지 않지만, 계속 나아갑니다</h2>
+        </div>
+        <div class="roadmap-content">
+          <div class="roadmap-item">
+            <p class="roadmap-item-title">향후 목표</p>
+            <p class="roadmap-item-desc client-check">[클라이언트 확인 필요: 향후 친환경 목표 — 예: 2026년까지 포장재 100% 재활용 소재 전환, 탄소 중립 목표 연도 등]</p>
           </div>
-
-          <div class="client-note" style="margin-top: 32px;">
-            [클라이언트 확인 필요: 리사이클 프로그램, 기부 활동 등 소비자 참여형 지속가능성 프로그램 유무]
-          </div>
+        </div>
+        <p class="roadmap-statement">완벽하지 않더라도 솔직하게 과정을 공유하겠습니다.</p>
+        <div class="roadmap-cta">
+          <a href="page_05.html" class="btn btn-primary">소재 이야기 보기</a>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- 푸터 -->
+  <!-- ==================== FOOTER ==================== -->
   <footer class="footer-light">
     <div class="container">
       <div class="footer-grid">
         <div>
           <p class="footer-brand-name">언커먼타올</p>
-          <p class="footer-brand-desc">프리미엄 페이스타월 전문 브랜드</p>
-          <div class="client-note" style="margin-top: 16px; padding: 12px; font-size: 12px;">
-            [클라이언트 확인 필요: 상호 / 대표 / 사업자번호 / 주소 / 전화 / 이메일]
-          </div>
+          <p class="footer-brand-desc">프리미엄 페이스타월</p>
         </div>
-        <div class="footer-col">
-          <p class="footer-col-title">브랜드</p>
-          <a href="page_02.html">브랜드 철학</a>
-          <a href="page_03.html">브랜드 스토리</a>
-          <a href="page_05.html">소재 이야기</a>
-        </div>
-        <div class="footer-col">
+        <div>
           <p class="footer-col-title">쇼핑</p>
           <a href="page_07.html">전체 제품</a>
-          <a href="page_08.html">타월 가이드</a>
+          <a href="page_07.html">베스트셀러</a>
         </div>
-        <div class="footer-col">
-          <p class="footer-col-title">고객지원</p>
+        <div>
+          <p class="footer-col-title">브랜드</p>
+          <a href="page_02.html">브랜드 철학</a>
+          <a href="page_05.html">소재 이야기</a>
+          <a href="page_06.html">지속가능성</a>
+        </div>
+        <div>
+          <p class="footer-col-title">고객</p>
           <a href="page_12.html">FAQ</a>
           <a href="page_13.html">1:1 문의</a>
           <a href="page_14.html">주문 조회</a>
-          <a href="page_15.html">매장 안내</a>
+        </div>
+        <div>
+          <p class="footer-col-title">B2B</p>
+          <a href="page_09.html">대량구매</a>
+          <a href="page_10.html">파트너십</a>
         </div>
       </div>
       <div class="footer-bottom">
         <span>© 2025 언커먼타올. All rights reserved.</span>
-        <span><a href="#" style="margin-right: 12px;">개인정보처리방침</a> | <a href="#" style="margin-left: 12px;">이용약관</a></span>
+        <span>개인정보처리방침 | 이용약관</span>
       </div>
     </div>
   </footer>
 
   <!-- TOP 버튼 -->
-  <button class="top-button" id="topButton" aria-label="맨 위로">
-    <i data-lucide="arrow-up"></i>
+  <button class="top-button" id="topButton">
+    <i data-lucide="chevron-up"></i>
   </button>
 
   <script>
@@ -620,16 +600,6 @@
     });
     topButton.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // 스크롤 시 네비 축소
-    const nav = document.querySelector('.nav');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        nav.style.boxShadow = 'var(--shadow-sm)';
-      } else {
-        nav.style.boxShadow = 'none';
-      }
     });
   </script>
 </body>
