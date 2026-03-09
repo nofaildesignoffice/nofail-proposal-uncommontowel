@@ -1,12 +1,12 @@
-<!-- PAGE: FAQ -->
+<!-- PAGE: 주문 조회 -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FAQ | 언커먼타올 - 프리미엄 페이스타월</title>
-  <meta name="description" content="언커먼타올 자주 묻는 질문. 제품, 배송, 교환/환불, B2B 문의 등 고객님의 궁금증을 해결해드립니다.">
-  <meta name="keywords" content="프리미엄 수건, 페이스타월, 고급 수건, 호텔 수건, 면 타월, FAQ, 자주묻는질문">
+  <title>주문 조회 | 언커먼타올 - 프리미엄 대나무 섬유 페이스타월</title>
+  <meta name="description" content="언커먼타올 주문 내역을 조회하고 배송 현황을 확인하세요. 비회원 주문 조회도 가능합니다.">
+  <meta name="keywords" content="페이스타월, 대나무 수건, 프리미엄 수건, bamboo towel, 대나무 섬유 타월, 친환경 수건">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -48,230 +48,10 @@
       padding: 0 24px;
     }
 
-    /* Header */
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--bg-white);
-      border-bottom: 1px solid var(--border-light);
-      transition: all 0.3s;
-    }
-    .header.scrolled {
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(8px);
-      box-shadow: var(--shadow-sm);
-    }
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 72px;
-    }
-    .header-logo {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-black);
-    }
-    .header-nav {
-      display: flex;
-      gap: 40px;
-    }
-    .nav-item {
-      position: relative;
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text-dark);
-      padding: 8px 0;
-    }
-    .nav-item.active {
-      color: var(--text-black);
-      font-weight: 600;
-    }
-    .nav-item:hover {
-      color: var(--text-black);
-    }
-    .nav-dropdown {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      min-width: 200px;
-      background: var(--bg-white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-sm);
-      box-shadow: var(--shadow-md);
-      padding: 8px 0;
-      margin-top: 8px;
-    }
-    .nav-item:hover .nav-dropdown {
-      display: block;
-    }
-    .nav-dropdown a {
-      display: block;
-      padding: 10px 20px;
-      font-size: 14px;
-      color: var(--text-gray);
-    }
-    .nav-dropdown a:hover {
-      background: var(--bg-light);
-      color: var(--text-black);
-    }
-    .header-utils {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .header-utils svg {
-      width: 20px;
-      height: 20px;
-      color: var(--text-dark);
-      cursor: pointer;
-    }
-    .header-utils svg:hover {
-      color: var(--text-black);
-    }
-    .mobile-menu-btn {
-      display: none;
-    }
-
-    /* Page Title */
-    .page-title-section {
-      padding: 80px 0 60px;
-      background: var(--bg-white);
-      text-align: center;
-    }
-    .page-title {
-      font-size: 42px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 16px;
-    }
-    .page-desc {
-      font-size: 16px;
-      color: var(--text-gray);
-      line-height: 1.7;
-    }
-
-    /* FAQ Tabs */
-    .faq-tabs-section {
-      padding: 0 0 60px;
-      background: var(--bg-white);
-    }
-    .faq-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .faq-tab {
-      padding: 12px 24px;
-      background: var(--bg-white);
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-sm);
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text-gray);
-      transition: all 0.2s;
-    }
-    .faq-tab:hover {
-      border-color: var(--text-dark);
-      color: var(--text-dark);
-    }
-    .faq-tab.active {
-      background: var(--text-black);
-      border-color: var(--text-black);
-      color: #FFFFFF;
-    }
-
-    /* FAQ List */
-    .faq-list-section {
-      padding: 0 0 80px;
-      background: var(--bg-white);
-    }
-    .faq-list {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .faq-category-title {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 24px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid var(--text-black);
-      display: none;
-    }
-    .faq-category-title.active {
-      display: block;
-    }
-    .faq-item {
-      border-bottom: 1px solid var(--border-light);
-      display: none;
-    }
-    .faq-item.active {
-      display: block;
-    }
-    .faq-question {
-      width: 100%;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 24px 0;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--text-black);
-      text-align: left;
-      transition: color 0.2s;
-    }
-    .faq-question:hover {
-      color: var(--text-dark);
-    }
-    .faq-question-text {
-      flex: 1;
-    }
-    .faq-question svg {
-      width: 20px;
-      height: 20px;
-      color: var(--text-light);
-      flex-shrink: 0;
-      transition: transform 0.2s;
-    }
-    .faq-item.is-open .faq-question svg {
-      transform: rotate(180deg);
-    }
-    .faq-answer {
-      display: none;
-      padding: 0 0 24px;
-      font-size: 15px;
-      color: var(--text-gray);
-      line-height: 1.8;
-    }
-    .faq-item.is-open .faq-answer {
-      display: block;
-    }
-
-    /* CTA Section */
-    .faq-cta-section {
-      padding: 80px 0;
-      background: var(--bg-light);
-      text-align: center;
-    }
-    .faq-cta-title {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 16px;
-    }
-    .faq-cta-desc {
-      font-size: 16px;
-      color: var(--text-gray);
-      margin-bottom: 32px;
-    }
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
       padding: 14px 28px;
       border-radius: var(--radius-sm);
@@ -279,13 +59,291 @@
       font-weight: 600;
       transition: opacity 0.2s;
     }
-    .btn:hover {
-      opacity: 0.85;
-    }
+    .btn:hover { opacity: 0.85; }
     .btn-primary {
       background: var(--text-black);
       color: #FFFFFF;
       border: 1px solid var(--text-black);
+    }
+    .btn-secondary {
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--border-default);
+    }
+
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    /* Header */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border-light);
+      transition: all 0.3s;
+    }
+    .nav.scrolled {
+      background: rgba(255,255,255,0.95);
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+    }
+    .nav-center {
+      display: flex;
+      gap: 40px;
+    }
+    .nav-menu-item {
+      position: relative;
+    }
+    .nav-menu-link {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-dark);
+      padding: 24px 0;
+      display: block;
+    }
+    .nav-menu-link.active {
+      color: var(--text-black);
+      font-weight: 700;
+    }
+    .nav-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-md);
+      min-width: 180px;
+      padding: 8px 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s;
+    }
+    .nav-menu-item:hover .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+    }
+    .nav-dropdown a {
+      display: block;
+      padding: 10px 20px;
+      font-size: 14px;
+      color: var(--text-dark);
+      white-space: nowrap;
+    }
+    .nav-dropdown a:hover {
+      background: var(--bg-light);
+      color: var(--text-black);
+    }
+    .nav-utils {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-utils button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      color: var(--text-dark);
+    }
+    .nav-utils svg { width: 20px; height: 20px; }
+    .nav-hamburger { display: none; }
+
+    /* Mobile Nav */
+    @media (max-width: 768px) {
+      .nav-center { display: none; }
+      .nav-hamburger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        color: var(--text-dark);
+      }
+      .nav-hamburger svg { width: 24px; height: 24px; }
+      .nav-utils button { width: 32px; height: 32px; }
+      .nav-utils svg { width: 18px; height: 18px; }
+    }
+
+    /* Hero - Page Header */
+    .page-hero {
+      padding: 80px 0 60px;
+      background: var(--bg-light);
+      text-align: center;
+    }
+    .page-hero .section-title {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+    .page-hero .section-desc {
+      margin: 0 auto;
+    }
+
+    /* Order Lookup Section */
+    .order-lookup-section {
+      padding: 80px 0;
+      background: var(--bg-white);
+    }
+    .order-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 48px;
+      border-bottom: 2px solid var(--border-light);
+    }
+    .order-tab {
+      padding: 16px 32px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-light);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.2s;
+    }
+    .order-tab.active {
+      color: var(--text-black);
+      border-bottom-color: var(--text-black);
+    }
+    .order-tab-content {
+      display: none;
+    }
+    .order-tab-content.active {
+      display: block;
+    }
+    .lookup-form {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+    .form-input {
+      width: 100%;
+      padding: 14px 16px;
+      font-size: 15px;
+      color: var(--text-dark);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: var(--text-black);
+    }
+    .form-submit {
+      width: 100%;
+      margin-top: 8px;
+    }
+    .form-note {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+    .form-link {
+      color: var(--text-dark);
+      text-decoration: underline;
+    }
+
+    /* Guide Section */
+    .guide-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .guide-card {
+      padding: 32px;
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+    .guide-icon-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .guide-icon-wrap svg {
+      width: 28px;
+      height: 28px;
+      color: var(--text-dark);
+    }
+    .guide-card-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .guide-card-desc {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 80px 0;
+      background: var(--bg-white);
+      text-align: center;
+    }
+    .cta-section .section-title {
+      max-width: 500px;
+      margin: 0 auto 16px;
+    }
+    .cta-section .section-desc {
+      margin: 0 auto 32px;
     }
 
     /* Footer */
@@ -328,10 +386,10 @@
       display: block;
       font-size: 14px;
       color: var(--text-light);
-      padding: 6px 0;
+      padding: 4px 0;
     }
     .footer-col a:hover {
-      color: var(--text-black);
+      color: var(--text-dark);
     }
     .footer-bottom {
       display: flex;
@@ -341,10 +399,14 @@
       font-size: 13px;
       color: var(--text-muted);
     }
-    .footer-bottom-links a {
-      margin-left: 16px;
+    .footer-links {
+      display: flex;
+      gap: 16px;
     }
-    .footer-bottom-links a:hover {
+    .footer-links a {
+      color: var(--text-muted);
+    }
+    .footer-links a:hover {
       color: var(--text-dark);
     }
 
@@ -355,135 +417,86 @@
       right: 40px;
       width: 48px;
       height: 48px;
+      border-radius: 50%;
       background: var(--text-black);
       color: #FFFFFF;
-      border-radius: 50%;
       display: none;
       align-items: center;
       justify-content: center;
       box-shadow: var(--shadow-md);
-      transition: opacity 0.2s;
       z-index: 90;
+      transition: opacity 0.2s;
     }
-    .btn-top:hover {
-      opacity: 0.85;
-    }
-    .btn-top.visible {
-      display: flex;
-    }
-    .btn-top svg {
-      width: 20px;
-      height: 20px;
-    }
+    .btn-top.visible { display: flex; }
+    .btn-top:hover { opacity: 0.85; }
+    .btn-top svg { width: 20px; height: 20px; }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .header-nav {
-        display: none;
-      }
-      .mobile-menu-btn {
-        display: block;
-      }
-      .mobile-menu-btn svg {
-        width: 24px;
-        height: 24px;
-        color: var(--text-dark);
-      }
-      .page-title {
-        font-size: 32px;
-      }
-      .page-desc {
-        font-size: 15px;
-      }
-      .faq-tabs {
-        gap: 8px;
-      }
-      .faq-tab {
-        padding: 10px 18px;
-        font-size: 14px;
-      }
-      .faq-question {
-        font-size: 15px;
-        padding: 20px 0;
-      }
-      .faq-answer {
-        font-size: 14px;
-      }
-      .faq-cta-title {
-        font-size: 24px;
-      }
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-      .footer-bottom {
-        flex-direction: column;
-        gap: 16px;
-        text-align: center;
-      }
-      .footer-bottom-links a {
-        margin: 0 8px;
-      }
-      .btn-top {
-        bottom: 24px;
-        right: 24px;
-        width: 44px;
-        height: 44px;
-      }
+      .section-title { font-size: 28px; }
+      .page-hero .section-title { font-size: 32px; }
+      .page-hero { padding: 60px 0 40px; }
+      .order-lookup-section,
+      .guide-section,
+      .cta-section { padding: 60px 0; }
+      .order-tabs { gap: 0; }
+      .order-tab { padding: 12px 20px; font-size: 14px; }
+      .guide-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .btn-top { bottom: 24px; right: 24px; }
     }
   </style>
 </head>
 <body>
 
   <!-- Header -->
-  <header class="header">
+  <header class="nav">
     <div class="container">
-      <div class="header-inner">
-        <a href="page_01.html" class="header-logo">언커먼타올</a>
-        <nav class="header-nav">
-          <div class="nav-item">
-            <a href="page_02.html">브랜드</a>
+      <div class="nav-inner">
+        <a href="page_01.html" class="nav-logo">언커먼타올</a>
+        
+        <nav class="nav-center">
+          <div class="nav-menu-item">
+            <a href="page_01.html" class="nav-menu-link">메인</a>
+          </div>
+          <div class="nav-menu-item">
+            <a href="page_02.html" class="nav-menu-link">브랜드</a>
             <div class="nav-dropdown">
               <a href="page_02.html">브랜드 철학</a>
               <a href="page_03.html">브랜드 스토리</a>
               <a href="page_04.html">브랜드 여정</a>
               <a href="page_05.html">소재 이야기</a>
-              <a href="page_06.html">지속가능성</a>
             </div>
           </div>
-          <div class="nav-item">
-            <a href="page_07.html">제품</a>
+          <div class="nav-menu-item">
+            <a href="page_06.html" class="nav-menu-link">제품</a>
           </div>
-          <div class="nav-item">
-            <a href="page_08.html">타월 가이드</a>
-          </div>
-          <div class="nav-item">
-            <a href="page_09.html">B2B문의</a>
+          <div class="nav-menu-item">
+            <a href="page_07.html" class="nav-menu-link">B2B문의</a>
             <div class="nav-dropdown">
-              <a href="page_09.html">대량구매</a>
-              <a href="page_10.html">파트너십</a>
+              <a href="page_07.html">대량구매</a>
+              <a href="page_08.html">파트너십</a>
             </div>
           </div>
-          <div class="nav-item">
-            <a href="page_11.html">고객 후기</a>
+          <div class="nav-menu-item">
+            <a href="page_09.html" class="nav-menu-link">고객 후기</a>
           </div>
-          <div class="nav-item active">
-            <a href="page_12.html">고객센터</a>
+          <div class="nav-menu-item">
+            <a href="page_10.html" class="nav-menu-link active">고객센터</a>
             <div class="nav-dropdown">
-              <a href="page_12.html">FAQ</a>
-              <a href="page_13.html">1:1 문의</a>
-              <a href="page_14.html">주문 조회</a>
-              <a href="page_15.html">매장 안내</a>
+              <a href="page_10.html">FAQ</a>
+              <a href="page_11.html">1:1 문의</a>
+              <a href="page_12.html">주문 조회</a>
             </div>
           </div>
         </nav>
-        <div class="header-utils">
-          <i data-lucide="search"></i>
-          <i data-lucide="user"></i>
-          <i data-lucide="shopping-cart"></i>
-          <button class="mobile-menu-btn">
-            <i data-lucide="menu"></i>
-          </button>
+
+        <div class="nav-utils">
+          <button aria-label="검색"><i data-lucide="search"></i></button>
+          <button aria-label="마이페이지"><i data-lucide="user"></i></button>
+          <button aria-label="장바구니"><i data-lucide="shopping-cart"></i></button>
+          <button class="nav-hamburger" aria-label="메뉴"><i data-lucide="menu"></i></button>
         </div>
       </div>
     </div>
@@ -491,178 +504,97 @@
 
   <main>
 
-    <!-- Page Title -->
-    <section class="page-title-section">
+    <!-- Page Hero -->
+    <section class="page-hero">
       <div class="container">
-        <h1 class="page-title">자주 묻는 질문</h1>
-        <p class="page-desc">언커먼타올에 자주 묻는 질문을 모았어요.<br>궁금하신 내용을 찾아보세요.</p>
+        <h1 class="section-title">주문 조회</h1>
+        <p class="section-desc mx-auto">주문 번호와 이메일(또는 비밀번호)로 주문 내역과 배송 현황을 확인하세요.</p>
       </div>
     </section>
 
-    <!-- FAQ Tabs -->
-    <section class="faq-tabs-section">
+    <!-- Order Lookup Section -->
+    <section class="order-lookup-section">
       <div class="container">
-        <div class="faq-tabs">
-          <button class="faq-tab active" data-category="all">전체</button>
-          <button class="faq-tab" data-category="product">제품</button>
-          <button class="faq-tab" data-category="order">주문/결제</button>
-          <button class="faq-tab" data-category="delivery">배송</button>
-          <button class="faq-tab" data-category="exchange">교환/환불</button>
-          <button class="faq-tab" data-category="b2b">B2B 문의</button>
+        <div class="order-tabs">
+          <button class="order-tab active" data-tab="member">회원 주문 조회</button>
+          <button class="order-tab" data-tab="guest">비회원 주문 조회</button>
+        </div>
+
+        <!-- Member Order Lookup -->
+        <div class="order-tab-content active" data-content="member">
+          <form class="lookup-form">
+            <div class="form-group">
+              <label class="form-label" for="member-order-num">주문 번호</label>
+              <input type="text" id="member-order-num" class="form-input" placeholder="주문 번호를 입력하세요">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="member-email">이메일 주소</label>
+              <input type="email" id="member-email" class="form-input" placeholder="주문 시 사용한 이메일을 입력하세요">
+            </div>
+            <button type="submit" class="btn btn-primary form-submit">조회하기</button>
+            <p class="form-note">주문 번호는 주문 완료 후 발송된 이메일에서 확인할 수 있습니다.<br>
+            문의사항이 있으시면 <a href="page_11.html" class="form-link">1:1 문의</a>를 이용해 주세요.</p>
+          </form>
+        </div>
+
+        <!-- Guest Order Lookup -->
+        <div class="order-tab-content" data-content="guest">
+          <form class="lookup-form">
+            <div class="form-group">
+              <label class="form-label" for="guest-order-num">주문 번호</label>
+              <input type="text" id="guest-order-num" class="form-input" placeholder="주문 번호를 입력하세요">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="guest-password">주문 비밀번호</label>
+              <input type="password" id="guest-password" class="form-input" placeholder="주문 시 설정한 비밀번호를 입력하세요">
+            </div>
+            <button type="submit" class="btn btn-primary form-submit">조회하기</button>
+            <p class="form-note">비회원 주문의 경우 주문 비밀번호가 필요합니다.<br>
+            비밀번호를 잊으셨다면 <a href="page_11.html" class="form-link">1:1 문의</a>로 연락 주세요.</p>
+          </form>
         </div>
       </div>
     </section>
 
-    <!-- FAQ List -->
-    <section class="faq-list-section">
+    <!-- Guide Section -->
+    <section class="guide-section">
       <div class="container">
-        <div class="faq-list">
-
-          <!-- 제품 카테고리 -->
-          <h2 class="faq-category-title active" data-category="product">제품</h2>
-
-          <div class="faq-item active is-open" data-category="product">
-            <button class="faq-question">
-              <span class="faq-question-text">페이스타월은 일반 수건과 어떻게 다른가요?</span>
-              <i data-lucide="chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-              페이스타월은 얼굴 전용으로 설계된 수건이에요. 일반 수건보다 더 부드러운 원면을 사용하고, GSM(평량) 수치가 높아 흡수력과 부드러움이 뛰어나요. 또한 세안 후 피부에 자극을 최소화하도록 제직 공법을 달리해요.
+        <div class="text-center">
+          <p class="section-label">주문 조회 안내</p>
+          <h2 class="section-title">주문 확인이 쉬워집니다</h2>
+        </div>
+        <div class="guide-grid">
+          <div class="guide-card">
+            <div class="guide-icon-wrap">
+              <i data-lucide="package"></i>
             </div>
+            <h3 class="guide-card-title">실시간 배송 현황</h3>
+            <p class="guide-card-desc">주문부터 배송 완료까지 실시간으로 확인하세요.</p>
           </div>
-
-          <div class="faq-item active" data-category="product">
-            <button class="faq-question">
-              <span class="faq-question-text">GSM이란 무엇이고, 높을수록 좋은 건가요?</span>
-              <i data-lucide="chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-              GSM은 평량(g/㎡)을 의미하며, 동일 면적 내 원사의 밀도를 나타내요. 높을수록 두툼하고 흡수력이 좋지만, 지나치게 높으면 무겁고 건조 시간이 길어질 수 있어요. 언커먼타올은 최적의 GSM 범위에서 부드러움과 흡수력의 균형을 맞췄어요.
+          <div class="guide-card">
+            <div class="guide-icon-wrap">
+              <i data-lucide="rotate-ccw"></i>
             </div>
+            <h3 class="guide-card-title">교환·반품 신청</h3>
+            <p class="guide-card-desc">주문 내역에서 간편하게 교환·반품을 신청할 수 있습니다.</p>
           </div>
-
-          <div class="faq-item active" data-category="product">
-            <button class="faq-question">
-              <span class="faq-question-text">사용 전 어떻게 준비하나요?</span>
-              <i data-lucide="chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-              첫 사용 전 미온수에 단독 세탁을 권장해요. 섬유유연제는 사용하지 않는 것이 흡수력 유지에 좋아요. 자연 건조 후 사용하시면 됩니다.
+          <div class="guide-card">
+            <div class="guide-icon-wrap">
+              <i data-lucide="file-text"></i>
             </div>
+            <h3 class="guide-card-title">주문 상세 정보</h3>
+            <p class="guide-card-desc">상품 정보, 배송지, 결제 내역을 한눈에 확인하세요.</p>
           </div>
-
-          <!-- 주문/결제 카테고리 -->
-          <h2 class="faq-category-title" data-category="order">주문/결제</h2>
-
-          <div class="faq-item active" data-category="order">
-            <button class="faq-question">
-              <span class="faq-question-text">결제 수단은 무엇이 있나요?</span>
-              <i data-lucide="chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-              신용카드, 계좌이체, 무통장입금, 간편결제(카카오페이, 네이버페이 등)를 지원해요.
-            </div>
-          </div>
-
-          <div class="faq-item active" data-category="order">
-            <button class="faq-question">
-              <span class="faq-question-text">주문 취소는 언제까지 가능한가요?</span>
-              <i data-lucide="chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-              배송 준비 중 상태가 되기 전까지 마이페이지에서 직접 취소 가능해요. 이미 배송이 시작된 경우 수령 후 교환/환불 절차를 이용해주세요.
-            </div>
-          </div>
-
-          <!-- 배송 카테고리 -->
-          <h2 class="faq-category-title" data-category="delivery">배송</h2>
-
-          <div class="faq-item active" data-category="delivery">
-            <button class="faq-question">
-              <span class="faq-question-text">배송 기간은 얼마나 걸리나요?</span>
-              <i data-lucide="chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-              결제 완료 후 평균 2~3일(영업일 기준) 내 도착해요. 도서산간 지역은 1~2일 추가될 수 있어요.
-            </div>
-          </div>
-
-          <div class="faq-item active" data-category="delivery">
-            <button class="faq-question">
-              <span class="faq-question-text">배송비는 얼마인가요?</span>
-              <i data-lucide="chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-              기본 배송비는 3,000원이며, 30,000원 이상 구매 시 무료예요. (제주/도서산간 추가 비용 발생)
-            </div>
-          </div>
-
-          <!-- 교환/환불 카테고리 -->
-          <h2 class="faq-category-title" data-category="exchange">교환/환불</h2>
-
-          <div class="faq-item active" data-category="exchange">
-            <button class="faq-question">
-              <span class="faq-question-text">교환/환불 기간은 언제까지인가요?</span>
-              <i data-lucide="chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-              상품 수령 후 7일 이내 신청 가능해요. 단, 사용 또는 세탁한 제품은 교환/환불이 불가해요.
-            </div>
-          </div>
-
-          <div class="faq-item active" data-category="exchange">
-            <button class="faq-question">
-              <span class="faq-question-text">반품 배송비는 누가 부담하나요?</span>
-              <i data-lucide="chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-              단순 변심의 경우 왕복 배송비는 고객 부담이에요. 제품 불량이나 오배송의 경우 당사에서 부담해요.
-            </div>
-          </div>
-
-          <!-- B2B 문의 카테고리 -->
-          <h2 class="faq-category-title" data-category="b2b">B2B 문의</h2>
-
-          <div class="faq-item active" data-category="b2b">
-            <button class="faq-question">
-              <span class="faq-question-text">대량 구매 최소 수량이 있나요?</span>
-              <i data-lucide="chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-              대량 구매는 최소 100장부터 가능해요. 수량에 따라 할인율이 달라지니 견적 문의 주세요.
-            </div>
-          </div>
-
-          <div class="faq-item active" data-category="b2b">
-            <button class="faq-question">
-              <span class="faq-question-text">자수나 로고 인쇄가 가능한가요?</span>
-              <i data-lucide="chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-              네, 자수 및 프린팅 모두 가능해요. 최소 수량과 추가 비용은 별도 문의 부탁드려요.
-            </div>
-          </div>
-
-          <div class="faq-item active" data-category="b2b">
-            <button class="faq-question">
-              <span class="faq-question-text">샘플을 먼저 받아볼 수 있나요?</span>
-              <i data-lucide="chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-              대량 구매 검토 시 유료 샘플을 제공해요. 실제 발주 진행 시 샘플 비용은 차감돼요.
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="faq-cta-section">
+    <section class="cta-section">
       <div class="container">
-        <h2 class="faq-cta-title">찾으시는 답변이 없으신가요?</h2>
-        <p class="faq-cta-desc">1:1 문의를 통해 궁금하신 내용을 남겨주시면<br>빠르게 답변드릴게요.</p>
-        <a href="page_13.html" class="btn btn-primary">1:1 문의하기</a>
+        <h2 class="section-title">도움이 필요하신가요?</h2>
+        <p class="section-desc mx-auto">주문 조회에 어려움이 있거나 문의사항이 있으시면 언제든지 연락 주세요.</p>
+        <a href="page_11.html" class="btn btn-primary">1:1 문의하기</a>
       </div>
     </section>
 
@@ -674,38 +606,39 @@
       <div class="footer-grid">
         <div>
           <p class="footer-brand-name">언커먼타올</p>
-          <p class="footer-brand-desc">프리미엄 페이스타월</p>
+          <p class="footer-brand-desc">매일 얼굴에 닿는 수건의 품질을 다시 생각합니다.</p>
           <div class="footer-info">
-            상호: [클라이언트 확인 필요: 법인명/상호]<br>
-            대표: [클라이언트 확인 필요]<br>
-            사업자등록번호: [클라이언트 확인 필요]<br>
-            통신판매업신고번호: [클라이언트 확인 필요]<br>
-            주소: [클라이언트 확인 필요]<br>
-            대표전화: [클라이언트 확인 필요]<br>
-            이메일: [클라이언트 확인 필요]
+            [클라이언트 확인 필요: 상호]<br>
+            대표자: [클라이언트 확인 필요: 대표자명]<br>
+            사업자등록번호: [클라이언트 확인 필요: 사업자등록번호]<br>
+            통신판매업번호: [클라이언트 확인 필요: 통신판매업번호]<br>
+            주소: [클라이언트 확인 필요: 주소]<br>
+            전화: [클라이언트 확인 필요: 전화]<br>
+            이메일: [클라이언트 확인 필요: 이메일]
           </div>
         </div>
-        <div class="footer-col">
-          <p class="footer-col-title">쇼핑</p>
-          <a href="page_07.html">전체 제품</a>
-          <a href="page_07.html">베스트셀러</a>
-        </div>
-        <div class="footer-col">
+        <div>
           <p class="footer-col-title">브랜드</p>
           <a href="page_02.html">브랜드 철학</a>
+          <a href="page_03.html">브랜드 스토리</a>
           <a href="page_05.html">소재 이야기</a>
-          <a href="page_06.html">지속가능성</a>
         </div>
-        <div class="footer-col">
-          <p class="footer-col-title">고객</p>
-          <a href="page_12.html">FAQ</a>
-          <a href="page_13.html">1:1 문의</a>
-          <a href="page_14.html">주문 조회</a>
+        <div>
+          <p class="footer-col-title">쇼핑</p>
+          <a href="page_06.html">제품</a>
+          <a href="page_07.html">대량구매</a>
+          <a href="page_08.html">파트너십</a>
+        </div>
+        <div>
+          <p class="footer-col-title">고객지원</p>
+          <a href="page_10.html">FAQ</a>
+          <a href="page_11.html">1:1 문의</a>
+          <a href="page_12.html">주문 조회</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 언커먼타올. All rights reserved.</span>
-        <div class="footer-bottom-links">
+        <span>© 언커먼타올 All Rights Reserved.</span>
+        <div class="footer-links">
           <a href="#">개인정보처리방침</a>
           <a href="#">이용약관</a>
         </div>
@@ -714,80 +647,24 @@
   </footer>
 
   <!-- Floating TOP Button -->
-  <button class="btn-top" id="btnTop">
+  <button class="btn-top" id="btnTop" aria-label="맨 위로">
     <i data-lucide="arrow-up"></i>
   </button>
 
   <script>
     lucide.createIcons();
 
-    // Header scroll
-    const header = document.querySelector('.header');
+    // Header Scroll Effect
+    const nav = document.querySelector('.nav');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
-        header.classList.add('scrolled');
+        nav.classList.add('scrolled');
       } else {
-        header.classList.remove('scrolled');
+        nav.classList.remove('scrolled');
       }
     });
 
-    // FAQ Accordion
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.closest('.faq-item');
-        const wasOpen = item.classList.contains('is-open');
-        
-        // Close all items
-        document.querySelectorAll('.faq-item').forEach(el => {
-          el.classList.remove('is-open');
-        });
-        
-        // Open clicked item if it wasn't open
-        if (!wasOpen) {
-          item.classList.add('is-open');
-        }
-        
-        lucide.createIcons();
-      });
-    });
-
-    // FAQ Category Filter
-    document.querySelectorAll('.faq-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        const category = tab.dataset.category;
-        
-        // Update active tab
-        document.querySelectorAll('.faq-tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        
-        // Update category titles
-        document.querySelectorAll('.faq-category-title').forEach(title => {
-          if (category === 'all') {
-            title.classList.add('active');
-          } else if (title.dataset.category === category) {
-            title.classList.add('active');
-          } else {
-            title.classList.remove('active');
-          }
-        });
-        
-        // Filter items
-        document.querySelectorAll('.faq-item').forEach(item => {
-          if (category === 'all' || item.dataset.category === category) {
-            item.classList.add('active');
-          } else {
-            item.classList.remove('active');
-          }
-        });
-        
-        // Close all opened items
-        document.querySelectorAll('.faq-item').forEach(item => {
-          item.classList.remove('is-open');
-        });
-      });
-    });
-
-    // TOP button
+    // TOP Button
     const btnTop = document.getElementById('btnTop');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
@@ -798,6 +675,30 @@
     });
     btnTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Order Tabs
+    const tabButtons = document.querySelectorAll('.order-tab');
+    const tabContents = document.querySelectorAll('.order-tab-content');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetTab = btn.getAttribute('data-tab');
+
+        tabButtons.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+
+        btn.classList.add('active');
+        document.querySelector(`[data-content="${targetTab}"]`).classList.add('active');
+      });
+    });
+
+    // Form Submit (Prevent Default)
+    document.querySelectorAll('.lookup-form').forEach(form => {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('주문 조회 기능은 실제 시스템과 연동 후 작동합니다.');
+      });
     });
   </script>
 </body>
