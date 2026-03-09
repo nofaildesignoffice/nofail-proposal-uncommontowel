@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>주문 조회 | 언커먼타올 - 프리미엄 대나무 섬유 페이스타월</title>
-  <meta name="description" content="언커먼타올 주문 내역을 조회하고 배송 상태를 확인하세요. 주문번호 또는 주문자 정보로 빠르게 조회 가능합니다.">
-  <meta name="keywords" content="프리미엄 수건, 대나무 섬유 수건, bamboo yarn towel, 페이스타월, 친환경 수건, 주문조회">
+  <meta name="description" content="언커먼타올 주문 내역을 확인하고 배송 정보를 조회하세요. 주문번호 또는 비회원 주문조회를 통해 실시간 배송 현황을 확인할 수 있습니다.">
+  <meta name="keywords" content="프리미엄 수건, 대나무 섬유 수건, bamboo towel, 페이스타월, 친환경 수건, 고급 수건, 주문조회, 배송조회">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -48,11 +48,108 @@
       padding: 0 24px;
     }
 
+    /* 헤더 */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border-light);
+      transition: all 0.3s;
+    }
+    .nav.scrolled {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-item {
+      position: relative;
+    }
+    .nav-item > a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-item.active > a {
+      color: var(--text-black);
+      font-weight: 600;
+    }
+    .nav-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-md);
+      min-width: 180px;
+      padding: 8px 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: all 0.2s;
+    }
+    .nav-item:hover .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .nav-dropdown a {
+      display: block;
+      padding: 10px 20px;
+      font-size: 14px;
+      color: var(--text-gray);
+      white-space: nowrap;
+    }
+    .nav-dropdown a:hover {
+      background: var(--bg-light);
+      color: var(--text-black);
+    }
+    .nav-utils {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-utils button {
+      color: var(--text-dark);
+    }
+    .nav-utils svg {
+      width: 22px;
+      height: 22px;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--text-black);
+      transition: 0.3s;
+    }
+
     /* 버튼 */
     .btn {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 8px;
       padding: 14px 28px;
       border-radius: var(--radius-sm);
@@ -70,6 +167,10 @@
       background: var(--bg-white);
       color: var(--text-black);
       border: 1px solid var(--border-default);
+    }
+    .btn-full {
+      width: 100%;
+      justify-content: center;
     }
 
     /* 섹션 공통 */
@@ -95,76 +196,149 @@
     .text-center { text-align: center; }
     .mx-auto { margin-left: auto; margin-right: auto; }
 
-    /* 네비게이션 */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
+    /* 페이지 헤더 */
+    .page-header {
+      padding: 80px 0 60px;
       background: var(--bg-white);
+      text-align: center;
+    }
+    .page-header .section-title {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+    .page-header .section-desc {
+      margin: 0 auto;
+    }
+
+    /* 주문 조회 섹션 */
+    .order-lookup-section {
+      padding: 60px 0 120px;
+      background: var(--bg-light);
+    }
+    .lookup-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
       border-bottom: 1px solid var(--border-light);
     }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 72px;
+    .lookup-tab {
+      padding: 16px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-light);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
     }
-    .nav-logo {
-      font-size: 18px;
-      font-weight: 700;
+    .lookup-tab.active {
       color: var(--text-black);
+      border-bottom-color: var(--text-black);
     }
-    .nav-links {
-      display: flex;
-      gap: 32px;
+    .lookup-content {
+      max-width: 560px;
+      margin: 0 auto;
     }
-    .nav-item {
-      position: relative;
-    }
-    .nav-item > a {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text-dark);
-      padding: 8px 0;
-      display: block;
-    }
-    .nav-item.active > a {
-      color: var(--text-black);
-      font-weight: 700;
-    }
-    .nav-dropdown {
-      position: absolute;
-      top: 100%;
-      left: 0;
+    .lookup-panel {
+      display: none;
       background: var(--bg-white);
       border: 1px solid var(--border-light);
-      border-radius: var(--radius-sm);
-      padding: 12px 0;
-      min-width: 180px;
-      box-shadow: var(--shadow-md);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.2s, visibility 0.2s;
+      border-radius: var(--radius-md);
+      padding: 40px;
     }
-    .nav-item:hover .nav-dropdown {
-      opacity: 1;
-      visibility: visible;
-    }
-    .nav-dropdown a {
+    .lookup-panel.active {
       display: block;
-      padding: 10px 20px;
-      font-size: 14px;
-      color: var(--text-dark);
     }
-    .nav-dropdown a:hover {
-      background: var(--bg-light);
+    .form-group {
+      margin-bottom: 24px;
+    }
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .form-input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-family: inherit;
       color: var(--text-black);
     }
-    .nav-hamburger {
-      display: none;
+    .form-input:focus {
+      outline: none;
+      border-color: var(--text-black);
+    }
+    .form-input::placeholder {
+      color: var(--text-muted);
+    }
+    .form-help {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 6px;
+    }
+    .login-link {
+      text-align: center;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-light);
+    }
+    .login-link p {
+      font-size: 14px;
+      color: var(--text-gray);
+      margin-bottom: 12px;
+    }
+    .login-link a {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-black);
+      text-decoration: underline;
+    }
+
+    /* 주문 조회 안내 */
+    .order-guide {
+      padding: 80px 0;
+      background: var(--bg-white);
+    }
+    .guide-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .guide-card {
+      padding: 32px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+    .guide-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .guide-icon svg {
       width: 24px;
       height: 24px;
-      cursor: pointer;
+      color: var(--text-dark);
+    }
+    .guide-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .guide-desc {
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.6;
     }
 
     /* 푸터 */
@@ -192,6 +366,11 @@
       line-height: 1.6;
       margin-bottom: 16px;
     }
+    .footer-company-info {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
     .footer-col-title {
       font-size: 14px;
       font-weight: 700;
@@ -204,6 +383,28 @@
       color: var(--text-light);
       padding: 4px 0;
     }
+    .footer-col a:hover {
+      color: var(--text-black);
+    }
+    .footer-sns {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .footer-sns a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .footer-sns svg {
+      width: 18px;
+      height: 18px;
+      color: var(--text-dark);
+    }
     .footer-bottom {
       display: flex;
       justify-content: space-between;
@@ -211,196 +412,97 @@
       padding-top: 24px;
       font-size: 13px;
       color: var(--text-muted);
-      flex-wrap: wrap;
+    }
+    .footer-links {
+      display: flex;
       gap: 16px;
+    }
+    .footer-links a:hover {
+      color: var(--text-black);
     }
 
     /* TOP 버튼 */
-    .btn-top {
+    .top-btn {
       position: fixed;
-      bottom: 40px;
-      right: 40px;
+      bottom: 32px;
+      right: 32px;
       width: 48px;
       height: 48px;
-      background: var(--text-black);
-      color: #FFFFFF;
       border-radius: 50%;
-      display: none;
+      background: var(--text-black);
+      color: white;
+      display: flex;
       align-items: center;
       justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
       box-shadow: var(--shadow-md);
-      z-index: 90;
-      cursor: pointer;
-      transition: opacity 0.2s;
     }
-    .btn-top:hover { opacity: 0.85; }
-    .btn-top.visible { display: flex; }
-
-    /* 페이지 헤더 */
-    .page-header {
-      padding: 80px 0 60px;
-      background: var(--bg-light);
-      text-align: center;
+    .top-btn.visible {
+      opacity: 1;
+      visibility: visible;
     }
-    .page-header .section-title {
-      font-size: 42px;
-      margin-bottom: 12px;
-    }
-
-    /* 주문 조회 섹션 */
-    .order-lookup {
-      padding: 80px 0;
-      background: var(--bg-white);
-    }
-    .lookup-card {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 48px;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      background: var(--bg-white);
-    }
-    .lookup-title {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 32px;
-      text-align: center;
-    }
-    .form-group {
-      margin-bottom: 24px;
-    }
-    .form-label {
-      display: block;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-dark);
-      margin-bottom: 8px;
-    }
-    .form-input {
-      width: 100%;
-      padding: 14px 16px;
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-sm);
-      font-size: 15px;
-      color: var(--text-dark);
-      font-family: 'Pretendard', sans-serif;
-    }
-    .form-input:focus {
-      outline: none;
-      border-color: var(--text-dark);
-    }
-    .form-input::placeholder {
-      color: var(--text-muted);
-    }
-    .form-helper {
-      font-size: 13px;
-      color: var(--text-light);
-      margin-top: 6px;
-    }
-    .form-divider {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin: 32px 0;
-    }
-    .form-divider::before,
-    .form-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border-light);
-    }
-    .form-divider span {
-      font-size: 14px;
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-    .btn-submit {
-      width: 100%;
-      padding: 16px;
-      font-size: 16px;
-      margin-top: 8px;
-    }
-
-    /* 안내 섹션 */
-    .help-section {
-      padding: 80px 0;
-      background: var(--bg-light);
-    }
-    .help-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 48px;
-    }
-    .help-card {
-      padding: 32px;
-      background: var(--bg-white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      text-align: center;
-    }
-    .help-icon {
-      width: 48px;
-      height: 48px;
-      margin: 0 auto 20px;
-      border-radius: var(--radius-sm);
-      background: var(--bg-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .help-icon svg {
-      width: 24px;
-      height: 24px;
-      color: var(--text-dark);
-    }
-    .help-card-title {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 8px;
-    }
-    .help-card-desc {
-      font-size: 15px;
-      color: var(--text-gray);
-      line-height: 1.6;
-      margin-bottom: 20px;
+    .top-btn svg {
+      width: 20px;
+      height: 20px;
     }
 
     /* 반응형 */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .nav-hamburger { display: block; }
+      .hamburger { display: flex; }
       .section-title { font-size: 28px; }
+      .page-header { padding: 60px 0 40px; }
       .page-header .section-title { font-size: 32px; }
-      .lookup-card { padding: 32px 24px; }
-      .lookup-title { font-size: 20px; }
-      .help-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .btn-top {
-        bottom: 24px;
-        right: 24px;
-        width: 44px;
-        height: 44px;
+      .lookup-tabs {
+        flex-direction: column;
+        gap: 0;
+        border-bottom: none;
+      }
+      .lookup-tab {
+        border-bottom: 1px solid var(--border-light);
+        border-left: 3px solid transparent;
+        text-align: left;
+      }
+      .lookup-tab.active {
+        border-left-color: var(--text-black);
+        border-bottom-color: var(--border-light);
+      }
+      .lookup-panel {
+        padding: 24px;
+      }
+      .guide-cards {
+        grid-template-columns: 1fr;
+      }
+      .order-lookup-section {
+        padding: 40px 0 80px;
+      }
+      .order-guide {
+        padding: 60px 0;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- 네비게이션 -->
+  <!-- 헤더 -->
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
         <a href="page_01.html" class="nav-logo">언커먼타올</a>
         <nav class="nav-links">
           <div class="nav-item">
-            <a href="page_01.html">메인</a>
-          </div>
-          <div class="nav-item">
-            <a href="page_02.html">브랜드</a>
+            <a href="page_02.html">브랜드 <i data-lucide="chevron-down" style="width:16px;height:16px;"></i></a>
             <div class="nav-dropdown">
               <a href="page_02.html">브랜드 철학</a>
               <a href="page_03.html">브랜드 스토리</a>
@@ -412,7 +514,7 @@
             <a href="page_06.html">제품</a>
           </div>
           <div class="nav-item">
-            <a href="page_07.html">B2B문의</a>
+            <a href="page_07.html">B2B문의 <i data-lucide="chevron-down" style="width:16px;height:16px;"></i></a>
             <div class="nav-dropdown">
               <a href="page_07.html">대량구매</a>
               <a href="page_08.html">파트너십</a>
@@ -422,7 +524,7 @@
             <a href="page_09.html">고객 후기</a>
           </div>
           <div class="nav-item active">
-            <a href="page_10.html">고객센터</a>
+            <a href="page_10.html">고객센터 <i data-lucide="chevron-down" style="width:16px;height:16px;"></i></a>
             <div class="nav-dropdown">
               <a href="page_10.html">FAQ</a>
               <a href="page_11.html">1:1 문의</a>
@@ -430,98 +532,109 @@
             </div>
           </div>
         </nav>
-        <button class="nav-hamburger">
-          <i data-lucide="menu"></i>
-        </button>
+        <div class="nav-utils">
+          <button><i data-lucide="search"></i></button>
+          <button><i data-lucide="user"></i></button>
+          <button><i data-lucide="shopping-cart"></i></button>
+          <button class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </div>
     </div>
   </header>
 
   <main>
-
     <!-- 페이지 헤더 -->
     <section class="page-header">
       <div class="container">
-        <p class="section-label">ORDER TRACKING</p>
         <h1 class="section-title">주문 조회</h1>
-        <p class="section-desc mx-auto">주문번호 또는 주문자 정보로 배송 상태를 확인하세요</p>
+        <p class="section-desc mx-auto">주문번호와 정보를 입력하시면 배송 현황을 실시간으로 확인하실 수 있어요.</p>
       </div>
     </section>
 
     <!-- 주문 조회 폼 -->
-    <section class="order-lookup">
+    <section class="order-lookup-section">
       <div class="container">
-        <div class="lookup-card">
-          <h2 class="lookup-title">주문번호로 조회</h2>
-          <form>
-            <div class="form-group">
-              <label class="form-label" for="orderNumber">주문번호</label>
-              <input type="text" id="orderNumber" class="form-input" placeholder="예: ORD20250101-001">
-              <p class="form-helper">주문 완료 시 발송된 이메일에서 주문번호를 확인하실 수 있어요</p>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="orderEmail">주문자 이메일</label>
-              <input type="email" id="orderEmail" class="form-input" placeholder="example@email.com">
-            </div>
-            <button type="submit" class="btn btn-primary btn-submit">조회하기</button>
-          </form>
-
-          <div class="form-divider">
-            <span>또는</span>
+        <div class="lookup-content">
+          <div class="lookup-tabs">
+            <div class="lookup-tab active" data-tab="member">회원 주문 조회</div>
+            <div class="lookup-tab" data-tab="guest">비회원 주문 조회</div>
           </div>
 
-          <h2 class="lookup-title" style="margin-bottom:24px;">비회원 주문 조회</h2>
-          <form>
-            <div class="form-group">
-              <label class="form-label" for="guestName">주문자명</label>
-              <input type="text" id="guestName" class="form-input" placeholder="홍길동">
+          <!-- 회원 주문 조회 -->
+          <div class="lookup-panel active" data-panel="member">
+            <form>
+              <div class="form-group">
+                <label class="form-label">주문번호</label>
+                <input type="text" class="form-input" placeholder="주문번호를 입력해주세요 (예: UC20250101-0001)">
+                <p class="form-help">주문 완료 시 발송된 이메일 또는 문자에서 확인하실 수 있어요.</p>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full">조회하기</button>
+            </form>
+            <div class="login-link">
+              <p>로그인하시면 전체 주문 내역을 한눈에 확인하실 수 있어요.</p>
+              <a href="#">로그인하기</a>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="guestPhone">휴대폰 번호</label>
-              <input type="tel" id="guestPhone" class="form-input" placeholder="010-1234-5678">
-            </div>
-            <button type="submit" class="btn btn-primary btn-submit">조회하기</button>
-          </form>
+          </div>
+
+          <!-- 비회원 주문 조회 -->
+          <div class="lookup-panel" data-panel="guest">
+            <form>
+              <div class="form-group">
+                <label class="form-label">주문번호</label>
+                <input type="text" class="form-input" placeholder="주문번호를 입력해주세요">
+                <p class="form-help">주문 완료 시 발송된 이메일 또는 문자에서 확인하실 수 있어요.</p>
+              </div>
+              <div class="form-group">
+                <label class="form-label">주문자명</label>
+                <input type="text" class="form-input" placeholder="주문 시 입력하신 이름을 입력해주세요">
+              </div>
+              <div class="form-group">
+                <label class="form-label">연락처</label>
+                <input type="tel" class="form-input" placeholder="'-' 없이 숫자만 입력해주세요">
+              </div>
+              <button type="submit" class="btn btn-primary btn-full">조회하기</button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 안내 섹션 -->
-    <section class="help-section">
+    <!-- 주문 조회 안내 -->
+    <section class="order-guide">
       <div class="container">
         <div class="text-center">
-          <h2 class="section-title">주문 조회 관련 안내</h2>
-          <p class="section-desc mx-auto">자주 묻는 질문을 확인해보세요</p>
+          <h2 class="section-title">주문 조회 안내</h2>
+          <p class="section-desc mx-auto">언커먼타올 주문 조회 시 알아두시면 좋은 정보를 안내드려요.</p>
         </div>
-        <div class="help-grid">
-          <div class="help-card">
-            <div class="help-icon">
+        <div class="guide-cards">
+          <div class="guide-card">
+            <div class="guide-icon">
               <i data-lucide="package"></i>
             </div>
-            <h3 class="help-card-title">배송 조회</h3>
-            <p class="help-card-desc">주문번호로 조회하시면 실시간 배송 상태를 확인하실 수 있어요</p>
-            <a href="page_10.html" class="btn btn-secondary" style="padding:10px 20px; font-size:14px;">배송 FAQ</a>
+            <h3 class="guide-title">배송 현황 확인</h3>
+            <p class="guide-desc">주문번호로 조회하시면 현재 배송 단계와 예상 도착일을 실시간으로 확인하실 수 있어요.</p>
           </div>
-          <div class="help-card">
-            <div class="help-icon">
-              <i data-lucide="rotate-ccw"></i>
+          <div class="guide-card">
+            <div class="guide-icon">
+              <i data-lucide="mail"></i>
             </div>
-            <h3 class="help-card-title">교환/환불</h3>
-            <p class="help-card-desc">제품 수령 후 7일 이내 교환 및 환불 신청이 가능해요</p>
-            <a href="page_10.html" class="btn btn-secondary" style="padding:10px 20px; font-size:14px;">교환/환불 안내</a>
+            <h3 class="guide-title">주문번호 확인 방법</h3>
+            <p class="guide-desc">주문 완료 시 등록하신 이메일과 휴대폰 번호로 주문번호가 자동 발송돼요.</p>
           </div>
-          <div class="help-card">
-            <div class="help-icon">
-              <i data-lucide="help-circle"></i>
+          <div class="guide-card">
+            <div class="guide-icon">
+              <i data-lucide="phone"></i>
             </div>
-            <h3 class="help-card-title">1:1 문의</h3>
-            <p class="help-card-desc">조회가 안 되거나 추가 도움이 필요하신가요?</p>
-            <a href="page_11.html" class="btn btn-primary" style="padding:10px 20px; font-size:14px;">문의하기</a>
+            <h3 class="guide-title">문의 연락처</h3>
+            <p class="guide-desc">조회가 어려우시거나 문의사항이 있으시면 고객센터로 연락주세요. 빠르게 도와드릴게요.</p>
           </div>
         </div>
       </div>
     </section>
-
   </main>
 
   <!-- 푸터 -->
@@ -530,62 +643,95 @@
       <div class="footer-grid">
         <div>
           <p class="footer-brand-name">언커먼타올</p>
-          <p class="footer-brand-desc">매일 얼굴에 닿는 수건,<br>대나무 섬유의 부드러움을 경험하세요</p>
-          <p class="footer-brand-desc" style="margin-top:16px; font-size:13px;">
-            [클라이언트 확인 필요: 상호 / 대표자명 / 사업자번호]<br>
-            [클라이언트 확인 필요: 주소]<br>
-            Tel: [클라이언트 확인 필요: 전화번호]<br>
-            Email: [클라이언트 확인 필요: 이메일]
-          </p>
+          <p class="footer-brand-desc">매일 피부에 닿는 타올 하나에도 타협하지 않습니다.</p>
+          <div class="footer-company-info">
+            [클라이언트 확인 필요: 상호]<br>
+            대표자명: [클라이언트 확인 필요]<br>
+            사업자등록번호: [클라이언트 확인 필요]<br>
+            통신판매업 신고번호: [클라이언트 확인 필요]<br>
+            주소: [클라이언트 확인 필요]<br>
+            대표 전화: [클라이언트 확인 필요]<br>
+            이메일: [클라이언트 확인 필요]
+          </div>
         </div>
-        <div>
+        <div class="footer-col">
           <p class="footer-col-title">브랜드</p>
           <a href="page_02.html">브랜드 철학</a>
           <a href="page_03.html">브랜드 스토리</a>
           <a href="page_05.html">소재 이야기</a>
         </div>
-        <div>
-          <p class="footer-col-title">서비스</p>
+        <div class="footer-col">
+          <p class="footer-col-title">쇼핑</p>
           <a href="page_06.html">제품</a>
           <a href="page_07.html">대량구매</a>
+          <a href="page_08.html">파트너십</a>
           <a href="page_09.html">고객 후기</a>
         </div>
-        <div>
-          <p class="footer-col-title">고객센터</p>
+        <div class="footer-col">
+          <p class="footer-col-title">고객 지원</p>
           <a href="page_10.html">FAQ</a>
           <a href="page_11.html">1:1 문의</a>
-          <a href="page_12.html">주문 조회</a>
+          <a href="#">매장 안내</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 언커먼타올. All Rights Reserved.</span>
-        <span>
-          <a href="#" style="color:inherit;">개인정보처리방침</a> | 
-          <a href="#" style="color:inherit;">이용약관</a>
-        </span>
+        <span>© 2025 언커먼타올. All rights reserved.</span>
+        <div class="footer-links">
+          <a href="#">이용약관</a>
+          <a href="#">개인정보처리방침</a>
+        </div>
       </div>
     </div>
   </footer>
 
   <!-- TOP 버튼 -->
-  <button class="btn-top" id="btnTop">
+  <button class="top-btn">
     <i data-lucide="arrow-up"></i>
   </button>
 
   <script>
     lucide.createIcons();
 
-    // TOP 버튼
-    const btnTop = document.getElementById('btnTop');
+    // 스크롤 시 헤더 변경
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        btnTop.classList.add('visible');
+      const nav = document.querySelector('.nav');
+      const topBtn = document.querySelector('.top-btn');
+      if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+        topBtn.classList.add('visible');
       } else {
-        btnTop.classList.remove('visible');
+        nav.classList.remove('scrolled');
+        topBtn.classList.remove('visible');
       }
     });
-    btnTop.addEventListener('click', () => {
+
+    // TOP 버튼
+    document.querySelector('.top-btn').addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 탭 전환
+    const tabs = document.querySelectorAll('.lookup-tab');
+    const panels = document.querySelectorAll('.lookup-panel');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+        
+        tabs.forEach(t => t.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        
+        tab.classList.add('active');
+        document.querySelector(`[data-panel="${target}"]`).classList.add('active');
+      });
+    });
+
+    // 폼 제출 방지 (데모용)
+    document.querySelectorAll('form').forEach(form => {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('주문 조회 기능은 실제 시스템 연동 후 작동합니다.');
+      });
     });
   </script>
 </body>
