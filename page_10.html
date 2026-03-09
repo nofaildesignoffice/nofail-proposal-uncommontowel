@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>파트너십 | 언커먼타올 - 프리미엄 페이스타월</title>
-  <meta name="description" content="언커먼타올과 함께 성장할 파트너를 찾습니다. 유통, 입점, 협업 제안을 환영해요.">
-  <meta name="keywords" content="프리미엄 수건, 페이스타월, 고급 타월, 면 수건, 언커먼타올, 유통 파트너십, 입점 제안">
+  <meta name="description" content="언커먼타올과 함께 프리미엄 페이스타월 유통 파트너가 되어보세요. 다양한 협업 모델과 입점 조건을 확인하세요.">
+  <meta name="keywords" content="페이스타월, 프리미엄수건, 호텔수건, 면수건, 세안타월, 페이스타올, 유통파트너, 입점제안">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -19,6 +19,7 @@
       --bg-white: #FFFFFF;
       --bg-light: #F5F5F5;
       --bg-dark: #2D2D2D;
+      --bg-black: #1A1A1A;
       --border-light: #E0E0E0;
       --border-default: #D0D0D0;
       --placeholder-bg: #E0E0E0;
@@ -40,6 +41,18 @@
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
     button { cursor: pointer; border: none; font-family: inherit; background: none; }
+    input, textarea, select {
+      font-family: inherit;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-size: 15px;
+      width: 100%;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--text-dark);
+    }
 
     .container {
       max-width: 1200px;
@@ -48,7 +61,7 @@
     }
 
     /* 헤더 */
-    .header {
+    .nav {
       position: sticky;
       top: 0;
       z-index: 100;
@@ -56,84 +69,92 @@
       border-bottom: 1px solid var(--border-light);
       transition: all 0.3s;
     }
-    .header.scrolled {
+    .nav.scrolled {
       background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow-sm);
     }
-    .header-inner {
+    .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       height: 72px;
     }
-    .logo {
+    .nav-logo {
       font-size: 18px;
       font-weight: 700;
       color: var(--text-black);
     }
-    .gnb {
+    .nav-links {
       display: flex;
       gap: 32px;
     }
-    .gnb > li {
+    .nav-item {
       position: relative;
     }
-    .gnb > li > a {
+    .nav-item > a {
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
-      padding: 8px 0;
       display: block;
+      padding: 8px 0;
     }
-    .gnb > li.active > a {
-      font-weight: 700;
+    .nav-item.active > a {
       color: var(--text-black);
+      font-weight: 600;
     }
-    .gnb-dropdown {
+    .nav-dropdown {
       position: absolute;
       top: 100%;
       left: 0;
       background: var(--bg-white);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-sm);
-      padding: 8px 0;
       min-width: 180px;
-      display: none;
+      padding: 8px 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.2s;
       box-shadow: var(--shadow-md);
-      margin-top: 8px;
     }
-    .gnb > li:hover .gnb-dropdown {
-      display: block;
+    .nav-item:hover .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     }
-    .gnb-dropdown a {
+    .nav-dropdown a {
       display: block;
       padding: 10px 20px;
       font-size: 14px;
       color: var(--text-gray);
     }
-    .gnb-dropdown a:hover {
+    .nav-dropdown a:hover {
       background: var(--bg-light);
       color: var(--text-black);
     }
-    .header-utils {
+    .nav-utils {
       display: flex;
       align-items: center;
       gap: 16px;
     }
-    .header-utils button {
-      width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .nav-utils button {
       color: var(--text-dark);
+      padding: 8px;
     }
-    .header-utils svg {
+    .nav-utils svg {
       width: 20px;
       height: 20px;
     }
-    .mobile-menu-btn {
+    .hamburger {
       display: none;
+      flex-direction: column;
+      gap: 4px;
+      padding: 8px;
+    }
+    .hamburger span {
+      width: 20px;
+      height: 2px;
+      background: var(--text-dark);
     }
 
     /* 버튼 */
@@ -158,17 +179,15 @@
       color: var(--text-black);
       border: 1px solid var(--border-default);
     }
-    .btn svg {
-      width: 18px;
-      height: 18px;
-    }
 
-    /* 섹션 공통 */
+    /* 공통 텍스트 */
     .section-label {
       font-size: 14px;
       font-weight: 600;
       color: var(--text-light);
       margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     .section-title {
       font-size: 36px;
@@ -181,7 +200,7 @@
       font-size: 16px;
       color: var(--text-gray);
       line-height: 1.7;
-      max-width: 560px;
+      max-width: 640px;
     }
     .text-center { text-align: center; }
     .mx-auto { margin-left: auto; margin-right: auto; }
@@ -220,145 +239,89 @@
 
     /* 섹션 1: 히어로 */
     .hero-partnership {
-      padding: 160px 0 100px;
-      background: var(--bg-dark);
+      padding: 120px 0 80px;
+      background: var(--bg-white);
       text-align: center;
-      position: relative;
-    }
-    .hero-partnership .img-placeholder {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border-radius: 0;
-    }
-    .hero-partnership-content {
-      position: relative;
-      z-index: 2;
-    }
-    .hero-partnership .section-label {
-      color: rgba(255,255,255,0.6);
     }
     .hero-partnership .section-title {
-      font-size: 48px;
-      color: #FFFFFF;
+      font-size: 42px;
       max-width: 700px;
       margin: 0 auto 16px;
     }
     .hero-partnership .section-desc {
-      color: rgba(255,255,255,0.8);
-      margin: 0 auto;
+      margin: 0 auto 48px;
+    }
+    .hero-partnership .hero-image {
+      margin-top: 48px;
     }
 
     /* 섹션 2: 협업 방향 */
     .collaboration-section {
-      padding: 100px 0;
-      background: var(--bg-white);
+      padding: 80px 0;
+      background: var(--bg-light);
     }
     .collaboration-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
+      gap: 24px;
       margin-top: 48px;
     }
-    .collaboration-card {
+    .collab-card {
+      background: var(--bg-white);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
       padding: 32px;
-      text-align: center;
     }
-    .collaboration-card .icon-box {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 20px;
+    .collab-card .icon-box {
+      margin-bottom: 20px;
     }
-    .collaboration-card .icon-box svg {
-      width: 28px;
-      height: 28px;
-    }
-    .collaboration-card-title {
+    .collab-card-title {
       font-size: 18px;
       font-weight: 700;
       color: var(--text-black);
       margin-bottom: 12px;
     }
-    .collaboration-card-desc {
+    .collab-card-desc {
       font-size: 15px;
       color: var(--text-gray);
-      line-height: 1.7;
+      line-height: 1.6;
       margin-bottom: 16px;
     }
-    .collaboration-card-benefit {
+    .collab-card-list {
+      margin-top: 16px;
+    }
+    .collab-card-list li {
       font-size: 14px;
-      color: var(--text-light);
-      padding-top: 16px;
-      border-top: 1px solid var(--border-light);
+      color: var(--text-gray);
+      padding: 6px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+    .collab-card-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
     }
 
     /* 섹션 3: 입점 조건 */
-    .requirements-section {
-      padding: 100px 0;
-      background: var(--bg-light);
+    .conditions-section {
+      padding: 80px 0;
+      background: var(--bg-white);
     }
-    .requirements-grid {
+    .conditions-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
+      gap: 24px;
       margin-top: 48px;
     }
-    .requirement-item {
-      background: var(--bg-white);
+    .condition-card {
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
       padding: 32px;
-    }
-    .requirement-label {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-light);
-      margin-bottom: 12px;
-    }
-    .requirement-title {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 16px;
-    }
-    .requirement-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .requirement-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-size: 15px;
-      color: var(--text-gray);
-    }
-    .requirement-list svg {
-      width: 18px;
-      height: 18px;
-      color: var(--text-dark);
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    /* 섹션 4: 제안서 다운로드 */
-    .download-section {
-      padding: 100px 0;
-      background: var(--bg-white);
-    }
-    .download-card {
-      max-width: 640px;
-      margin: 48px auto 0;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      padding: 40px;
       text-align: center;
     }
-    .download-icon {
+    .condition-icon {
       width: 64px;
       height: 64px;
       border-radius: 50%;
@@ -366,88 +329,80 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 24px;
+      margin: 0 auto 20px;
     }
-    .download-icon svg {
+    .condition-icon svg {
       width: 28px;
       height: 28px;
       color: var(--text-dark);
     }
-    .download-title {
-      font-size: 20px;
+    .condition-title {
+      font-size: 17px;
       font-weight: 700;
       color: var(--text-black);
       margin-bottom: 12px;
     }
-    .download-desc {
+    .condition-desc {
       font-size: 15px;
       color: var(--text-gray);
-      margin-bottom: 24px;
-      line-height: 1.7;
+      line-height: 1.6;
     }
-    .download-info {
-      font-size: 14px;
-      color: var(--text-light);
-      margin-top: 16px;
+
+    /* 섹션 4: 제안서 다운로드 */
+    .download-section {
+      padding: 80px 0;
+      background: var(--bg-dark);
+      text-align: center;
+    }
+    .download-section .section-title {
+      color: #FFFFFF;
+      max-width: 600px;
+      margin: 0 auto 16px;
+    }
+    .download-section .section-desc {
+      color: rgba(255,255,255,0.6);
+      margin: 0 auto 32px;
+    }
+    .download-section .btn-primary {
+      background: #FFFFFF;
+      color: var(--text-black);
+      border-color: #FFFFFF;
     }
 
     /* 섹션 5: 제휴 문의 폼 */
-    .form-section {
-      padding: 100px 0;
+    .contact-form-section {
+      padding: 80px 0;
       background: var(--bg-light);
     }
-    .form-container {
-      max-width: 720px;
+    .form-wrapper {
+      max-width: 640px;
       margin: 48px auto 0;
       background: var(--bg-white);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
-      padding: 48px;
+      padding: 40px;
     }
-    .form-group {
-      margin-bottom: 24px;
+    .form-row {
+      margin-bottom: 20px;
     }
     .form-label {
       display: block;
       font-size: 14px;
       font-weight: 600;
-      color: var(--text-black);
+      color: var(--text-dark);
       margin-bottom: 8px;
     }
-    .form-label.required::after {
-      content: '*';
+    .form-required {
       color: #FF6B6B;
       margin-left: 4px;
     }
-    .form-input,
-    .form-select,
-    .form-textarea {
-      width: 100%;
-      padding: 12px 16px;
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-sm);
-      font-size: 15px;
-      font-family: inherit;
-      color: var(--text-dark);
-    }
-    .form-input:focus,
-    .form-select:focus,
-    .form-textarea:focus {
-      outline: none;
-      border-color: var(--text-black);
-    }
-    .form-textarea {
-      resize: vertical;
+    textarea {
       min-height: 120px;
-    }
-    .form-hint {
-      font-size: 13px;
-      color: var(--text-light);
-      margin-top: 6px;
+      resize: vertical;
     }
     .form-submit {
       width: 100%;
-      margin-top: 32px;
+      margin-top: 12px;
     }
 
     /* 푸터 */
@@ -475,11 +430,6 @@
       line-height: 1.6;
       margin-bottom: 16px;
     }
-    .footer-info {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.8;
-    }
     .footer-col-title {
       font-size: 14px;
       font-weight: 700;
@@ -493,7 +443,7 @@
       padding: 4px 0;
     }
     .footer-col a:hover {
-      color: var(--text-black);
+      color: var(--text-dark);
     }
     .footer-bottom {
       display: flex;
@@ -503,118 +453,108 @@
       font-size: 13px;
       color: var(--text-muted);
     }
-    .footer-links a {
-      margin-left: 16px;
+    .footer-bottom a {
       color: var(--text-muted);
-    }
-    .footer-links a:hover {
-      color: var(--text-black);
+      margin-left: 16px;
     }
 
     /* TOP 버튼 */
-    .top-btn {
+    .top-button {
       position: fixed;
-      bottom: 32px;
-      right: 32px;
+      bottom: 40px;
+      right: 40px;
       width: 48px;
       height: 48px;
       background: var(--text-black);
       color: #FFFFFF;
       border-radius: 50%;
-      display: none;
+      display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: var(--shadow-md);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
       z-index: 90;
     }
-    .top-btn.visible {
-      display: flex;
+    .top-button.visible {
+      opacity: 1;
+      visibility: visible;
     }
-    .top-btn svg {
+    .top-button svg {
       width: 20px;
       height: 20px;
     }
 
     /* 반응형 */
     @media (max-width: 768px) {
-      .gnb {
-        display: none;
-      }
-      .mobile-menu-btn {
-        display: flex;
-      }
-      .section-title {
-        font-size: 28px;
-      }
-      .hero-partnership {
-        padding: 120px 0 80px;
-      }
-      .hero-partnership .section-title {
-        font-size: 32px;
-      }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .section-title { font-size: 28px; }
+      .hero-partnership .section-title { font-size: 32px; }
       .collaboration-grid,
-      .requirements-grid {
-        grid-template-columns: 1fr;
-      }
-      .form-container {
-        padding: 32px 24px;
-      }
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      .top-btn {
-        bottom: 24px;
-        right: 24px;
-      }
+      .conditions-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 12px; }
+      .top-button { bottom: 24px; right: 24px; }
     }
   </style>
 </head>
 <body>
 
   <!-- 헤더 -->
-  <header class="header">
+  <header class="nav">
     <div class="container">
-      <div class="header-inner">
-        <a href="page_01.html" class="logo">언커먼타올</a>
-        <nav>
-          <ul class="gnb">
-            <li><a href="page_01.html">메인</a></li>
-            <li>
-              <a href="page_02.html">브랜드</a>
-              <ul class="gnb-dropdown">
-                <li><a href="page_02.html">브랜드 철학</a></li>
-                <li><a href="page_03.html">브랜드 스토리</a></li>
-                <li><a href="page_04.html">브랜드 여정</a></li>
-                <li><a href="page_05.html">소재 이야기</a></li>
-                <li><a href="page_06.html">지속가능성</a></li>
-              </ul>
-            </li>
-            <li><a href="page_07.html">제품</a></li>
-            <li><a href="page_08.html">타월 가이드</a></li>
-            <li class="active">
-              <a href="page_09.html">B2B문의</a>
-              <ul class="gnb-dropdown">
-                <li><a href="page_09.html">대량구매</a></li>
-                <li><a href="page_10.html">파트너십</a></li>
-              </ul>
-            </li>
-            <li><a href="page_11.html">고객 후기</a></li>
-            <li>
-              <a href="page_12.html">고객센터</a>
-              <ul class="gnb-dropdown">
-                <li><a href="page_12.html">FAQ</a></li>
-                <li><a href="page_13.html">1:1 문의</a></li>
-                <li><a href="page_14.html">주문 조회</a></li>
-                <li><a href="page_15.html">매장 안내</a></li>
-              </ul>
-            </li>
-          </ul>
+      <div class="nav-inner">
+        <a href="page_01.html" class="nav-logo">언커먼타올</a>
+        <nav class="nav-links">
+          <div class="nav-item">
+            <a href="page_01.html">메인</a>
+          </div>
+          <div class="nav-item">
+            <a href="page_02.html">브랜드</a>
+            <div class="nav-dropdown">
+              <a href="page_02.html">브랜드 철학</a>
+              <a href="page_03.html">브랜드 스토리</a>
+              <a href="page_04.html">브랜드 여정</a>
+              <a href="page_05.html">소재 이야기</a>
+              <a href="page_06.html">지속가능성</a>
+            </div>
+          </div>
+          <div class="nav-item">
+            <a href="page_07.html">제품</a>
+          </div>
+          <div class="nav-item">
+            <a href="page_08.html">타월 가이드</a>
+          </div>
+          <div class="nav-item active">
+            <a href="page_09.html">B2B문의</a>
+            <div class="nav-dropdown">
+              <a href="page_09.html">대량구매</a>
+              <a href="page_10.html">파트너십</a>
+            </div>
+          </div>
+          <div class="nav-item">
+            <a href="page_11.html">고객 후기</a>
+          </div>
+          <div class="nav-item">
+            <a href="page_12.html">고객센터</a>
+            <div class="nav-dropdown">
+              <a href="page_12.html">FAQ</a>
+              <a href="page_13.html">1:1 문의</a>
+              <a href="page_14.html">주문 조회</a>
+              <a href="page_15.html">매장 안내</a>
+            </div>
+          </div>
         </nav>
-        <div class="header-utils">
-          <button><i data-lucide="search"></i></button>
-          <button><i data-lucide="shopping-cart"></i></button>
-          <button><i data-lucide="user"></i></button>
-          <button class="mobile-menu-btn"><i data-lucide="menu"></i></button>
+        <div class="nav-utils">
+          <button aria-label="검색"><i data-lucide="search"></i></button>
+          <button aria-label="마이페이지"><i data-lucide="user"></i></button>
+          <button aria-label="장바구니"><i data-lucide="shopping-cart"></i></button>
+          <button class="hamburger" aria-label="메뉴">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </div>
     </div>
@@ -624,14 +564,12 @@
 
     <!-- 섹션 1: 히어로 -->
     <section class="hero-partnership">
-      <div class="img-placeholder">
-        <i data-lucide="image"></i>
-      </div>
       <div class="container">
-        <div class="hero-partnership-content">
-          <p class="section-label">Partnership</p>
-          <h1 class="section-title">언커먼타올과 함께<br>성장할 파트너를 찾습니다</h1>
-          <p class="section-desc mx-auto">유통, 입점, 협업 제안을 환영해요. 함께 만들어갈 가치를 기대합니다.</p>
+        <p class="section-label">Partnership</p>
+        <h1 class="section-title">프리미엄 페이스타월 유통 파트너를<br>찾습니다</h1>
+        <p class="section-desc mx-auto">언커먼타올과 함께 일상의 품격을 높이는 파트너십을 시작하세요. 리빙숍, 온라인몰, 호텔 등 다양한 채널에서의 협업 기회가 열려 있습니다.</p>
+        <div class="hero-image img-placeholder" style="aspect-ratio:16/9; max-width:960px; margin:48px auto 0;">
+          <i data-lucide="image"></i>
         </div>
       </div>
     </section>
@@ -640,74 +578,83 @@
     <section class="collaboration-section">
       <div class="container">
         <div class="text-center">
-          <p class="section-label">Collaboration Models</p>
-          <h2 class="section-title">협업 방향</h2>
-          <p class="section-desc mx-auto">채널 특성에 맞는 다양한 협업 모델을 제안합니다.</p>
+          <p class="section-label">Collaboration Model</p>
+          <h2 class="section-title">채널별 맞춤 협업 모델</h2>
+          <p class="section-desc mx-auto">귀사의 채널 특성과 고객층에 최적화된 협업 방안을 제안합니다</p>
         </div>
         <div class="collaboration-grid">
-          <div class="collaboration-card">
+          <div class="collab-card">
             <div class="icon-box">
               <i data-lucide="store"></i>
             </div>
-            <h3 class="collaboration-card-title">리테일 입점</h3>
-            <p class="collaboration-card-desc">백화점, 라이프스타일 편집숍, 호텔 어메니티 등 오프라인 채널 입점 협업</p>
-            <p class="collaboration-card-benefit">기대효과: 브랜드 가시성 확대, 고객 접점 다양화</p>
+            <h3 class="collab-card-title">리빙·라이프스타일샵 입점</h3>
+            <p class="collab-card-desc">프리미엄 리빙 편집숍, 라이프스타일 매장을 위한 정식 입점 모델입니다.</p>
+            <ul class="collab-card-list">
+              <li>선별된 컬렉션 공급</li>
+              <li>전용 디스플레이 집기 지원</li>
+              <li>마케팅 자료 제공</li>
+              <li>정기 물량 안정 공급</li>
+            </ul>
           </div>
-          <div class="collaboration-card">
+          <div class="collab-card">
             <div class="icon-box">
               <i data-lucide="shopping-bag"></i>
             </div>
-            <h3 class="collaboration-card-title">온라인 유통</h3>
-            <p class="collaboration-card-desc">이커머스 플랫폼, 라이프스타일 큐레이션 채널 파트너십</p>
-            <p class="collaboration-card-benefit">기대효과: 온라인 판매 확장, 신규 고객 유입</p>
+            <h3 class="collab-card-title">온라인몰 제휴</h3>
+            <p class="collab-card-desc">큐레이션 커머스, 라이프스타일 온라인몰과의 독점 또는 오픈 제휴 모델입니다.</p>
+            <ul class="collab-card-list">
+              <li>전용 상세페이지 제공</li>
+              <li>프로모션 공동 기획</li>
+              <li>배송 통합 운영 가능</li>
+              <li>제품 이미지·카피 지원</li>
+            </ul>
           </div>
-          <div class="collaboration-card">
+          <div class="collab-card">
             <div class="icon-box">
-              <i data-lucide="handshake"></i>
+              <i data-lucide="bed"></i>
             </div>
-            <h3 class="collaboration-card-title">전략적 제휴</h3>
-            <p class="collaboration-card-desc">브랜드 협업, 콜라보레이션 제품 개발, 공동 프로모션</p>
-            <p class="collaboration-card-benefit">기대효과: 브랜드 시너지, 공동 마케팅 효과</p>
+            <h3 class="collab-card-title">호텔·숙박 채널</h3>
+            <p class="collab-card-desc">부티크 호텔, 펜션, 리조트 등 숙박 시설 객실 어메니티로 공급합니다.</p>
+            <ul class="collab-card-list">
+              <li>객실 맞춤 패키징</li>
+              <li>로고 각인 서비스</li>
+              <li>정기 납품 계약</li>
+              <li>투숙객 만족도 향상 기여</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 섹션 3: 입점 조건 -->
-    <section class="requirements-section">
+    <section class="conditions-section">
       <div class="container">
         <div class="text-center">
           <p class="section-label">Requirements</p>
-          <h2 class="section-title">입점 조건 안내</h2>
-          <p class="section-desc mx-auto">원활한 협업을 위한 기본 조건과 지원 사항을 확인하세요.</p>
+          <h2 class="section-title">입점 조건 및 지원 사항</h2>
+          <p class="section-desc mx-auto">원활한 협업을 위한 기본 조건과 언커먼타올이 제공하는 지원 내용입니다</p>
         </div>
-        <div class="requirements-grid">
-          <div class="requirement-item">
-            <p class="requirement-label">01. 최소 물량</p>
-            <h3 class="requirement-title">주문 조건</h3>
-            <ul class="requirement-list">
-              <li><i data-lucide="check"></i> 채널 유형에 따라 최소 주문 수량 상이</li>
-              <li><i data-lucide="check"></i> 정기 발주 협의 가능</li>
-              <li><i data-lucide="check"></i> 시즌별 물량 조정 가능</li>
-            </ul>
+        <div class="conditions-grid">
+          <div class="condition-card">
+            <div class="condition-icon">
+              <i data-lucide="package"></i>
+            </div>
+            <h3 class="condition-title">최소 발주 물량</h3>
+            <p class="condition-desc">[클라이언트 확인 필요: 최소 발주 수량 및 금액 정책]<br><br>초도 입점 시 최소 발주 기준과 정기 발주 조건을 안내합니다.</p>
           </div>
-          <div class="requirement-item">
-            <p class="requirement-label">02. 마진 구조</p>
-            <h3 class="requirement-title">수익성</h3>
-            <ul class="requirement-list">
-              <li><i data-lucide="check"></i> 채널 특성 고려한 유연한 마진율</li>
-              <li><i data-lucide="check"></i> 볼륨 인센티브 제공</li>
-              <li><i data-lucide="check"></i> 장기 계약 시 우대 조건</li>
-            </ul>
+          <div class="condition-card">
+            <div class="condition-icon">
+              <i data-lucide="trending-up"></i>
+            </div>
+            <h3 class="condition-title">마진 구조</h3>
+            <p class="condition-desc">[클라이언트 확인 필요: 공급가·마진율 정책]<br><br>채널 특성에 따라 유연한 마진 구조를 제안하며, 상세 내용은 제안서에서 확인하실 수 있습니다.</p>
           </div>
-          <div class="requirement-item">
-            <p class="requirement-label">03. 지원 사항</p>
-            <h3 class="requirement-title">파트너 지원</h3>
-            <ul class="requirement-list">
-              <li><i data-lucide="check"></i> 마케팅 콘텐츠 제공 (이미지, 카피)</li>
-              <li><i data-lucide="check"></i> 디스플레이 가이드 제공</li>
-              <li><i data-lucide="check"></i> 공동 프로모션 협의 가능</li>
-            </ul>
+          <div class="condition-card">
+            <div class="condition-icon">
+              <i data-lucide="headphones"></i>
+            </div>
+            <h3 class="condition-title">지원 사항</h3>
+            <p class="condition-desc">전용 제품 이미지, 디스플레이 집기, 마케팅 콘텐츠, 교육 자료, 전담 파트너 매니저 배정 등 다각도로 지원합니다.</p>
           </div>
         </div>
       </div>
@@ -716,75 +663,62 @@
     <!-- 섹션 4: 제안서 다운로드 -->
     <section class="download-section">
       <div class="container">
-        <div class="text-center">
-          <p class="section-label">Proposal</p>
-          <h2 class="section-title">입점 제안서 다운로드</h2>
-          <p class="section-desc mx-auto">브랜드 소개, 제품 라인업, 협업 조건을 담은 제안서를 확인하세요.</p>
-        </div>
-        <div class="download-card">
-          <div class="download-icon">
-            <i data-lucide="file-text"></i>
-          </div>
-          <h3 class="download-title">언커먼타올 입점 제안서</h3>
-          <p class="download-desc">브랜드 철학, 제품 상세, 협업 모델, 예상 마진, 마케팅 지원 사항이 포함되어 있어요.</p>
-          <a href="#" class="btn btn-primary">
-            <i data-lucide="download"></i>
-            제안서 다운로드 (PDF)
-          </a>
-          <p class="download-info">파일 크기: [클라이언트 확인 필요] / 최종 업데이트: [클라이언트 확인 필요]</p>
-        </div>
+        <p class="section-label" style="color:rgba(255,255,255,0.5);">Download</p>
+        <h2 class="section-title">입점 제안서 다운로드</h2>
+        <p class="section-desc mx-auto">협업 모델, 제품 라인업, 마진 구조, 지원 사항이 담긴 상세 제안서를 다운로드하세요</p>
+        <a href="#" class="btn btn-primary">
+          <i data-lucide="download" style="width:20px; height:20px;"></i>
+          입점 제안서 PDF 다운로드
+        </a>
       </div>
     </section>
 
     <!-- 섹션 5: 제휴 문의 폼 -->
-    <section class="form-section">
+    <section class="contact-form-section">
       <div class="container">
         <div class="text-center">
           <p class="section-label">Contact</p>
           <h2 class="section-title">제휴 문의하기</h2>
-          <p class="section-desc mx-auto">아래 양식을 작성해 주시면 영업일 기준 2일 이내 담당자가 연락드립니다.</p>
+          <p class="section-desc mx-auto">귀사의 채널에 대한 정보와 협업 희망 사항을 알려주시면 영업일 기준 2일 이내 답변 드리겠습니다</p>
         </div>
-        <div class="form-container">
+        <div class="form-wrapper">
           <form>
-            <div class="form-group">
-              <label for="company" class="form-label required">회사명</label>
-              <input type="text" id="company" class="form-input" placeholder="회사명을 입력하세요" required>
+            <div class="form-row">
+              <label class="form-label">회사명<span class="form-required">*</span></label>
+              <input type="text" placeholder="회사명 또는 브랜드명을 입력하세요" required>
             </div>
-            <div class="form-group">
-              <label for="name" class="form-label required">담당자명</label>
-              <input type="text" id="name" class="form-input" placeholder="담당자명을 입력하세요" required>
+            <div class="form-row">
+              <label class="form-label">담당자명<span class="form-required">*</span></label>
+              <input type="text" placeholder="담당자 성함을 입력하세요" required>
             </div>
-            <div class="form-group">
-              <label for="email" class="form-label required">이메일</label>
-              <input type="email" id="email" class="form-input" placeholder="example@company.com" required>
+            <div class="form-row">
+              <label class="form-label">연락처<span class="form-required">*</span></label>
+              <input type="tel" placeholder="010-0000-0000" required>
             </div>
-            <div class="form-group">
-              <label for="phone" class="form-label required">연락처</label>
-              <input type="tel" id="phone" class="form-input" placeholder="010-0000-0000" required>
+            <div class="form-row">
+              <label class="form-label">이메일<span class="form-required">*</span></label>
+              <input type="email" placeholder="example@company.com" required>
             </div>
-            <div class="form-group">
-              <label for="channel" class="form-label required">채널 유형</label>
-              <select id="channel" class="form-select" required>
+            <div class="form-row">
+              <label class="form-label">채널 유형<span class="form-required">*</span></label>
+              <select required>
                 <option value="">선택하세요</option>
-                <option value="retail">리테일 (백화점/편집숍)</option>
-                <option value="online">온라인 유통</option>
-                <option value="hotel">호텔/리조트</option>
-                <option value="collab">브랜드 협업</option>
+                <option value="living">리빙·라이프스타일샵</option>
+                <option value="online">온라인몰</option>
+                <option value="hotel">호텔·숙박</option>
+                <option value="gift">기업 선물·답례품</option>
                 <option value="other">기타</option>
               </select>
             </div>
-            <div class="form-group">
-              <label for="volume" class="form-label">예상 물량</label>
-              <input type="text" id="volume" class="form-input" placeholder="월 예상 주문 수량 (선택 사항)">
-              <p class="form-hint">가능한 범위 내에서 작성해 주세요. 정확하지 않아도 괜찮아요.</p>
+            <div class="form-row">
+              <label class="form-label">예상 물량</label>
+              <input type="text" placeholder="월 예상 발주 수량 (선택사항)">
             </div>
-            <div class="form-group">
-              <label for="message" class="form-label">제안 내용 / 요청사항</label>
-              <textarea id="message" class="form-textarea" placeholder="협업 방향, 궁금한 점, 특별 요청사항 등을 자유롭게 작성하세요."></textarea>
+            <div class="form-row">
+              <label class="form-label">협업 요청 사항<span class="form-required">*</span></label>
+              <textarea placeholder="협업 희망 사항, 채널 특성, 궁금한 점 등을 자유롭게 작성해주세요" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary form-submit">
-              제휴 문의 보내기
-            </button>
+            <button type="submit" class="btn btn-primary form-submit">제휴 문의 보내기</button>
           </form>
         </div>
       </div>
@@ -798,39 +732,50 @@
       <div class="footer-grid">
         <div>
           <p class="footer-brand-name">언커먼타올</p>
-          <p class="footer-brand-desc">매일 얼굴에 닿는 수건 하나의 품질에 타협하지 않습니다.</p>
-          <div class="footer-info">
-            <p>상호: [클라이언트 확인 필요]</p>
-            <p>대표자명: [클라이언트 확인 필요]</p>
-            <p>사업자등록번호: [클라이언트 확인 필요]</p>
-            <p>통신판매업 신고번호: [클라이언트 확인 필요]</p>
-            <p>주소: [클라이언트 확인 필요]</p>
-            <p>대표전화: [클라이언트 확인 필요]</p>
-            <p>이메일: [클라이언트 확인 필요]</p>
-          </div>
+          <p class="footer-brand-desc">프리미엄 페이스타월 전문 브랜드</p>
+          <p class="footer-brand-desc" style="margin-top:12px; font-size:13px;">
+            [클라이언트 확인 필요: 상호 / 대표 / 사업자번호]<br>
+            [클라이언트 확인 필요: 주소]<br>
+            [클라이언트 확인 필요: 전화 / 이메일]
+          </p>
         </div>
-        <div class="footer-col">
+        <div>
           <p class="footer-col-title">브랜드</p>
           <a href="page_02.html">브랜드 철학</a>
+          <a href="page_03.html">브랜드 스토리</a>
           <a href="page_05.html">소재 이야기</a>
-          <a href="page_06.html">지속가능성</a>
         </div>
-        <div class="footer-col">
-          <p class="footer-col-title">제품</p>
-          <a href="page_07.html">제품</a>
+        <div>
+          <p class="footer-col-title">쇼핑</p>
+          <a href="page_07.html">전체 제품</a>
           <a href="page_08.html">타월 가이드</a>
-          <a href="page_11.html">고객 후기</a>
         </div>
-        <div class="footer-col">
-          <p class="footer-col-title">지원</p>
-          <a href="page_09.html">대량구매</a>
+        <div>
+          <p class="footer-col-title">고객지원</p>
           <a href="page_12.html">FAQ</a>
           <a href="page_13.html">1:1 문의</a>
+          <a href="page_14.html">주문 조회</a>
+          <a href="page_15.html">매장 안내</a>
+        </div>
+      </div>
+      <div class="footer-grid" style="padding-top:24px; padding-bottom:24px; border-top:1px solid var(--border-light); border-bottom:none;">
+        <div>
+          <p class="footer-col-title">B2B</p>
+          <a href="page_09.html">대량구매</a>
+          <a href="page_10.html">파트너십</a>
+        </div>
+        <div>
+          <p class="footer-col-title">SNS</p>
+          <p style="font-size:13px; color:var(--text-light);">[클라이언트 확인 필요: SNS 채널]</p>
+        </div>
+        <div>
+          <p class="footer-col-title">인증</p>
+          <p style="font-size:13px; color:var(--text-light);">[클라이언트 확인 필요: 인증마크]</p>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 언커먼타올. All Rights Reserved.</span>
-        <div class="footer-links">
+        <span>© [클라이언트 확인 필요: 연도] 언커먼타올. All rights reserved.</span>
+        <div>
           <a href="#">개인정보처리방침</a>
           <a href="#">이용약관</a>
         </div>
@@ -839,7 +784,7 @@
   </footer>
 
   <!-- TOP 버튼 -->
-  <button class="top-btn" id="topBtn">
+  <button class="top-button" aria-label="맨 위로">
     <i data-lucide="arrow-up"></i>
   </button>
 
@@ -847,34 +792,26 @@
     lucide.createIcons();
 
     // 헤더 스크롤
-    const header = document.querySelector('.header');
+    const nav = document.querySelector('.nav');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
-        header.classList.add('scrolled');
+        nav.classList.add('scrolled');
       } else {
-        header.classList.remove('scrolled');
+        nav.classList.remove('scrolled');
       }
     });
 
     // TOP 버튼
-    const topBtn = document.getElementById('topBtn');
+    const topButton = document.querySelector('.top-button');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
-        topBtn.classList.add('visible');
+        topButton.classList.add('visible');
       } else {
-        topBtn.classList.remove('visible');
+        topButton.classList.remove('visible');
       }
     });
-    topBtn.addEventListener('click', () => {
+    topButton.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // 폼 제출
-    const form = document.querySelector('form');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('제휴 문의가 접수되었습니다. 곧 연락드리겠습니다!');
-      form.reset();
     });
   </script>
 </body>
