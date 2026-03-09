@@ -1,12 +1,12 @@
-<!-- PAGE: 제품 (Product) -->
+<!-- PAGE: 대량구매 (Bulk Order) -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>제품 | 언커먼타올 - 프리미엄 페이스타월</title>
-  <meta name="description" content="언커먼타올 프리미엄 페이스타월 전체 제품 라인업. 컬러, 패키지, GSM 옵션별로 선택하세요.">
-  <meta name="keywords" content="프리미엄 수건, 페이스타월, 고급 수건, 호텔 수건, 면 타월">
+  <title>대량구매 | 언커먼타올 - 프리미엄 대나무 섬유 페이스타월</title>
+  <meta name="description" content="기업선물, 답례품, 호텔 납품을 위한 언커먼타올 대량구매 서비스. 로고 각인, 커스텀 패키징, 수량별 단가 안내.">
+  <meta name="keywords" content="페이스타월, 대나무 수건, 프리미엄 수건, bamboo towel, 대나무 섬유 타월, 친환경 수건, 기업선물, 대량구매">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -19,6 +19,7 @@
       --bg-white: #FFFFFF;
       --bg-light: #F5F5F5;
       --bg-dark: #2D2D2D;
+      --bg-black: #1A1A1A;
       --border-light: #E0E0E0;
       --border-default: #D0D0D0;
       --placeholder-bg: #E0E0E0;
@@ -48,7 +49,7 @@
     }
 
     /* ==========================================
-       HEADER
+       헤더
        ========================================== */
     .nav {
       position: sticky;
@@ -56,6 +57,11 @@
       z-index: 100;
       background: var(--bg-white);
       border-bottom: 1px solid var(--border-light);
+      transition: all 0.3s;
+    }
+    .nav.scrolled {
+      background: rgba(255,255,255,0.95);
+      box-shadow: var(--shadow-sm);
     }
     .nav-inner {
       display: flex;
@@ -71,24 +77,20 @@
     .nav-links {
       display: flex;
       gap: 32px;
-      position: relative;
     }
-    .nav-item {
+    .nav-link {
       position: relative;
-    }
-    .nav-item > a {
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
-      display: block;
       padding: 8px 0;
     }
-    .nav-item.active > a {
+    .nav-link.active {
       color: var(--text-black);
-      font-weight: 700;
+      font-weight: 600;
     }
+    .nav-link:hover { color: var(--text-black); }
     .nav-dropdown {
-      display: none;
       position: absolute;
       top: 100%;
       left: 0;
@@ -98,249 +100,385 @@
       padding: 12px 0;
       min-width: 180px;
       box-shadow: var(--shadow-md);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s;
     }
-    .nav-item:hover .nav-dropdown {
-      display: block;
+    .nav-link:hover .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
     }
     .nav-dropdown a {
       display: block;
       padding: 8px 20px;
       font-size: 14px;
-      color: var(--text-dark);
-      white-space: nowrap;
+      color: var(--text-gray);
     }
     .nav-dropdown a:hover {
       background: var(--bg-light);
+      color: var(--text-black);
     }
-    .nav-actions {
+    .nav-utils {
       display: flex;
       align-items: center;
       gap: 16px;
     }
-    .nav-actions button {
-      width: 24px;
-      height: 24px;
+    .nav-utils button {
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-dark);
     }
-    .nav-actions button svg {
+    .nav-utils svg {
       width: 20px;
       height: 20px;
+      color: var(--text-dark);
     }
-    .nav-hamburger {
+    .hamburger {
       display: none;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--text-black);
+      transition: all 0.3s;
     }
 
     /* ==========================================
-       PRODUCT PAGE
+       공통 컴포넌트
        ========================================== */
-    .product-hero {
-      padding: 80px 0 40px;
-      background: var(--bg-white);
-      text-align: center;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s;
     }
-    .product-hero h1 {
+    .btn:hover { opacity: 0.85; }
+    .btn-primary {
+      background: var(--text-black);
+      color: #FFFFFF;
+      border: 1px solid var(--text-black);
+    }
+    .btn-secondary {
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--border-default);
+    }
+
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+    .section-title {
       font-size: 36px;
       font-weight: 700;
       color: var(--text-black);
-      margin-bottom: 12px;
+      line-height: 1.3;
+      margin-bottom: 16px;
     }
-    .product-hero p {
+    .section-desc {
       font-size: 16px;
       color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 560px;
     }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
 
-    .filter-section {
-      padding: 40px 0;
-      background: var(--bg-light);
-      border-bottom: 1px solid var(--border-light);
-    }
-    .filter-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .filter-group {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .filter-label {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-dark);
-    }
-    .filter-buttons {
-      display: flex;
-      gap: 8px;
-    }
-    .filter-btn {
-      padding: 8px 16px;
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-sm);
-      background: var(--bg-white);
-      font-size: 14px;
-      color: var(--text-dark);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .filter-btn:hover {
-      border-color: var(--text-dark);
-    }
-    .filter-btn.active {
-      background: var(--text-black);
-      color: var(--bg-white);
-      border-color: var(--text-black);
-    }
-    .sort-select {
-      padding: 8px 16px;
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-sm);
-      background: var(--bg-white);
-      font-size: 14px;
-      color: var(--text-dark);
-      cursor: pointer;
-    }
-
-    .product-grid-section {
-      padding: 60px 0 80px;
-      background: var(--bg-white);
-    }
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 32px;
-    }
-    .product-card {
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      transition: box-shadow 0.2s;
-      cursor: pointer;
-    }
-    .product-card:hover {
-      box-shadow: var(--shadow-md);
-    }
-    .product-image {
+    .img-placeholder {
       background: var(--placeholder-bg);
-      aspect-ratio: 1/1;
+      border-radius: var(--radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
+      width: 100%;
     }
-    .product-image svg {
+    .img-placeholder svg {
+      color: var(--placeholder-icon);
       width: 48px;
       height: 48px;
-      color: var(--placeholder-icon);
     }
-    .product-badge {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      padding: 4px 8px;
-      background: var(--text-black);
-      color: var(--bg-white);
-      font-size: 12px;
-      font-weight: 600;
-      border-radius: 4px;
-    }
-    .product-info {
-      padding: 20px;
-    }
-    .product-category {
-      font-size: 13px;
-      color: var(--text-light);
-      margin-bottom: 8px;
-    }
-    .product-name {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 8px;
-    }
-    .product-desc {
-      font-size: 14px;
-      color: var(--text-gray);
-      line-height: 1.5;
-      margin-bottom: 12px;
-    }
-    .product-colors {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 12px;
-    }
-    .color-dot {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: 1px solid var(--border-light);
-    }
-    .product-price {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-    }
-    .price-original {
-      font-size: 14px;
-      color: var(--text-light);
-      text-decoration: line-through;
-    }
-    .price-current {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-black);
-    }
-    .product-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 16px;
-    }
-    .btn-cart {
-      flex: 1;
-      padding: 10px;
-      background: var(--bg-white);
-      border: 1px solid var(--border-default);
+
+    .icon-box {
+      width: 48px;
+      height: 48px;
       border-radius: var(--radius-sm);
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-dark);
+      background: var(--bg-light);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      transition: all 0.2s;
+      flex-shrink: 0;
     }
-    .btn-cart:hover {
-      border-color: var(--text-black);
-    }
-    .btn-cart svg {
-      width: 16px;
-      height: 16px;
-    }
-    .btn-buy {
-      flex: 1;
-      padding: 10px;
-      background: var(--text-black);
-      border: 1px solid var(--text-black);
-      border-radius: var(--radius-sm);
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--bg-white);
-      transition: opacity 0.2s;
-    }
-    .btn-buy:hover {
-      opacity: 0.85;
+    .icon-box svg {
+      width: 24px;
+      height: 24px;
+      color: var(--text-dark);
     }
 
     /* ==========================================
-       FOOTER
+       섹션 1: 히어로
        ========================================== */
-    .footer {
+    .hero-bulk {
+      padding: 120px 0 80px;
+      background: var(--bg-white);
+    }
+    .hero-bulk-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-bulk .section-title {
+      font-size: 42px;
+    }
+    .hero-bulk-buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    /* ==========================================
+       섹션 2: 활용 사례 (4열 그리드)
+       ========================================== */
+    .use-cases {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .case-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .case-card-body {
+      padding: 24px;
+    }
+    .case-card-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .case-card-desc {
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    /* ==========================================
+       섹션 3: 커스텀 서비스 (좌우 분할)
+       ========================================== */
+    .custom-service {
+      padding: 80px 0;
+      background: var(--bg-white);
+    }
+    .custom-service-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .custom-list-item {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .custom-list-item:last-child { border-bottom: none; }
+    .custom-list-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 4px;
+    }
+    .custom-list-desc {
+      font-size: 14px;
+      color: var(--text-gray);
+    }
+
+    /* ==========================================
+       섹션 4: 수량·가격 안내 (테이블)
+       ========================================== */
+    .pricing-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .pricing-table {
+      max-width: 800px;
+      margin: 48px auto 0;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--bg-white);
+    }
+    .pricing-table table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .pricing-table th,
+    .pricing-table td {
+      padding: 16px;
+      text-align: center;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .pricing-table th {
+      background: var(--bg-light);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-black);
+    }
+    .pricing-table td {
+      font-size: 15px;
+      color: var(--text-dark);
+    }
+    .pricing-table tr:last-child td {
+      border-bottom: none;
+    }
+    .pricing-note {
+      max-width: 800px;
+      margin: 24px auto 0;
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* ==========================================
+       섹션 5: 주문 프로세스 (가로 5단계)
+       ========================================== */
+    .process-section {
+      padding: 80px 0;
+      background: var(--bg-white);
+    }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .process-step {
+      text-align: center;
+    }
+    .step-number {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .step-icon-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .step-icon-wrap svg {
+      width: 28px;
+      height: 28px;
+      color: var(--text-dark);
+    }
+    .step-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .step-desc {
+      font-size: 14px;
+      color: var(--text-gray);
+    }
+
+    /* ==========================================
+       섹션 6: 견적 문의 폼
+       ========================================== */
+    .quote-form-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .quote-form-container {
+      max-width: 720px;
+      margin: 48px auto 0;
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 40px;
+    }
+    .form-group {
+      margin-bottom: 24px;
+    }
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--text-dark);
+    }
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--text-black);
+    }
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--text-black);
+      color: #FFFFFF;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .form-submit:hover { opacity: 0.85; }
+    .form-privacy {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 16px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* ==========================================
+       푸터
+       ========================================== */
+    .footer-light {
       padding: 60px 0 32px;
       background: var(--bg-white);
       border-top: 1px solid var(--border-light);
@@ -356,15 +494,12 @@
       font-size: 18px;
       font-weight: 700;
       color: var(--text-black);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
-    .footer-info {
-      font-size: 13px;
+    .footer-brand-desc {
+      font-size: 14px;
       color: var(--text-light);
-      line-height: 1.8;
-    }
-    .footer-info p {
-      margin-bottom: 4px;
+      line-height: 1.6;
     }
     .footer-col-title {
       font-size: 14px;
@@ -379,461 +514,502 @@
       padding: 4px 0;
     }
     .footer-col a:hover {
-      color: var(--text-dark);
+      color: var(--text-black);
     }
     .footer-bottom {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       padding-top: 24px;
       font-size: 13px;
       color: var(--text-muted);
     }
-    .footer-bottom-links {
+    .footer-links {
       display: flex;
       gap: 16px;
     }
-    .footer-bottom-links a {
+    .footer-links a {
       color: var(--text-muted);
     }
-    .footer-bottom-links a:hover {
+    .footer-links a:hover {
       color: var(--text-dark);
     }
 
-    .top-button {
+    /* ==========================================
+       TOP 버튼
+       ========================================== */
+    .btn-top {
       position: fixed;
-      bottom: 40px;
-      right: 40px;
+      bottom: 32px;
+      right: 32px;
       width: 48px;
       height: 48px;
-      background: var(--text-black);
-      color: var(--bg-white);
+      background: var(--bg-dark);
+      color: #FFFFFF;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
       opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-      z-index: 50;
+      visibility: hidden;
+      transition: all 0.3s;
+      z-index: 90;
     }
-    .top-button.visible {
+    .btn-top.visible {
       opacity: 1;
-      pointer-events: all;
+      visibility: visible;
     }
-    .top-button svg {
+    .btn-top:hover {
+      background: var(--bg-black);
+    }
+    .btn-top svg {
       width: 20px;
       height: 20px;
     }
 
     /* ==========================================
-       RESPONSIVE
+       반응형
        ========================================== */
     @media (max-width: 768px) {
-      .nav-links {
-        display: none;
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .section-title { font-size: 28px; }
+      
+      .hero-bulk {
+        padding: 80px 0 60px;
       }
-      .nav-hamburger {
-        display: flex;
-        width: 24px;
-        height: 24px;
-        color: var(--text-dark);
+      .hero-bulk-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
       }
-      .nav-hamburger svg {
-        width: 20px;
-        height: 20px;
-      }
-
-      .product-hero h1 {
-        font-size: 28px;
+      .hero-bulk .section-title {
+        font-size: 32px;
       }
 
-      .filter-inner {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .filter-group {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .filter-buttons {
-        flex-wrap: wrap;
+      .cases-grid {
+        grid-template-columns: 1fr;
       }
 
-      .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
+      .custom-service-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
       }
-      .product-info {
-        padding: 16px;
+
+      .pricing-table {
+        overflow-x: auto;
       }
-      .product-name {
-        font-size: 15px;
+
+      .process-steps {
+        grid-template-columns: 1fr;
       }
-      .product-desc {
-        font-size: 13px;
+
+      .quote-form-container {
+        padding: 24px;
       }
-      .price-current {
-        font-size: 16px;
+      .form-row {
+        grid-template-columns: 1fr;
       }
 
       .footer-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 32px;
       }
       .footer-bottom {
         flex-direction: column;
-        gap: 12px;
+        gap: 16px;
         text-align: center;
       }
 
-      .top-button {
+      .btn-top {
         bottom: 24px;
         right: 24px;
-        width: 40px;
-        height: 40px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- ==========================================
+       헤더
+       ========================================== -->
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
         <a href="page_01.html" class="nav-logo">언커먼타올</a>
         <nav class="nav-links">
-          <div class="nav-item">
-            <a href="page_02.html">브랜드</a>
+          <a href="page_01.html" class="nav-link">메인</a>
+          <div class="nav-link">
+            브랜드
             <div class="nav-dropdown">
               <a href="page_02.html">브랜드 철학</a>
               <a href="page_03.html">브랜드 스토리</a>
               <a href="page_04.html">브랜드 여정</a>
               <a href="page_05.html">소재 이야기</a>
-              <a href="page_06.html">지속가능성</a>
             </div>
           </div>
-          <div class="nav-item active">
-            <a href="page_07.html">제품</a>
-          </div>
-          <div class="nav-item">
-            <a href="page_08.html">타월 가이드</a>
-          </div>
-          <div class="nav-item">
-            <a href="page_09.html">B2B문의</a>
+          <a href="page_06.html" class="nav-link">제품</a>
+          <div class="nav-link active">
+            B2B문의
             <div class="nav-dropdown">
-              <a href="page_09.html">대량구매</a>
-              <a href="page_10.html">파트너십</a>
+              <a href="page_07.html">대량구매</a>
+              <a href="page_08.html">파트너십</a>
             </div>
           </div>
-          <div class="nav-item">
-            <a href="page_11.html">고객 후기</a>
-          </div>
-          <div class="nav-item">
-            <a href="page_12.html">고객센터</a>
+          <a href="page_09.html" class="nav-link">고객 후기</a>
+          <div class="nav-link">
+            고객센터
             <div class="nav-dropdown">
-              <a href="page_12.html">FAQ</a>
-              <a href="page_13.html">1:1 문의</a>
-              <a href="page_14.html">주문 조회</a>
-              <a href="page_15.html">매장 안내</a>
+              <a href="page_10.html">FAQ</a>
+              <a href="page_11.html">1:1 문의</a>
+              <a href="page_12.html">주문 조회</a>
             </div>
           </div>
         </nav>
-        <div class="nav-actions">
+        <div class="nav-utils">
           <button><i data-lucide="search"></i></button>
           <button><i data-lucide="user"></i></button>
           <button><i data-lucide="shopping-cart"></i></button>
-          <button class="nav-hamburger"><i data-lucide="menu"></i></button>
         </div>
+        <button class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </div>
   </header>
 
   <main>
 
-    <!-- PRODUCT HERO -->
-    <section class="product-hero">
+    <!-- ==========================================
+         섹션 1: 히어로
+         ========================================== -->
+    <section class="hero-bulk">
       <div class="container">
-        <h1>프리미엄 페이스타월</h1>
-        <p>매일 얼굴에 닿는 타월, 소재부터 다릅니다</p>
-      </div>
-    </section>
-
-    <!-- FILTER SECTION -->
-    <section class="filter-section">
-      <div class="container">
-        <div class="filter-inner">
-          <div class="filter-group">
-            <span class="filter-label">컬러</span>
-            <div class="filter-buttons">
-              <button class="filter-btn active">전체</button>
-              <button class="filter-btn">화이트</button>
-              <button class="filter-btn">아이보리</button>
-              <button class="filter-btn">그레이</button>
-              <button class="filter-btn">베이지</button>
+        <div class="hero-bulk-inner">
+          <div>
+            <p class="section-label">BULK ORDER</p>
+            <h1 class="section-title">품질과 신뢰로<br>함께하는 파트너</h1>
+            <p class="section-desc">기업선물부터 호텔 납품까지, 언커먼타올의 프리미엄 품질을 대량으로 경험하세요. 로고 각인과 커스텀 패키징으로 브랜드 가치를 더합니다.</p>
+            <div class="hero-bulk-buttons">
+              <a href="#quote-form" class="btn btn-primary">견적 문의하기</a>
+              <a href="#pricing" class="btn btn-secondary">가격 안내 보기</a>
             </div>
           </div>
-          <div class="filter-group">
-            <span class="filter-label">패키지</span>
-            <div class="filter-buttons">
-              <button class="filter-btn active">전체</button>
-              <button class="filter-btn">단품</button>
-              <button class="filter-btn">2매 세트</button>
-              <button class="filter-btn">4매 세트</button>
-            </div>
+          <div class="img-placeholder" style="aspect-ratio:4/3;">
+            <i data-lucide="image"></i>
           </div>
-          <select class="sort-select">
-            <option>신상품순</option>
-            <option>인기순</option>
-            <option>낮은 가격순</option>
-            <option>높은 가격순</option>
-          </select>
         </div>
       </div>
     </section>
 
-    <!-- PRODUCT GRID -->
-    <section class="product-grid-section">
+    <!-- ==========================================
+         섹션 2: 활용 사례
+         ========================================== -->
+    <section class="use-cases">
       <div class="container">
-        <div class="product-grid">
-          
-          <!-- Product Card 1 -->
-          <div class="product-card">
-            <div class="product-image">
-              <div class="product-badge">베스트</div>
-              <i data-lucide="image"></i>
+        <div class="text-center">
+          <p class="section-label">USE CASES</p>
+          <h2 class="section-title">다양한 활용 사례</h2>
+          <p class="section-desc mx-auto">언커먼타올은 기업선물부터 호텔 납품까지 다양한 B2B 고객과 함께합니다.</p>
+        </div>
+        <div class="cases-grid">
+          <div class="case-card">
+            <div class="img-placeholder" style="aspect-ratio:4/3;">
+              <i data-lucide="gift"></i>
             </div>
-            <div class="product-info">
-              <p class="product-category">페이스타월 · 단품</p>
-              <h3 class="product-name">클래식 페이스타월</h3>
-              <p class="product-desc">호텔급 500GSM 초고밀도 원사</p>
-              <div class="product-colors">
-                <div class="color-dot" style="background:#FFFFFF;"></div>
-                <div class="color-dot" style="background:#F5F3EE;"></div>
-                <div class="color-dot" style="background:#D4CFC5;"></div>
-                <div class="color-dot" style="background:#9E9E9E;"></div>
+            <div class="case-card-body">
+              <h3 class="case-card-title">기업 선물</h3>
+              <p class="case-card-desc">명절·기념일 임직원 선물, VIP 고객 답례품</p>
+            </div>
+          </div>
+          <div class="case-card">
+            <div class="img-placeholder" style="aspect-ratio:4/3;">
+              <i data-lucide="heart-handshake"></i>
+            </div>
+            <div class="case-card-body">
+              <h3 class="case-card-title">답례품</h3>
+              <p class="case-card-desc">감사 인사, 기념품, 스폰서 답례 패키지</p>
+            </div>
+          </div>
+          <div class="case-card">
+            <div class="img-placeholder" style="aspect-ratio:4/3;">
+              <i data-lucide="hotel"></i>
+            </div>
+            <div class="case-card-body">
+              <h3 class="case-card-title">호텔·숙박업소</h3>
+              <p class="case-card-desc">객실 어메니티, 스파·피트니스 센터 비품</p>
+            </div>
+          </div>
+          <div class="case-card">
+            <div class="img-placeholder" style="aspect-ratio:4/3;">
+              <i data-lucide="megaphone"></i>
+            </div>
+            <div class="case-card-body">
+              <h3 class="case-card-title">판촉물</h3>
+              <p class="case-card-desc">이벤트·프로모션 경품, 브랜드 협업 굿즈</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         섹션 3: 커스텀 서비스
+         ========================================== -->
+    <section class="custom-service">
+      <div class="container">
+        <div class="custom-service-inner">
+          <div class="img-placeholder" style="aspect-ratio:4/3;">
+            <i data-lucide="image"></i>
+          </div>
+          <div>
+            <p class="section-label">CUSTOM SERVICE</p>
+            <h2 class="section-title">브랜드를 담은<br>커스텀 서비스</h2>
+            <div style="margin-top:8px;">
+              <div class="custom-list-item">
+                <div class="icon-box"><i data-lucide="type"></i></div>
+                <div>
+                  <p class="custom-list-title">로고 자수 / 프린팅</p>
+                  <p class="custom-list-desc">브랜드 로고, 슬로건, 이니셜 각인 가능</p>
+                </div>
               </div>
-              <div class="product-price">
-                <span class="price-current">[클라이언트 확인 필요: 가격]</span>
+              <div class="custom-list-item">
+                <div class="icon-box"><i data-lucide="package"></i></div>
+                <div>
+                  <p class="custom-list-title">커스텀 패키징</p>
+                  <p class="custom-list-desc">전용 박스, 라벨, 리본 등 고급 포장 옵션</p>
+                </div>
               </div>
-              <div class="product-actions">
-                <button class="btn-cart"><i data-lucide="shopping-cart"></i> 장바구니</button>
-                <button class="btn-buy">구매하기</button>
+              <div class="custom-list-item">
+                <div class="icon-box"><i data-lucide="palette"></i></div>
+                <div>
+                  <p class="custom-list-title">컬러 선택</p>
+                  <p class="custom-list-desc">브랜드 아이덴티티에 맞는 컬러 조합</p>
+                </div>
+              </div>
+              <div class="custom-list-item">
+                <div class="icon-box"><i data-lucide="truck"></i></div>
+                <div>
+                  <p class="custom-list-title">빠른 납품</p>
+                  <p class="custom-list-desc">시안 확정 후 2~3주 이내 납품 (수량에 따라 변동)</p>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- Product Card 2 -->
-          <div class="product-card">
-            <div class="product-image">
-              <div class="product-badge">신상</div>
-              <i data-lucide="image"></i>
-            </div>
-            <div class="product-info">
-              <p class="product-category">페이스타월 · 2매 세트</p>
-              <h3 class="product-name">프리미엄 듀오 세트</h3>
-              <p class="product-desc">600GSM 이집트산 초장면 · 2매</p>
-              <div class="product-colors">
-                <div class="color-dot" style="background:#FFFFFF;"></div>
-                <div class="color-dot" style="background:#F5F3EE;"></div>
-              </div>
-              <div class="product-price">
-                <span class="price-original">[클라이언트 확인 필요: 정가]</span>
-                <span class="price-current">[클라이언트 확인 필요: 할인가]</span>
-              </div>
-              <div class="product-actions">
-                <button class="btn-cart"><i data-lucide="shopping-cart"></i> 장바구니</button>
-                <button class="btn-buy">구매하기</button>
-              </div>
-            </div>
+    <!-- ==========================================
+         섹션 4: 수량·가격 안내
+         ========================================== -->
+    <section class="pricing-section" id="pricing">
+      <div class="container">
+        <div class="text-center">
+          <p class="section-label">PRICING</p>
+          <h2 class="section-title">수량별 가격 안내</h2>
+          <p class="section-desc mx-auto">수량이 많을수록 단가가 낮아집니다. 정확한 견적은 문의 폼을 통해 확인하세요.</p>
+        </div>
+        <div class="pricing-table">
+          <table>
+            <thead>
+              <tr>
+                <th>수량</th>
+                <th>개당 단가</th>
+                <th>총 금액 (예상)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>50개 이상</td>
+                <td>[클라이언트 확인 필요]</td>
+                <td>[클라이언트 확인 필요]</td>
+              </tr>
+              <tr>
+                <td>100개 이상</td>
+                <td>[클라이언트 확인 필요]</td>
+                <td>[클라이언트 확인 필요]</td>
+              </tr>
+              <tr>
+                <td>300개 이상</td>
+                <td>[클라이언트 확인 필요]</td>
+                <td>[클라이언트 확인 필요]</td>
+              </tr>
+              <tr>
+                <td>500개 이상</td>
+                <td>[클라이언트 확인 필요]</td>
+                <td>[클라이언트 확인 필요]</td>
+              </tr>
+              <tr>
+                <td>1,000개 이상</td>
+                <td>[클라이언트 확인 필요]</td>
+                <td>[클라이언트 확인 필요]</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pricing-note">
+          ※ 최소 주문 수량: [클라이언트 확인 필요]<br>
+          ※ 커스텀 옵션(로고 각인, 전용 패키징) 추가 시 별도 비용 발생<br>
+          ※ 부가세 별도, 배송비 별도 (수량·지역에 따라 변동)<br>
+          ※ 상기 금액은 참고용이며, 정확한 견적은 문의 후 확인 가능합니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         섹션 5: 주문 프로세스
+         ========================================== -->
+    <section class="process-section">
+      <div class="container">
+        <div class="text-center">
+          <p class="section-label">PROCESS</p>
+          <h2 class="section-title">간편한 주문 프로세스</h2>
+          <p class="section-desc mx-auto">문의부터 납품까지, 체계적인 프로세스로 안심하고 진행할 수 있습니다.</p>
+        </div>
+        <div class="process-steps">
+          <div class="process-step">
+            <p class="step-number">STEP 01</p>
+            <div class="step-icon-wrap"><i data-lucide="message-circle"></i></div>
+            <h3 class="step-title">문의 접수</h3>
+            <p class="step-desc">온라인 폼, 이메일, 전화로 문의</p>
           </div>
-
-          <!-- Product Card 3 -->
-          <div class="product-card">
-            <div class="product-image">
-              <i data-lucide="image"></i>
-            </div>
-            <div class="product-info">
-              <p class="product-category">페이스타월 · 4매 세트</p>
-              <h3 class="product-name">패밀리 쿼드 세트</h3>
-              <p class="product-desc">500GSM 실속형 · 4매</p>
-              <div class="product-colors">
-                <div class="color-dot" style="background:#FFFFFF;"></div>
-                <div class="color-dot" style="background:#D4CFC5;"></div>
-              </div>
-              <div class="product-price">
-                <span class="price-original">[클라이언트 확인 필요: 정가]</span>
-                <span class="price-current">[클라이언트 확인 필요: 할인가]</span>
-              </div>
-              <div class="product-actions">
-                <button class="btn-cart"><i data-lucide="shopping-cart"></i> 장바구니</button>
-                <button class="btn-buy">구매하기</button>
-              </div>
-            </div>
+          <div class="process-step">
+            <p class="step-number">STEP 02</p>
+            <div class="step-icon-wrap"><i data-lucide="package"></i></div>
+            <h3 class="step-title">샘플 제공</h3>
+            <p class="step-desc">실물 샘플 발송 및 품질 확인</p>
           </div>
-
-          <!-- Product Card 4 -->
-          <div class="product-card">
-            <div class="product-image">
-              <i data-lucide="image"></i>
-            </div>
-            <div class="product-info">
-              <p class="product-category">페이스타월 · 단품</p>
-              <h3 class="product-name">소프트 코튼 타월</h3>
-              <p class="product-desc">450GSM 부드러운 터치감</p>
-              <div class="product-colors">
-                <div class="color-dot" style="background:#F5F3EE;"></div>
-                <div class="color-dot" style="background:#D4CFC5;"></div>
-                <div class="color-dot" style="background:#9E9E9E;"></div>
-              </div>
-              <div class="product-price">
-                <span class="price-current">[클라이언트 확인 필요: 가격]</span>
-              </div>
-              <div class="product-actions">
-                <button class="btn-cart"><i data-lucide="shopping-cart"></i> 장바구니</button>
-                <button class="btn-buy">구매하기</button>
-              </div>
-            </div>
+          <div class="process-step">
+            <p class="step-number">STEP 03</p>
+            <div class="step-icon-wrap"><i data-lucide="file-check"></i></div>
+            <h3 class="step-title">시안 확인</h3>
+            <p class="step-desc">로고·패키징 시안 검토 및 승인</p>
           </div>
-
-          <!-- Product Card 5 -->
-          <div class="product-card">
-            <div class="product-image">
-              <i data-lucide="image"></i>
-            </div>
-            <div class="product-info">
-              <p class="product-category">페이스타월 · 단품</p>
-              <h3 class="product-name">퓨어 화이트 타월</h3>
-              <p class="product-desc">500GSM 순백 프리미엄</p>
-              <div class="product-colors">
-                <div class="color-dot" style="background:#FFFFFF;"></div>
-              </div>
-              <div class="product-price">
-                <span class="price-current">[클라이언트 확인 필요: 가격]</span>
-              </div>
-              <div class="product-actions">
-                <button class="btn-cart"><i data-lucide="shopping-cart"></i> 장바구니</button>
-                <button class="btn-buy">구매하기</button>
-              </div>
-            </div>
+          <div class="process-step">
+            <p class="step-number">STEP 04</p>
+            <div class="step-icon-wrap"><i data-lucide="factory"></i></div>
+            <h3 class="step-title">생산 진행</h3>
+            <p class="step-desc">확정 후 2~3주 이내 생산 완료</p>
           </div>
-
-          <!-- Product Card 6 -->
-          <div class="product-card">
-            <div class="product-image">
-              <i data-lucide="image"></i>
-            </div>
-            <div class="product-info">
-              <p class="product-category">페이스타월 · 2매 세트</p>
-              <h3 class="product-name">내추럴 베이지 세트</h3>
-              <p class="product-desc">500GSM 은은한 베이지 · 2매</p>
-              <div class="product-colors">
-                <div class="color-dot" style="background:#F5F3EE;"></div>
-                <div class="color-dot" style="background:#D4CFC5;"></div>
-              </div>
-              <div class="product-price">
-                <span class="price-current">[클라이언트 확인 필요: 가격]</span>
-              </div>
-              <div class="product-actions">
-                <button class="btn-cart"><i data-lucide="shopping-cart"></i> 장바구니</button>
-                <button class="btn-buy">구매하기</button>
-              </div>
-            </div>
+          <div class="process-step">
+            <p class="step-number">STEP 05</p>
+            <div class="step-icon-wrap"><i data-lucide="truck"></i></div>
+            <h3 class="step-title">납품 완료</h3>
+            <p class="step-desc">지정 장소로 안전하게 배송</p>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- Product Card 7 -->
-          <div class="product-card">
-            <div class="product-image">
-              <i data-lucide="image"></i>
-            </div>
-            <div class="product-info">
-              <p class="product-category">페이스타월 · 4매 세트</p>
-              <h3 class="product-name">럭셔리 믹스 세트</h3>
-              <p class="product-desc">600GSM 컬러 믹스 · 4매</p>
-              <div class="product-colors">
-                <div class="color-dot" style="background:#FFFFFF;"></div>
-                <div class="color-dot" style="background:#F5F3EE;"></div>
-                <div class="color-dot" style="background:#D4CFC5;"></div>
-                <div class="color-dot" style="background:#9E9E9E;"></div>
+    <!-- ==========================================
+         섹션 6: 견적 문의 폼
+         ========================================== -->
+    <section class="quote-form-section" id="quote-form">
+      <div class="container">
+        <div class="text-center">
+          <p class="section-label">CONTACT</p>
+          <h2 class="section-title">견적 문의하기</h2>
+          <p class="section-desc mx-auto">아래 양식을 작성하시면 영업일 기준 24시간 이내에 답변드립니다.</p>
+        </div>
+        <div class="quote-form-container">
+          <form>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">회사명 / 단체명 *</label>
+                <input type="text" class="form-input" placeholder="회사명 또는 단체명을 입력하세요" required>
               </div>
-              <div class="product-price">
-                <span class="price-original">[클라이언트 확인 필요: 정가]</span>
-                <span class="price-current">[클라이언트 확인 필요: 할인가]</span>
-              </div>
-              <div class="product-actions">
-                <button class="btn-cart"><i data-lucide="shopping-cart"></i> 장바구니</button>
-                <button class="btn-buy">구매하기</button>
+              <div class="form-group">
+                <label class="form-label">담당자명 *</label>
+                <input type="text" class="form-input" placeholder="이름을 입력하세요" required>
               </div>
             </div>
-          </div>
-
-          <!-- Product Card 8 -->
-          <div class="product-card">
-            <div class="product-image">
-              <i data-lucide="image"></i>
-            </div>
-            <div class="product-info">
-              <p class="product-category">페이스타월 · 단품</p>
-              <h3 class="product-name">모던 그레이 타월</h3>
-              <p class="product-desc">500GSM 모던한 그레이 톤</p>
-              <div class="product-colors">
-                <div class="color-dot" style="background:#9E9E9E;"></div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">연락처 *</label>
+                <input type="tel" class="form-input" placeholder="010-0000-0000" required>
               </div>
-              <div class="product-price">
-                <span class="price-current">[클라이언트 확인 필요: 가격]</span>
-              </div>
-              <div class="product-actions">
-                <button class="btn-cart"><i data-lucide="shopping-cart"></i> 장바구니</button>
-                <button class="btn-buy">구매하기</button>
+              <div class="form-group">
+                <label class="form-label">이메일 *</label>
+                <input type="email" class="form-input" placeholder="example@company.com" required>
               </div>
             </div>
-          </div>
-
+            <div class="form-group">
+              <label class="form-label">업종 / 용도 *</label>
+              <select class="form-select" required>
+                <option value="">선택하세요</option>
+                <option value="gift">기업 선물</option>
+                <option value="reply">답례품</option>
+                <option value="hotel">호텔·숙박업소</option>
+                <option value="promotion">판촉물</option>
+                <option value="other">기타</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">주문 수량 *</label>
+                <input type="number" class="form-input" placeholder="예: 100" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">희망 납기일</label>
+                <input type="date" class="form-input">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">커스텀 요청사항</label>
+              <textarea class="form-textarea" placeholder="로고 각인, 패키징 옵션, 컬러 선택 등 요청사항을 자유롭게 작성해주세요."></textarea>
+            </div>
+            <button type="submit" class="form-submit">견적 요청하기</button>
+            <p class="form-privacy">
+              견적 요청 시 입력하신 정보는 견적 제공 목적으로만 사용되며,<br>
+              <a href="#" style="text-decoration:underline;">개인정보처리방침</a>에 따라 안전하게 보호됩니다.
+            </p>
+          </form>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer">
+  <!-- ==========================================
+       푸터
+       ========================================== -->
+  <footer class="footer-light">
     <div class="container">
       <div class="footer-grid">
         <div>
           <p class="footer-brand-name">언커먼타올</p>
-          <div class="footer-info">
-            <p>상호: [클라이언트 확인 필요: 법인명/상호]</p>
-            <p>대표: [클라이언트 확인 필요]</p>
-            <p>사업자등록번호: [클라이언트 확인 필요]</p>
-            <p>통신판매업신고번호: [클라이언트 확인 필요]</p>
-            <p>주소: [클라이언트 확인 필요]</p>
-            <p>대표전화: [클라이언트 확인 필요]</p>
-            <p>이메일: [클라이언트 확인 필요]</p>
-          </div>
-        </div>
-        <div class="footer-col">
-          <p class="footer-col-title">쇼핑</p>
-          <a href="page_07.html">전체 제품</a>
-          <a href="page_07.html">베스트셀러</a>
+          <p class="footer-brand-desc">프리미엄 대나무 섬유 페이스타월</p>
+          <p class="footer-brand-desc" style="margin-top:16px;">
+            [클라이언트 확인 필요: 상호 / 대표자명]<br>
+            사업자등록번호: [클라이언트 확인 필요]<br>
+            통신판매업번호: [클라이언트 확인 필요]<br>
+            주소: [클라이언트 확인 필요]<br>
+            전화: [클라이언트 확인 필요]<br>
+            이메일: [클라이언트 확인 필요]
+          </p>
         </div>
         <div class="footer-col">
           <p class="footer-col-title">브랜드</p>
           <a href="page_02.html">브랜드 철학</a>
+          <a href="page_03.html">브랜드 스토리</a>
           <a href="page_05.html">소재 이야기</a>
-          <a href="page_06.html">지속가능성</a>
         </div>
         <div class="footer-col">
-          <p class="footer-col-title">고객</p>
-          <a href="page_12.html">FAQ</a>
-          <a href="page_13.html">1:1 문의</a>
-          <a href="page_14.html">주문 조회</a>
+          <p class="footer-col-title">서비스</p>
+          <a href="page_06.html">제품</a>
+          <a href="page_07.html">대량구매</a>
+          <a href="page_08.html">파트너십</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">고객지원</p>
+          <a href="page_10.html">FAQ</a>
+          <a href="page_11.html">1:1 문의</a>
+          <a href="page_12.html">주문 조회</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© [클라이언트 확인 필요: 연도] 언커먼타올. All rights reserved.</span>
-        <div class="footer-bottom-links">
+        <span>© 언커먼타올 All Rights Reserved.</span>
+        <div class="footer-links">
           <a href="#">개인정보처리방침</a>
           <a href="#">이용약관</a>
         </div>
@@ -841,36 +1017,42 @@
     </div>
   </footer>
 
-  <!-- TOP BUTTON -->
-  <button class="top-button" id="topButton">
+  <!-- TOP 버튼 -->
+  <button class="btn-top" id="btnTop">
     <i data-lucide="arrow-up"></i>
   </button>
 
   <script>
     lucide.createIcons();
 
-    // Top Button
-    const topButton = document.getElementById('topButton');
+    // 헤더 스크롤 효과
+    const nav = document.querySelector('.nav');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        topButton.classList.add('visible');
+      if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
       } else {
-        topButton.classList.remove('visible');
+        nav.classList.remove('scrolled');
       }
     });
-    topButton.addEventListener('click', () => {
+
+    // TOP 버튼
+    const btnTop = document.getElementById('btnTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        btnTop.classList.add('visible');
+      } else {
+        btnTop.classList.remove('visible');
+      }
+    });
+    btnTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Filter Buttons
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const group = btn.closest('.filter-group');
-        group.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      });
+    // 폼 제출
+    document.querySelector('form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('견적 요청이 접수되었습니다. 영업일 기준 24시간 이내에 답변드리겠습니다.');
     });
   </script>
-
 </body>
 </html>
