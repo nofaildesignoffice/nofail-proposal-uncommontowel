@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FAQ | 언커먼타올 - 프리미엄 대나무 섬유 페이스타월</title>
-  <meta name="description" content="언커먼타올 자주 묻는 질문. 제품, 배송, 반품, 대량구매에 대한 궁금증을 해결해드립니다.">
-  <meta name="keywords" content="페이스타월, 대나무 수건, 프리미엄 수건, bamboo towel, 대나무 섬유 타월, 친환경 수건">
+  <meta name="description" content="언커먼타올에 대해 자주 묻는 질문과 답변을 확인하세요. 제품, 배송, 교환/환불 등 궁금한 사항을 빠르게 해결해드립니다.">
+  <meta name="keywords" content="프리미엄 수건, 대나무 섬유 수건, bamboo yarn towel, 페이스타월, 친환경 수건, FAQ, 자주묻는질문">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -19,6 +19,7 @@
       --bg-white: #FFFFFF;
       --bg-light: #F5F5F5;
       --bg-dark: #2D2D2D;
+      --bg-black: #1A1A1A;
       --border-light: #E0E0E0;
       --border-default: #D0D0D0;
       --placeholder-bg: #E0E0E0;
@@ -47,18 +48,13 @@
       padding: 0 24px;
     }
 
-    /* NAV */
+    /* Navigation */
     .nav {
       position: sticky;
       top: 0;
       z-index: 100;
       background: var(--bg-white);
       border-bottom: 1px solid var(--border-light);
-      transition: all 0.3s;
-    }
-    .nav.scrolled {
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(8px);
     }
     .nav-inner {
       display: flex;
@@ -74,213 +70,192 @@
     .nav-links {
       display: flex;
       gap: 32px;
+      position: relative;
     }
-    .nav-links > li { position: relative; }
-    .nav-links > li > a {
+    .nav-item {
+      position: relative;
+    }
+    .nav-item > a {
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
-      display: block;
       padding: 8px 0;
+      display: block;
     }
-    .nav-links > li.active > a,
-    .nav-links > li > a:hover {
+    .nav-item.active > a {
       color: var(--text-black);
-      font-weight: 600;
+      font-weight: 700;
     }
-    .dropdown {
+    .nav-dropdown {
+      display: none;
       position: absolute;
       top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
+      left: 0;
       background: var(--bg-white);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-sm);
-      padding: 12px 0;
-      min-width: 160px;
-      box-shadow: var(--shadow-md);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.2s;
+      min-width: 180px;
+      padding: 8px 0;
       margin-top: 8px;
+      box-shadow: var(--shadow-md);
     }
-    .nav-links > li:hover .dropdown {
-      opacity: 1;
-      visibility: visible;
-    }
-    .dropdown a {
+    .nav-item:hover .nav-dropdown {
       display: block;
-      padding: 8px 20px;
+    }
+    .nav-dropdown a {
+      display: block;
+      padding: 10px 20px;
       font-size: 14px;
-      color: var(--text-gray);
+      color: var(--text-dark);
       white-space: nowrap;
     }
-    .dropdown a:hover {
+    .nav-dropdown a:hover {
       background: var(--bg-light);
       color: var(--text-black);
     }
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
     }
-    .nav-actions button {
+    .mobile-toggle svg {
       width: 24px;
       height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-dark);
-    }
-    .nav-actions button:hover { color: var(--text-black); }
-    .hamburger { display: none; }
-
-    /* 모바일 NAV */
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        width: 24px;
-        height: 24px;
-        justify-content: center;
-      }
-      .hamburger span {
-        display: block;
-        width: 100%;
-        height: 2px;
-        background: var(--text-black);
-        transition: all 0.3s;
-      }
+      color: var(--text-black);
     }
 
-    /* 페이지 헤더 */
-    .page-header {
+    /* Hero Section */
+    .hero-simple {
       padding: 80px 0 60px;
       background: var(--bg-white);
       text-align: center;
-      border-bottom: 1px solid var(--border-light);
     }
-    .page-title {
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+    .section-title {
       font-size: 36px;
       font-weight: 700;
       color: var(--text-black);
-      margin-bottom: 12px;
+      line-height: 1.3;
+      margin-bottom: 16px;
     }
-    .page-desc {
+    .section-desc {
       font-size: 16px;
       color: var(--text-gray);
+      line-height: 1.7;
       max-width: 560px;
       margin: 0 auto;
-      line-height: 1.7;
     }
 
-    /* FAQ 카테고리 탭 */
-    .faq-tabs {
-      padding: 40px 0 0;
-      background: var(--bg-light);
+    /* FAQ Tabs */
+    .faq-section {
+      padding: 60px 0 100px;
+      background: var(--bg-white);
     }
-    .faq-tabs-inner {
+    .faq-tabs {
       display: flex;
-      gap: 8px;
       justify-content: center;
-      border-bottom: 1px solid var(--border-light);
+      gap: 8px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
     }
     .faq-tab {
       padding: 12px 24px;
       font-size: 15px;
       font-weight: 500;
       color: var(--text-gray);
-      background: none;
-      border-bottom: 2px solid transparent;
+      background: var(--bg-white);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
       transition: all 0.2s;
     }
     .faq-tab:hover {
+      border-color: var(--text-dark);
       color: var(--text-dark);
     }
     .faq-tab.active {
-      color: var(--text-black);
-      font-weight: 600;
-      border-bottom-color: var(--text-black);
+      background: var(--text-black);
+      color: #FFFFFF;
+      border-color: var(--text-black);
     }
 
-    /* FAQ 섹션 */
-    .faq-section {
-      padding: 60px 0 80px;
-      background: var(--bg-light);
-    }
+    /* FAQ List */
     .faq-list {
       max-width: 800px;
       margin: 0 auto;
     }
+    .faq-category {
+      display: none;
+    }
+    .faq-category.active {
+      display: block;
+    }
     .faq-item {
-      background: var(--bg-white);
-      border-radius: var(--radius-md);
-      margin-bottom: 12px;
-      overflow: hidden;
+      border-bottom: 1px solid var(--border-light);
     }
     .faq-question {
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 24px 28px;
+      padding: 24px 0;
       font-size: 16px;
       font-weight: 600;
       color: var(--text-black);
       text-align: left;
-      gap: 20px;
+      cursor: pointer;
+      transition: color 0.2s;
     }
-    .faq-question-text {
-      flex: 1;
+    .faq-question:hover {
+      color: var(--text-dark);
     }
     .faq-question svg {
       width: 20px;
       height: 20px;
       color: var(--text-light);
       flex-shrink: 0;
-      transition: transform 0.3s;
+      transition: transform 0.2s;
+      margin-left: 16px;
     }
     .faq-item.is-open .faq-question svg {
       transform: rotate(180deg);
     }
     .faq-answer {
       display: none;
-      padding: 0 28px 24px;
+      padding: 0 0 24px;
       font-size: 15px;
       color: var(--text-gray);
-      line-height: 1.8;
+      line-height: 1.7;
     }
     .faq-item.is-open .faq-answer {
       display: block;
     }
-    .faq-category-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 20px;
-    }
-    .faq-category-section {
-      margin-bottom: 48px;
-    }
 
-    /* CTA 섹션 */
+    /* CTA Section */
     .cta-section {
       padding: 80px 0;
-      background: var(--bg-white);
+      background: var(--bg-light);
       text-align: center;
     }
-    .cta-title {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 12px;
+    .cta-section .section-title {
+      max-width: 600px;
+      margin: 0 auto 16px;
     }
-    .cta-desc {
-      font-size: 16px;
-      color: var(--text-gray);
+    .cta-section .section-desc {
       margin-bottom: 32px;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
     .btn {
       display: inline-flex;
@@ -303,13 +278,8 @@
       color: var(--text-black);
       border: 1px solid var(--border-default);
     }
-    .cta-buttons {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-    }
 
-    /* FOOTER */
+    /* Footer */
     .footer {
       padding: 60px 0 32px;
       background: var(--bg-white);
@@ -370,59 +340,104 @@
       color: var(--text-dark);
     }
 
-    /* TOP 버튼 */
-    .btn-top {
+    /* TOP Button */
+    .top-button {
       position: fixed;
-      right: 24px;
-      bottom: 24px;
+      bottom: 40px;
+      right: 40px;
       width: 48px;
       height: 48px;
       background: var(--text-black);
       color: #FFFFFF;
       border-radius: 50%;
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s;
+      cursor: pointer;
       box-shadow: var(--shadow-md);
+      transition: opacity 0.2s;
+      z-index: 90;
     }
-    .btn-top.visible {
-      opacity: 1;
-      visibility: visible;
+    .top-button:hover {
+      opacity: 0.85;
     }
-    .btn-top:hover {
-      transform: translateY(-4px);
+    .top-button.visible {
+      display: flex;
+    }
+    .top-button svg {
+      width: 20px;
+      height: 20px;
     }
 
-    /* 반응형 */
+    /* Responsive */
     @media (max-width: 768px) {
-      .page-title { font-size: 28px; }
-      .faq-tabs-inner {
-        overflow-x: auto;
-        justify-content: flex-start;
-        padding: 0 24px;
-        -webkit-overflow-scrolling: touch;
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: var(--bg-white);
+        border-top: 1px solid var(--border-light);
+        flex-direction: column;
+        gap: 0;
+        padding: 16px 24px;
+        max-height: calc(100vh - 72px);
+        overflow-y: auto;
+      }
+      .nav-links.mobile-open {
+        display: flex;
+      }
+      .nav-item {
+        width: 100%;
+        border-bottom: 1px solid var(--border-light);
+      }
+      .nav-item > a {
+        padding: 16px 0;
+      }
+      .nav-dropdown {
+        position: static;
+        display: none;
+        border: none;
+        box-shadow: none;
+        margin: 0;
+        padding: 0 0 16px 16px;
+      }
+      .nav-item.mobile-open .nav-dropdown {
+        display: block;
+      }
+      .nav-dropdown a {
+        padding: 8px 0;
+      }
+      .mobile-toggle {
+        display: block;
+      }
+      .section-title {
+        font-size: 28px;
+      }
+      .hero-simple {
+        padding: 60px 0 40px;
+      }
+      .faq-section {
+        padding: 40px 0 80px;
+      }
+      .faq-tabs {
+        gap: 8px;
+        margin-bottom: 32px;
       }
       .faq-tab {
-        white-space: nowrap;
-        padding: 12px 16px;
+        padding: 10px 16px;
         font-size: 14px;
       }
       .faq-question {
-        padding: 20px 20px;
         font-size: 15px;
+        padding: 20px 0;
       }
       .faq-answer {
-        padding: 0 20px 20px;
         font-size: 14px;
       }
-      .cta-title { font-size: 24px; }
-      .cta-buttons {
-        flex-direction: column;
-        max-width: 280px;
-        margin: 0 auto;
+      .cta-section {
+        padding: 60px 0;
       }
       .footer-grid {
         grid-template-columns: 1fr;
@@ -430,292 +445,368 @@
       }
       .footer-bottom {
         flex-direction: column;
-        gap: 12px;
+        gap: 16px;
         text-align: center;
+      }
+      .top-button {
+        bottom: 24px;
+        right: 24px;
+        width: 44px;
+        height: 44px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- Header -->
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
         <a href="page_01.html" class="nav-logo">언커먼타올</a>
-        <ul class="nav-links">
-          <li><a href="page_01.html">메인</a></li>
-          <li>
+        <nav class="nav-links" id="navLinks">
+          <div class="nav-item">
+            <a href="page_01.html">메인</a>
+          </div>
+          <div class="nav-item">
             <a href="page_02.html">브랜드</a>
-            <div class="dropdown">
+            <div class="nav-dropdown">
               <a href="page_02.html">브랜드 철학</a>
               <a href="page_03.html">브랜드 스토리</a>
               <a href="page_04.html">브랜드 여정</a>
               <a href="page_05.html">소재 이야기</a>
             </div>
-          </li>
-          <li><a href="page_06.html">제품</a></li>
-          <li>
+          </div>
+          <div class="nav-item">
+            <a href="page_06.html">제품</a>
+          </div>
+          <div class="nav-item">
             <a href="page_07.html">B2B문의</a>
-            <div class="dropdown">
+            <div class="nav-dropdown">
               <a href="page_07.html">대량구매</a>
               <a href="page_08.html">파트너십</a>
             </div>
-          </li>
-          <li><a href="page_09.html">고객 후기</a></li>
-          <li class="active">
+          </div>
+          <div class="nav-item">
+            <a href="page_09.html">고객 후기</a>
+          </div>
+          <div class="nav-item active">
             <a href="page_10.html">고객센터</a>
-            <div class="dropdown">
+            <div class="nav-dropdown">
               <a href="page_10.html">FAQ</a>
               <a href="page_11.html">1:1 문의</a>
               <a href="page_12.html">주문 조회</a>
             </div>
-          </li>
-        </ul>
-        <div class="nav-actions">
-          <button aria-label="검색"><i data-lucide="search"></i></button>
-          <button aria-label="마이페이지"><i data-lucide="user"></i></button>
-          <button aria-label="장바구니"><i data-lucide="shopping-cart"></i></button>
-          <button class="hamburger" aria-label="메뉴">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
+          </div>
+        </nav>
+        <button class="mobile-toggle" id="mobileToggle">
+          <i data-lucide="menu"></i>
+        </button>
       </div>
     </div>
   </header>
 
   <main>
 
-    <!-- 페이지 헤더 -->
-    <section class="page-header">
+    <!-- Hero Section -->
+    <section class="hero-simple">
       <div class="container">
-        <h1 class="page-title">자주 묻는 질문</h1>
-        <p class="page-desc">언커먼타올에 대해 궁금하신 점을 빠르게 확인하세요.</p>
+        <p class="section-label">SUPPORT</p>
+        <h1 class="section-title">자주 묻는 질문</h1>
+        <p class="section-desc">언커먼타올에 대해 궁금하신 사항을 빠르게 확인하세요.</p>
       </div>
     </section>
 
-    <!-- FAQ 카테고리 탭 -->
-    <section class="faq-tabs">
+    <!-- FAQ Section -->
+    <section class="faq-section">
       <div class="container">
-        <div class="faq-tabs-inner">
+        
+        <!-- FAQ Tabs -->
+        <div class="faq-tabs">
           <button class="faq-tab active" data-category="all">전체</button>
           <button class="faq-tab" data-category="product">제품</button>
           <button class="faq-tab" data-category="order">주문/결제</button>
-          <button class="faq-tab" data-category="shipping">배송</button>
-          <button class="faq-tab" data-category="return">교환/반품</button>
-          <button class="faq-tab" data-category="b2b">대량구매</button>
+          <button class="faq-tab" data-category="delivery">배송</button>
+          <button class="faq-tab" data-category="exchange">교환/환불</button>
+          <button class="faq-tab" data-category="b2b">B2B</button>
         </div>
-      </div>
-    </section>
 
-    <!-- FAQ 리스트 -->
-    <section class="faq-section">
-      <div class="container">
+        <!-- FAQ List -->
         <div class="faq-list">
-
-          <!-- 제품 카테고리 -->
-          <div class="faq-category-section" data-category="product">
-            <h2 class="faq-category-title">제품</h2>
+          
+          <!-- All Category -->
+          <div class="faq-category active" data-category="all">
             
-            <div class="faq-item is-open">
+            <!-- Product -->
+            <div class="faq-item">
               <button class="faq-question">
-                <span class="faq-question-text">대나무 섬유 페이스타월의 특징은 무엇인가요?</span>
+                대나무 섬유(bamboo yarn) 소재는 어떤 장점이 있나요?
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                대나무 섬유(bamboo yarn)는 일반 면보다 흡수력이 뛰어나고 항균 효과가 있어 세안 후 피부에 닿는 첫 순간부터 부드럽고 청결한 느낌을 제공합니다. 또한 자연 소재로 만들어져 민감한 피부에도 자극이 적습니다.
+                대나무 섬유는 일반 면 대비 항균 효과가 뛰어나며, 피부 자극을 최소화하고 흡수력과 속건성이 우수해요. 친환경 소재로 재배 시 농약이나 화학비료가 거의 필요하지 않아 환경에도 좋습니다.
               </div>
             </div>
 
             <div class="faq-item">
               <button class="faq-question">
-                <span class="faq-question-text">일반 수건과 어떻게 다른가요?</span>
+                수건 세탁은 어떻게 해야 하나요?
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                페이스타월 단일 카테고리에 집중하여 소재부터 촉감, 디자인까지 얼굴 전용으로 최적화했습니다. 대나무 섬유 특유의 부드러움과 친환경 특성으로 세안 후 피부에 닿는 경험이 확연히 다릅니다.
+                미온수(30~40℃)에 중성세제를 사용해 세탁해주세요. 섬유유연제는 흡수력을 저하시킬 수 있으니 사용을 권장하지 않아요. 그늘에서 자연 건조하시면 오래도록 부드러운 촉감을 유지할 수 있습니다.
               </div>
             </div>
 
             <div class="faq-item">
               <button class="faq-question">
-                <span class="faq-question-text">수건이 빳빳해지거나 냄새나지 않나요?</span>
+                수건의 내구성은 얼마나 되나요?
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                대나무 섬유는 자연 항균 효과가 있어 냄새 발생이 적고, 세탁 후에도 부드러운 촉감이 오래 유지됩니다. 권장 세탁 방법을 따라주시면 더욱 오래 사용하실 수 있습니다.
+                올바른 세탁과 관리 시 2~3년 이상 사용 가능해요. 대나무 섬유는 일반 면보다 강도가 높아 보풀이 적고 형태가 오래 유지됩니다.
+              </div>
+            </div>
+
+            <!-- Order/Payment -->
+            <div class="faq-item">
+              <button class="faq-question">
+                어떤 결제 수단을 사용할 수 있나요?
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                [클라이언트 확인 필요: 결제 수단 — 신용카드, 계좌이체, 간편결제 등]
               </div>
             </div>
 
             <div class="faq-item">
               <button class="faq-question">
-                <span class="faq-question-text">민감성 피부도 사용할 수 있나요?</span>
+                주문 취소는 어떻게 하나요?
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                네, 대나무 섬유는 자연 소재로 피부 자극이 적어 민감성 피부에도 적합합니다. 다만 개인차가 있을 수 있으니 처음 사용 시 피부 반응을 확인해주세요.
+                배송 준비 전까지는 고객센터로 연락 주시면 즉시 취소 가능해요. 배송이 시작된 후에는 수령 후 교환/환불 절차를 진행해주세요.
+              </div>
+            </div>
+
+            <!-- Delivery -->
+            <div class="faq-item">
+              <button class="faq-question">
+                배송 기간은 얼마나 걸리나요?
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                주문 확인 후 영업일 기준 2~3일 내 출고되며, 출고 후 1~2일 내 수령 가능해요. 도서산간 지역은 추가 1~2일 소요될 수 있습니다.
               </div>
             </div>
 
             <div class="faq-item">
               <button class="faq-question">
-                <span class="faq-question-text">세탁 방법은 어떻게 되나요?</span>
+                배송비는 얼마인가요?
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                미온수(30~40도)에 중성세제로 세탁하시고, 표백제나 섬유유연제는 피해주세요. 자연 건조를 권장하며, 건조기 사용 시 저온으로 설정해주시면 오래 사용하실 수 있습니다.
+                [클라이언트 확인 필요: 배송비 정책 — 기본 배송비 및 무료 배송 조건]
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                주문 조회는 어디서 하나요?
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                고객센터 > 주문 조회 페이지에서 주문번호 또는 주문자명으로 조회 가능해요.
+              </div>
+            </div>
+
+            <!-- Exchange/Refund -->
+            <div class="faq-item">
+              <button class="faq-question">
+                교환/환불 신청은 언제까지 가능한가요?
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                제품 수령 후 7일 이내에 신청 가능해요. 단순 변심의 경우 미사용 제품에 한해 가능하며, 왕복 배송비가 발생할 수 있습니다.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                불량 제품을 받았어요. 어떻게 하나요?
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                제품 불량 또는 파손 시 수령 후 즉시 고객센터로 연락 주세요. 사진 확인 후 무상 교환 또는 전액 환불 처리해드려요. 왕복 배송비는 당사 부담입니다.
+              </div>
+            </div>
+
+            <!-- B2B -->
+            <div class="faq-item">
+              <button class="faq-question">
+                대량 구매 시 할인이 가능한가요?
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                100장 이상 주문 시 수량별 할인가를 제공해요. B2B문의 > 대량구매 페이지에서 견적을 요청해주시면 맞춤 견적서를 보내드려요.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                로고 각인이나 자수는 가능한가요?
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                네, 가능해요. 최소 수량 [클라이언트 확인 필요: 커스텀 최소 수량] 이상 주문 시 로고 각인 또는 자수 서비스를 제공해요. 디자인 시안 검토 후 견적을 안내드립니다.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                B2B 납기는 얼마나 걸리나요?
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                기본 제품은 2~3주, 커스텀 제품(로고 각인/자수)은 3~4주 소요돼요. 급한 일정이 있으신 경우 별도 상담 가능해요.
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Product Category -->
+          <div class="faq-category" data-category="product">
+            <div class="faq-item">
+              <button class="faq-question">
+                대나무 섬유(bamboo yarn) 소재는 어떤 장점이 있나요?
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                대나무 섬유는 일반 면 대비 항균 효과가 뛰어나며, 피부 자극을 최소화하고 흡수력과 속건성이 우수해요. 친환경 소재로 재배 시 농약이나 화학비료가 거의 필요하지 않아 환경에도 좋습니다.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                수건 세탁은 어떻게 해야 하나요?
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                미온수(30~40℃)에 중성세제를 사용해 세탁해주세요. 섬유유연제는 흡수력을 저하시킬 수 있으니 사용을 권장하지 않아요. 그늘에서 자연 건조하시면 오래도록 부드러운 촉감을 유지할 수 있습니다.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                수건의 내구성은 얼마나 되나요?
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                올바른 세탁과 관리 시 2~3년 이상 사용 가능해요. 대나무 섬유는 일반 면보다 강도가 높아 보풀이 적고 형태가 오래 유지됩니다.
               </div>
             </div>
           </div>
 
-          <!-- 주문/결제 카테고리 -->
-          <div class="faq-category-section" data-category="order">
-            <h2 class="faq-category-title">주문/결제</h2>
-            
+          <!-- Order Category -->
+          <div class="faq-category" data-category="order">
             <div class="faq-item">
               <button class="faq-question">
-                <span class="faq-question-text">어떤 결제 수단을 사용할 수 있나요?</span>
+                어떤 결제 수단을 사용할 수 있나요?
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                신용카드, 체크카드, 계좌이체, 무통장입금, 간편결제(네이버페이, 카카오페이 등)를 지원합니다.
+                [클라이언트 확인 필요: 결제 수단 — 신용카드, 계좌이체, 간편결제 등]
               </div>
             </div>
-
             <div class="faq-item">
               <button class="faq-question">
-                <span class="faq-question-text">주문 후 주문 내역을 확인할 수 있나요?</span>
+                주문 취소는 어떻게 하나요?
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                마이페이지 또는 고객센터 > 주문 조회 메뉴에서 주문번호나 이메일 주소로 확인하실 수 있습니다.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question">
-                <span class="faq-question-text">주문 취소는 언제까지 가능한가요?</span>
-                <i data-lucide="chevron-down"></i>
-              </button>
-              <div class="faq-answer">
-                배송 준비 중 상태 이전까지 주문 취소가 가능합니다. 이미 배송이 시작된 경우 수령 후 반품 절차를 이용해주세요.
+                배송 준비 전까지는 고객센터로 연락 주시면 즉시 취소 가능해요. 배송이 시작된 후에는 수령 후 교환/환불 절차를 진행해주세요.
               </div>
             </div>
           </div>
 
-          <!-- 배송 카테고리 -->
-          <div class="faq-category-section" data-category="shipping">
-            <h2 class="faq-category-title">배송</h2>
-            
+          <!-- Delivery Category -->
+          <div class="faq-category" data-category="delivery">
             <div class="faq-item">
               <button class="faq-question">
-                <span class="faq-question-text">배송 기간은 얼마나 걸리나요?</span>
+                배송 기간은 얼마나 걸리나요?
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                주문 후 영업일 기준 2~3일 이내에 출고되며, 출고 후 1~2일 내 수령 가능합니다. 도서산간 지역은 추가 배송일이 소요될 수 있습니다.
+                주문 확인 후 영업일 기준 2~3일 내 출고되며, 출고 후 1~2일 내 수령 가능해요. 도서산간 지역은 추가 1~2일 소요될 수 있습니다.
               </div>
             </div>
-
             <div class="faq-item">
               <button class="faq-question">
-                <span class="faq-question-text">배송비는 얼마인가요?</span>
+                배송비는 얼마인가요?
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                기본 배송비는 [클라이언트 확인 필요: 배송비 정책]입니다. 일정 금액 이상 구매 시 무료배송이 제공됩니다.
+                [클라이언트 확인 필요: 배송비 정책 — 기본 배송비 및 무료 배송 조건]
               </div>
             </div>
-
             <div class="faq-item">
               <button class="faq-question">
-                <span class="faq-question-text">배송지 변경은 가능한가요?</span>
+                주문 조회는 어디서 하나요?
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                배송 준비 중 상태까지는 고객센터를 통해 배송지 변경이 가능합니다. 배송이 시작된 이후에는 택배사에 직접 문의해주세요.
+                고객센터 > 주문 조회 페이지에서 주문번호 또는 주문자명으로 조회 가능해요.
               </div>
             </div>
           </div>
 
-          <!-- 교환/반품 카테고리 -->
-          <div class="faq-category-section" data-category="return">
-            <h2 class="faq-category-title">교환/반품</h2>
-            
+          <!-- Exchange Category -->
+          <div class="faq-category" data-category="exchange">
             <div class="faq-item">
               <button class="faq-question">
-                <span class="faq-question-text">교환/반품이 가능한가요?</span>
+                교환/환불 신청은 언제까지 가능한가요?
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                제품 수령 후 7일 이내에 미사용 상태이며 택과 포장이 온전한 경우 교환/반품이 가능합니다. 단순 변심의 경우 왕복 배송비가 발생할 수 있습니다.
+                제품 수령 후 7일 이내에 신청 가능해요. 단순 변심의 경우 미사용 제품에 한해 가능하며, 왕복 배송비가 발생할 수 있습니다.
               </div>
             </div>
-
             <div class="faq-item">
               <button class="faq-question">
-                <span class="faq-question-text">불량 제품을 받았어요. 어떻게 하나요?</span>
+                불량 제품을 받았어요. 어떻게 하나요?
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                불량 제품의 경우 수령일로부터 7일 이내 고객센터로 연락주시면 무상 교환 또는 환불 처리해드립니다. 불량 사진을 함께 보내주시면 더욱 빠른 처리가 가능합니다.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question">
-                <span class="faq-question-text">교환/반품 비용은 누가 부담하나요?</span>
-                <i data-lucide="chevron-down"></i>
-              </button>
-              <div class="faq-answer">
-                제품 불량이나 오배송의 경우 회사에서 배송비를 부담합니다. 단순 변심의 경우 고객님께서 왕복 배송비를 부담하셔야 합니다.
+                제품 불량 또는 파손 시 수령 후 즉시 고객센터로 연락 주세요. 사진 확인 후 무상 교환 또는 전액 환불 처리해드려요. 왕복 배송비는 당사 부담입니다.
               </div>
             </div>
           </div>
 
-          <!-- 대량구매 카테고리 -->
-          <div class="faq-category-section" data-category="b2b">
-            <h2 class="faq-category-title">대량구매</h2>
-            
+          <!-- B2B Category -->
+          <div class="faq-category" data-category="b2b">
             <div class="faq-item">
               <button class="faq-question">
-                <span class="faq-question-text">대량구매 최소 수량은 얼마인가요?</span>
+                대량 구매 시 할인이 가능한가요?
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                최소 주문 수량은 [클라이언트 확인 필요: 최소 주문 수량]부터 가능하며, 수량에 따라 할인율이 적용됩니다. 자세한 사항은 B2B문의 > 대량구매 페이지에서 확인하실 수 있습니다.
+                100장 이상 주문 시 수량별 할인가를 제공해요. B2B문의 > 대량구매 페이지에서 견적을 요청해주시면 맞춤 견적서를 보내드려요.
               </div>
             </div>
-
             <div class="faq-item">
               <button class="faq-question">
-                <span class="faq-question-text">로고 자수나 패키징 커스텀이 가능한가요?</span>
+                로고 각인이나 자수는 가능한가요?
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                네, 대량 주문 시 자수/로고 각인, 맞춤 패키징, 개별 포장 등 다양한 커스터마이징이 가능합니다. 견적 문의를 통해 상세히 안내해드립니다.
+                네, 가능해요. 최소 수량 [클라이언트 확인 필요: 커스텀 최소 수량] 이상 주문 시 로고 각인 또는 자수 서비스를 제공해요. 디자인 시안 검토 후 견적을 안내드립니다.
               </div>
             </div>
-
             <div class="faq-item">
               <button class="faq-question">
-                <span class="faq-question-text">대량구매 납기는 얼마나 걸리나요?</span>
+                B2B 납기는 얼마나 걸리나요?
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-answer">
-                주문 확정 후 [클라이언트 확인 필요: 표준 납기]이 소요됩니다. 커스터마이징이 포함된 경우 추가 기간이 필요할 수 있으며, 급한 경우 별도 협의 가능합니다.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question">
-                <span class="faq-question-text">세금계산서 발행이 가능한가요?</span>
-                <i data-lucide="chevron-down"></i>
-              </button>
-              <div class="faq-answer">
-                네, 대량구매 주문 시 세금계산서 발행이 가능합니다. 주문 시 요청사항에 사업자등록번호와 함께 기재해주세요.
+                기본 제품은 2~3주, 커스텀 제품(로고 각인/자수)은 3~4주 소요돼요. 급한 일정이 있으신 경우 별도 상담 가능해요.
               </div>
             </div>
           </div>
@@ -724,11 +815,11 @@
       </div>
     </section>
 
-    <!-- CTA 섹션 -->
+    <!-- CTA Section -->
     <section class="cta-section">
       <div class="container">
-        <h2 class="cta-title">찾으시는 답변이 없으신가요?</h2>
-        <p class="cta-desc">1:1 문의로 빠르게 답변해드리겠습니다.</p>
+        <h2 class="section-title">궁금한 사항이 해결되지 않으셨나요?</h2>
+        <p class="section-desc">1:1 문의를 통해 더 자세한 상담을 받아보세요.</p>
         <div class="cta-buttons">
           <a href="page_11.html" class="btn btn-primary">1:1 문의하기</a>
           <a href="page_12.html" class="btn btn-secondary">주문 조회</a>
@@ -738,7 +829,7 @@
 
   </main>
 
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
@@ -746,36 +837,34 @@
           <p class="footer-brand-name">언커먼타올</p>
           <p class="footer-brand-desc">프리미엄 대나무 섬유 페이스타월</p>
           <div class="footer-info">
-            [클라이언트 확인 필요: 상호]<br>
-            대표자명: [클라이언트 확인 필요]<br>
-            사업자등록번호: [클라이언트 확인 필요]<br>
-            통신판매업번호: [클라이언트 확인 필요]<br>
-            주소: [클라이언트 확인 필요]<br>
-            전화: [클라이언트 확인 필요]<br>
-            이메일: [클라이언트 확인 필요]
+            [클라이언트 확인 필요: 상호명]<br>
+            대표자: [클라이언트 확인 필요: 대표자명]<br>
+            사업자번호: [클라이언트 확인 필요: 사업자번호]<br>
+            주소: [클라이언트 확인 필요: 주소]<br>
+            전화: [클라이언트 확인 필요: 전화번호]<br>
+            이메일: [클라이언트 확인 필요: 이메일]
           </div>
         </div>
-        <div>
+        <div class="footer-col">
           <p class="footer-col-title">브랜드</p>
           <a href="page_02.html">브랜드 철학</a>
           <a href="page_03.html">브랜드 스토리</a>
           <a href="page_05.html">소재 이야기</a>
         </div>
-        <div>
-          <p class="footer-col-title">쇼핑</p>
-          <a href="page_06.html">제품</a>
-          <a href="page_07.html">대량구매</a>
-          <a href="page_08.html">파트너십</a>
-        </div>
-        <div>
+        <div class="footer-col">
           <p class="footer-col-title">고객센터</p>
           <a href="page_10.html">FAQ</a>
           <a href="page_11.html">1:1 문의</a>
           <a href="page_12.html">주문 조회</a>
         </div>
+        <div class="footer-col">
+          <p class="footer-col-title">B2B</p>
+          <a href="page_07.html">대량구매</a>
+          <a href="page_08.html">파트너십</a>
+        </div>
       </div>
       <div class="footer-bottom">
-        <span>© 언커먼타올 All Rights Reserved.</span>
+        <span>© 2025 언커먼타올. All Rights Reserved.</span>
         <div class="footer-bottom-links">
           <a href="#">개인정보처리방침</a>
           <a href="#">이용약관</a>
@@ -784,87 +873,77 @@
     </div>
   </footer>
 
-  <!-- TOP 버튼 -->
-  <button class="btn-top" aria-label="맨 위로">
+  <!-- TOP Button -->
+  <button class="top-button" id="topButton">
     <i data-lucide="arrow-up"></i>
   </button>
 
   <script>
     lucide.createIcons();
 
-    // NAV 스크롤
-    const nav = document.querySelector('.nav');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
+    // Mobile Navigation Toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('mobile-open');
+    });
+
+    // Mobile Dropdown Toggle
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+      const link = item.querySelector('a');
+      const dropdown = item.querySelector('.nav-dropdown');
+      if (dropdown && window.innerWidth <= 768) {
+        link.addEventListener('click', (e) => {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            item.classList.toggle('mobile-open');
+          }
+        });
       }
     });
 
-    // TOP 버튼
-    const btnTop = document.querySelector('.btn-top');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        btnTop.classList.add('visible');
-      } else {
-        btnTop.classList.remove('visible');
-      }
-    });
-    btnTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // FAQ 아코디언
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.closest('.faq-item');
-        const wasOpen = item.classList.contains('is-open');
-        
-        // 같은 카테고리 내 다른 아이템 닫기
-        const category = item.closest('.faq-category-section');
-        if (category) {
-          category.querySelectorAll('.faq-item').forEach(otherItem => {
-            otherItem.classList.remove('is-open');
-          });
-        }
-        
-        // 현재 아이템 토글
-        if (!wasOpen) {
-          item.classList.add('is-open');
-        }
-        
-        lucide.createIcons();
-      });
-    });
-
-    // FAQ 카테고리 탭
-    const tabs = document.querySelectorAll('.faq-tab');
-    const categorySections = document.querySelectorAll('.faq-category-section');
-
-    tabs.forEach(tab => {
+    // FAQ Tabs
+    const faqTabs = document.querySelectorAll('.faq-tab');
+    const faqCategories = document.querySelectorAll('.faq-category');
+    
+    faqTabs.forEach(tab => {
       tab.addEventListener('click', () => {
         const category = tab.dataset.category;
         
-        // 탭 활성화
-        tabs.forEach(t => t.classList.remove('active'));
+        faqTabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
         
-        // 카테고리 섹션 표시/숨김
-        if (category === 'all') {
-          categorySections.forEach(section => {
-            section.style.display = 'block';
-          });
-        } else {
-          categorySections.forEach(section => {
-            if (section.dataset.category === category) {
-              section.style.display = 'block';
-            } else {
-              section.style.display = 'none';
-            }
-          });
-        }
+        faqCategories.forEach(cat => {
+          if (cat.dataset.category === category) {
+            cat.classList.add('active');
+          } else {
+            cat.classList.remove('active');
+          }
+        });
       });
+    });
+
+    // FAQ Accordion
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.closest('.faq-item');
+        item.classList.toggle('is-open');
+      });
+    });
+
+    // TOP Button
+    const topButton = document.getElementById('topButton');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        topButton.classList.add('visible');
+      } else {
+        topButton.classList.remove('visible');
+      }
+    });
+    topButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 </body>
