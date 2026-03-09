@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>대량구매 (Bulk Order) | 언커먼타올 - 페이스타월 전문 브랜드</title>
-  <meta name="description" content="기업 선물, 답례품, 호텔 납품 등 대량구매 전문. 자수/로고 각인, 커스텀 패키징 가능. 샘플 신청 및 견적 문의.">
-  <meta name="keywords" content="페이스타월, 세안타월, 고급타월, 면타월, 언커먼타올, 대량구매, 기업선물, 답례품, 호텔납품">
+  <title>대량구매 | 언커먼타올 - 프리미엄 페이스타월</title>
+  <meta name="description" content="기업선물, 답례품, 호텔 납품 등 언커먼타올 대량구매 서비스. 자수/로고 각인, 맞춤 패키징 제공. 프리미엄 품질로 브랜드 가치를 높이세요.">
+  <meta name="keywords" content="프리미엄 수건, 페이스타월, 고급 수건, 프리미엄 타월, 얼굴 수건, 기업선물, 답례품, 호텔 납품, 대량구매">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -41,6 +41,7 @@
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
     button { cursor: pointer; border: none; font-family: inherit; background: none; }
+    input, textarea, select { font-family: inherit; }
 
     .container {
       max-width: 1200px;
@@ -48,26 +49,19 @@
       padding: 0 24px;
     }
 
-    /* Header */
+    /* 헤더 */
     .header {
       position: sticky;
       top: 0;
       z-index: 100;
       background: var(--bg-white);
       border-bottom: 1px solid var(--border-light);
-      transition: all 0.3s;
-    }
-    .header.scrolled {
-      box-shadow: var(--shadow-sm);
     }
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       height: 72px;
-    }
-    .header.scrolled .header-inner {
-      height: 64px;
     }
     .logo {
       font-size: 18px;
@@ -78,21 +72,22 @@
       display: flex;
       gap: 32px;
     }
-    .gnb-item {
+    .gnb > li {
       position: relative;
     }
-    .gnb-link {
+    .gnb > li > a {
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
-      padding: 8px 0;
       display: block;
+      padding: 8px 0;
     }
-    .gnb-link.active {
+    .gnb > li.active > a {
       color: var(--text-black);
-      font-weight: 700;
+      font-weight: 600;
     }
     .gnb-dropdown {
+      display: none;
       position: absolute;
       top: 100%;
       left: 0;
@@ -102,10 +97,9 @@
       box-shadow: var(--shadow-md);
       min-width: 160px;
       padding: 8px 0;
-      display: none;
-      margin-top: 8px;
+      margin-top: 4px;
     }
-    .gnb-item:hover .gnb-dropdown {
+    .gnb > li:hover .gnb-dropdown {
       display: block;
     }
     .gnb-dropdown a {
@@ -113,6 +107,7 @@
       padding: 10px 20px;
       font-size: 14px;
       color: var(--text-dark);
+      white-space: nowrap;
     }
     .gnb-dropdown a:hover {
       background: var(--bg-light);
@@ -122,67 +117,31 @@
       align-items: center;
       gap: 16px;
     }
-    .util-btn {
-      width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .header-utils svg {
+      width: 22px;
+      height: 22px;
       color: var(--text-dark);
+      cursor: pointer;
     }
-    .util-btn svg {
-      width: 20px;
-      height: 20px;
-    }
-    .hamburger {
+    .mobile-menu-btn {
       display: none;
-      flex-direction: column;
-      gap: 5px;
-      width: 24px;
-      height: 24px;
-      justify-content: center;
-    }
-    .hamburger span {
-      display: block;
-      width: 100%;
-      height: 2px;
-      background: var(--text-black);
     }
 
-    /* Common */
-    .section-label {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-light);
-      margin-bottom: 12px;
+    @media (max-width: 768px) {
+      .gnb, .header-utils {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .mobile-menu-btn svg {
+        width: 24px;
+        height: 24px;
+        color: var(--text-dark);
+      }
     }
-    .section-title {
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--text-black);
-      line-height: 1.3;
-      margin-bottom: 16px;
-    }
-    .section-desc {
-      font-size: 16px;
-      color: var(--text-gray);
-      line-height: 1.7;
-    }
-    .text-center { text-align: center; }
-    .mx-auto { margin-left: auto; margin-right: auto; }
-    .img-placeholder {
-      background: var(--placeholder-bg);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-    .img-placeholder svg {
-      color: var(--placeholder-icon);
-      width: 48px;
-      height: 48px;
-    }
+
+    /* 공통 컴포넌트 */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -205,87 +164,43 @@
       border: 1px solid var(--border-default);
     }
 
-    /* Hero */
-    .hero-bulk {
-      padding: 120px 0 80px;
-      background: var(--bg-white);
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 12px;
     }
-    .hero-bulk-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 16px;
     }
-    .hero-bulk .section-title { font-size: 42px; }
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
 
-    /* Use Cases */
-    .use-cases {
-      padding: 80px 0;
-      background: var(--bg-light);
-    }
-    .use-cases-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-top: 48px;
-    }
-    .use-case-card {
-      background: var(--bg-white);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-    }
-    .use-case-card-body {
-      padding: 24px;
-      text-align: center;
-    }
-    .use-case-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: var(--bg-light);
+    .img-placeholder {
+      background: var(--placeholder-bg);
+      border-radius: var(--radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 16px;
+      width: 100%;
     }
-    .use-case-icon svg {
-      width: 28px;
-      height: 28px;
-      color: var(--text-dark);
-    }
-    .use-case-title {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 8px;
-    }
-    .use-case-desc {
-      font-size: 14px;
-      color: var(--text-gray);
-      line-height: 1.6;
+    .img-placeholder svg {
+      color: var(--placeholder-icon);
+      width: 48px;
+      height: 48px;
     }
 
-    /* Custom Service */
-    .custom-service {
-      padding: 80px 0;
-    }
-    .custom-service-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-    .custom-list {
-      margin-top: 24px;
-    }
-    .custom-item {
-      display: flex;
-      gap: 16px;
-      padding: 20px 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .custom-item:last-child { border-bottom: none; }
-    .custom-icon {
+    .icon-box {
       width: 48px;
       height: 48px;
       border-radius: var(--radius-sm);
@@ -295,82 +210,147 @@
       justify-content: center;
       flex-shrink: 0;
     }
-    .custom-icon svg {
+    .icon-box svg {
       width: 24px;
       height: 24px;
       color: var(--text-dark);
     }
-    .custom-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 4px;
+
+    /* 히어로 */
+    .hero-b2b {
+      padding: 120px 0 80px;
+      background: var(--bg-light);
     }
-    .custom-desc {
-      font-size: 14px;
-      color: var(--text-gray);
+    .hero-b2b-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-b2b .section-title {
+      font-size: 42px;
     }
 
-    /* Price Guide */
-    .price-guide {
+    /* 활용 사례 */
+    .use-cases {
+      padding: 80px 0;
+    }
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .case-card {
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .case-card-body {
+      padding: 24px;
+    }
+    .case-card-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .case-card-desc {
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    /* 커스텀 서비스 */
+    .custom-service {
       padding: 80px 0;
       background: var(--bg-light);
     }
-    .price-table {
+    .custom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .custom-card {
+      padding: 32px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      background: var(--bg-white);
+    }
+    .custom-card .icon-box {
+      margin-bottom: 20px;
+    }
+    .custom-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 12px;
+    }
+    .custom-card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .custom-card-list li {
+      font-size: 14px;
+      color: var(--text-gray);
+      padding-left: 20px;
+      position: relative;
+    }
+    .custom-card-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+
+    /* 가격 안내 */
+    .pricing-section {
+      padding: 80px 0;
+    }
+    .pricing-table {
       max-width: 800px;
       margin: 48px auto 0;
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
       overflow: hidden;
-      background: var(--bg-white);
     }
-    .price-table-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      background: var(--bg-dark);
-      color: #FFFFFF;
-      font-weight: 700;
-      font-size: 15px;
+    .pricing-table table {
+      width: 100%;
+      border-collapse: collapse;
     }
-    .price-table-header div {
-      padding: 16px 20px;
-      border-right: 1px solid rgba(255,255,255,0.1);
-    }
-    .price-table-header div:last-child {
-      border-right: none;
-    }
-    .price-table-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+    .pricing-table th,
+    .pricing-table td {
+      padding: 16px 24px;
+      text-align: left;
       border-bottom: 1px solid var(--border-light);
     }
-    .price-table-row:last-child {
-      border-bottom: none;
+    .pricing-table th {
+      background: var(--bg-light);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-black);
     }
-    .price-table-row div {
-      padding: 16px 20px;
-      border-right: 1px solid var(--border-light);
+    .pricing-table td {
       font-size: 15px;
       color: var(--text-dark);
     }
-    .price-table-row div:last-child {
-      border-right: none;
+    .pricing-table tr:last-child td {
+      border-bottom: none;
     }
-    .price-note {
-      max-width: 800px;
-      margin: 24px auto 0;
-      padding: 20px;
-      background: var(--bg-white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-sm);
+    .pricing-note {
       font-size: 14px;
-      color: var(--text-gray);
-      line-height: 1.7;
+      color: var(--text-light);
+      text-align: center;
+      margin-top: 20px;
     }
 
-    /* Process */
-    .process {
+    /* 주문 프로세스 */
+    .process-section {
       padding: 80px 0;
+      background: var(--bg-light);
     }
     .process-steps {
       display: grid;
@@ -380,19 +360,6 @@
     }
     .process-step {
       text-align: center;
-      position: relative;
-    }
-    .process-step::after {
-      content: '';
-      position: absolute;
-      top: 32px;
-      right: -12px;
-      width: 24px;
-      height: 2px;
-      background: var(--border-light);
-    }
-    .process-step:last-child::after {
-      display: none;
     }
     .step-number {
       font-size: 14px;
@@ -404,11 +371,12 @@
       width: 64px;
       height: 64px;
       border-radius: 50%;
-      background: var(--bg-light);
+      background: var(--bg-white);
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 16px;
+      border: 1px solid var(--border-light);
     }
     .step-icon-wrap svg {
       width: 28px;
@@ -416,28 +384,23 @@
       color: var(--text-dark);
     }
     .step-title {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       color: var(--text-black);
       margin-bottom: 8px;
     }
     .step-desc {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--text-gray);
     }
 
-    /* Quote Form */
-    .quote-form-section {
+    /* 견적 문의 폼 */
+    .inquiry-section {
       padding: 80px 0;
-      background: var(--bg-light);
     }
-    .quote-form {
+    .inquiry-form-wrapper {
       max-width: 720px;
       margin: 48px auto 0;
-      background: var(--bg-white);
-      border-radius: var(--radius-md);
-      padding: 40px;
-      border: 1px solid var(--border-light);
     }
     .form-group {
       margin-bottom: 24px;
@@ -450,23 +413,22 @@
       margin-bottom: 8px;
     }
     .form-label .required {
-      color: var(--text-muted);
-      font-weight: 400;
+      color: #FF6B6B;
+      margin-left: 4px;
     }
     .form-input,
-    .form-select,
-    .form-textarea {
+    .form-textarea,
+    .form-select {
       width: 100%;
       padding: 12px 16px;
       border: 1px solid var(--border-default);
       border-radius: var(--radius-sm);
       font-size: 15px;
-      font-family: inherit;
       color: var(--text-dark);
     }
     .form-input:focus,
-    .form-select:focus,
-    .form-textarea:focus {
+    .form-textarea:focus,
+    .form-select:focus {
       outline: none;
       border-color: var(--text-dark);
     }
@@ -474,34 +436,23 @@
       resize: vertical;
       min-height: 120px;
     }
-    .form-row {
+    .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
     }
     .form-submit {
-      width: 100%;
-      padding: 16px;
-      background: var(--text-black);
-      color: #FFFFFF;
-      border: none;
-      border-radius: var(--radius-sm);
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: opacity 0.2s;
+      margin-top: 32px;
+      text-align: center;
     }
-    .form-submit:hover {
-      opacity: 0.85;
-    }
-    .form-note {
-      margin-top: 16px;
+    .form-privacy {
       font-size: 13px;
       color: var(--text-light);
       text-align: center;
+      margin-top: 16px;
     }
 
-    /* Footer */
+    /* 푸터 */
     .footer {
       padding: 60px 0 32px;
       background: var(--bg-white);
@@ -518,18 +469,12 @@
       font-size: 18px;
       font-weight: 700;
       color: var(--text-black);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
     .footer-brand-desc {
       font-size: 14px;
       color: var(--text-light);
       line-height: 1.6;
-      margin-bottom: 16px;
-    }
-    .footer-info {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.8;
     }
     .footer-col-title {
       font-size: 14px;
@@ -543,147 +488,107 @@
       color: var(--text-light);
       padding: 4px 0;
     }
-    .footer-col a:hover {
-      color: var(--text-dark);
-    }
     .footer-bottom {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       padding-top: 24px;
       font-size: 13px;
       color: var(--text-muted);
     }
-    .footer-bottom-links a {
-      margin-left: 16px;
-    }
-    .footer-bottom-links a:hover {
-      color: var(--text-dark);
-    }
-
-    /* TOP Button */
-    .top-btn {
-      position: fixed;
-      bottom: 40px;
-      right: 40px;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--bg-dark);
-      color: #FFFFFF;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      box-shadow: var(--shadow-md);
-      z-index: 99;
-      transition: opacity 0.2s;
-    }
-    .top-btn.show {
+    .footer-links {
       display: flex;
-    }
-    .top-btn:hover {
-      opacity: 0.85;
-    }
-    .top-btn svg {
-      width: 20px;
-      height: 20px;
+      gap: 16px;
     }
 
-    /* Responsive */
+    /* 반응형 */
     @media (max-width: 768px) {
-      .gnb { display: none; }
-      .hamburger { display: flex; }
-      .header-utils { gap: 12px; }
       .section-title { font-size: 28px; }
-      .hero-bulk { padding: 80px 0 60px; }
-      .hero-bulk-inner { grid-template-columns: 1fr; gap: 32px; }
-      .hero-bulk .section-title { font-size: 32px; }
-      .use-cases-grid { grid-template-columns: 1fr; }
-      .custom-service-inner { grid-template-columns: 1fr; gap: 32px; }
-      .price-table-header,
-      .price-table-row { grid-template-columns: 1fr; }
-      .price-table-header div,
-      .price-table-row div { border-right: none; border-bottom: 1px solid var(--border-light); }
-      .price-table-header div:last-child,
-      .price-table-row div:last-child { border-bottom: none; }
-      .process-steps { grid-template-columns: 1fr; }
-      .process-step::after { display: none; }
-      .form-row { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
-      .footer-bottom-links a { margin: 0 8px; }
-      .top-btn { bottom: 24px; right: 24px; width: 44px; height: 44px; }
+      .hero-b2b { padding: 80px 0 60px; }
+      .hero-b2b-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .hero-b2b .section-title { font-size: 32px; }
+      .cases-grid {
+        grid-template-columns: 1fr;
+      }
+      .custom-grid {
+        grid-template-columns: 1fr;
+      }
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- 헤더 -->
   <header class="header">
     <div class="container">
       <div class="header-inner">
         <a href="page_01.html" class="logo">언커먼타올</a>
-        <nav class="gnb">
-          <div class="gnb-item">
-            <a href="page_02.html" class="gnb-link">브랜드</a>
-            <div class="gnb-dropdown">
-              <a href="page_02.html">브랜드 철학</a>
-              <a href="page_03.html">브랜드 스토리</a>
-              <a href="page_04.html">브랜드 여정</a>
-              <a href="page_05.html">소재 이야기</a>
-              <a href="page_06.html">지속가능성</a>
-            </div>
-          </div>
-          <div class="gnb-item">
-            <a href="page_07.html" class="gnb-link">제품</a>
-          </div>
-          <div class="gnb-item">
-            <a href="page_08.html" class="gnb-link">타월 가이드</a>
-          </div>
-          <div class="gnb-item">
-            <a href="page_09.html" class="gnb-link active">B2B문의</a>
-            <div class="gnb-dropdown">
-              <a href="page_09.html">대량구매</a>
-              <a href="page_10.html">파트너십</a>
-            </div>
-          </div>
-          <div class="gnb-item">
-            <a href="page_11.html" class="gnb-link">고객 후기</a>
-          </div>
-          <div class="gnb-item">
-            <a href="page_12.html" class="gnb-link">고객센터</a>
-            <div class="gnb-dropdown">
-              <a href="page_12.html">FAQ</a>
-              <a href="page_13.html">1:1 문의</a>
-              <a href="page_14.html">주문 조회</a>
-              <a href="page_15.html">매장 안내</a>
-            </div>
-          </div>
+        <nav>
+          <ul class="gnb">
+            <li>
+              <a href="page_02.html">브랜드</a>
+              <div class="gnb-dropdown">
+                <a href="page_02.html">브랜드 철학</a>
+                <a href="page_03.html">브랜드 스토리</a>
+                <a href="page_04.html">브랜드 여정</a>
+                <a href="page_05.html">소재 이야기</a>
+                <a href="page_06.html">지속가능성</a>
+              </div>
+            </li>
+            <li><a href="page_07.html">제품</a></li>
+            <li><a href="page_08.html">타월 가이드</a></li>
+            <li class="active">
+              <a href="page_09.html">B2B문의</a>
+              <div class="gnb-dropdown">
+                <a href="page_09.html">대량구매</a>
+                <a href="page_10.html">파트너십</a>
+              </div>
+            </li>
+            <li><a href="page_11.html">고객 후기</a></li>
+            <li>
+              <a href="page_12.html">고객센터</a>
+              <div class="gnb-dropdown">
+                <a href="page_12.html">FAQ</a>
+                <a href="page_13.html">1:1 문의</a>
+                <a href="page_14.html">주문 조회</a>
+                <a href="page_15.html">매장 안내</a>
+              </div>
+            </li>
+          </ul>
         </nav>
         <div class="header-utils">
-          <button class="util-btn"><i data-lucide="search"></i></button>
-          <a href="#" class="util-btn"><i data-lucide="user"></i></a>
-          <a href="#" class="util-btn"><i data-lucide="shopping-bag"></i></a>
-          <button class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+          <i data-lucide="search"></i>
+          <i data-lucide="user"></i>
+          <i data-lucide="shopping-cart"></i>
         </div>
+        <button class="mobile-menu-btn">
+          <i data-lucide="menu"></i>
+        </button>
       </div>
     </div>
   </header>
 
   <main>
 
-    <!-- Section 1: Hero -->
-    <section class="hero-bulk">
+    <!-- 섹션 1: 히어로 -->
+    <section class="hero-b2b">
       <div class="container">
-        <div class="hero-bulk-inner">
+        <div class="hero-b2b-inner">
           <div>
-            <p class="section-label">B2B BULK ORDER</p>
-            <h1 class="section-title">기업 선물·답례품·호텔 납품,<br>언커먼타올이 함께합니다</h1>
-            <p class="section-desc">품질 균일한 대량 납품, 자수/로고 각인 커스텀, 신뢰할 수 있는 납기. 샘플부터 생산까지 투명하게 진행합니다.</p>
+            <p class="section-label">B2B 대량구매</p>
+            <h1 class="section-title">브랜드 가치를 담은<br>프리미엄 기업 선물</h1>
+            <p class="section-desc">기업선물, 답례품, 호텔 납품까지. 자수/로고 각인과 맞춤 패키징으로 귀사의 품격을 높입니다.</p>
           </div>
           <div class="img-placeholder" style="aspect-ratio:4/3;">
             <i data-lucide="image"></i>
@@ -692,269 +597,281 @@
       </div>
     </section>
 
-    <!-- Section 2: Use Cases -->
+    <!-- 섹션 2: 활용 사례 -->
     <section class="use-cases">
       <div class="container">
         <div class="text-center">
-          <p class="section-label">APPLICATIONS</p>
-          <h2 class="section-title">다양한 분야에서<br>활용되고 있습니다</h2>
+          <p class="section-label">활용 사례</p>
+          <h2 class="section-title">다양한 비즈니스 현장에서<br>언커먼타올을 선택합니다</h2>
+          <p class="section-desc mx-auto">프리미엄 품질로 브랜드 이미지를 높이고, 받는 분께 오래 기억되는 선물을 전하세요.</p>
         </div>
-        <div class="use-cases-grid">
-          <div class="use-case-card">
-            <div class="use-case-card-body">
-              <div class="use-case-icon"><i data-lucide="gift"></i></div>
-              <h3 class="use-case-title">기업 선물</h3>
-              <p class="use-case-desc">임직원 선물, 거래처 답례품으로 품격 있는 타월 세트</p>
+        <div class="cases-grid">
+          <div class="case-card">
+            <div class="img-placeholder" style="aspect-ratio:1/1;">
+              <i data-lucide="gift"></i>
+            </div>
+            <div class="case-card-body">
+              <h3 class="case-card-title">기업 선물</h3>
+              <p class="case-card-desc">거래처 답례, 기념품, 창립 기념 선물로 브랜드 가치를 전달합니다.</p>
             </div>
           </div>
-          <div class="use-case-card">
-            <div class="use-case-card-body">
-              <div class="use-case-icon"><i data-lucide="heart"></i></div>
-              <h3 class="use-case-title">답례품</h3>
-              <p class="use-case-desc">결혼식, 돌잔치 등 감사의 마음을 담은 실용 선물</p>
+          <div class="case-card">
+            <div class="img-placeholder" style="aspect-ratio:1/1;">
+              <i data-lucide="users"></i>
+            </div>
+            <div class="case-card-body">
+              <h3 class="case-card-title">답례품</h3>
+              <p class="case-card-desc">각종 행사, 세미나, 오프닝 이벤트의 품격 있는 답례품으로 활용됩니다.</p>
             </div>
           </div>
-          <div class="use-case-card">
-            <div class="use-case-card-body">
-              <div class="use-case-icon"><i data-lucide="building"></i></div>
-              <h3 class="use-case-title">호텔·펜션 납품</h3>
-              <p class="use-case-desc">고객 만족도를 높이는 프리미엄 어메니티</p>
+          <div class="case-card">
+            <div class="img-placeholder" style="aspect-ratio:1/1;">
+              <i data-lucide="building"></i>
+            </div>
+            <div class="case-card-body">
+              <h3 class="case-card-title">호텔 납품</h3>
+              <p class="case-card-desc">호텔, 리조트, 스파 등에 고급스러운 터치감으로 고객 경험을 높입니다.</p>
             </div>
           </div>
-          <div class="use-case-card">
-            <div class="use-case-card-body">
-              <div class="use-case-icon"><i data-lucide="megaphone"></i></div>
-              <h3 class="use-case-title">판촉물·기념품</h3>
-              <p class="use-case-desc">브랜드 로고 각인으로 홍보 효과까지</p>
+          <div class="case-card">
+            <div class="img-placeholder" style="aspect-ratio:1/1;">
+              <i data-lucide="megaphone"></i>
+            </div>
+            <div class="case-card-body">
+              <h3 class="case-card-title">판촉물</h3>
+              <p class="case-card-desc">마케팅 캠페인, 프로모션 기프트로 브랜드 인지도를 높이는 실용적 선택입니다.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 3: Custom Service -->
+    <!-- 섹션 3: 커스텀 서비스 -->
     <section class="custom-service">
       <div class="container">
-        <div class="custom-service-inner">
-          <div class="img-placeholder" style="aspect-ratio:4/3;">
-            <i data-lucide="image"></i>
+        <div class="text-center">
+          <p class="section-label">커스텀 서비스</p>
+          <h2 class="section-title">귀사만의 특별함을 담습니다</h2>
+          <p class="section-desc mx-auto">자수, 로고 각인부터 패키징까지. 받는 분께 오래 남는 브랜드 경험을 선사하세요.</p>
+        </div>
+        <div class="custom-grid">
+          <div class="custom-card">
+            <div class="icon-box"><i data-lucide="scissors"></i></div>
+            <h3 class="custom-card-title">자수 / 로고 각인</h3>
+            <p class="section-desc">브랜드 로고, 메시지, 이름 등을 고급 자수 또는 각인으로 표현합니다.</p>
+            <ul class="custom-card-list">
+              <li>단색 / 멀티 컬러 자수 가능</li>
+              <li>실크 프린팅, 레이저 각인 옵션</li>
+              <li>위치 및 크기 맞춤 제작</li>
+              <li>시안 검토 후 최종 승인 프로세스</li>
+            </ul>
           </div>
-          <div>
-            <p class="section-label">CUSTOMIZATION</p>
-            <h2 class="section-title">커스텀 서비스</h2>
-            <p class="section-desc">브랜드 가치를 담아 특별하게 제작합니다</p>
-            <div class="custom-list">
-              <div class="custom-item">
-                <div class="custom-icon"><i data-lucide="type"></i></div>
-                <div>
-                  <p class="custom-title">자수/로고 각인</p>
-                  <p class="custom-desc">기업 로고, 브랜드명, 문구 등 자수 또는 날염 가능</p>
-                </div>
-              </div>
-              <div class="custom-item">
-                <div class="custom-icon"><i data-lucide="package"></i></div>
-                <div>
-                  <p class="custom-title">패키징 옵션</p>
-                  <p class="custom-desc">개별 포장, 세트 구성, 브랜드 패키지 디자인 가능</p>
-                </div>
-              </div>
-              <div class="custom-item">
-                <div class="custom-icon"><i data-lucide="palette"></i></div>
-                <div>
-                  <p class="custom-title">컬러 선택</p>
-                  <p class="custom-desc">다양한 컬러 옵션 중 브랜드 이미지에 맞는 색상 선택</p>
-                </div>
-              </div>
-            </div>
+          <div class="custom-card">
+            <div class="icon-box"><i data-lucide="package"></i></div>
+            <h3 class="custom-card-title">맞춤 패키징</h3>
+            <p class="section-desc">프리미엄 박스, 리본, 택 등 다양한 패키징 옵션으로 선물의 품격을 높입니다.</p>
+            <ul class="custom-card-list">
+              <li>개별 박스 / 벌크 패키징 선택</li>
+              <li>브랜드 컬러 맞춤 박스 제작 가능</li>
+              <li>친환경 소재 패키징 옵션</li>
+              <li>브랜드 택, 리본, 씰 추가 가능</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 4: Price Guide -->
-    <section class="price-guide">
+    <!-- 섹션 4: 수량·가격 안내 -->
+    <section class="pricing-section">
       <div class="container">
         <div class="text-center">
-          <p class="section-label">PRICING</p>
-          <h2 class="section-title">수량·가격 안내</h2>
-          <p class="section-desc mx-auto">수량 구간별 단가입니다. 정확한 견적은 문의 주시면 신속히 안내 드립니다.</p>
+          <p class="section-label">수량·가격 안내</p>
+          <h2 class="section-title">투명하고 합리적인 가격 체계</h2>
+          <p class="section-desc mx-auto">수량이 많을수록 단가가 낮아집니다. 정확한 견적은 아래 문의 폼을 통해 받아보실 수 있습니다.</p>
         </div>
-        <div class="price-table">
-          <div class="price-table-header">
-            <div>수량</div>
-            <div>단가</div>
-            <div>커스텀 옵션</div>
-          </div>
-          <div class="price-table-row">
-            <div>최소 수량</div>
-            <div>[클라이언트 확인 필요]</div>
-            <div>기본 패키징</div>
-          </div>
-          <div class="price-table-row">
-            <div>중량 수량</div>
-            <div>[클라이언트 확인 필요]</div>
-            <div>자수/로고 각인 가능</div>
-          </div>
-          <div class="price-table-row">
-            <div>대량 수량</div>
-            <div>[클라이언트 확인 필요]</div>
-            <div>커스텀 패키징 가능</div>
-          </div>
+        <div class="pricing-table">
+          <table>
+            <thead>
+              <tr>
+                <th>주문 수량</th>
+                <th>단가 (1장)</th>
+                <th>커스텀 옵션</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>50장 ~ 99장</td>
+                <td>[클라이언트 확인 필요]</td>
+                <td>자수 / 간단한 패키징</td>
+              </tr>
+              <tr>
+                <td>100장 ~ 299장</td>
+                <td>[클라이언트 확인 필요]</td>
+                <td>자수 / 맞춤 박스 가능</td>
+              </tr>
+              <tr>
+                <td>300장 ~ 499장</td>
+                <td>[클라이언트 확인 필요]</td>
+                <td>전체 커스텀 옵션</td>
+              </tr>
+              <tr>
+                <td>500장 이상</td>
+                <td>[클라이언트 확인 필요]</td>
+                <td>전체 커스텀 + 특별 할인</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="price-note">
-          <p>• 최소 주문 수량: [클라이언트 확인 필요]</p>
-          <p>• 납기일: 샘플 승인 후 [클라이언트 확인 필요] 소요</p>
-          <p>• 커스텀 작업 시 추가 비용 및 기간 발생 가능</p>
-          <p>• 정확한 견적은 아래 문의 폼을 통해 신청해 주세요</p>
-        </div>
+        <p class="pricing-note">※ 최소 주문 수량: 50장 / 가격은 VAT 별도 / 커스텀 옵션에 따라 추가 비용 발생 가능</p>
       </div>
     </section>
 
-    <!-- Section 5: Process -->
-    <section class="process">
+    <!-- 섹션 5: 주문 프로세스 -->
+    <section class="process-section">
       <div class="container">
         <div class="text-center">
-          <p class="section-label">ORDER PROCESS</p>
-          <h2 class="section-title">주문 프로세스</h2>
-          <p class="section-desc mx-auto">투명하고 체계적인 진행 과정으로 안심하고 주문하세요</p>
+          <p class="section-label">주문 프로세스</p>
+          <h2 class="section-title">간편하고 체계적인 주문 과정</h2>
         </div>
         <div class="process-steps">
           <div class="process-step">
             <p class="step-number">STEP 01</p>
             <div class="step-icon-wrap"><i data-lucide="message-circle"></i></div>
-            <h3 class="step-title">문의</h3>
-            <p class="step-desc">견적 문의 폼 제출 또는 전화 상담</p>
+            <h3 class="step-title">문의 접수</h3>
+            <p class="step-desc">견적 문의 폼 작성 또는 전화/이메일 문의</p>
           </div>
           <div class="process-step">
             <p class="step-number">STEP 02</p>
-            <div class="step-icon-wrap"><i data-lucide="package"></i></div>
+            <div class="step-icon-wrap"><i data-lucide="package-open"></i></div>
             <h3 class="step-title">샘플 발송</h3>
-            <p class="step-desc">실물 샘플 확인 후 품질 검증</p>
+            <p class="step-desc">실물 확인을 위한 샘플 타월 발송</p>
           </div>
           <div class="process-step">
             <p class="step-number">STEP 03</p>
             <div class="step-icon-wrap"><i data-lucide="file-text"></i></div>
             <h3 class="step-title">시안 확인</h3>
-            <p class="step-desc">커스텀 디자인 시안 검토 및 승인</p>
+            <p class="step-desc">자수/로고 시안 제작 후 검토 및 승인</p>
           </div>
           <div class="process-step">
             <p class="step-number">STEP 04</p>
             <div class="step-icon-wrap"><i data-lucide="settings"></i></div>
-            <h3 class="step-title">생산</h3>
-            <p class="step-desc">시안 승인 후 본 생산 진행</p>
+            <h3 class="step-title">생산 진행</h3>
+            <p class="step-desc">승인 후 제작 착수 (납기: 2~4주)</p>
           </div>
           <div class="process-step">
             <p class="step-number">STEP 05</p>
             <div class="step-icon-wrap"><i data-lucide="truck"></i></div>
-            <h3 class="step-title">납품</h3>
-            <p class="step-desc">지정 장소로 안전하게 배송</p>
+            <h3 class="step-title">납품 완료</h3>
+            <p class="step-desc">지정 장소로 배송 또는 직접 수령</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 6: Quote Form -->
-    <section class="quote-form-section">
+    <!-- 섹션 6: 견적 문의 폼 -->
+    <section class="inquiry-section">
       <div class="container">
         <div class="text-center">
-          <p class="section-label">GET A QUOTE</p>
-          <h2 class="section-title">견적 문의</h2>
-          <p class="section-desc mx-auto">아래 양식을 작성해 주시면 빠르게 견적을 안내 드립니다</p>
+          <p class="section-label">견적 문의</p>
+          <h2 class="section-title">맞춤 견적을 받아보세요</h2>
+          <p class="section-desc mx-auto">아래 정보를 입력해 주시면 담당자가 24시간 이내에 상세 견적을 보내드립니다.</p>
         </div>
-        <form class="quote-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">회사명 <span class="required">(필수)</span></label>
-              <input type="text" class="form-input" required>
+        <div class="inquiry-form-wrapper">
+          <form>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">담당자 성함<span class="required">*</span></label>
+                <input type="text" class="form-input" placeholder="홍길동" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">회사명<span class="required">*</span></label>
+                <input type="text" class="form-input" placeholder="(주)회사명" required>
+              </div>
             </div>
-            <div class="form-group">
-              <label class="form-label">담당자명 <span class="required">(필수)</span></label>
-              <input type="text" class="form-input" required>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">연락처<span class="required">*</span></label>
+                <input type="tel" class="form-input" placeholder="010-0000-0000" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">이메일<span class="required">*</span></label>
+                <input type="email" class="form-input" placeholder="example@company.com" required>
+              </div>
             </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">연락처 <span class="required">(필수)</span></label>
-              <input type="tel" class="form-input" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">이메일 <span class="required">(필수)</span></label>
-              <input type="email" class="form-input" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">업종/활용 목적</label>
-            <select class="form-select">
-              <option value="">선택해 주세요</option>
-              <option value="기업선물">기업 선물</option>
-              <option value="답례품">답례품</option>
-              <option value="호텔납품">호텔·펜션 납품</option>
-              <option value="판촉물">판촉물·기념품</option>
-              <option value="기타">기타</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">희망 수량 <span class="required">(필수)</span></label>
-              <input type="number" class="form-input" placeholder="예: 100" required>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">업종<span class="required">*</span></label>
+                <select class="form-select" required>
+                  <option value="">선택해 주세요</option>
+                  <option value="hotel">호텔/리조트</option>
+                  <option value="corporate">일반 기업</option>
+                  <option value="gift">선물/판촉물</option>
+                  <option value="retail">소매/유통</option>
+                  <option value="other">기타</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">희망 수량<span class="required">*</span></label>
+                <input type="number" class="form-input" placeholder="예: 100" required>
+              </div>
             </div>
             <div class="form-group">
               <label class="form-label">희망 납기일</label>
               <input type="date" class="form-input">
             </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">커스텀 요청사항</label>
-            <textarea class="form-textarea" placeholder="자수/로고 각인, 패키징, 컬러 등 커스텀 요청사항을 상세히 작성해 주세요"></textarea>
-          </div>
-          <button type="submit" class="form-submit">견적 문의하기</button>
-          <p class="form-note">영업일 기준 24시간 이내 답변 드립니다</p>
-        </form>
+            <div class="form-group">
+              <label class="form-label">커스텀 요청사항</label>
+              <textarea class="form-textarea" placeholder="로고 각인, 패키징 옵션, 기타 요청사항을 자유롭게 작성해 주세요."></textarea>
+            </div>
+            <div class="form-submit">
+              <button type="submit" class="btn btn-primary">견적 요청하기</button>
+            </div>
+            <p class="form-privacy">견적 문의 시 입력하신 정보는 상담 목적으로만 사용되며, 개인정보 처리방침에 따라 안전하게 보호됩니다.</p>
+          </form>
+        </div>
       </div>
     </section>
 
   </main>
 
-  <!-- Footer -->
+  <!-- 푸터 -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div>
           <p class="footer-brand-name">언커먼타올</p>
-          <p class="footer-brand-desc">페이스타월 전문 브랜드</p>
-          <div class="footer-info">
-            <p>[클라이언트 확인 필요: 상호]</p>
-            <p>대표: [클라이언트 확인 필요: 대표자명]</p>
-            <p>사업자등록번호: [클라이언트 확인 필요]</p>
-            <p>통신판매업 신고번호: [클라이언트 확인 필요]</p>
-            <p>주소: [클라이언트 확인 필요]</p>
-            <p>전화: [클라이언트 확인 필요]</p>
-            <p>이메일: [클라이언트 확인 필요]</p>
-          </div>
+          <p class="footer-brand-desc">매일 얼굴에 닿는 순간의 품격</p>
+          <p class="footer-brand-desc" style="margin-top:12px;">
+            [클라이언트 확인 필요: 상호 / 대표 / 사업자번호]<br>
+            [클라이언트 확인 필요: 주소]<br>
+            [클라이언트 확인 필요: 전화 / 이메일]
+          </p>
         </div>
-        <div class="footer-col">
+        <div>
           <p class="footer-col-title">브랜드</p>
           <a href="page_02.html">브랜드 철학</a>
           <a href="page_03.html">브랜드 스토리</a>
           <a href="page_05.html">소재 이야기</a>
+          <a href="page_06.html">지속가능성</a>
         </div>
-        <div class="footer-col">
-          <p class="footer-col-title">서비스</p>
+        <div>
+          <p class="footer-col-title">쇼핑</p>
           <a href="page_07.html">제품</a>
           <a href="page_08.html">타월 가이드</a>
           <a href="page_09.html">대량구매</a>
           <a href="page_10.html">파트너십</a>
         </div>
-        <div class="footer-col">
+        <div>
           <p class="footer-col-title">고객지원</p>
           <a href="page_12.html">FAQ</a>
           <a href="page_13.html">1:1 문의</a>
           <a href="page_14.html">주문 조회</a>
+          <a href="page_15.html">매장 안내</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 언커먼타올. All rights reserved.</span>
-        <div class="footer-bottom-links">
+        <span>© 2025 언커먼타올. All rights reserved.</span>
+        <div class="footer-links">
           <a href="#">개인정보처리방침</a>
           <a href="#">이용약관</a>
         </div>
@@ -962,43 +879,8 @@
     </div>
   </footer>
 
-  <!-- TOP Button -->
-  <button class="top-btn" id="topBtn">
-    <i data-lucide="arrow-up"></i>
-  </button>
-
   <script>
     lucide.createIcons();
-
-    // Header scroll
-    const header = document.querySelector('.header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-
-    // TOP button
-    const topBtn = document.getElementById('topBtn');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        topBtn.classList.add('show');
-      } else {
-        topBtn.classList.remove('show');
-      }
-    });
-    topBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Form submit
-    const form = document.querySelector('.quote-form');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('견적 문의가 접수되었습니다. 빠른 시일 내에 연락 드리겠습니다.');
-    });
   </script>
 </body>
 </html>
