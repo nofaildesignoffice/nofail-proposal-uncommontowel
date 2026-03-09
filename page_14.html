@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>주문 조회 | 언커먼타올 - 페이스타월 전문 브랜드</title>
-  <meta name="description" content="언커먼타올 주문 내역을 조회하고 배송 상태를 확인하세요.">
-  <meta name="keywords" content="주문조회, 배송조회, 페이스타월, 언커먼타올">
+  <title>주문 조회 | 언커먼타올 - 프리미엄 페이스타월</title>
+  <meta name="description" content="언커먼타올 주문 조회 페이지. 주문번호 또는 이메일로 주문 내역을 조회하고 배송 현황을 확인하세요.">
+  <meta name="keywords" content="프리미엄 수건, 페이스타월, 고급 수건, 프리미엄 타월, 얼굴 수건, 주문조회, 배송조회">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -62,24 +62,27 @@
       justify-content: space-between;
       height: 72px;
     }
-    .logo {
+    .header-logo {
       font-size: 18px;
       font-weight: 700;
       color: var(--text-black);
     }
-    .gnb {
+    .header-nav {
       display: flex;
       gap: 32px;
     }
-    .gnb-item {
+    .nav-item {
       position: relative;
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
-      padding: 8px 0;
+      cursor: pointer;
     }
-    .gnb-item.active { color: var(--text-black); font-weight: 700; }
-    .gnb-dropdown {
+    .nav-item.active {
+      color: var(--text-black);
+      font-weight: 600;
+    }
+    .nav-dropdown {
       display: none;
       position: absolute;
       top: 100%;
@@ -88,84 +91,111 @@
       border: 1px solid var(--border-light);
       border-radius: var(--radius-sm);
       padding: 12px 0;
-      min-width: 160px;
+      margin-top: 12px;
+      min-width: 180px;
       box-shadow: var(--shadow-md);
-      margin-top: 8px;
     }
-    .gnb-item:hover .gnb-dropdown { display: block; }
-    .gnb-dropdown a {
+    .nav-item:hover .nav-dropdown {
+      display: block;
+    }
+    .nav-dropdown a {
       display: block;
       padding: 8px 20px;
       font-size: 14px;
-      color: var(--text-gray);
+      color: var(--text-dark);
       white-space: nowrap;
     }
-    .gnb-dropdown a:hover { background: var(--bg-light); color: var(--text-black); }
+    .nav-dropdown a:hover {
+      background: var(--bg-light);
+    }
     .header-utils {
       display: flex;
       align-items: center;
       gap: 16px;
     }
-    .header-utils button {
-      width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .header-utils svg {
+      width: 22px;
+      height: 22px;
       color: var(--text-dark);
+      cursor: pointer;
     }
-    .hamburger { display: none; }
+    .mobile-menu-btn {
+      display: none;
+    }
 
-    /* 페이지 헤더 */
-    .page-header {
-      padding: 80px 0 40px;
-      text-align: center;
-      background: var(--bg-white);
+    /* 섹션 공통 */
+    .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 12px;
     }
-    .page-title {
+    .section-title {
       font-size: 36px;
       font-weight: 700;
       color: var(--text-black);
-      margin-bottom: 12px;
+      line-height: 1.3;
+      margin-bottom: 16px;
     }
-    .page-desc {
+    .section-desc {
       font-size: 16px;
       color: var(--text-gray);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    /* 버튼 */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary {
+      background: var(--text-black);
+      color: #FFFFFF;
+      border: 1px solid var(--text-black);
+    }
+    .btn-secondary {
+      background: var(--bg-white);
+      color: var(--text-black);
+      border: 1px solid var(--border-default);
     }
 
     /* 주문 조회 폼 */
-    .order-search-section {
-      padding: 60px 0;
-      background: var(--bg-light);
-    }
-    .search-box {
-      max-width: 600px;
-      margin: 0 auto;
+    .order-lookup-section {
+      padding: 80px 0;
       background: var(--bg-white);
+    }
+    .lookup-form-wrapper {
+      max-width: 600px;
+      margin: 48px auto 0;
+      padding: 40px;
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
-      padding: 40px;
-    }
-    .search-box-title {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 24px;
-      text-align: center;
+      background: var(--bg-white);
     }
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
     .form-label {
       display: block;
       font-size: 14px;
       font-weight: 600;
-      color: var(--text-dark);
+      color: var(--text-black);
       margin-bottom: 8px;
     }
     .form-input {
       width: 100%;
-      padding: 14px 16px;
+      padding: 12px 16px;
       border: 1px solid var(--border-default);
       border-radius: var(--radius-sm);
       font-size: 15px;
@@ -176,115 +206,86 @@
       outline: none;
       border-color: var(--text-dark);
     }
+    .form-input::placeholder {
+      color: var(--text-muted);
+    }
     .form-help {
       font-size: 13px;
       color: var(--text-light);
       margin-top: 6px;
     }
-    .btn-search {
-      width: 100%;
-      padding: 16px;
-      background: var(--text-black);
-      color: #FFFFFF;
-      border-radius: var(--radius-sm);
-      font-size: 16px;
-      font-weight: 600;
-      margin-top: 24px;
-      transition: opacity 0.2s;
+    .form-divider {
+      text-align: center;
+      margin: 32px 0;
+      position: relative;
     }
-    .btn-search:hover { opacity: 0.85; }
-
-    /* 비회원 안내 */
-    .guest-info {
-      max-width: 600px;
-      margin: 40px auto 0;
-      padding: 24px;
+    .form-divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--border-light);
+    }
+    .form-divider span {
+      position: relative;
       background: var(--bg-white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-    }
-    .info-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .info-title svg {
-      width: 20px;
-      height: 20px;
-      color: var(--text-gray);
-    }
-    .info-list {
+      padding: 0 16px;
       font-size: 14px;
-      color: var(--text-gray);
-      line-height: 1.8;
-      padding-left: 28px;
-    }
-    .info-list li {
-      list-style: disc;
-      margin-bottom: 4px;
+      color: var(--text-light);
     }
 
-    /* 고객센터 링크 */
-    .cs-links {
-      padding: 60px 0;
-      background: var(--bg-white);
+    /* 안내 */
+    .info-section {
+      padding: 80px 0;
+      background: var(--bg-light);
     }
-    .cs-grid {
+    .info-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      max-width: 900px;
-      margin: 0 auto;
+      margin-top: 48px;
     }
-    .cs-card {
+    .info-card {
       padding: 32px;
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
+      background: var(--bg-white);
       text-align: center;
-      transition: border-color 0.2s;
     }
-    .cs-card:hover { border-color: var(--border-default); }
-    .cs-icon {
+    .info-icon {
       width: 48px;
       height: 48px;
-      border-radius: 50%;
+      border-radius: var(--radius-sm);
       background: var(--bg-light);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 16px;
+      margin: 0 auto 20px;
     }
-    .cs-icon svg {
+    .info-icon svg {
       width: 24px;
       height: 24px;
       color: var(--text-dark);
     }
-    .cs-title {
-      font-size: 16px;
+    .info-card-title {
+      font-size: 17px;
       font-weight: 700;
       color: var(--text-black);
       margin-bottom: 8px;
     }
-    .cs-desc {
-      font-size: 14px;
+    .info-card-desc {
+      font-size: 15px;
       color: var(--text-gray);
-      margin-bottom: 16px;
+      line-height: 1.6;
     }
-    .cs-link {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-dark);
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .cs-link svg {
-      width: 16px;
-      height: 16px;
+
+    /* FAQ 링크 */
+    .faq-cta-section {
+      padding: 80px 0;
+      background: var(--bg-white);
+      text-align: center;
     }
 
     /* 푸터 */
@@ -300,16 +301,17 @@
       padding-bottom: 40px;
       border-bottom: 1px solid var(--border-light);
     }
-    .footer-brand {
+    .footer-brand-name {
       font-size: 18px;
       font-weight: 700;
       color: var(--text-black);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
-    .footer-info {
-      font-size: 13px;
+    .footer-brand-desc {
+      font-size: 14px;
       color: var(--text-light);
-      line-height: 1.8;
+      line-height: 1.6;
+      margin-bottom: 16px;
     }
     .footer-col-title {
       font-size: 14px;
@@ -330,12 +332,9 @@
       font-size: 13px;
       color: var(--text-muted);
     }
-    .footer-links a {
-      margin-left: 16px;
-    }
 
     /* TOP 버튼 */
-    .btn-top {
+    .top-btn {
       position: fixed;
       bottom: 40px;
       right: 40px;
@@ -347,21 +346,25 @@
       display: none;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
       box-shadow: var(--shadow-md);
-      transition: opacity 0.2s;
-      z-index: 50;
+      z-index: 90;
     }
-    .btn-top:hover { opacity: 0.85; }
-    .btn-top.show { display: flex; }
+    .top-btn.show { display: flex; }
+    .top-btn svg { width: 20px; height: 20px; }
 
     /* 반응형 */
     @media (max-width: 768px) {
-      .gnb { display: none; }
-      .hamburger { display: flex; }
-      .page-title { font-size: 28px; }
-      .search-box { padding: 32px 24px; }
-      .cs-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
+      .header-nav { display: none; }
+      .mobile-menu-btn {
+        display: block;
+        color: var(--text-dark);
+      }
+      .mobile-menu-btn svg { width: 24px; height: 24px; }
+      .section-title { font-size: 28px; }
+      .lookup-form-wrapper { padding: 32px 24px; }
+      .info-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -371,11 +374,11 @@
   <header class="header">
     <div class="container">
       <div class="header-inner">
-        <a href="page_01.html" class="logo">언커먼타올</a>
-        <nav class="gnb">
-          <div class="gnb-item">
+        <a href="page_01.html" class="header-logo">언커먼타올</a>
+        <nav class="header-nav">
+          <div class="nav-item">
             <a href="page_02.html">브랜드</a>
-            <div class="gnb-dropdown">
+            <div class="nav-dropdown">
               <a href="page_02.html">브랜드 철학</a>
               <a href="page_03.html">브랜드 스토리</a>
               <a href="page_04.html">브랜드 여정</a>
@@ -383,19 +386,19 @@
               <a href="page_06.html">지속가능성</a>
             </div>
           </div>
-          <a href="page_07.html" class="gnb-item">제품</a>
-          <a href="page_08.html" class="gnb-item">타월 가이드</a>
-          <div class="gnb-item">
+          <a href="page_07.html" class="nav-item">제품</a>
+          <a href="page_08.html" class="nav-item">타월 가이드</a>
+          <div class="nav-item">
             <a href="page_09.html">B2B문의</a>
-            <div class="gnb-dropdown">
+            <div class="nav-dropdown">
               <a href="page_09.html">대량구매</a>
               <a href="page_10.html">파트너십</a>
             </div>
           </div>
-          <a href="page_11.html" class="gnb-item">고객 후기</a>
-          <div class="gnb-item active">
+          <a href="page_11.html" class="nav-item">고객 후기</a>
+          <div class="nav-item active">
             <a href="page_12.html">고객센터</a>
-            <div class="gnb-dropdown">
+            <div class="nav-dropdown">
               <a href="page_12.html">FAQ</a>
               <a href="page_13.html">1:1 문의</a>
               <a href="page_14.html">주문 조회</a>
@@ -404,88 +407,84 @@
           </div>
         </nav>
         <div class="header-utils">
-          <button><i data-lucide="search"></i></button>
-          <button><i data-lucide="user"></i></button>
-          <button><i data-lucide="shopping-cart"></i></button>
-          <button class="hamburger"><i data-lucide="menu"></i></button>
+          <i data-lucide="search"></i>
+          <i data-lucide="user"></i>
+          <i data-lucide="shopping-cart"></i>
+          <button class="mobile-menu-btn"><i data-lucide="menu"></i></button>
         </div>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- 페이지 헤더 -->
-    <section class="page-header">
-      <div class="container">
-        <h1 class="page-title">주문 조회</h1>
-        <p class="page-desc">주문번호 또는 비회원 정보로 주문 내역을 확인하세요</p>
-      </div>
-    </section>
 
     <!-- 주문 조회 폼 -->
-    <section class="order-search-section">
+    <section class="order-lookup-section">
       <div class="container">
-        <div class="search-box">
-          <h2 class="search-box-title">주문번호로 조회</h2>
+        <div class="text-center">
+          <p class="section-label">ORDER TRACKING</p>
+          <h1 class="section-title">주문 조회</h1>
+          <p class="section-desc mx-auto">주문번호와 이메일 주소를 입력하시면<br>주문 내역과 배송 현황을 확인하실 수 있습니다.</p>
+        </div>
+
+        <div class="lookup-form-wrapper">
           <form>
             <div class="form-group">
               <label class="form-label">주문번호</label>
-              <input type="text" class="form-input" placeholder="주문번호를 입력하세요">
-              <p class="form-help">주문 완료 시 발송된 이메일 또는 SMS에서 확인할 수 있습니다</p>
+              <input type="text" class="form-input" placeholder="주문번호를 입력하세요 (예: ORD20250101-12345)">
+              <p class="form-help">주문 완료 시 발송된 이메일에서 주문번호를 확인하실 수 있습니다.</p>
             </div>
+
+            <div class="form-divider">
+              <span>그리고</span>
+            </div>
+
             <div class="form-group">
-              <label class="form-label">주문자 이메일</label>
-              <input type="email" class="form-input" placeholder="이메일 주소를 입력하세요">
+              <label class="form-label">이메일 주소</label>
+              <input type="email" class="form-input" placeholder="주문 시 입력한 이메일 주소">
             </div>
-            <button type="submit" class="btn-search">조회하기</button>
+
+            <button type="submit" class="btn btn-primary" style="width:100%; margin-top:8px;">주문 조회</button>
           </form>
         </div>
-
-        <div class="guest-info">
-          <p class="info-title">
-            <i data-lucide="info"></i>
-            비회원 주문 조회 안내
-          </p>
-          <ul class="info-list">
-            <li>주문번호와 주문 시 입력한 이메일 주소가 일치해야 조회 가능합니다</li>
-            <li>주문 후 약 10분 이내에 주문번호가 발송됩니다</li>
-            <li>주문번호를 분실한 경우 고객센터(1:1 문의)로 문의해주세요</li>
-          </ul>
-        </div>
       </div>
     </section>
 
-    <!-- 고객센터 링크 -->
-    <section class="cs-links">
+    <!-- 안내 -->
+    <section class="info-section">
       <div class="container">
-        <div class="cs-grid">
-          <a href="page_12.html" class="cs-card">
-            <div class="cs-icon">
-              <i data-lucide="help-circle"></i>
-            </div>
-            <h3 class="cs-title">FAQ</h3>
-            <p class="cs-desc">자주 묻는 질문을<br>확인하세요</p>
-            <span class="cs-link">바로가기 <i data-lucide="arrow-right"></i></span>
-          </a>
-          <a href="page_13.html" class="cs-card">
-            <div class="cs-icon">
-              <i data-lucide="message-circle"></i>
-            </div>
-            <h3 class="cs-title">1:1 문의</h3>
-            <p class="cs-desc">개별 문의사항을<br>접수하세요</p>
-            <span class="cs-link">바로가기 <i data-lucide="arrow-right"></i></span>
-          </a>
-          <a href="page_15.html" class="cs-card">
-            <div class="cs-icon">
-              <i data-lucide="map-pin"></i>
-            </div>
-            <h3 class="cs-title">매장 안내</h3>
-            <p class="cs-desc">오프라인 매장을<br>방문하세요</p>
-            <span class="cs-link">바로가기 <i data-lucide="arrow-right"></i></span>
-          </a>
+        <div class="text-center">
+          <h2 class="section-title">주문 조회 안내</h2>
+        </div>
+        <div class="info-grid">
+          <div class="info-card">
+            <div class="info-icon"><i data-lucide="package"></i></div>
+            <h3 class="info-card-title">주문번호 확인</h3>
+            <p class="info-card-desc">주문 완료 후 발송된 이메일에서 주문번호를 확인하세요. 마이페이지에서도 확인 가능합니다.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-icon"><i data-lucide="truck"></i></div>
+            <h3 class="info-card-title">배송 현황</h3>
+            <p class="info-card-desc">실시간 배송 현황과 예상 도착일을 확인할 수 있습니다. 배송 조회는 출고 후 가능합니다.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-icon"><i data-lucide="rotate-ccw"></i></div>
+            <h3 class="info-card-title">취소 및 반품</h3>
+            <p class="info-card-desc">주문 내역 조회 후 배송 전 취소, 교환, 반품 신청을 진행하실 수 있습니다.</p>
+          </div>
         </div>
       </div>
     </section>
+
+    <!-- FAQ 링크 -->
+    <section class="faq-cta-section">
+      <div class="container">
+        <h2 class="section-title">주문 조회가 되지 않으시나요?</h2>
+        <p class="section-desc mx-auto">주문번호 확인 방법, 비회원 주문 조회 등<br>자주 묻는 질문을 확인해보세요.</p>
+        <a href="page_12.html" class="btn btn-secondary" style="margin-top:24px;">FAQ 바로가기</a>
+      </div>
+    </section>
+
   </main>
 
   <!-- 푸터 -->
@@ -493,47 +492,39 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <p class="footer-brand">언커먼타올</p>
-          <div class="footer-info">
-            [클라이언트 확인 필요: 상호]<br>
-            대표자명: [클라이언트 확인 필요]<br>
-            사업자등록번호: [클라이언트 확인 필요]<br>
-            통신판매업 신고번호: [클라이언트 확인 필요]<br>
-            주소: [클라이언트 확인 필요]<br>
-            전화: [클라이언트 확인 필요]<br>
-            이메일: [클라이언트 확인 필요]
-          </div>
+          <p class="footer-brand-name">언커먼타올</p>
+          <p class="footer-brand-desc">[클라이언트 확인 필요: 상호 / 대표 / 사업자번호 / 주소 / 전화 / 이메일]</p>
         </div>
         <div>
           <p class="footer-col-title">브랜드</p>
           <a href="page_02.html">브랜드 철학</a>
           <a href="page_03.html">브랜드 스토리</a>
           <a href="page_05.html">소재 이야기</a>
+          <a href="page_06.html">지속가능성</a>
         </div>
         <div>
-          <p class="footer-col-title">제품</p>
+          <p class="footer-col-title">쇼핑</p>
           <a href="page_07.html">제품</a>
           <a href="page_08.html">타월 가이드</a>
+          <a href="page_11.html">고객 후기</a>
         </div>
         <div>
-          <p class="footer-col-title">고객지원</p>
+          <p class="footer-col-title">고객센터</p>
           <a href="page_12.html">FAQ</a>
           <a href="page_13.html">1:1 문의</a>
           <a href="page_14.html">주문 조회</a>
+          <a href="page_15.html">매장 안내</a>
         </div>
       </div>
       <div class="footer-bottom">
         <span>© 언커먼타올. All rights reserved.</span>
-        <div class="footer-links">
-          <a href="#">개인정보처리방침</a>
-          <a href="#">이용약관</a>
-        </div>
+        <span>개인정보처리방침 | 이용약관</span>
       </div>
     </div>
   </footer>
 
   <!-- TOP 버튼 -->
-  <button class="btn-top" id="btnTop">
+  <button class="top-btn" id="topBtn">
     <i data-lucide="arrow-up"></i>
   </button>
 
@@ -541,15 +532,15 @@
     lucide.createIcons();
 
     // TOP 버튼
-    const btnTop = document.getElementById('btnTop');
+    const topBtn = document.getElementById('topBtn');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
-        btnTop.classList.add('show');
+        topBtn.classList.add('show');
       } else {
-        btnTop.classList.remove('show');
+        topBtn.classList.remove('show');
       }
     });
-    btnTop.addEventListener('click', () => {
+    topBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
