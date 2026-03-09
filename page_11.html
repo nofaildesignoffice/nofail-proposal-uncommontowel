@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>고객 후기 | 언커먼타올 - 프리미엄 페이스타월</title>
-  <meta name="description" content="언커먼타올 고객들의 솔직한 사용 후기와 포토 리뷰를 확인하세요. 프리미엄 페이스타월의 부드러움과 품질을 실제 사용자의 목소리로 전합니다.">
-  <meta name="keywords" content="페이스타월, 프리미엄수건, 호텔수건, 면수건, 세안타월, 페이스타올, 수건후기, 타월리뷰">
+  <meta name="description" content="언커먼타올을 사용하는 고객들의 실제 후기와 사용 경험을 확인하세요. 포토 리뷰, 베스트 리뷰, 인플루언서 리뷰를 통해 프리미엄 타월의 품질을 확인할 수 있습니다.">
+  <meta name="keywords" content="프리미엄 수건, 페이스타월, 고급 수건, 호텔 수건, 면 타월, 수건 후기, 타월 리뷰">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -48,7 +48,94 @@
       padding: 0 24px;
     }
 
-    /* 공통 컴포넌트 */
+    /* 헤더 */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border-light);
+      transition: all 0.3s;
+    }
+    .nav.scrolled {
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-item {
+      position: relative;
+    }
+    .nav-item > a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-dark);
+      display: block;
+      padding: 8px 0;
+    }
+    .nav-item.active > a {
+      color: var(--text-black);
+      font-weight: 600;
+    }
+    .nav-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 12px 0;
+      min-width: 180px;
+      display: none;
+      box-shadow: var(--shadow-md);
+    }
+    .nav-item:hover .nav-dropdown {
+      display: block;
+    }
+    .nav-dropdown a {
+      display: block;
+      padding: 8px 20px;
+      font-size: 14px;
+      color: var(--text-gray);
+    }
+    .nav-dropdown a:hover {
+      background: var(--bg-light);
+      color: var(--text-black);
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-actions button {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dark);
+    }
+    .nav-actions svg {
+      width: 22px;
+      height: 22px;
+    }
+    .mobile-menu-toggle {
+      display: none;
+    }
+
+    /* 버튼 */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -71,11 +158,14 @@
       border: 1px solid var(--border-default);
     }
 
+    /* 섹션 공통 */
     .section-label {
       font-size: 14px;
       font-weight: 600;
       color: var(--text-light);
       margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     .section-title {
       font-size: 36px;
@@ -93,6 +183,7 @@
     .text-center { text-align: center; }
     .mx-auto { margin-left: auto; margin-right: auto; }
 
+    /* 이미지 플레이스홀더 */
     .img-placeholder {
       background: var(--placeholder-bg);
       border-radius: var(--radius-sm);
@@ -107,315 +198,242 @@
       height: 48px;
     }
 
-    /* 헤더 */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--bg-white);
-      border-bottom: 1px solid var(--border-light);
-      transition: all 0.3s;
-    }
-    .nav.scrolled {
-      padding: 8px 0;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(8px);
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 72px;
-    }
-    .nav-logo {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-black);
-    }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-    }
-    .nav-links > li { position: relative; }
-    .nav-links > li > a {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text-dark);
-      padding: 8px 0;
-      display: block;
-    }
-    .nav-links > li.active > a { color: var(--text-black); font-weight: 600; }
-    .dropdown {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: var(--bg-white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-sm);
-      padding: 12px 0;
-      min-width: 180px;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.2s;
-      box-shadow: var(--shadow-md);
-    }
-    .nav-links > li:hover .dropdown { opacity: 1; visibility: visible; }
-    .dropdown a {
-      display: block;
-      padding: 8px 20px;
-      font-size: 14px;
-      color: var(--text-dark);
-    }
-    .dropdown a:hover { background: var(--bg-light); }
-    .nav-utils {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .nav-utils button {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: var(--radius-sm);
-    }
-    .nav-utils button:hover { background: var(--bg-light); }
-    .nav-utils svg { width: 20px; height: 20px; color: var(--text-dark); }
-
-    .mobile-menu-btn { display: none; }
-
-    /* 포토/영상 리뷰 갤러리 */
+    /* 섹션 1: 포토/영상 리뷰 갤러리 */
     .review-gallery-section {
       padding: 120px 0 80px;
       background: var(--bg-white);
     }
-    .gallery-filter {
+    .filter-tabs {
       display: flex;
       justify-content: center;
-      gap: 12px;
-      margin: 40px 0;
+      gap: 8px;
+      margin-top: 32px;
+      flex-wrap: wrap;
     }
-    .filter-btn {
+    .filter-tab {
       padding: 10px 20px;
-      border-radius: 24px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
       font-size: 14px;
       font-weight: 500;
       color: var(--text-gray);
-      border: 1px solid var(--border-light);
+      background: var(--bg-white);
       transition: all 0.2s;
     }
-    .filter-btn:hover,
-    .filter-btn.active {
+    .filter-tab:hover,
+    .filter-tab.active {
       background: var(--text-black);
       color: #FFFFFF;
       border-color: var(--text-black);
     }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+    .review-masonry {
       margin-top: 48px;
-    }
-    .gallery-item {
-      position: relative;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-    .gallery-item:hover { transform: translateY(-4px); }
-    .gallery-item .img-placeholder {
-      aspect-ratio: 1/1;
-      border-radius: 0;
-    }
-    .gallery-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 16px;
-      background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
-      color: #FFFFFF;
-      font-size: 13px;
-      line-height: 1.4;
-    }
-    .gallery-video-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      width: 32px;
-      height: 32px;
-      background: rgba(0,0,0,0.7);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .gallery-video-badge svg {
-      width: 16px;
-      height: 16px;
-      color: #FFFFFF;
-    }
-
-    /* 베스트 리뷰 */
-    .best-reviews-section {
-      padding: 80px 0;
-      background: var(--bg-light);
-    }
-    .review-list {
-      display: grid;
-      gap: 24px;
-      margin-top: 48px;
+      columns: 3;
+      column-gap: 24px;
     }
     .review-card {
-      background: var(--bg-white);
+      break-inside: avoid;
+      margin-bottom: 24px;
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
-      padding: 32px;
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 32px;
+      overflow: hidden;
+      background: var(--bg-white);
     }
-    .review-image .img-placeholder {
+    .review-card-image {
+      position: relative;
+    }
+    .review-card-image .img-placeholder {
       aspect-ratio: 1/1;
     }
-    .review-header {
+    .video-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(26, 26, 26, 0.8);
+      color: white;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 600;
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
+      gap: 4px;
+    }
+    .video-badge svg {
+      width: 14px;
+      height: 14px;
+    }
+    .review-card-body {
+      padding: 20px;
     }
     .review-stars {
       display: flex;
       gap: 2px;
+      margin-bottom: 12px;
     }
     .review-stars svg {
       width: 16px;
       height: 16px;
-      fill: var(--text-black);
-      color: var(--text-black);
+      color: var(--text-muted);
     }
-    .review-date {
+    .review-text {
+      font-size: 14px;
+      color: var(--text-dark);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .review-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-light);
+    }
+    .review-author {
       font-size: 13px;
       color: var(--text-light);
     }
-    .review-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 12px;
+    .review-date {
+      font-size: 12px;
+      color: var(--text-muted);
     }
-    .review-text {
-      font-size: 15px;
-      color: var(--text-dark);
-      line-height: 1.7;
-      margin-bottom: 16px;
+    .load-more-wrap {
+      text-align: center;
+      margin-top: 48px;
     }
-    .review-author {
+
+    /* 섹션 2: 베스트 리뷰 */
+    .best-reviews-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .best-reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .best-review-card {
+      padding: 32px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      background: var(--bg-white);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .best-review-header {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border-light);
     }
-    .review-avatar {
-      width: 40px;
-      height: 40px;
+    .best-review-avatar {
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       background: var(--placeholder-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      flex-shrink: 0;
     }
-    .review-avatar svg {
-      width: 20px;
-      height: 20px;
-      color: var(--placeholder-icon);
-    }
-    .review-author-name {
-      font-size: 14px;
+    .best-review-info h4 {
+      font-size: 15px;
       font-weight: 600;
       color: var(--text-black);
+      margin-bottom: 4px;
     }
-    .review-author-info {
+    .best-review-info p {
       font-size: 13px;
       color: var(--text-light);
     }
-    .review-verified {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 12px;
-      color: var(--text-light);
-      padding: 4px 8px;
-      background: var(--bg-light);
-      border-radius: 4px;
-      margin-left: auto;
+    .best-review-stars {
+      display: flex;
+      gap: 2px;
     }
-    .review-verified svg {
-      width: 14px;
-      height: 14px;
+    .best-review-stars svg {
+      width: 18px;
+      height: 18px;
+      color: var(--text-muted);
+    }
+    .best-review-text {
+      font-size: 15px;
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+    .best-review-images {
+      display: flex;
+      gap: 12px;
+    }
+    .best-review-images .img-placeholder {
+      width: 80px;
+      height: 80px;
+      flex-shrink: 0;
+    }
+    .best-review-images .img-placeholder svg {
+      width: 32px;
+      height: 32px;
     }
 
-    /* 미디어·인플루언서 리뷰 */
+    /* 섹션 3: 미디어·인플루언서 리뷰 */
     .media-reviews-section {
       padding: 80px 0;
       background: var(--bg-white);
     }
-    .media-grid {
+    .media-reviews-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       margin-top: 48px;
     }
-    .media-card {
+    .media-review-card {
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
       overflow: hidden;
-      transition: transform 0.2s;
+      background: var(--bg-white);
     }
-    .media-card:hover { transform: translateY(-4px); }
-    .media-card .img-placeholder {
-      aspect-ratio: 16/9;
-      border-radius: 0;
+    .media-review-card .img-placeholder {
+      aspect-ratio: 16/10;
     }
-    .media-card-body {
+    .media-review-card-body {
       padding: 24px;
     }
     .media-badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: var(--bg-light);
+      border-radius: var(--radius-sm);
       font-size: 12px;
       font-weight: 600;
-      color: var(--text-light);
-      background: var(--bg-light);
-      padding: 4px 12px;
-      border-radius: 4px;
+      color: var(--text-dark);
       margin-bottom: 12px;
     }
-    .media-title {
+    .media-badge svg {
+      width: 14px;
+      height: 14px;
+    }
+    .media-review-title {
       font-size: 17px;
       font-weight: 700;
       color: var(--text-black);
-      line-height: 1.4;
       margin-bottom: 8px;
+      line-height: 1.4;
     }
-    .media-desc {
+    .media-review-desc {
       font-size: 14px;
       color: var(--text-gray);
       line-height: 1.6;
       margin-bottom: 16px;
     }
-    .media-source {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .media-review-source {
       font-size: 13px;
       color: var(--text-light);
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
-    .media-source svg {
-      width: 16px;
-      height: 16px;
+    .media-review-source svg {
+      width: 14px;
+      height: 14px;
     }
 
     /* 푸터 */
@@ -435,13 +453,12 @@
       font-size: 18px;
       font-weight: 700;
       color: var(--text-black);
-      margin-bottom: 12px;
-    }
-    .footer-brand-desc {
-      font-size: 14px;
-      color: var(--text-light);
-      line-height: 1.6;
       margin-bottom: 16px;
+    }
+    .footer-info {
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.8;
     }
     .footer-col-title {
       font-size: 14px;
@@ -453,7 +470,10 @@
       display: block;
       font-size: 14px;
       color: var(--text-light);
-      padding: 4px 0;
+      padding: 6px 0;
+    }
+    .footer-col a:hover {
+      color: var(--text-black);
     }
     .footer-bottom {
       display: flex;
@@ -463,20 +483,23 @@
       font-size: 13px;
       color: var(--text-muted);
     }
-    .footer-links {
-      display: flex;
-      gap: 16px;
+    .footer-bottom a {
+      color: var(--text-muted);
+      margin-left: 16px;
+    }
+    .footer-bottom a:hover {
+      color: var(--text-dark);
     }
 
     /* TOP 버튼 */
-    .top-btn {
+    .top-button {
       position: fixed;
-      bottom: 40px;
-      right: 40px;
+      bottom: 32px;
+      right: 32px;
       width: 48px;
       height: 48px;
       background: var(--text-black);
-      color: #FFFFFF;
+      color: white;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -484,32 +507,61 @@
       opacity: 0;
       visibility: hidden;
       transition: all 0.3s;
-      box-shadow: var(--shadow-md);
+      z-index: 99;
     }
-    .top-btn.visible { opacity: 1; visibility: visible; }
-    .top-btn svg { width: 20px; height: 20px; }
+    .top-button.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    .top-button svg {
+      width: 20px;
+      height: 20px;
+    }
 
     /* 반응형 */
     @media (max-width: 768px) {
-      .nav-links,
-      .nav-utils button:not(:last-child) { display: none; }
-      .mobile-menu-btn {
+      .nav-links { display: none; }
+      .mobile-menu-toggle { 
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 40px;
-        height: 40px;
+        width: 24px;
+        height: 24px;
       }
+      .mobile-menu-toggle svg {
+        width: 24px;
+        height: 24px;
+        color: var(--text-dark);
+      }
+      
       .section-title { font-size: 28px; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      .review-card {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 24px;
+      
+      .review-masonry {
+        columns: 1;
       }
-      .media-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .top-btn { bottom: 24px; right: 24px; }
+      
+      .best-reviews-grid,
+      .media-reviews-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+      
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+      
+      .top-button {
+        bottom: 20px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
+      }
     }
   </style>
 </head>
@@ -520,43 +572,48 @@
     <div class="container">
       <div class="nav-inner">
         <a href="page_01.html" class="nav-logo">언커먼타올</a>
-        <ul class="nav-links">
-          <li><a href="page_01.html">메인</a></li>
-          <li>
+        <nav class="nav-links">
+          <div class="nav-item">
             <a href="page_02.html">브랜드</a>
-            <ul class="dropdown">
-              <li><a href="page_02.html">브랜드 철학</a></li>
-              <li><a href="page_03.html">브랜드 스토리</a></li>
-              <li><a href="page_04.html">브랜드 여정</a></li>
-              <li><a href="page_05.html">소재 이야기</a></li>
-              <li><a href="page_06.html">지속가능성</a></li>
-            </ul>
-          </li>
-          <li><a href="page_07.html">제품</a></li>
-          <li><a href="page_08.html">타월 가이드</a></li>
-          <li>
+            <div class="nav-dropdown">
+              <a href="page_02.html">브랜드 철학</a>
+              <a href="page_03.html">브랜드 스토리</a>
+              <a href="page_04.html">브랜드 여정</a>
+              <a href="page_05.html">소재 이야기</a>
+              <a href="page_06.html">지속가능성</a>
+            </div>
+          </div>
+          <div class="nav-item">
+            <a href="page_07.html">제품</a>
+          </div>
+          <div class="nav-item">
+            <a href="page_08.html">타월 가이드</a>
+          </div>
+          <div class="nav-item">
             <a href="page_09.html">B2B문의</a>
-            <ul class="dropdown">
-              <li><a href="page_09.html">대량구매</a></li>
-              <li><a href="page_10.html">파트너십</a></li>
-            </ul>
-          </li>
-          <li class="active"><a href="page_11.html">고객 후기</a></li>
-          <li>
+            <div class="nav-dropdown">
+              <a href="page_09.html">대량구매</a>
+              <a href="page_10.html">파트너십</a>
+            </div>
+          </div>
+          <div class="nav-item active">
+            <a href="page_11.html">고객 후기</a>
+          </div>
+          <div class="nav-item">
             <a href="page_12.html">고객센터</a>
-            <ul class="dropdown">
-              <li><a href="page_12.html">FAQ</a></li>
-              <li><a href="page_13.html">1:1 문의</a></li>
-              <li><a href="page_14.html">주문 조회</a></li>
-              <li><a href="page_15.html">매장 안내</a></li>
-            </ul>
-          </li>
-        </ul>
-        <div class="nav-utils">
-          <button><i data-lucide="search"></i></button>
-          <button><i data-lucide="user"></i></button>
-          <button><i data-lucide="shopping-cart"></i></button>
-          <button class="mobile-menu-btn"><i data-lucide="menu"></i></button>
+            <div class="nav-dropdown">
+              <a href="page_12.html">FAQ</a>
+              <a href="page_13.html">1:1 문의</a>
+              <a href="page_14.html">주문 조회</a>
+              <a href="page_15.html">매장 안내</a>
+            </div>
+          </div>
+        </nav>
+        <div class="nav-actions">
+          <button aria-label="검색"><i data-lucide="search"></i></button>
+          <button aria-label="마이페이지"><i data-lucide="user"></i></button>
+          <button aria-label="장바구니"><i data-lucide="shopping-bag"></i></button>
+          <button class="mobile-menu-toggle" aria-label="메뉴"><i data-lucide="menu"></i></button>
         </div>
       </div>
     </div>
@@ -569,92 +626,164 @@
       <div class="container">
         <div class="text-center">
           <p class="section-label">CUSTOMER REVIEWS</p>
-          <h1 class="section-title">고객님들의 솔직한 후기</h1>
-          <p class="section-desc mx-auto">언커먼타올을 직접 사용해 보신 고객님들의 실제 사용 후기와 포토/영상 리뷰를 확인하세요.</p>
+          <h1 class="section-title">실제 고객님들의 사용 후기</h1>
+          <p class="section-desc mx-auto">언커먼타올을 직접 사용하신 고객님들의 솔직한 리뷰와 사진을 확인해보세요</p>
         </div>
 
-        <div class="gallery-filter">
-          <button class="filter-btn active">전체</button>
-          <button class="filter-btn">포토 리뷰</button>
-          <button class="filter-btn">영상 리뷰</button>
-          <button class="filter-btn">베스트 리뷰</button>
+        <div class="filter-tabs">
+          <button class="filter-tab active">전체</button>
+          <button class="filter-tab">포토 리뷰</button>
+          <button class="filter-tab">영상 리뷰</button>
+          <button class="filter-tab">베스트 순</button>
+          <button class="filter-tab">최신 순</button>
         </div>
 
-        <div class="gallery-grid">
-          <div class="gallery-item">
-            <div class="img-placeholder">
-              <i data-lucide="image"></i>
+        <div class="review-masonry">
+          <!-- 리뷰 카드 1 -->
+          <div class="review-card">
+            <div class="review-card-image">
+              <div class="img-placeholder">
+                <i data-lucide="image"></i>
+              </div>
             </div>
-            <div class="gallery-overlay">
-              "정말 부드럽고 흡수력이 좋아요"
-            </div>
-          </div>
-          <div class="gallery-item">
-            <div class="img-placeholder">
-              <i data-lucide="image"></i>
-            </div>
-            <div class="gallery-video-badge">
-              <i data-lucide="play"></i>
-            </div>
-            <div class="gallery-overlay">
-              "호텔 수건보다 좋은 것 같아요"
-            </div>
-          </div>
-          <div class="gallery-item">
-            <div class="img-placeholder">
-              <i data-lucide="image"></i>
-            </div>
-            <div class="gallery-overlay">
-              "피부가 예민한데 자극 없어요"
+            <div class="review-card-body">
+              <div class="review-stars">
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+              </div>
+              <p class="review-text">정말 호텔에서 쓰는 수건 같아요. 부드럽고 흡수력도 좋고, 무엇보다 세탁해도 보풀이 거의 안 생겨서 놀랐어요.</p>
+              <div class="review-meta">
+                <span class="review-author">김*영</span>
+                <span class="review-date">2024.12.15</span>
+              </div>
             </div>
           </div>
-          <div class="gallery-item">
-            <div class="img-placeholder">
-              <i data-lucide="image"></i>
+
+          <!-- 리뷰 카드 2 (영상) -->
+          <div class="review-card">
+            <div class="review-card-image">
+              <div class="img-placeholder">
+                <i data-lucide="image"></i>
+              </div>
+              <div class="video-badge">
+                <i data-lucide="play"></i>
+                영상
+              </div>
             </div>
-            <div class="gallery-overlay">
-              "세탁 후에도 부드러움 유지"
-            </div>
-          </div>
-          <div class="gallery-item">
-            <div class="img-placeholder">
-              <i data-lucide="image"></i>
-            </div>
-            <div class="gallery-overlay">
-              "촉감이 정말 좋아요"
-            </div>
-          </div>
-          <div class="gallery-item">
-            <div class="img-placeholder">
-              <i data-lucide="image"></i>
-            </div>
-            <div class="gallery-video-badge">
-              <i data-lucide="play"></i>
-            </div>
-            <div class="gallery-overlay">
-              "물 흡수가 정말 빨라요"
-            </div>
-          </div>
-          <div class="gallery-item">
-            <div class="img-placeholder">
-              <i data-lucide="image"></i>
-            </div>
-            <div class="gallery-overlay">
-              "선물용으로도 좋을 것 같아요"
+            <div class="review-card-body">
+              <div class="review-stars">
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+              </div>
+              <p class="review-text">촉감이 너무 좋아서 영상으로 찍어봤어요. 세안 후 피부에 닿는 느낌이 정말 부드럽고 편안해요.</p>
+              <div class="review-meta">
+                <span class="review-author">이*지</span>
+                <span class="review-date">2024.12.10</span>
+              </div>
             </div>
           </div>
-          <div class="gallery-item">
-            <div class="img-placeholder">
-              <i data-lucide="image"></i>
+
+          <!-- 리뷰 카드 3 -->
+          <div class="review-card">
+            <div class="review-card-image">
+              <div class="img-placeholder">
+                <i data-lucide="image"></i>
+              </div>
             </div>
-            <div class="gallery-overlay">
-              "아침마다 기분이 좋아져요"
+            <div class="review-card-body">
+              <div class="review-stars">
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+              </div>
+              <p class="review-text">아토피가 있어서 수건 고르기가 까다로운데, 이 제품은 피부 자극이 전혀 없어요. 소재가 정말 좋은 것 같아요.</p>
+              <div class="review-meta">
+                <span class="review-author">박*현</span>
+                <span class="review-date">2024.12.08</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 리뷰 카드 4 -->
+          <div class="review-card">
+            <div class="review-card-image">
+              <div class="img-placeholder">
+                <i data-lucide="image"></i>
+              </div>
+            </div>
+            <div class="review-card-body">
+              <div class="review-stars">
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+              </div>
+              <p class="review-text">선물로 받았는데 너무 마음에 들어서 추가로 구매했어요. 색상도 예쁘고 품질도 최고예요.</p>
+              <div class="review-meta">
+                <span class="review-author">최*민</span>
+                <span class="review-date">2024.12.05</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 리뷰 카드 5 -->
+          <div class="review-card">
+            <div class="review-card-image">
+              <div class="img-placeholder">
+                <i data-lucide="image"></i>
+              </div>
+            </div>
+            <div class="review-card-body">
+              <div class="review-stars">
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+              </div>
+              <p class="review-text">물을 엄청 잘 흡수해요. 세수 후 한 번만 닦아도 깨끗하게 물기가 제거돼요.</p>
+              <div class="review-meta">
+                <span class="review-author">정*수</span>
+                <span class="review-date">2024.12.01</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 리뷰 카드 6 -->
+          <div class="review-card">
+            <div class="review-card-image">
+              <div class="img-placeholder">
+                <i data-lucide="image"></i>
+              </div>
+            </div>
+            <div class="review-card-body">
+              <div class="review-stars">
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+              </div>
+              <p class="review-text">가격대가 있지만 그만한 가치가 충분해요. 일반 수건과는 확실히 다르네요.</p>
+              <div class="review-meta">
+                <span class="review-author">강*희</span>
+                <span class="review-date">2024.11.28</span>
+              </div>
             </div>
           </div>
         </div>
 
-        <div style="text-align:center; margin-top:48px;">
-          <a href="#" class="btn btn-secondary">리뷰 더 보기</a>
+        <div class="load-more-wrap">
+          <button class="btn btn-secondary">더 많은 후기 보기</button>
         </div>
       </div>
     </section>
@@ -664,124 +793,118 @@
       <div class="container">
         <div class="text-center">
           <p class="section-label">BEST REVIEWS</p>
-          <h2 class="section-title">베스트 리뷰 모아보기</h2>
-          <p class="section-desc mx-auto">가장 많은 공감을 받은 고객 리뷰를 소개합니다.</p>
+          <h2 class="section-title">가장 많은 공감을 받은 베스트 후기</h2>
+          <p class="section-desc mx-auto">실제 사용하신 고객님들의 상세한 리뷰를 확인해보세요</p>
         </div>
 
-        <div class="review-list">
-          <div class="review-card">
-            <div class="review-image">
+        <div class="best-reviews-grid">
+          <!-- 베스트 리뷰 1 -->
+          <div class="best-review-card">
+            <div class="best-review-header">
+              <div class="best-review-avatar"></div>
+              <div class="best-review-info">
+                <h4>이*정</h4>
+                <p>구매 후 3개월 사용</p>
+              </div>
+            </div>
+            <div class="best-review-stars">
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+            </div>
+            <p class="best-review-text">처음엔 가격이 부담스러웠는데, 사용해보니 완전히 만족스러워요. 3개월 넘게 매일 사용하고 세탁해도 처음 받았을 때랑 똑같은 부드러움과 흡수력을 유지해요. 보풀도 거의 안 생기고, 무엇보다 세탁 후 냄새가 전혀 안 나요. 일반 수건은 습기가 차면 냄새가 났었는데 이건 정말 다르네요. 피부에 닿는 느낌도 자극이 없고 정말 편안해요.</p>
+            <div class="best-review-images">
               <div class="img-placeholder">
                 <i data-lucide="image"></i>
               </div>
-            </div>
-            <div class="review-content">
-              <div class="review-header">
-                <div class="review-stars">
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                </div>
-                <span class="review-date">2025.01.15</span>
+              <div class="img-placeholder">
+                <i data-lucide="image"></i>
               </div>
-              <h3 class="review-title">호텔 수건보다 부드러워요!</h3>
-              <p class="review-text">
-                5성급 호텔에서 쓰던 수건이 이 정도는 아니었는데, 언커먼타올은 정말 차원이 다르네요. 
-                처음 만졌을 때 놀랐고, 세탁 후에도 부드러움이 그대로 유지돼서 더 놀랐어요. 
-                물 흡수도 빠르고, 피부에 자극이 전혀 없어서 매일 아침이 기다려집니다.
-              </p>
-              <div class="review-author">
-                <div class="review-avatar">
-                  <i data-lucide="user"></i>
-                </div>
-                <div>
-                  <p class="review-author-name">김○○ 님</p>
-                  <p class="review-author-info">페이스타월 화이트 구매</p>
-                </div>
-                <div class="review-verified">
-                  <i data-lucide="check-circle"></i>
-                  구매 인증
-                </div>
+              <div class="img-placeholder">
+                <i data-lucide="image"></i>
               </div>
             </div>
           </div>
 
-          <div class="review-card">
-            <div class="review-image">
+          <!-- 베스트 리뷰 2 -->
+          <div class="best-review-card">
+            <div class="best-review-header">
+              <div class="best-review-avatar"></div>
+              <div class="best-review-info">
+                <h4>김*우</h4>
+                <p>재구매 고객</p>
+              </div>
+            </div>
+            <div class="best-review-stars">
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+            </div>
+            <p class="best-review-text">처음 하나 사서 써보고 너무 좋아서 온 가족 것까지 다 바꿨어요. 아이가 아토피가 있어서 수건을 신중하게 골라야 하는데, 이 제품은 피부 트러블이 전혀 없고 오히려 피부 상태가 좋아진 것 같아요. 흡수력이 정말 뛰어나서 머리를 감고 나서도 금방 말라요. 가격은 있지만 오래 쓸 수 있고 품질이 확실해서 가성비도 좋다고 생각해요.</p>
+            <div class="best-review-images">
               <div class="img-placeholder">
                 <i data-lucide="image"></i>
               </div>
-            </div>
-            <div class="review-content">
-              <div class="review-header">
-                <div class="review-stars">
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                </div>
-                <span class="review-date">2025.01.10</span>
-              </div>
-              <h3 class="review-title">예민한 피부에도 안심이에요</h3>
-              <p class="review-text">
-                피부가 워낙 예민해서 수건 고를 때 항상 신경 쓰였는데, 
-                언커먼타올은 자극이 전혀 없어요. 면 100%라서 그런지 부드럽고 안전한 느낌이 들어요. 
-                세안 후 얼굴을 닦을 때 살짝 두드리기만 해도 물기가 쏙 흡수되는 게 정말 좋아요.
-              </p>
-              <div class="review-author">
-                <div class="review-avatar">
-                  <i data-lucide="user"></i>
-                </div>
-                <div>
-                  <p class="review-author-name">이○○ 님</p>
-                  <p class="review-author-info">페이스타월 아이보리 구매</p>
-                </div>
-                <div class="review-verified">
-                  <i data-lucide="check-circle"></i>
-                  구매 인증
-                </div>
+              <div class="img-placeholder">
+                <i data-lucide="image"></i>
               </div>
             </div>
           </div>
 
-          <div class="review-card">
-            <div class="review-image">
+          <!-- 베스트 리뷰 3 -->
+          <div class="best-review-card">
+            <div class="best-review-header">
+              <div class="best-review-avatar"></div>
+              <div class="best-review-info">
+                <h4>박*영</h4>
+                <p>호텔업계 종사자</p>
+              </div>
+            </div>
+            <div class="best-review-stars">
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+            </div>
+            <p class="best-review-text">호텔에서 일하면서 좋은 수건을 많이 접해봤는데, 이 제품은 정말 최상급이에요. GSM이나 면 품질이 확실히 다르고, 무게감도 고급스러워요. 집에서 사용하기엔 조금 사치스럽다고 생각할 수도 있지만, 매일 사용하는 거니까 투자할 가치가 충분하다고 봐요. 세안 후 피부에 닿는 순간의 부드러움은 정말 최고예요.</p>
+            <div class="best-review-images">
+              <div class="img-placeholder">
+                <i data-lucide="image"></i>
+              </div>
+              <div class="img-placeholder">
+                <i data-lucide="image"></i>
+              </div>
               <div class="img-placeholder">
                 <i data-lucide="image"></i>
               </div>
             </div>
-            <div class="review-content">
-              <div class="review-header">
-                <div class="review-stars">
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                  <i data-lucide="star"></i>
-                </div>
-                <span class="review-date">2025.01.05</span>
+          </div>
+
+          <!-- 베스트 리뷰 4 -->
+          <div class="best-review-card">
+            <div class="best-review-header">
+              <div class="best-review-avatar"></div>
+              <div class="best-review-info">
+                <h4>최*아</h4>
+                <p>민감성 피부</p>
               </div>
-              <h3 class="review-title">선물했더니 너무 좋아하더라고요</h3>
-              <p class="review-text">
-                친구 집들이 선물로 언커먼타올 세트를 샀는데, 반응이 정말 좋았어요. 
-                포장도 고급스럽고, 무엇보다 품질이 확실해서 선물하기에 부담 없었어요. 
-                나중에 친구가 따로 연락해서 어디서 샀냐고 물어볼 정도로 만족도가 높았답니다.
-              </p>
-              <div class="review-author">
-                <div class="review-avatar">
-                  <i data-lucide="user"></i>
-                </div>
-                <div>
-                  <p class="review-author-name">박○○ 님</p>
-                  <p class="review-author-info">페이스타월 세트 구매</p>
-                </div>
-                <div class="review-verified">
-                  <i data-lucide="check-circle"></i>
-                  구매 인증
-                </div>
+            </div>
+            <div class="best-review-stars">
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+            </div>
+            <p class="best-review-text">민감성 피부라 일반 수건을 쓰면 자극을 받아서 항상 조심스러웠어요. 이 제품은 정말 부드럽고 피부에 자극이 전혀 없어요. 세탁을 여러 번 해도 부드러움이 유지되고, 무엇보다 화학적인 냄새가 전혀 안 나서 안심하고 사용할 수 있어요. 색상도 예쁘고 인테리어에도 잘 어울려요. 친구들한테도 추천했어요.</p>
+            <div class="best-review-images">
+              <div class="img-placeholder">
+                <i data-lucide="image"></i>
               </div>
             </div>
           </div>
@@ -794,65 +917,124 @@
       <div class="container">
         <div class="text-center">
           <p class="section-label">MEDIA & INFLUENCER</p>
-          <h2 class="section-title">미디어·인플루언서 리뷰</h2>
-          <p class="section-desc mx-auto">언커먼타올을 경험한 미디어와 인플루언서들의 리뷰를 확인하세요.</p>
+          <h2 class="section-title">미디어와 인플루언서가 주목한 언커먼타올</h2>
+          <p class="section-desc mx-auto">각 분야 전문가들의 심층 리뷰를 확인해보세요</p>
         </div>
 
-        <div class="media-grid">
-          <div class="media-card">
+        <div class="media-reviews-grid">
+          <!-- 미디어 리뷰 1 -->
+          <div class="media-review-card">
             <div class="img-placeholder">
               <i data-lucide="image"></i>
             </div>
-            <div class="media-card-body">
-              <span class="media-badge">유튜브 리뷰</span>
-              <h3 class="media-title">리빙 인플루언서 A의 언커먼타올 언박싱</h3>
-              <p class="media-desc">
-                프리미엄 수건의 기준을 새로 세운 언커먼타올의 첫 인상과 실제 사용 후기를 영상으로 확인해 보세요.
+            <div class="media-review-card-body">
+              <div class="media-badge">
+                <i data-lucide="newspaper"></i>
+                리빙 매거진
+              </div>
+              <h3 class="media-review-title">프리미엄 타월의 기준을 제시하다</h3>
+              <p class="media-review-desc">페이스타월 단일 카테고리에 집중하며 소재 품질과 제직 공법에 투명성을 더한 브랜드의 접근 방식이 돋보인다.</p>
+              <p class="media-review-source">
+                <i data-lucide="link"></i>
+                리빙&인테리어 매거진
               </p>
-              <div class="media-source">
+            </div>
+          </div>
+
+          <!-- 미디어 리뷰 2 -->
+          <div class="media-review-card">
+            <div class="img-placeholder">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="media-review-card-body">
+              <div class="media-badge">
                 <i data-lucide="youtube"></i>
-                유튜브 채널명
+                유튜브
               </div>
+              <h3 class="media-review-title">뷰티 유튜버가 직접 사용해본 솔직 리뷰</h3>
+              <p class="media-review-desc">피부에 닿는 제품만큼은 타협하지 않는 뷰티 전문가의 시선으로 본 언커먼타올의 품질과 사용감 리뷰.</p>
+              <p class="media-review-source">
+                <i data-lucide="user"></i>
+                뷰티 인플루언서 A
+              </p>
             </div>
           </div>
 
-          <div class="media-card">
+          <!-- 미디어 리뷰 3 -->
+          <div class="media-review-card">
             <div class="img-placeholder">
               <i data-lucide="image"></i>
             </div>
-            <div class="media-card-body">
-              <span class="media-badge">인스타그램</span>
-              <h3 class="media-title">뷰티 인플루언서 B의 세안 루틴 소개</h3>
-              <p class="media-desc">
-                매일 사용하는 세안 타월로 언커먼타올을 선택한 이유와 피부 변화에 대한 솔직한 이야기입니다.
-              </p>
-              <div class="media-source">
+            <div class="media-review-card-body">
+              <div class="media-badge">
                 <i data-lucide="instagram"></i>
-                @influencer_b
+                인스타그램
               </div>
+              <h3 class="media-review-title">라이프스타일 인플루언서의 일상 속 언커먼타올</h3>
+              <p class="media-review-desc">미니멀 라이프를 추구하는 인플루언서가 선택한 한 가지, 매일 아침 세안 후의 작은 사치.</p>
+              <p class="media-review-source">
+                <i data-lucide="user"></i>
+                라이프스타일 인플루언서 B
+              </p>
             </div>
           </div>
 
-          <div class="media-card">
+          <!-- 미디어 리뷰 4 -->
+          <div class="media-review-card">
             <div class="img-placeholder">
               <i data-lucide="image"></i>
             </div>
-            <div class="media-card-body">
-              <span class="media-badge">블로그 리뷰</span>
-              <h3 class="media-title">라이프스타일 블로거 C의 언커먼타올 장기 사용기</h3>
-              <p class="media-desc">
-                6개월 동안 매일 사용하며 느낀 언커먼타올의 내구성과 품질 지속력에 대한 상세 리뷰입니다.
-              </p>
-              <div class="media-source">
-                <i data-lucide="file-text"></i>
-                블로그명
+            <div class="media-review-card-body">
+              <div class="media-badge">
+                <i data-lucide="newspaper"></i>
+                패션 매거진
               </div>
+              <h3 class="media-review-title">럭셔리 라이프스타일의 새로운 기준</h3>
+              <p class="media-review-desc">호텔에서 경험한 프리미엄 감성을 일상으로 가져온 브랜드. 디테일에 대한 집착이 만든 결과물.</p>
+              <p class="media-review-source">
+                <i data-lucide="link"></i>
+                패션&라이프스타일 매거진
+              </p>
             </div>
           </div>
-        </div>
 
-        <div style="text-align:center; margin-top:48px;">
-          <a href="page_07.html" class="btn btn-primary">제품 보러가기</a>
+          <!-- 미디어 리뷰 5 -->
+          <div class="media-review-card">
+            <div class="img-placeholder">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="media-review-card-body">
+              <div class="media-badge">
+                <i data-lucide="youtube"></i>
+                유튜브
+              </div>
+              <h3 class="media-review-title">인테리어 전문가가 추천하는 욕실 아이템</h3>
+              <p class="media-review-desc">공간의 질을 높이는 작은 선택들. 기능과 미학을 모두 만족시키는 프리미엄 타월의 가치.</p>
+              <p class="media-review-source">
+                <i data-lucide="user"></i>
+                인테리어 유튜버 C
+              </p>
+            </div>
+          </div>
+
+          <!-- 미디어 리뷰 6 -->
+          <div class="media-review-card">
+            <div class="img-placeholder">
+              <i data-lucide="image"></i>
+            </div>
+            <div class="media-review-card-body">
+              <div class="media-badge">
+                <i data-lucide="instagram"></i>
+                인스타그램
+              </div>
+              <h3 class="media-review-title">맘블로거가 선택한 온 가족 타월</h3>
+              <p class="media-review-desc">아이 피부에도 안심하고 사용할 수 있는 프리미엄 품질. 가족 모두가 만족하는 선택.</p>
+              <p class="media-review-source">
+                <i data-lucide="user"></i>
+                맘블로거 D
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -865,36 +1047,37 @@
       <div class="footer-grid">
         <div>
           <p class="footer-brand-name">언커먼타올</p>
-          <p class="footer-brand-desc">매일 얼굴에 닿는 프리미엄 페이스타월</p>
-          <p style="font-size:13px; color:var(--text-muted); margin-top:16px;">
-            [클라이언트 확인 필요: 상호 / 대표 / 사업자번호]<br>
-            [클라이언트 확인 필요: 주소]<br>
-            Tel: [클라이언트 확인 필요: 전화번호]<br>
-            Email: [클라이언트 확인 필요: 이메일]
-          </p>
+          <div class="footer-info">
+            상호: [클라이언트 확인 필요: 법인명/상호]<br>
+            대표: [클라이언트 확인 필요]<br>
+            사업자등록번호: [클라이언트 확인 필요]<br>
+            통신판매업신고번호: [클라이언트 확인 필요]<br>
+            주소: [클라이언트 확인 필요]<br>
+            대표전화: [클라이언트 확인 필요]<br>
+            이메일: [클라이언트 확인 필요]
+          </div>
         </div>
-        <div>
-          <p class="footer-col-title">브랜드</p>
-          <a href="page_02.html">브랜드 철학</a>
-          <a href="page_03.html">브랜드 스토리</a>
-          <a href="page_05.html">소재 이야기</a>
-        </div>
-        <div>
+        <div class="footer-col">
           <p class="footer-col-title">쇼핑</p>
           <a href="page_07.html">전체 제품</a>
-          <a href="page_08.html">타월 가이드</a>
+          <a href="page_07.html">베스트셀러</a>
         </div>
-        <div>
-          <p class="footer-col-title">고객지원</p>
+        <div class="footer-col">
+          <p class="footer-col-title">브랜드</p>
+          <a href="page_02.html">브랜드 철학</a>
+          <a href="page_05.html">소재 이야기</a>
+          <a href="page_06.html">지속가능성</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-title">고객</p>
           <a href="page_12.html">FAQ</a>
           <a href="page_13.html">1:1 문의</a>
           <a href="page_14.html">주문 조회</a>
-          <a href="page_15.html">매장 안내</a>
         </div>
       </div>
       <div class="footer-bottom">
         <span>© 2025 언커먼타올. All rights reserved.</span>
-        <div class="footer-links">
+        <div>
           <a href="#">개인정보처리방침</a>
           <a href="#">이용약관</a>
         </div>
@@ -903,36 +1086,42 @@
   </footer>
 
   <!-- TOP 버튼 -->
-  <button class="top-btn" id="topBtn">
+  <button class="top-button" id="topButton" aria-label="맨 위로">
     <i data-lucide="arrow-up"></i>
   </button>
 
   <script>
     lucide.createIcons();
 
-    // 스크롤 시 헤더 스타일 변경
+    // 네비게이션 스크롤
+    const nav = document.querySelector('.nav');
     window.addEventListener('scroll', () => {
-      const nav = document.querySelector('.nav');
-      const topBtn = document.getElementById('topBtn');
-      if (window.scrollY > 100) {
+      if (window.scrollY > 50) {
         nav.classList.add('scrolled');
-        topBtn.classList.add('visible');
       } else {
         nav.classList.remove('scrolled');
-        topBtn.classList.remove('visible');
       }
     });
 
     // TOP 버튼
-    document.getElementById('topBtn').addEventListener('click', () => {
+    const topButton = document.getElementById('topButton');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        topButton.classList.add('visible');
+      } else {
+        topButton.classList.remove('visible');
+      }
+    });
+    topButton.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // 갤러리 필터
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+    // 필터 탭 전환
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
       });
     });
   </script>
