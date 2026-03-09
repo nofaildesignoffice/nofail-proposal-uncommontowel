@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>소재 이야기 | 언커먼타올 - 대나무 섬유 페이스타월의 비밀</title>
-  <meta name="description" content="대나무에서 실을 뽑고, 그 실로 수건을 짭니다. 부드러움, 항균, 친환경까지 — 대나무 섬유 페이스타월의 소재 이야기.">
+  <title>소재 이야기 | 언커먼타올 - 대나무 섬유(bamboo yarn)의 모든 것</title>
+  <meta name="description" content="왜 대나무 섬유인가. 부드러운 촉감, 천연 항균성, 친환경 패키징까지. 프리미엄 페이스타월의 소재와 제직 공법, 관리 방법을 상세히 소개합니다.">
+  <meta name="keywords" content="대나무 섬유 수건, bamboo towel 소재, 대나무 원사, 친환경 수건, 수건 세탁법, 프리미엄 수건, 페이스타월">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -74,8 +75,6 @@
       font-weight: 600;
       color: var(--text-light);
       margin-bottom: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
     }
     .section-title {
       font-size: 36px;
@@ -88,7 +87,7 @@
       font-size: 16px;
       color: var(--text-gray);
       line-height: 1.7;
-      max-width: 640px;
+      max-width: 560px;
     }
     .text-center { text-align: center; }
     .mx-auto { margin-left: auto; margin-right: auto; }
@@ -108,15 +107,14 @@
     }
 
     .icon-box {
-      width: 64px;
-      height: 64px;
+      width: 56px;
+      height: 56px;
       border-radius: var(--radius-sm);
       background: var(--bg-light);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      margin-bottom: 20px;
     }
     .icon-box svg {
       width: 28px;
@@ -124,7 +122,9 @@
       color: var(--text-dark);
     }
 
-    /* NAV */
+    /* ==========================================
+       HEADER
+       ========================================== */
     .nav {
       position: sticky;
       top: 0;
@@ -154,9 +154,8 @@
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
-      display: flex;
-      align-items: center;
-      gap: 4px;
+      padding: 8px 0;
+      display: block;
     }
     .nav-item.active > a {
       color: var(--text-black);
@@ -170,57 +169,76 @@
       border: 1px solid var(--border-light);
       border-radius: var(--radius-sm);
       padding: 8px 0;
-      min-width: 180px;
+      min-width: 160px;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(-8px);
-      transition: all 0.2s;
+      transition: opacity 0.2s, visibility 0.2s;
       box-shadow: var(--shadow-md);
     }
     .nav-item:hover .nav-dropdown {
       opacity: 1;
       visibility: visible;
-      transform: translateY(0);
     }
     .nav-dropdown a {
       display: block;
-      padding: 8px 20px;
+      padding: 8px 16px;
       font-size: 14px;
-      color: var(--text-gray);
+      color: var(--text-dark);
     }
     .nav-dropdown a:hover {
       background: var(--bg-light);
-      color: var(--text-black);
     }
-    .nav-actions {
+    .nav-utils {
       display: flex;
       align-items: center;
       gap: 16px;
     }
-    .nav-actions svg {
-      width: 22px;
-      height: 22px;
+    .nav-utils button {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: var(--text-dark);
-      cursor: pointer;
+    }
+    .nav-utils button svg {
+      width: 20px;
+      height: 20px;
+    }
+    .mobile-menu-btn {
+      display: none;
+      width: 36px;
+      height: 36px;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dark);
+    }
+    .mobile-menu-btn svg {
+      width: 24px;
+      height: 24px;
     }
 
-    /* HERO */
-    .hero {
-      padding: 100px 0 80px;
+    /* ==========================================
+       HERO
+       ========================================== */
+    .page-hero {
+      padding: 80px 0 60px;
       background: var(--bg-white);
       text-align: center;
     }
-    .hero .section-title {
+    .page-hero .section-title {
       font-size: 42px;
-      max-width: 800px;
+      max-width: 700px;
       margin: 0 auto 16px;
     }
-    .hero .section-desc {
+    .page-hero .section-desc {
       margin: 0 auto;
     }
 
-    /* SECTION 1: 특성 카드 */
-    .features-section {
+    /* ==========================================
+       SECTION 1: 왜 대나무 섬유인가요
+       ========================================== */
+    .material-features {
       padding: 80px 0;
       background: var(--bg-light);
     }
@@ -232,106 +250,113 @@
     }
     .feature-card {
       padding: 32px;
-      background: var(--bg-white);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
+      background: var(--bg-white);
       text-align: center;
     }
     .feature-card .icon-box {
       margin: 0 auto 20px;
     }
     .feature-card-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 12px;
-    }
-    .feature-card-desc {
-      font-size: 15px;
-      color: var(--text-gray);
-      line-height: 1.7;
-    }
-
-    /* 비교 인포그래픽 */
-    .comparison-box {
-      margin-top: 48px;
-      padding: 40px;
-      background: var(--bg-white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      text-align: center;
-    }
-    .comparison-box h3 {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 24px;
-    }
-    .comparison-box .img-placeholder {
-      aspect-ratio: 16/9;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .comparison-box p {
-      margin-top: 16px;
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-
-    /* SECTION 2: 프로세스 */
-    .process-section {
-      padding: 80px 0;
-      background: var(--bg-white);
-    }
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 24px;
-      margin-top: 48px;
-    }
-    .process-step {
-      text-align: center;
-    }
-    .step-number {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-    }
-    .step-icon-wrap {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: var(--bg-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 16px;
-    }
-    .step-icon-wrap svg {
-      width: 32px;
-      height: 32px;
-      color: var(--text-dark);
-    }
-    .step-title {
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 700;
       color: var(--text-black);
       margin-bottom: 8px;
     }
-    .step-desc {
-      font-size: 14px;
+    .feature-card-desc {
+      font-size: 15px;
       color: var(--text-gray);
       line-height: 1.6;
     }
-    .process-note {
-      margin-top: 32px;
+    .comparison-section {
+      margin-top: 60px;
+      padding: 40px;
+      background: var(--bg-white);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+    }
+    .comparison-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-black);
       text-align: center;
+      margin-bottom: 32px;
+    }
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .comparison-item {
+      text-align: center;
+    }
+    .comparison-label {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-black);
+      margin-bottom: 16px;
+    }
+    .comparison-placeholder {
+      aspect-ratio: 4/3;
+      margin-bottom: 16px;
+    }
+    .comparison-note {
       font-size: 14px;
-      color: var(--text-muted);
+      color: var(--text-light);
     }
 
-    /* SECTION 3: 친환경 */
+    /* ==========================================
+       SECTION 2: 제조 과정
+       ========================================== */
+    .manufacturing-process {
+      padding: 80px 0;
+      background: var(--bg-white);
+    }
+    .process-steps {
+      margin-top: 48px;
+    }
+    .process-step {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 60px;
+      align-items: center;
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .process-step:last-child {
+      border-bottom: none;
+    }
+    .process-step:nth-child(even) {
+      direction: rtl;
+    }
+    .process-step:nth-child(even) > * {
+      direction: ltr;
+    }
+    .process-content .step-number {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .process-content .step-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 12px;
+    }
+    .process-content .step-desc {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+    .process-image {
+      aspect-ratio: 4/3;
+    }
+
+    /* ==========================================
+       SECTION 3: 친환경
+       ========================================== */
     .eco-section {
       padding: 80px 0;
       background: var(--bg-light);
@@ -344,94 +369,97 @@
     }
     .eco-card {
       padding: 32px;
-      background: var(--bg-white);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
+      background: var(--bg-white);
     }
     .eco-card .icon-box {
-      margin-bottom: 0;
-    }
-    .eco-card-content h3 {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 8px;
-    }
-    .eco-card-content p {
-      font-size: 15px;
-      color: var(--text-gray);
-      line-height: 1.7;
-    }
-    .cert-badges {
-      margin-top: 40px;
-      text-align: center;
-    }
-    .cert-badges p {
-      font-size: 14px;
-      color: var(--text-light);
       margin-bottom: 20px;
     }
-    .cert-grid {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-    .cert-badge {
-      width: 100px;
-      height: 100px;
-      background: var(--bg-light);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .cert-badge svg {
-      width: 40px;
-      height: 40px;
-      color: var(--text-light);
-    }
-
-    /* SECTION 4: 사용 가이드 */
-    .guide-section {
-      padding: 80px 0;
-      background: var(--bg-white);
-    }
-    .guide-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 48px;
-    }
-    .guide-card {
-      padding: 28px;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-    }
-    .guide-card .icon-box {
-      width: 56px;
-      height: 56px;
-    }
-    .guide-card-title {
-      font-size: 17px;
+    .eco-card-title {
+      font-size: 18px;
       font-weight: 700;
       color: var(--text-black);
       margin-bottom: 8px;
     }
-    .guide-card-desc {
+    .eco-card-desc {
       font-size: 15px;
       color: var(--text-gray);
       line-height: 1.6;
     }
-    .guide-cta {
-      margin-top: 48px;
-      text-align: center;
+    .cert-note {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 8px;
+      font-style: italic;
     }
 
-    /* FOOTER */
+    /* ==========================================
+       SECTION 4: 사용 가이드
+       ========================================== */
+    .care-guide {
+      padding: 80px 0;
+      background: var(--bg-white);
+    }
+    .guide-list {
+      max-width: 800px;
+      margin: 48px auto 0;
+    }
+    .guide-item {
+      display: flex;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .guide-item:last-child {
+      border-bottom: none;
+    }
+    .guide-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .guide-icon svg {
+      width: 24px;
+      height: 24px;
+      color: var(--text-dark);
+    }
+    .guide-content .guide-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 6px;
+    }
+    .guide-content .guide-desc {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    /* ==========================================
+       CTA SECTION
+       ========================================== */
+    .cta-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+      text-align: center;
+    }
+    .cta-section .section-title {
+      max-width: 600px;
+      margin: 0 auto 16px;
+    }
+    .cta-section .section-desc {
+      margin: 0 auto 32px;
+    }
+
+    /* ==========================================
+       FOOTER
+       ========================================== */
     .footer {
       padding: 60px 0 32px;
       background: var(--bg-white);
@@ -456,9 +484,9 @@
       line-height: 1.6;
       margin-bottom: 16px;
     }
-    .footer-company-info {
+    .footer-info {
       font-size: 13px;
-      color: var(--text-muted);
+      color: var(--text-light);
       line-height: 1.8;
     }
     .footer-col-title {
@@ -474,7 +502,7 @@
       padding: 4px 0;
     }
     .footer-col a:hover {
-      color: var(--text-black);
+      color: var(--text-dark);
     }
     .footer-bottom {
       display: flex;
@@ -484,48 +512,98 @@
       font-size: 13px;
       color: var(--text-muted);
     }
-    .footer-links {
+    .footer-bottom-links {
       display: flex;
       gap: 16px;
     }
+    .footer-bottom-links a {
+      color: var(--text-muted);
+    }
+    .footer-bottom-links a:hover {
+      color: var(--text-gray);
+    }
 
-    /* TOP BUTTON */
-    .top-button {
+    /* ==========================================
+       TOP BUTTON
+       ========================================== */
+    .top-btn {
       position: fixed;
       bottom: 32px;
       right: 32px;
       width: 48px;
       height: 48px;
       background: var(--text-black);
-      color: white;
+      color: #FFFFFF;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
       opacity: 0;
       visibility: hidden;
-      transition: all 0.3s;
-      box-shadow: var(--shadow-md);
+      transition: opacity 0.3s, visibility 0.3s;
+      z-index: 90;
     }
-    .top-button.visible {
+    .top-btn.visible {
       opacity: 1;
       visibility: visible;
     }
-    .top-button svg {
+    .top-btn svg {
       width: 20px;
       height: 20px;
     }
 
+    /* ==========================================
+       RESPONSIVE
+       ========================================== */
     @media (max-width: 768px) {
       .nav-links { display: none; }
+      .nav-utils button:not(.mobile-menu-btn) { display: none; }
+      .mobile-menu-btn { display: flex; }
+      
       .section-title { font-size: 28px; }
-      .hero .section-title { font-size: 32px; }
-      .features-grid,
-      .eco-grid,
-      .guide-grid { grid-template-columns: 1fr; }
-      .process-steps { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
+      .page-hero .section-title { font-size: 32px; }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      
+      .comparison-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      
+      .process-step {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 40px 0;
+      }
+      .process-step:nth-child(even) {
+        direction: ltr;
+      }
+      .process-content .step-title {
+        font-size: 20px;
+      }
+      
+      .eco-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+      
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+      
+      .top-btn {
+        bottom: 16px;
+        right: 16px;
+      }
     }
   </style>
 </head>
@@ -535,10 +613,13 @@
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
-        <a href="page_01.html" class="nav-logo">언커먼타올</a>
+        <a href="index.html" class="nav-logo">언커먼타올</a>
         <nav class="nav-links">
+          <div class="nav-item">
+            <a href="page_01.html">메인</a>
+          </div>
           <div class="nav-item active">
-            <a href="page_02.html">브랜드 <i data-lucide="chevron-down" style="width:16px;height:16px;"></i></a>
+            <a href="page_02.html">브랜드</a>
             <div class="nav-dropdown">
               <a href="page_02.html">브랜드 철학</a>
               <a href="page_03.html">브랜드 스토리</a>
@@ -550,7 +631,7 @@
             <a href="page_06.html">제품</a>
           </div>
           <div class="nav-item">
-            <a href="page_07.html">B2B문의 <i data-lucide="chevron-down" style="width:16px;height:16px;"></i></a>
+            <a href="page_07.html">B2B문의</a>
             <div class="nav-dropdown">
               <a href="page_07.html">대량구매</a>
               <a href="page_08.html">파트너십</a>
@@ -560,7 +641,7 @@
             <a href="page_09.html">고객 후기</a>
           </div>
           <div class="nav-item">
-            <a href="page_10.html">고객센터 <i data-lucide="chevron-down" style="width:16px;height:16px;"></i></a>
+            <a href="page_10.html">고객센터</a>
             <div class="nav-dropdown">
               <a href="page_10.html">FAQ</a>
               <a href="page_11.html">1:1 문의</a>
@@ -568,10 +649,11 @@
             </div>
           </div>
         </nav>
-        <div class="nav-actions">
-          <i data-lucide="search"></i>
-          <i data-lucide="user"></i>
-          <i data-lucide="shopping-cart"></i>
+        <div class="nav-utils">
+          <button><i data-lucide="search"></i></button>
+          <button><i data-lucide="user"></i></button>
+          <button><i data-lucide="shopping-cart"></i></button>
+          <button class="mobile-menu-btn"><i data-lucide="menu"></i></button>
         </div>
       </div>
     </div>
@@ -579,196 +661,267 @@
 
   <main>
 
-    <!-- HERO -->
-    <section class="hero">
+    <!-- PAGE HERO -->
+    <section class="page-hero">
       <div class="container">
-        <h1 class="section-title">대나무에서 실을 뽑고,<br>그 실로 수건을 짭니다</h1>
-        <p class="section-desc mx-auto">면(Cotton)과는 다른, 대나무 섬유만의 장점이 있습니다</p>
+        <p class="section-label">ABOUT MATERIAL</p>
+        <h1 class="section-title">면이 아니라 대나무를 택한 이유가 있어요</h1>
+        <p class="section-desc mx-auto">매일 얼굴에 닿는 소재, 그 선택은 과학이자 철학입니다</p>
       </div>
     </section>
 
-    <!-- SECTION 1: 대나무 섬유, 왜 다른가요 -->
-    <section class="features-section">
+    <!-- SECTION 1: 왜 대나무 섬유인가요 -->
+    <section class="material-features">
       <div class="container">
         <div class="text-center">
-          <p class="section-label">BAMBOO FIBER</p>
-          <h2 class="section-title">대나무 섬유, 왜 다른가요</h2>
-          <p class="section-desc mx-auto">면(Cotton)과는 다른, 대나무 섬유만의 장점이 있습니다</p>
+          <h2 class="section-title">대나무 섬유만의 특별함</h2>
+          <p class="section-desc mx-auto">일반 면 수건과는 다른 차원의 경험을 선사하는 5가지 특징</p>
         </div>
+        
         <div class="features-grid">
           <div class="feature-card">
-            <div class="icon-box"><i data-lucide="feather"></i></div>
-            <h3 class="feature-card-title">실크 같은 부드러움</h3>
-            <p class="feature-card-desc">대나무 섬유는 단면이 둥글어 피부 마찰이 적습니다. 민감한 피부에도 자극 없이 사용할 수 있어요.</p>
+            <div class="icon-box">
+              <i data-lucide="feather"></i>
+            </div>
+            <h3 class="feature-card-title">부드러운 촉감</h3>
+            <p class="feature-card-desc">일반 면 대비 월등한 실크 같은 부드러움</p>
           </div>
+          
           <div class="feature-card">
-            <div class="icon-box"><i data-lucide="shield"></i></div>
-            <h3 class="feature-card-title">천연 항균·탈취</h3>
-            <p class="feature-card-desc">대나무 섬유에 포함된 천연 항균 성분이 세균 번식을 억제합니다. [클라이언트 확인 필요: 항균 관련 테스트 데이터/인증]</p>
-          </div>
-          <div class="feature-card">
-            <div class="icon-box"><i data-lucide="droplet"></i></div>
+            <div class="icon-box">
+              <i data-lucide="droplet"></i>
+            </div>
             <h3 class="feature-card-title">뛰어난 흡수력</h3>
-            <p class="feature-card-desc">면 대비 수분 흡수력이 뛰어나고, 건조 속도도 빠릅니다. [클라이언트 확인 필요: 흡수력 비교 테스트 수치]</p>
+            <p class="feature-card-desc">[클라이언트 확인 필요: 흡수율 수치 등 구체적 데이터]</p>
           </div>
+          
           <div class="feature-card">
-            <div class="icon-box"><i data-lucide="refresh-cw"></i></div>
-            <h3 class="feature-card-title">빨수록 부드럽게</h3>
-            <p class="feature-card-desc">일반 수건과 달리 세탁을 반복해도 거칠어지지 않습니다. [클라이언트 확인 필요: 세탁 내구성 테스트 결과]</p>
+            <div class="icon-box">
+              <i data-lucide="shield"></i>
+            </div>
+            <h3 class="feature-card-title">항균성</h3>
+            <p class="feature-card-desc">대나무 고유의 천연 항균 특성 — 세균 번식 억제</p>
           </div>
+          
           <div class="feature-card">
-            <div class="icon-box"><i data-lucide="wind"></i></div>
-            <h3 class="feature-card-title">가볍고 얇은 두께</h3>
-            <p class="feature-card-desc">두꺼운 수건이 아니라 가볍고 얇으면서도 충분한 흡수력을 가집니다.</p>
+            <div class="icon-box">
+              <i data-lucide="wind"></i>
+            </div>
+            <h3 class="feature-card-title">빠른 건조</h3>
+            <p class="feature-card-desc">수분 증발이 빨라 축축한 냄새 없이 쾌적</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="icon-box">
+              <i data-lucide="heart"></i>
+            </div>
+            <h3 class="feature-card-title">저자극</h3>
+            <p class="feature-card-desc">민감성 피부, 아토피 피부에도 사용 가능</p>
           </div>
         </div>
 
-        <!-- 비교 인포그래픽 -->
-        <div class="comparison-box">
-          <h3>면 vs 대나무 섬유 비교</h3>
-          <div class="img-placeholder">
-            <i data-lucide="bar-chart"></i>
+        <div class="comparison-section">
+          <p class="comparison-title">대나무 섬유 vs 일반 면</p>
+          <div class="comparison-grid">
+            <div class="comparison-item">
+              <p class="comparison-label">대나무 섬유 (Bamboo Yarn)</p>
+              <div class="img-placeholder comparison-placeholder">
+                <i data-lucide="image"></i>
+              </div>
+              <p class="comparison-note">[클라이언트 확인 필요: 대나무 섬유 확대 사진]</p>
+            </div>
+            <div class="comparison-item">
+              <p class="comparison-label">일반 면 (Cotton)</p>
+              <div class="img-placeholder comparison-placeholder">
+                <i data-lucide="image"></i>
+              </div>
+              <p class="comparison-note">[클라이언트 확인 필요: 구체적 비교 수치가 있으면 활용]</p>
+            </div>
           </div>
-          <p>[클라이언트 확인 필요: 구체적 비교 수치 — 흡수율, 건조 시간, 항균율 등]</p>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 2: 실에서 수건이 되기까지 -->
-    <section class="process-section">
+    <!-- SECTION 2: 수건이 만들어지는 과정 -->
+    <section class="manufacturing-process">
       <div class="container">
         <div class="text-center">
-          <p class="section-label">PROCESS</p>
-          <h2 class="section-title">실에서 수건이 되기까지</h2>
-          <p class="section-desc mx-auto">원사 선별부터 제직, 후가공까지 — 모든 공정에 이유가 있습니다</p>
+          <h2 class="section-title">원사 한 올부터 마지막 마감까지, 숨기지 않아요</h2>
+          <p class="section-desc mx-auto">좋은 수건은 좋은 공정에서 나옵니다</p>
         </div>
+
         <div class="process-steps">
           <div class="process-step">
-            <p class="step-number">STEP 01</p>
-            <div class="step-icon-wrap"><i data-lucide="package"></i></div>
-            <h3 class="step-title">원사 수급</h3>
-            <p class="step-desc">[클라이언트 확인 필요: 원사 수급 과정 설명]</p>
+            <div class="process-content">
+              <p class="step-number">STEP 01</p>
+              <h3 class="step-title">원사 선별</h3>
+              <p class="step-desc">[클라이언트 확인 필요: 원사 산지, 선별 기준]</p>
+            </div>
+            <div class="img-placeholder process-image">
+              <i data-lucide="image"></i>
+            </div>
           </div>
+
           <div class="process-step">
-            <p class="step-number">STEP 02</p>
-            <div class="step-icon-wrap"><i data-lucide="git-branch"></i></div>
-            <h3 class="step-title">방적</h3>
-            <p class="step-desc">[클라이언트 확인 필요: 방적 과정 설명]</p>
+            <div class="process-content">
+              <p class="step-number">STEP 02</p>
+              <h3 class="step-title">제직</h3>
+              <p class="step-desc">[클라이언트 확인 필요: 루프 밀도, 중량(GSM), 제직 방식 등]</p>
+            </div>
+            <div class="img-placeholder process-image">
+              <i data-lucide="image"></i>
+            </div>
           </div>
+
           <div class="process-step">
-            <p class="step-number">STEP 03</p>
-            <div class="step-icon-wrap"><i data-lucide="grid"></i></div>
-            <h3 class="step-title">제직</h3>
-            <p class="step-desc">[클라이언트 확인 필요: 제직 과정 설명]</p>
+            <div class="process-content">
+              <p class="step-number">STEP 03</p>
+              <h3 class="step-title">염색·가공</h3>
+              <p class="step-desc">[클라이언트 확인 필요: 염색 방식 — 예: 반응성 염료, 무형광 처리 등]</p>
+            </div>
+            <div class="img-placeholder process-image">
+              <i data-lucide="image"></i>
+            </div>
           </div>
+
           <div class="process-step">
-            <p class="step-number">STEP 04</p>
-            <div class="step-icon-wrap"><i data-lucide="droplets"></i></div>
-            <h3 class="step-title">후가공 (세정/염색)</h3>
-            <p class="step-desc">[클라이언트 확인 필요: 후가공 과정 설명]</p>
+            <div class="process-content">
+              <p class="step-number">STEP 04</p>
+              <h3 class="step-title">재단·봉제</h3>
+              <p class="step-desc">[클라이언트 확인 필요: 마감 처리 방식]</p>
+            </div>
+            <div class="img-placeholder process-image">
+              <i data-lucide="image"></i>
+            </div>
           </div>
+
           <div class="process-step">
-            <p class="step-number">STEP 05</p>
-            <div class="step-icon-wrap"><i data-lucide="check-circle"></i></div>
-            <h3 class="step-title">검품 및 패키징</h3>
-            <p class="step-desc">[클라이언트 확인 필요: 검품 및 패키징 과정 설명]</p>
+            <div class="process-content">
+              <p class="step-number">STEP 05</p>
+              <h3 class="step-title">품질 검수</h3>
+              <p class="step-desc">[클라이언트 확인 필요: 검수 기준 및 절차]</p>
+            </div>
+            <div class="img-placeholder process-image">
+              <i data-lucide="image"></i>
+            </div>
           </div>
         </div>
-        <p class="process-note">[클라이언트 확인 필요: 실제 제조 공정 단계 및 각 공정별 상세 설명]</p>
       </div>
     </section>
 
-    <!-- SECTION 3: 지구에 덜 미안한 방식 -->
+    <!-- SECTION 3: 친환경 -->
     <section class="eco-section">
       <div class="container">
         <div class="text-center">
-          <p class="section-label">ECO-FRIENDLY</p>
-          <h2 class="section-title">지구에 덜 미안한 방식</h2>
-          <p class="section-desc mx-auto">대나무는 빠르게 자라고, 적은 물로 재배되며, 생분해됩니다</p>
-        </div>
-        <div class="eco-grid">
-          <div class="eco-card">
-            <div class="icon-box"><i data-lucide="sprout"></i></div>
-            <div class="eco-card-content">
-              <h3>대나무의 성장 속도</h3>
-              <p>대나무는 하루 최대 1m까지 자라며, 농약 없이 재배됩니다.</p>
-            </div>
-          </div>
-          <div class="eco-card">
-            <div class="icon-box"><i data-lucide="droplet"></i></div>
-            <div class="eco-card-content">
-              <h3>물 사용량 절감</h3>
-              <p>면화 재배 대비 물 사용량이 현저히 적습니다. [클라이언트 확인 필요: 구체적 비교 수치]</p>
-            </div>
-          </div>
-          <div class="eco-card">
-            <div class="icon-box"><i data-lucide="package-check"></i></div>
-            <div class="eco-card-content">
-              <h3>재활용 패키징</h3>
-              <p>[클라이언트 확인 필요: 패키징 소재/방식 상세 — 재생지, 콩기름 인쇄 등]</p>
-            </div>
-          </div>
-          <div class="eco-card">
-            <div class="icon-box"><i data-lucide="leaf"></i></div>
-            <div class="eco-card-content">
-              <h3>탄소 절감</h3>
-              <p>[클라이언트 확인 필요: 탄소 절감 관련 구체적 노력이나 수치]</p>
-            </div>
-          </div>
+          <h2 class="section-title">좋은 수건이 좋은 선택이 되려면</h2>
+          <p class="section-desc mx-auto">소재에서 포장까지, 환경을 위한 우리의 작은 실천들</p>
         </div>
 
-        <!-- 인증 배지 -->
-        <div class="cert-badges">
-          <p>[클라이언트 확인 필요: OEKO-TEX, FSC, 기타 친환경 인증 보유 여부]</p>
-          <div class="cert-grid">
-            <div class="cert-badge"><i data-lucide="award"></i></div>
-            <div class="cert-badge"><i data-lucide="award"></i></div>
-            <div class="cert-badge"><i data-lucide="award"></i></div>
+        <div class="eco-grid">
+          <div class="eco-card">
+            <div class="icon-box">
+              <i data-lucide="sprout"></i>
+            </div>
+            <h3 class="eco-card-title">대나무 재배</h3>
+            <p class="eco-card-desc">농약·비료 없이 빠르게 자라는 지속가능한 원료</p>
+          </div>
+
+          <div class="eco-card">
+            <div class="icon-box">
+              <i data-lucide="package"></i>
+            </div>
+            <h3 class="eco-card-title">친환경 패키징</h3>
+            <p class="eco-card-desc">[클라이언트 확인 필요: 구체적 친환경 패키징 소재 — 예: 재생지, 콩기름 인쇄 등]</p>
+          </div>
+
+          <div class="eco-card">
+            <div class="icon-box">
+              <i data-lucide="leaf"></i>
+            </div>
+            <h3 class="eco-card-title">탄소 절감</h3>
+            <p class="eco-card-desc">[클라이언트 확인 필요: 구체적 탄소 절감 수치 또는 노력 사항]</p>
+          </div>
+
+          <div class="eco-card">
+            <div class="icon-box">
+              <i data-lucide="award"></i>
+            </div>
+            <h3 class="eco-card-title">친환경 인증</h3>
+            <p class="eco-card-desc">[클라이언트 확인 필요: FSC, OEKO-TEX 등 친환경/안전 인증 유무]</p>
+            <p class="cert-note">※ 인증 마크 이미지 추가 예정</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 4: 오래 쓰는 방법 -->
-    <section class="guide-section">
+    <!-- SECTION 4: 사용 가이드 -->
+    <section class="care-guide">
       <div class="container">
         <div class="text-center">
-          <p class="section-label">CARE GUIDE</p>
-          <h2 class="section-title">오래 쓰는 방법</h2>
-          <p class="section-desc mx-auto">간단한 관리 습관으로 처음의 부드러움을 오래 유지하세요</p>
-        </div>
-        <div class="guide-grid">
-          <div class="guide-card">
-            <div class="icon-box"><i data-lucide="sparkles"></i></div>
-            <h3 class="guide-card-title">첫 세탁</h3>
-            <p class="guide-card-desc">처음 사용 전 미지근한 물로 단독 세탁 후 사용하세요.</p>
-          </div>
-          <div class="guide-card">
-            <div class="icon-box"><i data-lucide="thermometer"></i></div>
-            <h3 class="guide-card-title">세탁 온도</h3>
-            <p class="guide-card-desc">[클라이언트 확인 필요: 권장 세탁 온도/방법]</p>
-          </div>
-          <div class="guide-card">
-            <div class="icon-box"><i data-lucide="sun"></i></div>
-            <h3 class="guide-card-title">건조 방법</h3>
-            <p class="guide-card-desc">[클라이언트 확인 필요: 건조기 사용 가능 여부, 자연 건조 권장 등]</p>
-          </div>
-          <div class="guide-card">
-            <div class="icon-box"><i data-lucide="droplets"></i></div>
-            <h3 class="guide-card-title">섬유유연제</h3>
-            <p class="guide-card-desc">[클라이언트 확인 필요: 섬유유연제 사용 가이드]</p>
-          </div>
-          <div class="guide-card">
-            <div class="icon-box"><i data-lucide="calendar"></i></div>
-            <h3 class="guide-card-title">교체 주기</h3>
-            <p class="guide-card-desc">[클라이언트 확인 필요: 권장 교체 주기]</p>
-          </div>
+          <h2 class="section-title">조금만 신경 쓰면, 오래도록 처음 그대로</h2>
+          <p class="section-desc mx-auto">대나무 섬유 페이스타월을 가장 좋은 상태로 유지하는 방법</p>
         </div>
 
-        <!-- CTA -->
-        <div class="guide-cta">
-          <a href="page_06.html" class="btn btn-primary">제품 보러가기</a>
+        <div class="guide-list">
+          <div class="guide-item">
+            <div class="guide-icon">
+              <i data-lucide="droplets"></i>
+            </div>
+            <div class="guide-content">
+              <p class="guide-title">첫 사용 전</p>
+              <p class="guide-desc">미지근한 물로 한 번 헹궈주세요</p>
+            </div>
+          </div>
+
+          <div class="guide-item">
+            <div class="guide-icon">
+              <i data-lucide="washing-machine"></i>
+            </div>
+            <div class="guide-content">
+              <p class="guide-title">세탁</p>
+              <p class="guide-desc">40도 이하 중성세제, 유연제 사용 자제</p>
+            </div>
+          </div>
+
+          <div class="guide-item">
+            <div class="guide-icon">
+              <i data-lucide="sun"></i>
+            </div>
+            <div class="guide-content">
+              <p class="guide-title">건조</p>
+              <p class="guide-desc">그늘에서 자연 건조 권장</p>
+            </div>
+          </div>
+
+          <div class="guide-item">
+            <div class="guide-icon">
+              <i data-lucide="calendar"></i>
+            </div>
+            <div class="guide-content">
+              <p class="guide-title">교체 주기</p>
+              <p class="guide-desc">[클라이언트 확인 필요: 권장 교체 주기]</p>
+            </div>
+          </div>
+
+          <div class="guide-item">
+            <div class="guide-icon">
+              <i data-lucide="info"></i>
+            </div>
+            <div class="guide-content">
+              <p class="guide-title">추가 관리 팁</p>
+              <p class="guide-desc">[클라이언트 확인 필요: 추가 관리 팁이 있으면 보완]</p>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="section-title">소재가 궁금하다면, 직접 만져보세요</h2>
+        <p class="section-desc mx-auto">샘플 요청이나 소재 관련 문의를 기다리고 있어요</p>
+        <a href="page_11.html" class="btn btn-primary">문의하기</a>
       </div>
     </section>
 
@@ -780,51 +933,48 @@
       <div class="footer-grid">
         <div>
           <p class="footer-brand-name">언커먼타올</p>
-          <p class="footer-brand-desc">프리미엄 대나무 섬유 페이스타월</p>
-          <div class="footer-company-info">
-            [클라이언트 확인 필요: 상호 / 대표자명]<br>
-            사업자등록번호: [클라이언트 확인 필요]<br>
-            통신판매업 신고번호: [클라이언트 확인 필요]<br>
-            주소: [클라이언트 확인 필요]<br>
-            대표 전화: [클라이언트 확인 필요]<br>
-            이메일: [클라이언트 확인 필요]
+          <p class="footer-brand-desc">대나무 섬유 프리미엄 페이스타월</p>
+          <div class="footer-info">
+            [클라이언트 확인 필요: 상호 / 대표 / 사업자번호]<br>
+            [클라이언트 확인 필요: 주소]<br>
+            [클라이언트 확인 필요: 전화 / 이메일]
           </div>
         </div>
-        <div>
+        <div class="footer-col">
           <p class="footer-col-title">브랜드</p>
           <a href="page_02.html">브랜드 철학</a>
           <a href="page_03.html">브랜드 스토리</a>
           <a href="page_04.html">브랜드 여정</a>
           <a href="page_05.html">소재 이야기</a>
         </div>
-        <div>
+        <div class="footer-col">
           <p class="footer-col-title">쇼핑</p>
           <a href="page_06.html">제품</a>
-          <a href="page_07.html">대량구매</a>
-          <a href="page_08.html">파트너십</a>
           <a href="page_09.html">고객 후기</a>
+          <a href="page_12.html">주문 조회</a>
         </div>
-        <div>
-          <p class="footer-col-title">고객센터</p>
+        <div class="footer-col">
+          <p class="footer-col-title">고객지원</p>
           <a href="page_10.html">FAQ</a>
           <a href="page_11.html">1:1 문의</a>
-          <a href="page_12.html">주문 조회</a>
+          <a href="page_07.html">대량구매</a>
+          <a href="page_08.html">파트너십</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 언커먼타올. All rights reserved.</span>
-        <div class="footer-links">
-          <span>이용약관</span>
-          <span>개인정보처리방침</span>
+        <span>© 언커먼타올. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">개인정보처리방침</a>
+          <a href="#">이용약관</a>
         </div>
       </div>
     </div>
   </footer>
 
   <!-- TOP BUTTON -->
-  <div class="top-button" id="topBtn">
+  <button class="top-btn" id="topBtn">
     <i data-lucide="arrow-up"></i>
-  </div>
+  </button>
 
   <script>
     lucide.createIcons();
