@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>소재 이야기 | 언커먼타올 - 원면 산지부터 GSM까지 투명하게 공개합니다</title>
-  <meta name="description" content="[원면 산지] 원면, [GSM]GSM 고밀도 제직. 언커먼타올 페이스타월의 소재 선별 기준과 품질 수치를 투명하게 공개합니다.">
+  <title>소재 이야기 | 언커먼타올 - 대나무 섬유가 만드는 차이</title>
+  <meta name="description" content="대나무 섬유(bamboo yarn)는 왜 피부에 좋은가. 부드러운 촉감, 빠른 흡수, 자연 항균까지. 언커먼타올 페이스타월의 소재 이야기.">
+  <meta name="keywords" content="대나무 섬유 수건, bamboo yarn towel, 대나무 타월 소재, 친환경 수건, 항균 수건, 페이스타월, 프리미엄 수건">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -18,6 +19,7 @@
       --bg-white: #FFFFFF;
       --bg-light: #F5F5F5;
       --bg-dark: #2D2D2D;
+      --bg-black: #1A1A1A;
       --border-light: #E0E0E0;
       --border-default: #D0D0D0;
       --placeholder-bg: #E0E0E0;
@@ -46,6 +48,7 @@
       padding: 0 24px;
     }
 
+    /* 버튼 */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -68,6 +71,7 @@
       border: 1px solid var(--border-default);
     }
 
+    /* 섹션 공통 */
     .section-label {
       font-size: 14px;
       font-weight: 600;
@@ -90,6 +94,7 @@
     .text-center { text-align: center; }
     .mx-auto { margin-left: auto; margin-right: auto; }
 
+    /* 이미지 플레이스홀더 */
     .img-placeholder {
       background: var(--placeholder-bg);
       border-radius: var(--radius-sm);
@@ -103,10 +108,39 @@
       width: 48px;
       height: 48px;
     }
+    .img-placeholder-fullscreen {
+      background: var(--placeholder-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+    .img-placeholder-fullscreen svg {
+      color: var(--placeholder-icon);
+      width: 64px;
+      height: 64px;
+    }
 
-    /* ==========================================
-       HEADER
-       ========================================== */
+    /* 아이콘 박스 */
+    .icon-box {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin: 0 auto 20px;
+    }
+    .icon-box svg {
+      width: 28px;
+      height: 28px;
+      color: var(--text-dark);
+    }
+
+    /* 헤더 */
     .nav {
       position: sticky;
       top: 0;
@@ -125,254 +159,280 @@
       font-weight: 700;
       color: var(--text-black);
     }
-    .nav-menu {
+    .nav-links {
       display: flex;
       gap: 32px;
     }
     .nav-item {
       position: relative;
-    }
-    .nav-item > a {
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
       padding: 8px 0;
-      display: block;
     }
-    .nav-item.active > a {
-      color: var(--text-black);
-      font-weight: 700;
-    }
+    .nav-item.active { color: var(--text-black); font-weight: 600; }
     .nav-dropdown {
+      display: none;
       position: absolute;
       top: 100%;
-      left: -16px;
+      left: 0;
       background: var(--bg-white);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-sm);
       padding: 12px 0;
       min-width: 180px;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.2s, visibility 0.2s;
       box-shadow: var(--shadow-md);
+      margin-top: 8px;
     }
-    .nav-item:hover .nav-dropdown {
-      opacity: 1;
-      visibility: visible;
-    }
+    .nav-item:hover .nav-dropdown { display: block; }
     .nav-dropdown a {
       display: block;
-      padding: 10px 20px;
+      padding: 8px 20px;
       font-size: 14px;
-      color: var(--text-dark);
+      color: var(--text-gray);
     }
-    .nav-dropdown a:hover {
-      background: var(--bg-light);
-    }
-    .nav-utils {
+    .nav-dropdown a:hover { background: var(--bg-light); }
+    .nav-actions {
       display: flex;
       align-items: center;
       gap: 16px;
     }
-    .nav-utils button {
+    .nav-actions svg {
+      width: 20px;
+      height: 20px;
       color: var(--text-dark);
-    }
-    .nav-utils svg {
-      width: 22px;
-      height: 22px;
+      cursor: pointer;
     }
 
-    /* ==========================================
-       SECTION 1: 원면 산지
-       ========================================== */
-    .hero-material {
+    /* 히어로 */
+    .hero {
+      position: relative;
+      height: 480px;
+      background: var(--bg-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-dark);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+      padding: 0 24px;
+    }
+    .hero-content h1 {
+      font-size: 42px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .hero-content p {
+      font-size: 17px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* 특징 섹션 */
+    .feature-section {
       padding: 80px 0;
-      background: var(--bg-white);
     }
-    .hero-material-visual {
-      margin-bottom: 60px;
-    }
-    .hero-material-info {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .material-info-grid {
+    .feature-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 32px;
-      margin-top: 40px;
-      padding-top: 40px;
-      border-top: 1px solid var(--border-light);
+      margin-top: 48px;
     }
-    .material-info-item h3 {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text-light);
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .material-info-item p {
-      font-size: 16px;
-      color: var(--text-black);
-      font-weight: 600;
-      line-height: 1.6;
-    }
-    .material-note {
-      margin-top: 40px;
-      padding: 24px;
-      background: var(--bg-light);
+    .feature-card {
+      text-align: center;
+      padding: 32px 24px;
+      border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
+    }
+    .feature-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 12px;
+    }
+    .feature-card-desc {
       font-size: 15px;
-      color: var(--text-dark);
+      color: var(--text-gray);
       line-height: 1.7;
     }
+    .feature-note {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 8px;
+      font-style: italic;
+    }
 
-    /* ==========================================
-       SECTION 2: 제직 과정
-       ========================================== */
+    /* 프로세스 섹션 */
     .process-section {
       padding: 80px 0;
       background: var(--bg-light);
     }
     .process-steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-top: 48px;
+      max-width: 800px;
+      margin: 48px auto 0;
     }
     .process-step {
-      text-align: center;
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 32px;
+      align-items: center;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border-light);
     }
+    .process-step:first-child { padding-top: 0; }
+    .process-step:last-child { border-bottom: none; }
     .step-number {
       font-size: 14px;
       font-weight: 700;
       color: var(--text-muted);
-      margin-bottom: 16px;
-    }
-    .step-image {
-      margin: 0 auto 20px;
-    }
-    .step-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text-black);
       margin-bottom: 8px;
     }
-    .step-desc {
-      font-size: 14px;
-      color: var(--text-gray);
-      line-height: 1.6;
-    }
-
-    /* ==========================================
-       SECTION 3: 품질 기준
-       ========================================== */
-    .quality-section {
-      padding: 80px 0;
-      background: var(--bg-white);
-    }
-    .quality-table-wrap {
-      max-width: 800px;
-      margin: 48px auto 0;
-      overflow-x: auto;
-    }
-    .quality-table {
-      width: 100%;
-      border-collapse: collapse;
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-    }
-    .quality-table thead {
-      background: var(--bg-light);
-    }
-    .quality-table th {
-      padding: 16px 20px;
-      text-align: left;
-      font-size: 15px;
+    .step-title {
+      font-size: 17px;
       font-weight: 700;
       color: var(--text-black);
-      border-bottom: 1px solid var(--border-light);
     }
-    .quality-table td {
-      padding: 16px 20px;
+    .step-desc {
       font-size: 15px;
-      color: var(--text-dark);
-      border-bottom: 1px solid var(--border-light);
-    }
-    .quality-table tbody tr:last-child td {
-      border-bottom: none;
-    }
-    .quality-table tbody tr:nth-child(even) {
-      background: var(--bg-light);
-    }
-    .quality-note {
-      margin-top: 24px;
-      padding: 20px;
-      background: var(--bg-light);
-      border-radius: var(--radius-sm);
-      font-size: 14px;
       color: var(--text-gray);
-      line-height: 1.6;
+      line-height: 1.7;
+      margin-top: 4px;
     }
-    .quality-cta {
-      text-align: center;
-      margin-top: 40px;
+    .step-note {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 8px;
+      font-style: italic;
     }
-
-    /* ==========================================
-       SECTION 4: 인증
-       ========================================== */
-    .certification-section {
-      padding: 80px 0;
-      background: var(--bg-light);
-    }
-    .cert-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 32px;
-      margin-top: 48px;
-    }
-    .cert-item {
-      text-align: center;
-    }
-    .cert-badge {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: var(--bg-white);
-      border: 2px solid var(--border-light);
+    .step-image {
+      width: 160px;
+      height: 160px;
+      border-radius: var(--radius-sm);
+      background: var(--placeholder-bg);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 16px;
     }
-    .cert-badge svg {
-      width: 48px;
-      height: 48px;
-      color: var(--text-dark);
-    }
-    .cert-name {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--text-black);
-      margin-bottom: 4px;
-    }
-    .cert-desc {
-      font-size: 13px;
-      color: var(--text-light);
-    }
-    .cert-cta {
-      text-align: center;
-      margin-top: 48px;
+    .step-image svg {
+      width: 40px;
+      height: 40px;
+      color: var(--placeholder-icon);
     }
 
-    /* ==========================================
-       FOOTER
-       ========================================== */
-    .footer-light {
+    /* 환경 섹션 */
+    .env-section {
+      padding: 80px 0;
+    }
+    .env-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .env-card {
+      text-align: center;
+      padding: 32px 24px;
+    }
+    .env-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      font-size: 32px;
+    }
+    .env-card-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 12px;
+    }
+    .env-card-desc {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+    .env-note {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    /* 관리 섹션 */
+    .care-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .care-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .care-card {
+      display: flex;
+      gap: 20px;
+      padding: 24px;
+      background: var(--bg-white);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+    }
+    .care-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .care-icon-box svg {
+      width: 24px;
+      height: 24px;
+      color: var(--text-dark);
+    }
+    .care-card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 6px;
+    }
+    .care-card-desc {
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+    .care-note {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    /* CTA 섹션 */
+    .cta-section {
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    /* 푸터 */
+    .footer {
       padding: 60px 0 32px;
       background: var(--bg-white);
       border-top: 1px solid var(--border-light);
@@ -394,7 +454,6 @@
       font-size: 14px;
       color: var(--text-light);
       line-height: 1.6;
-      margin-bottom: 16px;
     }
     .footer-col-title {
       font-size: 14px;
@@ -408,11 +467,6 @@
       color: var(--text-light);
       padding: 4px 0;
     }
-    .footer-company-info {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.8;
-    }
     .footer-bottom {
       display: flex;
       justify-content: space-between;
@@ -420,104 +474,89 @@
       font-size: 13px;
       color: var(--text-muted);
     }
-    .footer-bottom-links {
-      display: flex;
-      gap: 16px;
-    }
 
     /* TOP 버튼 */
-    .top-button {
+    .top-btn {
       position: fixed;
       bottom: 32px;
       right: 32px;
       width: 48px;
       height: 48px;
-      border-radius: 50%;
-      background: var(--text-black);
+      background: var(--bg-black);
       color: #FFFFFF;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
       opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s, visibility 0.3s;
-      box-shadow: var(--shadow-md);
-      z-index: 90;
+      transition: opacity 0.3s;
+      z-index: 99;
     }
-    .top-button.visible {
-      opacity: 1;
-      visibility: visible;
-    }
-    .top-button svg {
-      width: 20px;
-      height: 20px;
-    }
+    .top-btn.visible { opacity: 1; }
+    .top-btn svg { width: 20px; height: 20px; }
 
-    /* ==========================================
-       반응형
-       ========================================== */
+    /* 반응형 */
     @media (max-width: 768px) {
-      .nav-menu { display: none; }
+      .nav-links { display: none; }
       .section-title { font-size: 28px; }
-      .material-info-grid,
-      .process-steps,
-      .cert-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-      .quality-table-wrap { overflow-x: auto; }
-      .quality-table { font-size: 14px; }
-      .quality-table th,
-      .quality-table td { padding: 12px 16px; }
+      .hero { height: 360px; }
+      .hero-content h1 { font-size: 32px; }
+      .feature-grid,
+      .env-grid { grid-template-columns: 1fr; }
+      .process-step {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .step-image {
+        width: 100%;
+        height: 200px;
+      }
+      .care-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- 헤더 -->
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
         <a href="page_01.html" class="nav-logo">언커먼타올</a>
-        <nav class="nav-menu">
+        <nav class="nav-links">
+          <a href="page_01.html" class="nav-item">메인</a>
           <div class="nav-item active">
-            <a href="page_02.html">브랜드</a>
+            브랜드
             <div class="nav-dropdown">
               <a href="page_02.html">브랜드 철학</a>
               <a href="page_03.html">브랜드 스토리</a>
               <a href="page_04.html">브랜드 여정</a>
               <a href="page_05.html">소재 이야기</a>
-              <a href="page_06.html">지속가능성</a>
             </div>
           </div>
+          <a href="page_06.html" class="nav-item">제품</a>
           <div class="nav-item">
-            <a href="page_07.html">제품</a>
-          </div>
-          <div class="nav-item">
-            <a href="page_08.html">타월 가이드</a>
-          </div>
-          <div class="nav-item">
-            <a href="page_09.html">B2B문의</a>
+            B2B문의
             <div class="nav-dropdown">
-              <a href="page_09.html">대량구매</a>
-              <a href="page_10.html">파트너십</a>
+              <a href="page_07.html">대량구매</a>
+              <a href="page_08.html">파트너십</a>
             </div>
           </div>
+          <a href="page_09.html" class="nav-item">고객 후기</a>
           <div class="nav-item">
-            <a href="page_11.html">고객 후기</a>
-          </div>
-          <div class="nav-item">
-            <a href="page_12.html">고객센터</a>
+            고객센터
             <div class="nav-dropdown">
-              <a href="page_12.html">FAQ</a>
-              <a href="page_13.html">1:1 문의</a>
-              <a href="page_14.html">주문 조회</a>
-              <a href="page_15.html">매장 안내</a>
+              <a href="page_10.html">FAQ</a>
+              <a href="page_11.html">1:1 문의</a>
+              <a href="page_12.html">주문 조회</a>
             </div>
           </div>
         </nav>
-        <div class="nav-utils">
-          <button><i data-lucide="search"></i></button>
-          <button><i data-lucide="user"></i></button>
-          <button><i data-lucide="shopping-cart"></i></button>
+        <div class="nav-actions">
+          <i data-lucide="search"></i>
+          <i data-lucide="user"></i>
+          <i data-lucide="shopping-cart"></i>
         </div>
       </div>
     </div>
@@ -525,244 +564,245 @@
 
   <main>
 
-    <!-- SECTION 1: 원면 산지 -->
-    <section class="hero-material">
-      <div class="container">
-        <div class="hero-material-visual img-placeholder" style="aspect-ratio:16/7; max-width:1200px; margin:0 auto;">
+    <!-- 섹션 1: 히어로 -->
+    <section class="hero">
+      <div class="hero-bg">
+        <div class="img-placeholder-fullscreen">
           <i data-lucide="image"></i>
         </div>
-        <div class="hero-material-info">
-          <div class="text-center">
-            <h1 class="section-title">어디서 자란 면화인지까지 공개합니다</h1>
-            <p class="section-desc mx-auto">좋은 수건은 좋은 원면에서 시작됩니다</p>
-          </div>
+      </div>
+      <div class="hero-content">
+        <h1>피부가 먼저 알아보는 소재</h1>
+        <p>대나무 섬유(bamboo yarn)가 만드는 차이, 직접 느껴보세요</p>
+      </div>
+    </section>
 
-          <div class="material-info-grid">
-            <div class="material-info-item">
-              <h3>산지</h3>
-              <p>[클라이언트 확인 필요:<br>원면 산지]</p>
+    <!-- 섹션 2: 왜 대나무 섬유인가 -->
+    <section class="feature-section">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">왜 대나무 섬유인가</h2>
+          <p class="section-desc mx-auto">면(cotton)과 비교해도 확연히 다른 세 가지</p>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="icon-box">
+              <i data-lucide="feather"></i>
             </div>
-            <div class="material-info-item">
-              <h3>등급</h3>
-              <p>[클라이언트 확인 필요:<br>원면 등급 또는 섬유장 길이]</p>
-            </div>
-            <div class="material-info-item">
-              <h3>선별 기준</h3>
-              <p>[클라이언트 확인 필요:<br>원면 선별 과정]</p>
-            </div>
+            <h3 class="feature-card-title">부드러운 촉감</h3>
+            <p class="feature-card-desc">대나무 섬유는 단면이 둥글고 매끄러워 피부 마찰이 적습니다. 세안 후 민감해진 얼굴을 자극 없이 감싸줍니다.</p>
           </div>
-
-          <div class="material-note">
-            일반 수건에 사용되는 단섬유(Short Staple)와 달리, [클라이언트 확인 필요: 장섬유/초장섬유] 원면만을 사용합니다. 섬유가 길수록 보풀이 적고, 오래 써도 부드러움이 유지됩니다.
+          <div class="feature-card">
+            <div class="icon-box">
+              <i data-lucide="droplets"></i>
+            </div>
+            <h3 class="feature-card-title">빠른 흡수력</h3>
+            <p class="feature-card-desc">일반 면 대비 수분 흡수가 빠릅니다. 물기를 닦는 게 아니라, 수건이 물기를 가져갑니다.</p>
+            <p class="feature-note">[클라이언트 확인 필요: 흡수력 관련 구체적 수치/테스트 결과]</p>
           </div>
+          <div class="feature-card">
+            <div class="icon-box">
+              <i data-lucide="shield-check"></i>
+            </div>
+            <h3 class="feature-card-title">자연 항균·탈취</h3>
+            <p class="feature-card-desc">대나무 섬유에는 '대나무 쿤(Bamboo Kun)'이라 불리는 천연 항균 성분이 포함되어 있어, 축축한 수건에서 나는 쉰내를 억제합니다.</p>
+            <p class="feature-note">[클라이언트 확인 필요: 항균 테스트 결과, 인증 자료]</p>
+          </div>
+        </div>
+        <div style="text-align:center; margin-top:32px;">
+          <a href="page_09.html" style="font-size:14px; color:var(--text-gray); text-decoration:underline;">실제 사용자들의 촉감 후기</a>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 2: 제직 과정 -->
+    <!-- 섹션 3: 원사에서 수건이 되기까지 -->
     <section class="process-section">
       <div class="container">
         <div class="text-center">
-          <h2 class="section-title">같은 면이라도 어떻게 짜느냐에 따라 다릅니다</h2>
+          <h2 class="section-title">원사에서 수건이 되기까지</h2>
         </div>
         <div class="process-steps">
           <div class="process-step">
-            <p class="step-number">STEP 01</p>
-            <div class="step-image img-placeholder" style="aspect-ratio:1/1; max-width:200px; margin:0 auto 20px;">
-              <i data-lucide="package"></i>
+            <div class="step-image">
+              <i data-lucide="search"></i>
             </div>
-            <h3 class="step-title">원사 방적</h3>
-            <p class="step-desc">[클라이언트 확인 필요:<br>코마사/링사 등<br>방적 방식]</p>
+            <div>
+              <p class="step-number">STEP 1</p>
+              <h3 class="step-title">원사 선별</h3>
+              <p class="step-desc">품질 기준에 맞는 대나무 원사만 선별합니다</p>
+            </div>
           </div>
           <div class="process-step">
-            <p class="step-number">STEP 02</p>
-            <div class="step-image img-placeholder" style="aspect-ratio:1/1; max-width:200px; margin:0 auto 20px;">
+            <div class="step-image">
               <i data-lucide="layers"></i>
             </div>
-            <h3 class="step-title">제직</h3>
-            <p class="step-desc">[클라이언트 확인 필요:<br>루프 제직 방식,<br>이중직/삼중직 등]</p>
-          </div>
-          <div class="process-step">
-            <p class="step-number">STEP 03</p>
-            <div class="step-image img-placeholder" style="aspect-ratio:1/1; max-width:200px; margin:0 auto 20px;">
-              <i data-lucide="droplet"></i>
+            <div>
+              <p class="step-number">STEP 2</p>
+              <h3 class="step-title">제직</h3>
+              <p class="step-desc">[클라이언트 확인 필요: 제직 공법 상세 — 파일 밀도, 직조 방식 등]</p>
             </div>
-            <h3 class="step-title">가공</h3>
-            <p class="step-desc">[클라이언트 확인 필요:<br>무형광/무염소 표백,<br>친환경 염색 등]</p>
           </div>
           <div class="process-step">
-            <p class="step-number">STEP 04</p>
-            <div class="step-image img-placeholder" style="aspect-ratio:1/1; max-width:200px; margin:0 auto 20px;">
+            <div class="step-image">
+              <i data-lucide="sparkles"></i>
+            </div>
+            <div>
+              <p class="step-number">STEP 3</p>
+              <h3 class="step-title">마감/가공</h3>
+              <p class="step-desc">화학 유연제 없이 소재 본연의 부드러움을 살립니다</p>
+              <p class="step-note">[클라이언트 확인 필요: 실제 마감 공정]</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-image">
               <i data-lucide="check-circle"></i>
             </div>
-            <h3 class="step-title">검수</h3>
-            <p class="step-desc">[클라이언트 확인 필요:<br>품질 검수 기준,<br>불량률 관리 방식]</p>
+            <div>
+              <p class="step-number">STEP 4</p>
+              <h3 class="step-title">품질 검수</h3>
+              <p class="step-desc">[클라이언트 확인 필요: 검수 기준/과정]</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 3: 품질 기준 -->
-    <section class="quality-section">
+    <!-- 섹션 4: 지구에도 부드러운 선택 -->
+    <section class="env-section">
       <div class="container">
         <div class="text-center">
-          <h2 class="section-title">느낌이 아니라 수치로 증명합니다</h2>
+          <h2 class="section-title">지구에도 부드러운 선택</h2>
+          <p class="section-desc mx-auto">좋은 수건이 환경까지 생각합니다</p>
         </div>
-
-        <div class="quality-table-wrap">
-          <table class="quality-table">
-            <thead>
-              <tr>
-                <th>항목</th>
-                <th>일반 수건</th>
-                <th>언커먼타올 페이스타월</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>GSM (그램/㎡)</strong></td>
-                <td>[클라이언트 확인 필요:<br>일반 비교치]</td>
-                <td>[클라이언트 확인 필요:<br>자사 GSM]</td>
-              </tr>
-              <tr>
-                <td><strong>흡수율</strong></td>
-                <td>[클라이언트 확인 필요]</td>
-                <td>[클라이언트 확인 필요]</td>
-              </tr>
-              <tr>
-                <td><strong>보풀 발생</strong></td>
-                <td>[클라이언트 확인 필요]</td>
-                <td>[클라이언트 확인 필요]</td>
-              </tr>
-              <tr>
-                <td><strong>세탁 후 수축률</strong></td>
-                <td>[클라이언트 확인 필요]</td>
-                <td>[클라이언트 확인 필요]</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div class="quality-note">
-            <strong>GSM이란?</strong> 1제곱미터당 원단 무게를 뜻합니다. 숫자가 높을수록 밀도가 높고 흡수력이 좋습니다.
+        <div class="env-grid">
+          <div class="env-card">
+            <div class="env-icon">🌱</div>
+            <h3 class="env-card-title">빠르게 자라는 대나무</h3>
+            <p class="env-card-desc">농약·화학비료 없이 빠르게 재생되는 원재료</p>
           </div>
-        </div>
-
-        <div class="quality-cta">
-          <a href="page_08.html" class="btn btn-secondary">타월 가이드에서 더 자세히 알아보기</a>
+          <div class="env-card">
+            <div class="env-icon">📦</div>
+            <h3 class="env-card-title">친환경 패키징</h3>
+            <p class="env-card-desc">[클라이언트 확인 필요: 실제 패키징 소재/방식 — 재생 종이, 무코팅, 콩기름 인쇄 등]</p>
+          </div>
+          <div class="env-card">
+            <div class="env-icon">🌍</div>
+            <h3 class="env-card-title">탄소 절감</h3>
+            <p class="env-card-desc">[클라이언트 확인 필요: 탄소 절감 관련 구체적 노력/수치]</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 4: 인증 -->
-    <section class="certification-section">
+    <!-- 섹션 5: 오래 부드럽게 쓰는 법 -->
+    <section class="care-section">
       <div class="container">
         <div class="text-center">
-          <h2 class="section-title">안전은 말이 아니라 인증으로 증명합니다</h2>
+          <h2 class="section-title">오래 부드럽게 쓰는 법</h2>
+          <p class="section-desc mx-auto">작은 습관 하나가 수건의 수명을 바꿉니다</p>
         </div>
-
-        <div class="cert-grid">
-          <div class="cert-item">
-            <div class="cert-badge">
-              <i data-lucide="shield-check"></i>
+        <div class="care-grid">
+          <div class="care-card">
+            <div class="care-icon-box">
+              <i data-lucide="droplet"></i>
             </div>
-            <p class="cert-name">[클라이언트 확인 필요:<br>인증명 1]</p>
-            <p class="cert-desc">[인증 설명]</p>
+            <div>
+              <h3 class="care-card-title">세탁 TIP</h3>
+              <p class="care-card-desc">처음 사용 전 찬물로 한 번 헹궈주세요</p>
+            </div>
           </div>
-          <div class="cert-item">
-            <div class="cert-badge">
-              <i data-lucide="shield-check"></i>
+          <div class="care-card">
+            <div class="care-icon-box">
+              <i data-lucide="sun"></i>
             </div>
-            <p class="cert-name">[클라이언트 확인 필요:<br>인증명 2]</p>
-            <p class="cert-desc">[인증 설명]</p>
+            <div>
+              <h3 class="care-card-title">건조 TIP</h3>
+              <p class="care-card-desc">직사광선보다 통풍이 잘 되는 그늘에서 말리면 오래 부드럽습니다</p>
+            </div>
           </div>
-          <div class="cert-item">
-            <div class="cert-badge">
-              <i data-lucide="shield-check"></i>
+          <div class="care-card">
+            <div class="care-icon-box">
+              <i data-lucide="heart"></i>
             </div>
-            <p class="cert-name">[클라이언트 확인 필요:<br>인증명 3]</p>
-            <p class="cert-desc">[인증 설명]</p>
+            <div>
+              <h3 class="care-card-title">관리 TIP</h3>
+              <p class="care-card-desc">섬유 유연제 대신 식초 한 스푼이면 충분합니다</p>
+            </div>
           </div>
-          <div class="cert-item">
-            <div class="cert-badge">
-              <i data-lucide="shield-check"></i>
+          <div class="care-card">
+            <div class="care-icon-box">
+              <i data-lucide="refresh-cw"></i>
             </div>
-            <p class="cert-name">[클라이언트 확인 필요:<br>인증명 4]</p>
-            <p class="cert-desc">[인증 설명]</p>
+            <div>
+              <h3 class="care-card-title">교체 TIP</h3>
+              <p class="care-card-desc">[클라이언트 확인 필요: 권장 교체 주기]</p>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="cert-cta">
-          <a href="page_07.html" class="btn btn-primary">제품 보러가기</a>
+    <!-- CTA 섹션 -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="section-title">이 소재로 만든 페이스타월을 만나보세요</h2>
+        <div style="margin-top:32px;">
+          <a href="page_06.html" class="btn btn-primary">제품 보러가기</a>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer-light">
+  <!-- 푸터 -->
+  <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div>
           <p class="footer-brand-name">언커먼타올</p>
-          <p class="footer-brand-desc">프리미엄 페이스타월 브랜드</p>
-          <div class="footer-company-info">
-            상호: [클라이언트 확인 필요: 법인명/상호]<br>
-            대표: [클라이언트 확인 필요]<br>
-            사업자등록번호: [클라이언트 확인 필요]<br>
-            통신판매업신고번호: [클라이언트 확인 필요]<br>
-            주소: [클라이언트 확인 필요]<br>
-            대표전화: [클라이언트 확인 필요]<br>
-            이메일: [클라이언트 확인 필요]
-          </div>
-        </div>
-        <div>
-          <p class="footer-col-title">쇼핑</p>
-          <a href="page_07.html">전체 제품</a>
-          <a href="page_07.html">베스트셀러</a>
+          <p class="footer-brand-desc">프리미엄 대나무 섬유 페이스타월</p>
         </div>
         <div>
           <p class="footer-col-title">브랜드</p>
           <a href="page_02.html">브랜드 철학</a>
+          <a href="page_03.html">브랜드 스토리</a>
           <a href="page_05.html">소재 이야기</a>
-          <a href="page_06.html">지속가능성</a>
         </div>
         <div>
-          <p class="footer-col-title">고객</p>
-          <a href="page_12.html">FAQ</a>
-          <a href="page_13.html">1:1 문의</a>
-          <a href="page_14.html">주문 조회</a>
+          <p class="footer-col-title">B2B</p>
+          <a href="page_07.html">대량구매</a>
+          <a href="page_08.html">파트너십</a>
+        </div>
+        <div>
+          <p class="footer-col-title">고객센터</p>
+          <a href="page_10.html">FAQ</a>
+          <a href="page_11.html">1:1 문의</a>
+          <a href="page_12.html">주문 조회</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 언커먼타올. All rights reserved.</span>
-        <div class="footer-bottom-links">
-          <a href="#">개인정보처리방침</a>
-          <a href="#">이용약관</a>
-        </div>
+        <span>© 언커먼타올 All Rights Reserved.</span>
+        <span>개인정보처리방침 | 이용약관</span>
       </div>
     </div>
   </footer>
 
   <!-- TOP 버튼 -->
-  <button class="top-button" id="topButton">
-    <i data-lucide="chevron-up"></i>
+  <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i data-lucide="arrow-up"></i>
   </button>
 
   <script>
     lucide.createIcons();
 
-    // TOP 버튼
-    const topButton = document.getElementById('topButton');
+    // TOP 버튼 표시
     window.addEventListener('scroll', () => {
+      const topBtn = document.querySelector('.top-btn');
       if (window.scrollY > 300) {
-        topButton.classList.add('visible');
+        topBtn.classList.add('visible');
       } else {
-        topButton.classList.remove('visible');
+        topBtn.classList.remove('visible');
       }
-    });
-    topButton.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 </body>
