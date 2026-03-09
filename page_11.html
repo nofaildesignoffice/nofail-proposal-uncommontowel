@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>1:1 문의 | 언커먼타올 - 프리미엄 대나무 섬유 페이스타월</title>
-  <meta name="description" content="언커먼타올 고객센터 1:1 문의 페이지입니다. 제품, 주문, 배송 관련 문의사항을 남겨주세요.">
-  <meta name="keywords" content="페이스타월, 대나무 수건, 프리미엄 수건, bamboo towel, 대나무 섬유 타월, 친환경 수건, 고객센터, 1:1 문의">
+  <meta name="description" content="언커먼타올 1:1 문의 페이지입니다. 제품, 주문, 배송, 반품/교환 등 궁금한 사항을 남겨주시면 빠르게 답변드리겠습니다.">
+  <meta name="keywords" content="프리미엄 수건, 대나무 섬유 수건, bamboo yarn towel, 페이스타월, 친환경 수건, 고객문의, 1:1문의">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -42,23 +42,24 @@
     ul { list-style: none; }
     button { cursor: pointer; border: none; font-family: inherit; background: none; }
     input, textarea, select {
-      font-family: 'Pretendard', sans-serif;
+      font-family: inherit;
       border: 1px solid var(--border-default);
       border-radius: var(--radius-sm);
       padding: 12px 16px;
       font-size: 15px;
       width: 100%;
-      transition: border-color 0.2s;
     }
     input:focus, textarea:focus, select:focus {
       outline: none;
       border-color: var(--text-dark);
     }
     textarea { resize: vertical; min-height: 160px; }
-    label { display: block; font-size: 14px; font-weight: 600; color: var(--text-dark); margin-bottom: 8px; }
-    .required { color: #FF6B6B; margin-left: 2px; }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
     .btn {
       display: inline-flex;
@@ -70,6 +71,7 @@
       font-size: 15px;
       font-weight: 600;
       transition: opacity 0.2s;
+      cursor: pointer;
     }
     .btn:hover { opacity: 0.85; }
     .btn-primary {
@@ -82,7 +84,6 @@
       color: var(--text-black);
       border: 1px solid var(--border-default);
     }
-    .btn-block { width: 100%; }
 
     .section-label {
       font-size: 14px;
@@ -106,19 +107,13 @@
     .text-center { text-align: center; }
     .mx-auto { margin-left: auto; margin-right: auto; }
 
-    /* Header */
+    /* NAV */
     .nav {
       position: sticky;
       top: 0;
       z-index: 100;
       background: var(--bg-white);
       border-bottom: 1px solid var(--border-light);
-      transition: all 0.3s;
-    }
-    .nav.scrolled {
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(8px);
-      box-shadow: var(--shadow-sm);
     }
     .nav-inner {
       display: flex;
@@ -131,11 +126,6 @@
       font-weight: 700;
       color: var(--text-black);
     }
-    .nav-main {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-    }
     .nav-links {
       display: flex;
       gap: 32px;
@@ -147,10 +137,13 @@
       font-size: 15px;
       font-weight: 500;
       color: var(--text-dark);
-      padding: 24px 0;
+      padding: 8px 0;
       display: block;
     }
-    .nav-item.active > a { color: var(--text-black); font-weight: 600; }
+    .nav-item.active > a {
+      color: var(--text-black);
+      font-weight: 700;
+    }
     .nav-dropdown {
       position: absolute;
       top: 100%;
@@ -158,165 +151,151 @@
       background: var(--bg-white);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-sm);
+      padding: 12px 0;
       min-width: 180px;
-      padding: 8px 0;
+      box-shadow: var(--shadow-md);
       opacity: 0;
       visibility: hidden;
-      transform: translateY(-8px);
       transition: all 0.2s;
-      box-shadow: var(--shadow-md);
+      margin-top: 8px;
     }
     .nav-item:hover .nav-dropdown {
       opacity: 1;
       visibility: visible;
-      transform: translateY(0);
     }
     .nav-dropdown a {
       display: block;
-      padding: 10px 20px;
+      padding: 8px 20px;
       font-size: 14px;
-      color: var(--text-gray);
-    }
-    .nav-dropdown a:hover { background: var(--bg-light); color: var(--text-black); }
-    .nav-utils {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .nav-utils button {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       color: var(--text-dark);
     }
-    .nav-utils svg { width: 20px; height: 20px; }
-    .mobile-toggle { display: none; }
-
-    /* Breadcrumb */
-    .breadcrumb {
-      padding: 24px 0;
+    .nav-dropdown a:hover {
       background: var(--bg-light);
     }
-    .breadcrumb-inner {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      color: var(--text-light);
+    .nav-hamburger {
+      display: none;
+      width: 32px;
+      height: 32px;
+      background: none;
+      border: none;
+      cursor: pointer;
     }
-    .breadcrumb-inner a { color: var(--text-gray); }
-    .breadcrumb-inner a:hover { color: var(--text-black); }
-    .breadcrumb-inner svg { width: 16px; height: 16px; }
-    .breadcrumb-inner .current { color: var(--text-black); font-weight: 600; }
 
-    /* Inquiry Form Section */
-    .inquiry-section {
-      padding: 80px 0;
+    /* HERO */
+    .hero-section {
+      padding: 100px 0 60px;
+      background: var(--bg-white);
+      text-align: center;
     }
-    .inquiry-container {
+    .hero-section .section-title {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    /* FORM SECTION */
+    .form-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    .form-container {
       max-width: 720px;
       margin: 0 auto;
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 48px;
     }
     .form-group {
       margin-bottom: 24px;
+    }
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .form-label .required {
+      color: #FF6B6B;
+      margin-left: 4px;
     }
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
     }
-    .checkbox-group {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-    .checkbox-group input[type="checkbox"] {
-      width: 20px;
-      height: 20px;
-      cursor: pointer;
-    }
-    .checkbox-group label {
-      margin: 0;
-      font-weight: 400;
-      cursor: pointer;
-    }
-    .form-note {
+    .form-helper {
       font-size: 13px;
       color: var(--text-light);
-      margin-top: 8px;
-      line-height: 1.5;
+      margin-top: 6px;
     }
-    .file-upload {
-      border: 2px dashed var(--border-default);
-      border-radius: var(--radius-sm);
-      padding: 32px;
-      text-align: center;
-      cursor: pointer;
-      transition: border-color 0.2s;
+    .form-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-top: 16px;
     }
-    .file-upload:hover { border-color: var(--text-dark); }
-    .file-upload input[type="file"] { display: none; }
-    .file-upload-icon {
-      width: 48px;
-      height: 48px;
-      margin: 0 auto 12px;
-      color: var(--text-light);
+    .form-checkbox input[type="checkbox"] {
+      width: auto;
+      margin-top: 2px;
     }
-    .file-upload-text {
+    .form-checkbox label {
       font-size: 14px;
       color: var(--text-gray);
     }
+    .form-actions {
+      margin-top: 32px;
+      text-align: center;
+    }
+    .form-actions .btn {
+      min-width: 200px;
+    }
 
-    /* Info Section */
+    /* INFO CARDS */
     .info-section {
-      padding: 60px 0;
-      background: var(--bg-light);
+      padding: 80px 0;
+      background: var(--bg-white);
     }
     .info-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      max-width: 960px;
-      margin: 0 auto;
+      margin-top: 48px;
     }
     .info-card {
-      background: var(--bg-white);
+      padding: 32px;
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
-      padding: 32px;
       text-align: center;
     }
-    .info-icon {
-      width: 48px;
-      height: 48px;
-      margin: 0 auto 16px;
-      border-radius: var(--radius-sm);
+    .info-card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
       background: var(--bg-light);
       display: flex;
       align-items: center;
       justify-content: center;
+      margin: 0 auto 20px;
     }
-    .info-icon svg {
-      width: 24px;
-      height: 24px;
+    .info-card-icon svg {
+      width: 28px;
+      height: 28px;
       color: var(--text-dark);
     }
-    .info-title {
-      font-size: 16px;
+    .info-card-title {
+      font-size: 17px;
       font-weight: 700;
       color: var(--text-black);
       margin-bottom: 8px;
     }
-    .info-desc {
+    .info-card-desc {
       font-size: 14px;
       color: var(--text-gray);
       line-height: 1.6;
     }
 
-    /* Footer */
+    /* FOOTER */
     .footer-light {
       padding: 60px 0 32px;
       background: var(--bg-white);
@@ -352,29 +331,15 @@
       color: var(--text-light);
       padding: 4px 0;
     }
-    .footer-col a:hover { color: var(--text-black); }
-    .footer-info {
-      margin-top: 20px;
-      font-size: 13px;
-      color: var(--text-light);
-      line-height: 1.7;
-    }
     .footer-bottom {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       padding-top: 24px;
       font-size: 13px;
       color: var(--text-muted);
     }
-    .footer-links {
-      display: flex;
-      gap: 16px;
-    }
-    .footer-links a { color: var(--text-muted); }
-    .footer-links a:hover { color: var(--text-dark); }
 
-    /* TOP Button */
+    /* TOP BUTTON */
     .top-button {
       position: fixed;
       bottom: 40px;
@@ -382,149 +347,126 @@
       width: 48px;
       height: 48px;
       background: var(--text-black);
-      color: var(--bg-white);
+      color: #FFFFFF;
       border-radius: 50%;
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      transition: opacity 0.2s;
       z-index: 99;
     }
-    .top-button.visible {
-      opacity: 1;
-      visibility: visible;
-    }
     .top-button:hover { opacity: 0.85; }
-    .top-button svg { width: 20px; height: 20px; }
+    .top-button.visible { display: flex; }
 
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .mobile-toggle {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        color: var(--text-dark);
-      }
-      .mobile-toggle svg { width: 24px; height: 24px; }
+      .nav-hamburger { display: block; }
       .section-title { font-size: 28px; }
-      .inquiry-section { padding: 60px 0; }
+      .hero-section .section-title { font-size: 32px; }
+      .form-container { padding: 32px 24px; }
       .form-row { grid-template-columns: 1fr; }
       .info-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-      .footer-bottom { flex-direction: column; gap: 12px; }
-      .top-button { bottom: 24px; right: 24px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .top-button { bottom: 24px; right: 24px; width: 44px; height: 44px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- HEADER -->
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
         <a href="page_01.html" class="nav-logo">언커먼타올</a>
-        <div class="nav-main">
-          <nav class="nav-links">
-            <div class="nav-item">
-              <a href="page_01.html">메인</a>
+        <nav class="nav-links">
+          <div class="nav-item">
+            <a href="page_01.html">메인</a>
+          </div>
+          <div class="nav-item">
+            <a href="page_02.html">브랜드</a>
+            <div class="nav-dropdown">
+              <a href="page_02.html">브랜드 철학</a>
+              <a href="page_03.html">브랜드 스토리</a>
+              <a href="page_04.html">브랜드 여정</a>
+              <a href="page_05.html">소재 이야기</a>
             </div>
-            <div class="nav-item">
-              <a href="page_02.html">브랜드</a>
-              <div class="nav-dropdown">
-                <a href="page_02.html">브랜드 철학</a>
-                <a href="page_03.html">브랜드 스토리</a>
-                <a href="page_04.html">브랜드 여정</a>
-                <a href="page_05.html">소재 이야기</a>
-              </div>
+          </div>
+          <div class="nav-item">
+            <a href="page_06.html">제품</a>
+          </div>
+          <div class="nav-item">
+            <a href="page_07.html">B2B문의</a>
+            <div class="nav-dropdown">
+              <a href="page_07.html">대량구매</a>
+              <a href="page_08.html">파트너십</a>
             </div>
-            <div class="nav-item">
-              <a href="page_06.html">제품</a>
+          </div>
+          <div class="nav-item">
+            <a href="page_09.html">고객 후기</a>
+          </div>
+          <div class="nav-item active">
+            <a href="page_10.html">고객센터</a>
+            <div class="nav-dropdown">
+              <a href="page_10.html">FAQ</a>
+              <a href="page_11.html" style="font-weight:700;">1:1 문의</a>
+              <a href="page_12.html">주문 조회</a>
             </div>
-            <div class="nav-item">
-              <a href="page_07.html">B2B문의</a>
-              <div class="nav-dropdown">
-                <a href="page_07.html">대량구매</a>
-                <a href="page_08.html">파트너십</a>
-              </div>
-            </div>
-            <div class="nav-item">
-              <a href="page_09.html">고객 후기</a>
-            </div>
-            <div class="nav-item active">
-              <a href="page_10.html">고객센터</a>
-              <div class="nav-dropdown">
-                <a href="page_10.html">FAQ</a>
-                <a href="page_11.html">1:1 문의</a>
-                <a href="page_12.html">주문 조회</a>
-              </div>
-            </div>
-          </nav>
-        </div>
-        <div class="nav-utils">
-          <button aria-label="검색"><i data-lucide="search"></i></button>
-          <button aria-label="마이페이지"><i data-lucide="user"></i></button>
-          <button aria-label="장바구니"><i data-lucide="shopping-cart"></i></button>
-          <button class="mobile-toggle" aria-label="메뉴"><i data-lucide="menu"></i></button>
-        </div>
+          </div>
+          <div class="nav-item">
+            <a href="#">매장 안내</a>
+          </div>
+        </nav>
+        <button class="nav-hamburger">
+          <i data-lucide="menu"></i>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- Breadcrumb -->
-  <div class="breadcrumb">
-    <div class="container">
-      <div class="breadcrumb-inner">
-        <a href="page_01.html">홈</a>
-        <i data-lucide="chevron-right"></i>
-        <a href="page_10.html">고객센터</a>
-        <i data-lucide="chevron-right"></i>
-        <span class="current">1:1 문의</span>
-      </div>
-    </div>
-  </div>
-
   <main>
 
-    <!-- Inquiry Form Section -->
-    <section class="inquiry-section">
+    <!-- HERO -->
+    <section class="hero-section">
       <div class="container">
-        <div class="inquiry-container">
-          <div class="text-center">
-            <p class="section-label">CUSTOMER SUPPORT</p>
-            <h1 class="section-title">1:1 문의</h1>
-            <p class="section-desc mx-auto">제품, 주문, 배송 관련 문의사항을 남겨주세요.<br>영업일 기준 24시간 이내 답변드립니다.</p>
-          </div>
+        <p class="section-label">고객센터</p>
+        <h1 class="section-title">1:1 문의</h1>
+        <p class="section-desc mx-auto">제품, 주문, 배송, 반품/교환 등 궁금한 사항을 남겨주시면 빠르게 답변드리겠어요.</p>
+      </div>
+    </section>
 
-          <form style="margin-top:48px;">
+    <!-- FORM SECTION -->
+    <section class="form-section">
+      <div class="container">
+        <div class="form-container">
+          <form>
             <div class="form-row">
               <div class="form-group">
-                <label>이름 <span class="required">*</span></label>
-                <input type="text" placeholder="이름을 입력하세요" required>
+                <label class="form-label">이름<span class="required">*</span></label>
+                <input type="text" placeholder="이름을 입력해주세요" required>
               </div>
               <div class="form-group">
-                <label>연락처 <span class="required">*</span></label>
+                <label class="form-label">연락처<span class="required">*</span></label>
                 <input type="tel" placeholder="010-0000-0000" required>
               </div>
             </div>
 
             <div class="form-group">
-              <label>이메일 <span class="required">*</span></label>
+              <label class="form-label">이메일<span class="required">*</span></label>
               <input type="email" placeholder="example@email.com" required>
-              <p class="form-note">답변은 입력하신 이메일로 전송됩니다.</p>
+              <p class="form-helper">답변은 입력하신 이메일로 발송됩니다.</p>
             </div>
 
             <div class="form-group">
-              <label>문의 유형 <span class="required">*</span></label>
+              <label class="form-label">문의 유형<span class="required">*</span></label>
               <select required>
-                <option value="">선택하세요</option>
+                <option value="">선택해주세요</option>
                 <option value="product">제품 문의</option>
                 <option value="order">주문/결제 문의</option>
-                <option value="delivery">배송 문의</option>
-                <option value="exchange">교환/반품 문의</option>
+                <option value="shipping">배송 문의</option>
+                <option value="return">반품/교환 문의</option>
                 <option value="bulk">대량구매 문의</option>
                 <option value="partnership">파트너십 문의</option>
                 <option value="etc">기타 문의</option>
@@ -532,72 +474,62 @@
             </div>
 
             <div class="form-group">
-              <label>주문번호 (선택)</label>
-              <input type="text" placeholder="주문번호가 있는 경우 입력하세요">
+              <label class="form-label">주문번호</label>
+              <input type="text" placeholder="주문번호가 있다면 입력해주세요 (선택)">
+              <p class="form-helper">주문/배송/반품 문의 시 주문번호를 함께 입력하시면 빠른 확인이 가능합니다.</p>
             </div>
 
             <div class="form-group">
-              <label>제목 <span class="required">*</span></label>
-              <input type="text" placeholder="문의 제목을 입력하세요" required>
+              <label class="form-label">제목<span class="required">*</span></label>
+              <input type="text" placeholder="문의 제목을 입력해주세요" required>
             </div>
 
             <div class="form-group">
-              <label>문의 내용 <span class="required">*</span></label>
-              <textarea placeholder="문의 내용을 상세히 작성해주세요" required></textarea>
+              <label class="form-label">문의 내용<span class="required">*</span></label>
+              <textarea placeholder="문의 내용을 자세히 작성해주시면 정확한 답변을 드릴 수 있어요." required></textarea>
             </div>
 
-            <div class="form-group">
-              <label>첨부파일 (선택)</label>
-              <label class="file-upload">
-                <input type="file" multiple accept="image/*,.pdf">
-                <div class="file-upload-icon">
-                  <i data-lucide="upload"></i>
-                </div>
-                <p class="file-upload-text">클릭하여 파일 첨부 (최대 5MB)</p>
-              </label>
-              <p class="form-note">이미지, PDF 파일만 첨부 가능합니다.</p>
+            <div class="form-checkbox">
+              <input type="checkbox" id="privacy" required>
+              <label for="privacy">개인정보 수집 및 이용에 동의합니다 <span class="required">*</span></label>
             </div>
 
-            <div class="form-group">
-              <div class="checkbox-group">
-                <input type="checkbox" id="privacy" required>
-                <label for="privacy">개인정보 수집 및 이용에 동의합니다 <span class="required">*</span></label>
-              </div>
-              <p class="form-note">문의 접수 및 답변을 위해 필요한 최소한의 개인정보를 수집합니다.</p>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">문의 접수하기</button>
             </div>
-
-            <button type="submit" class="btn btn-primary btn-block" style="margin-top:32px;">
-              문의 접수하기
-            </button>
           </form>
         </div>
       </div>
     </section>
 
-    <!-- Info Section -->
+    <!-- INFO SECTION -->
     <section class="info-section">
       <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">문의 안내</h2>
+          <p class="section-desc mx-auto">접수된 문의는 순차적으로 확인 후 답변드리고 있어요.</p>
+        </div>
         <div class="info-grid">
           <div class="info-card">
-            <div class="info-icon">
+            <div class="info-card-icon">
               <i data-lucide="clock"></i>
             </div>
-            <h3 class="info-title">운영 시간</h3>
-            <p class="info-desc">평일 09:00 ~ 18:00<br>(주말 및 공휴일 휴무)</p>
+            <h3 class="info-card-title">답변 시간</h3>
+            <p class="info-card-desc">평일 09:00 ~ 18:00<br>(주말 및 공휴일 제외)</p>
           </div>
           <div class="info-card">
-            <div class="info-icon">
+            <div class="info-card-icon">
               <i data-lucide="message-circle"></i>
             </div>
-            <h3 class="info-title">답변 소요 시간</h3>
-            <p class="info-desc">영업일 기준<br>24시간 이내 답변</p>
+            <h3 class="info-card-title">평균 답변 시간</h3>
+            <p class="info-card-desc">접수 후 24시간 이내<br>순차적으로 답변드려요</p>
           </div>
           <div class="info-card">
-            <div class="info-icon">
-              <i data-lucide="phone"></i>
+            <div class="info-card-icon">
+              <i data-lucide="mail"></i>
             </div>
-            <h3 class="info-title">긴급 문의</h3>
-            <p class="info-desc">[클라이언트 확인 필요: 전화번호]<br>평일 운영시간 내</p>
+            <h3 class="info-card-title">이메일 답변</h3>
+            <p class="info-card-desc">작성하신 이메일로<br>답변을 발송해드려요</p>
           </div>
         </div>
       </div>
@@ -605,22 +537,13 @@
 
   </main>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="footer-light">
     <div class="container">
       <div class="footer-grid">
         <div>
           <p class="footer-brand-name">언커먼타올</p>
-          <p class="footer-brand-desc">프리미엄 대나무 섬유 페이스타월</p>
-          <div class="footer-info">
-            [클라이언트 확인 필요: 상호]<br>
-            대표자: [클라이언트 확인 필요: 대표자명]<br>
-            사업자등록번호: [클라이언트 확인 필요: 사업자등록번호]<br>
-            통신판매업번호: [클라이언트 확인 필요: 통신판매업번호]<br>
-            주소: [클라이언트 확인 필요: 주소]<br>
-            전화: [클라이언트 확인 필요: 전화번호]<br>
-            이메일: [클라이언트 확인 필요: 이메일]
-          </div>
+          <p class="footer-brand-desc">[클라이언트 확인 필요: 상호 / 대표자명 / 사업자번호 / 주소 / 전화 / 이메일]</p>
         </div>
         <div>
           <p class="footer-col-title">브랜드</p>
@@ -629,56 +552,43 @@
           <a href="page_05.html">소재 이야기</a>
         </div>
         <div>
-          <p class="footer-col-title">쇼핑</p>
+          <p class="footer-col-title">제품 & B2B</p>
           <a href="page_06.html">제품</a>
           <a href="page_07.html">대량구매</a>
           <a href="page_08.html">파트너십</a>
         </div>
         <div>
           <p class="footer-col-title">고객센터</p>
+          <a href="page_09.html">고객 후기</a>
           <a href="page_10.html">FAQ</a>
           <a href="page_11.html">1:1 문의</a>
-          <a href="page_12.html">주문 조회</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 언커먼타올 All Rights Reserved.</span>
-        <div class="footer-links">
-          <a href="#">개인정보처리방침</a>
-          <a href="#">이용약관</a>
-        </div>
+        <span>© 2025 언커먼타올. All Rights Reserved.</span>
+        <span>개인정보처리방침 | 이용약관</span>
       </div>
     </div>
   </footer>
 
-  <!-- TOP Button -->
-  <button class="top-button" aria-label="맨 위로">
+  <!-- TOP BUTTON -->
+  <button class="top-button" id="topBtn">
     <i data-lucide="arrow-up"></i>
   </button>
 
   <script>
     lucide.createIcons();
 
-    // Scroll header
-    const nav = document.querySelector('.nav');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    });
-
-    // TOP button
-    const topButton = document.querySelector('.top-button');
+    // TOP BUTTON
+    const topBtn = document.getElementById('topBtn');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
-        topButton.classList.add('visible');
+        topBtn.classList.add('visible');
       } else {
-        topButton.classList.remove('visible');
+        topBtn.classList.remove('visible');
       }
     });
-    topButton.addEventListener('click', () => {
+    topBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
